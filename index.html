@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 MBPS İnternet Tarifeleri Karşılaştırma</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #f5f7fa;
+    padding: 20px;
+    color: #2d3748;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+    overflow: hidden;
+}
+
+header {
+    background: #4a5568;
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.update-date {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.info-notice {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 16px 24px;
+    margin: 24px 30px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    color: #92400e;
+}
+
+.controls {
+    padding: 20px 30px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #4a5568;
+}
+
+.sort-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sort-btn {
+    padding: 10px 18px;
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.sort-btn:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.sort-btn.active {
+    background: #4a5568;
+    color: white;
+    border-color: #4a5568;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 140px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    margin-top: 4px;
+}
+
+.dropdown-content a {
+    color: #374151;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.dropdown-content a:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.dropdown-content a:last-child {
+    border-radius: 0 0 6px 6px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f4f6;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.table-container {
+    padding: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f9fafb;
+    color: #374151;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.95em;
+}
+
+tr:hover {
+    background: #fafbfc;
+}
+
+.firma-name {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.link-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-left: 6px;
+    background: #4a5568;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.link-badge:hover {
+    background: #2d3748;
+}
+
+.price {
+    color: #059669;
+    font-weight: 600;
+}
+
+.price-increase {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.price-same {
+    color: #0891b2;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.modem-free {
+    color: #059669;
+    font-weight: 500;
+}
+
+.modem-paid {
+    color: #f59e0b;
+    font-weight: 500;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+    font-size: 1.1em;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.page-btn {
+    padding: 10px 20px;
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: #f3f4f6;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-info {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 24px 30px;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: #4a5568;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.footer {
+    padding: 20px 30px;
+    background: #f9fafb;
+    text-align: center;
+    font-size: 0.85em;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    .sort-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    table {
+        font-size: 0.85em;
+    }
+    
+    td, th {
+        padding: 12px 8px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>100 MBPS İnternet Tarife Fiyatları</h1>
+        <p class="update-date">📅 Son Güncelleme: 16 Şubat 2026</p>
+    </header>
+    
+    <div class="info-notice">
+        <strong>⚠️ Önemli Notlar:</strong><br>
+        • Tablodaki fiyat bilgileri güncel olmayabilir. En doğru ve güncel fiyatlar için lütfen firma isimlerinin yanındaki bağlantılara tıklayarak resmi web sitelerini ziyaret edin.<br>
+        • Modem kira ücretleri Fiber internet içindir.
+    </div>
+    
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
+        </div>
+        <div class="sort-buttons">
+            <button class="sort-btn" onclick="sortTable('price-asc')">💰 En Ucuz</button>
+            <button class="sort-btn" onclick="sortTable('price-desc')">💰 En Pahalı</button>
+            <div class="dropdown">
+                <button class="sort-btn dropdown-btn">📊 Fiyat Aralığı ▼</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="filterByPriceRange(300, 400); return false;">300-400₺</a>
+                    <a href="#" onclick="filterByPriceRange(400, 500); return false;">400-500₺</a>
+                    <a href="#" onclick="filterByPriceRange(500, 600); return false;">500-600₺</a>
+                    <a href="#" onclick="filterByPriceRange(600, 1000); return false;">600₺+</a>
+                </div>
+            </div>
+            <button class="sort-btn" onclick="resetTable()">🔄 Sıfırla</button>
+        </div>
+    </div>
+    
+    <div class="table-container">
+        <table id="priceTable">
+            <thead>
+                <tr>
+                    <th>Firma</th>
+                    <th>İlk Dönem Ücret</th>
+                    <th>Sonraki Dönem</th>
+                    <th>Modem Kira</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="firma-name">
+                        10LİNE 
+                        <a href="https://10line.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">575,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        4GNET 
+                        <a href="https://4gnet.com.tr/bireysel_tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">649,99₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        ALANYANET 
+                        <a href="https://www.alanyanet.com.tr/VdslTarifeler.html" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://www.alanyanet.com.tr/FiberTarife.html" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">VDSL 570,00₺ / FİBER 620,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        ATLANTİSNET 
+                        <a href="https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">600,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        AY TELEKOM 
+                        <a href="https://aytelekom.com.tr/tarife/vdsl" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://aytelekom.com.tr/tarife/fiber" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">VDSL 589,00₺ / FİBER 599,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">60,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        BELENATLANTİS 
+                        <a href="https://belenatlantis.com.tr/kampanyalar.php" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">600,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        BİNBİRNET 
+                        <a href="https://binbirnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">740,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        BİNET 
+                        <a href="https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">390,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        CERENNET 
+                        <a href="https://www.cerennet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 650,00₺ / FİBER 700,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        DURUNET 
+                        <a href="https://durunet.com.tr/ev-interneti" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">650,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">YOK</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        EFSANENET 
+                        <a href="https://www.efsanenet.com.tr/vdsl-internet/" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://www.efsanenet.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">VDSL 480,00₺ / FİBER 530,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        EURONET 
+                        <a href="https://www.euronet.com.tr/internet-paketleri/vdsl" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">629,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        EXPRESNET 
+                        <a href="https://expresnet.com.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">650,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        FARKNET 
+                        <a href="https://farknet.com.tr/internetpaketleri/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 579,00₺ / FİBER 599,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        FİBA TELEKOM 
+                        <a href="https://fibatelekom.com.tr/tr/packages" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">750,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        FİXNET 
+                        <a href="https://www.fixnet.com.tr/eviniz#paketler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 450,00₺ / FİBER 500,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        FLİXNET 
+                        <a href="https://flix.net.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">520,00₺</td>
+                    <td>2026 Temmuz ayına kadar sabit fiyat</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        GESNET 
+                        <a href="https://gesnet.com.tr/tarife-detay?id=13" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">500,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        GİGASPEED 
+                        <a href="https://gigaspeed.com.tr/paketler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺</td>
+                    <td>VDSL 479,90₺ / FİBER 499,90₺ (1 Temmuz 2026'ya kadar sabit)</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        GİBİRNET 
+                        <a href="https://gibir.net.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 3 Ay: 480,00₺</td>
+                    <td class="price-increase">580,00₺</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        GÜLDÜRENNET 
+                        <a href="https://guldurennet.com.tr/tarifeler.php" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">550,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">100,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        HATFİBER 
+                        <a href="https://hatfiber.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://hatfiber.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">VDSL 599,00₺ / FİBER 599,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        İNTERNET KUTUSU 
+                        <a href="https://internetkutusu.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">549,90₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        İREMNET 
+                        <a href="https://iremnet.com.tr/index.php/fiber-internet/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">700,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        JETNET 
+                        <a href="https://www.jetnettelekom.com.tr/tarife/vdsl" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">580,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        KAREL İLETİŞİM 
+                        <a href="https://kareliletisim.com.tr/kampanyalar/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 569,00₺ / FİBER 569,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        KARUNNET 
+                        <a href="https://karunnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 580,00₺ / FİBER 610,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        MAVİNET 
+                        <a href="https://mavinetbilisim.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 570,00₺ / FİBER 630,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        MAVİFİBER 
+                        <a href="https://mavifiber.com.tr" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 450,00₺ / FİBER 450,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        MERKÜRNET 
+                        <a href="https://www.merkurnet.com.tr/merkure-ilk-adim/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 569,90₺ / FİBER 649,90₺</td>
+                    <td class="price-increase">689,00₺</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        MİGROSNET 
+                        <a href="https://www.migrosnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺</td>
+                    <td class="price-increase">VDSL 649,00₺ / FİBER 699,00₺</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        MİLLENİCOM 
+                        <a href="https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 4 Ay: 399,90₺</td>
+                    <td class="price-increase">690,00₺</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NAZNET 
+                        <a href="https://www.naznet.com.tr/web/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 720,00₺ / FİBER 720,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">100,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NEONET 
+                        <a href="https://neonet.net.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://neonet.net.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">VDSL 599,00₺ / FİBER 675,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NETBONE 
+                        <a href="https://www.netbone.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">579,90₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NETGİGABİT 
+                        <a href="https://www.netgigabit.com.tr/vdsltarifeler.html" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://www.netgigabit.com.tr/fibertarifeler.html" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">650,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NETGSM 
+                        <a href="https://www.netgsm.com.tr/internet/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">575,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NETİNTERNET 
+                        <a href="https://www.netinternet.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">649,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">79,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NETMAN 
+                        <a href="https://www.netman.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">599,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NETMAX 
+                        <a href="https://netmax.com.tr/tarifeler/fiber" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">580,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">100,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NETSPEED 
+                        <a href="https://www.netspeed.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 4 Ay: 399,90₺</td>
+                    <td class="price-increase">649,90₺</td>
+                    <td class="modem-free">Yok</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NİDA TELEKOM 
+                        <a href="https://www.nidatelekom.com.tr/xdsl_internet_paketleri" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://www.nidatelekom.com.tr/fiber_internet_paketleri" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">VDSL 599,00₺ / FİBER 629,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NİTROİNTERNET 
+                        <a href="https://nitrointernet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">650,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        NOKTAWİFİ 
+                        <a href="https://noktawifi.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://noktawifi.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">VDSL 700,00₺ / FİBER 725,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">Yok</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        PANANET 
+                        <a href="https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">575,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        PASİFİK TELEKOM 
+                        <a href="https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 3 Ay: 480,00₺</td>
+                    <td class="price-increase">560,00₺</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        POWERNET 
+                        <a href="https://powernet.com.tr/paketler/fiber-internet-tarifeleri" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">600,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">50,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        RAMTEK 
+                        <a href="https://www.ramtek.net.tr/ramtek-fiber" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">349,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        REKORNET 
+                        <a href="https://rekornet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">570,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        SADENET 
+                        <a href="https://sadenet.com.tr/Kampanyalar/yok-artik-fiber-kampanyasi-100mbps-taahhutsuz" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 4 Ay: 319,00₺</td>
+                    <td class="price-increase">610,00₺</td>
+                    <td class="modem-paid">150,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        ŞOKNET 
+                        <a href="https://www.soknetinternet.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺</td>
+                    <td class="price-increase">VDSL 619,00₺ / Fiber 689,00₺</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TBTNET 
+                        <a href="https://tbtnet.net/bireysel-internet" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">639,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">65,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TEKNET 
+                        <a href="https://tek.net.tr/paketler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">569,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TEKNOSANET 
+                        <a href="https://www.teknosanet.com/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">İlk 3 Ay: 449,00₺</td>
+                    <td class="price-increase">689,00₺</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TELKOMNET 
+                        <a href="https://www.telkomnet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 580,00₺ / FİBER 620,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TİKLANET 
+                        <a href="https://tiklanet.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 520,00₺ / FİBER 560,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TURKHOST 
+                        <a href="https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://www.turkhost.net.tr/limitsiz-fiber-ftth-internet-paketleri" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">İlk Ay: VDSL 359,00₺ / Fiber 550,00₺</td>
+                    <td class="price-increase">VDSL 409,00₺ / Fiber 650,00₺</td>
+                    <td class="modem-paid">65,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TURKNET 
+                        <a href="https://www.turk.net/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">699,90₺ (12 ay peşin: 599,90₺)</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-free">Modem ücreti tarife fiyatına dahil</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TURUNCUNET 
+                        <a href="https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 549,90₺ / FİBER 589,90₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">60,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        TÜRKİYEMNET 
+                        <a href="https://www.turkiyemnet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 589,00₺ / FİBER 639,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        ULUNET 
+                        <a href="https://www.ulu.net.tr/paketler/VDSL" target="_blank" class="link-badge">VDSL</a>
+                        <a href="https://www.ulu.net.tr/paketler/FIBER" target="_blank" class="link-badge">Fiber</a>
+                    </td>
+                    <td class="price">570,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">70,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        WAAYNET 
+                        <a href="https://waaynet.com.tr/tarifelerimiz.php" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">599,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td class="modem-paid">75,00₺</td>
+                </tr>
+                <tr>
+                    <td class="firma-name">
+                        WORLDNET 
+                        <a href="https://worldnet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+                    </td>
+                    <td class="price">VDSL 714,00₺ / FİBER 814,00₺</td>
+                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td>?</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="noResults" class="no-results" style="display: none;">
+            🔍 Aradığınız kriterlere uygun firma bulunamadı.
+        </div>
+    </div>
+    
+    <div class="pagination">
+        <button class="page-btn" onclick="changePage(-1)" id="prevBtn">◀ Önceki</button>
+        <span class="page-info">Sayfa <span id="currentPage">1</span> / <span id="totalPages">1</span></span>
+        <button class="page-btn" onclick="changePage(1)" id="nextBtn">Sonraki ▶</button>
+    </div>
+    
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-value" id="totalProviders">63</div>
+            <div class="stat-label">Toplam Sağlayıcı</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">349₺</div>
+            <div class="stat-label">En Düşük Fiyat</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">814₺</div>
+            <div class="stat-label">En Yüksek Fiyat</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        💼 deckardvibes | 2026
+    </div>
+</div>
+
+<script>
+// Sayfalama değişkenleri
+const rowsPerPage = 16;
+let currentPage = 1;
+let allRows = [];
+let filteredRows = [];
+
+// Sayfa yüklendiğinde
+document.addEventListener('DOMContentLoaded', function() {
+    const table = document.getElementById('priceTable');
+    const tbody = table.getElementsByTagName('tbody')[0];
+    allRows = Array.from(tbody.getElementsByTagName('tr'));
+    filteredRows = allRows;
+    showPage(1);
+});
+
+// Arama fonksiyonu - güncellendi
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    const searchValue = this.value.toLowerCase();
+    
+    filteredRows = allRows.filter(row => {
+        const firma = row.getElementsByTagName('td')[0];
+        if (firma) {
+            const firmaName = firma.textContent || firma.innerText;
+            return firmaName.toLowerCase().indexOf(searchValue) > -1;
+        }
+        return false;
+    });
+    
+    document.getElementById('noResults').style.display = filteredRows.length === 0 ? 'block' : 'none';
+    document.getElementById('totalProviders').textContent = filteredRows.length;
+    
+    currentPage = 1;
+    showPage(1);
+});
+
+// Fiyat çıkarma fonksiyonu
+function extractPrice(text) {
+    const matches = text.match(/(\d+),(\d+)/g);
+    if (!matches || matches.length === 0) return 999999;
+    const prices = matches.map(price => parseFloat(price.replace(',', '.')));
+    return Math.min(...prices);
+}
+
+// Sıralama fonksiyonu - düzeltildi
+function sortTable(type) {
+    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Mevcut filtrelenmiş verileri sırala
+    filteredRows.sort((a, b) => {
+        if (type === 'price-asc') {
+            const priceA = extractPrice(a.getElementsByTagName('td')[1].textContent);
+            const priceB = extractPrice(b.getElementsByTagName('td')[1].textContent);
+            return priceA - priceB;
+        } else if (type === 'price-desc') {
+            const priceA = extractPrice(a.getElementsByTagName('td')[1].textContent);
+            const priceB = extractPrice(b.getElementsByTagName('td')[1].textContent);
+            return priceB - priceA;
+        }
+    });
+    
+    // Sıralanan verileri tabloya geri yaz
+    const table = document.getElementById('priceTable');
+    const tbody = table.getElementsByTagName('tbody')[0];
+    
+    // Tüm satırları kaldır
+    while (tbody.firstChild) {
+        tbody.removeChild(tbody.firstChild);
+    }
+    
+    // Sıralı satırları geri ekle
+    filteredRows.forEach(row => {
+        tbody.appendChild(row);
+    });
+    
+    currentPage = 1;
+    showPage(1);
+}
+
+// Fiyat aralığına göre filtrele
+function filterByPriceRange(minPrice, maxPrice) {
+    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.dropdown-btn').classList.add('active');
+    
+    filteredRows = allRows.filter(row => {
+        const priceCell = row.getElementsByTagName('td')[1];
+        if (priceCell) {
+            const price = extractPrice(priceCell.textContent);
+            return price >= minPrice && price < maxPrice;
+        }
+        return false;
+    });
+    
+    document.getElementById('totalProviders').textContent = filteredRows.length;
+    document.getElementById('noResults').style.display = filteredRows.length === 0 ? 'block' : 'none';
+    currentPage = 1;
+    showPage(1);
+}
+
+// Tabloyu sıfırla
+function resetTable() {
+    location.reload();
+}
+
+// Sayfayı göster - güncellendi
+function showPage(page) {
+    const startIndex = (page - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+    
+    // Önce tüm satırları gizle
+    allRows.forEach(row => {
+        row.style.display = 'none';
+    });
+    
+    // Filtrelenmiş satırlardan sadece ilgili sayfadakini göster
+    filteredRows.forEach((row, index) => {
+        if (index >= startIndex && index < endIndex) {
+            row.style.display = '';
+        }
+    });
+    
+    currentPage = page;
+    const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+    
+    document.getElementById('currentPage').textContent = page;
+    document.getElementById('totalPages').textContent = totalPages;
+    
+    document.getElementById('prevBtn').disabled = page === 1;
+    document.getElementById('nextBtn').disabled = page === totalPages;
+    
+    setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+}
+
+// Sayfa değiştir
+function changePage(direction) {
+    const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+    const newPage = currentPage + direction;
+    
+    if (newPage >= 1 && newPage <= totalPages) {
+        showPage(newPage);
+    }
+}
+</script>
+</body>
+</html>
