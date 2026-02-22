@@ -63,19 +63,20 @@ h1 {
     gap: 12px;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
 }
 
 .search-box {
-    flex: 1;
-    min-width: 250px;
+    flex: 0 0 auto;
+    width: 280px;
 }
 
 .search-box input {
     width: 100%;
-    padding: 10px 16px;
+    padding: 8px 12px;
     border: 1px solid #d1d5db;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .search-box input:focus {
@@ -360,9 +361,7 @@ tr:hover {
     </div>
     
     <div class="controls">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
-        </div>
+        <!-- Filtreler sola alındı -->
         <div class="sort-buttons">
             <button class="sort-btn" onclick="sortTable('price-asc')">💰 En Ucuz</button>
             <button class="sort-btn" onclick="sortTable('price-desc')">💰 En Pahalı</button>
@@ -376,6 +375,10 @@ tr:hover {
                 </div>
             </div>
             <button class="sort-btn" onclick="resetTable()">🔄 Sıfırla</button>
+        </div>
+        <!-- Arama kutusu sağa alındı ve küçültüldü -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
         </div>
     </div>
     
@@ -1758,7 +1761,6 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
 
 // Fiyat çıkarma fonksiyonu
 function extractPrice(text) {
-    // Eğer sadece "?" varsa veya fiyat yoksa, null döndür (filtrelemeden çıkar)
     if (text.trim() === '?' || text.trim() === '-') {
         return null;
     }
@@ -1766,50 +1768,42 @@ function extractPrice(text) {
     const matches = text.match(/(\d+),(\d+)/g);
     if (!matches || matches.length === 0) return null;
     
-    // Eğer "VDSL" veya "Fiber" ifadesi varsa, ilk fiyatı al (VDSL bazlı)
     if (text.includes('VDSL') || text.includes('FİBER')) {
         return parseFloat(matches[0].replace(',', '.'));
     }
     
-    // Aksi halde en düşük fiyatı al
     const prices = matches.map(price => parseFloat(price.replace(',', '.')));
     return Math.min(...prices);
 }
     
-// Sıralama fonksiyonu - düzeltildi
+// Sıralama fonksiyonu
 function sortTable(type) {
     document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
     
-    // Mevcut filtrelenmiş verileri sırala
     filteredRows.sort((a, b) => {
         if (type === 'price-asc') {
             const priceA = extractPrice(a.getElementsByTagName('td')[1].textContent);
             const priceB = extractPrice(b.getElementsByTagName('td')[1].textContent);
-            // null olanları (? veya fiyatsız) sona at
             if (priceA === null) return 1;
             if (priceB === null) return -1;
             return priceA - priceB;
         } else if (type === 'price-desc') {
             const priceA = extractPrice(a.getElementsByTagName('td')[1].textContent);
             const priceB = extractPrice(b.getElementsByTagName('td')[1].textContent);
-            // null olanları (? veya fiyatsız) sona at
             if (priceA === null) return 1;
             if (priceB === null) return -1;
             return priceB - priceA;
         }
     });
     
-    // Sıralanan verileri tabloya geri yaz
     const table = document.getElementById('priceTable');
     const tbody = table.getElementsByTagName('tbody')[0];
     
-    // Tüm satırları kaldır
     while (tbody.firstChild) {
         tbody.removeChild(tbody.firstChild);
     }
     
-    // Sıralı satırları geri ekle
     filteredRows.forEach(row => {
         tbody.appendChild(row);
     });
@@ -1827,7 +1821,6 @@ function filterByPriceRange(minPrice, maxPrice) {
         const priceCell = row.getElementsByTagName('td')[1];
         if (priceCell) {
             const price = extractPrice(priceCell.textContent);
-            // null olanları (? veya fiyatsız) filtreden çıkar
             if (price === null) return false;
             return price >= minPrice && price < maxPrice;
         }
@@ -1845,17 +1838,15 @@ function resetTable() {
     location.reload();
 }
 
-// Sayfayı göster - güncellendi
+// Sayfayı göster
 function showPage(page) {
     const startIndex = (page - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
     
-    // Önce tüm satırları gizle
     allRows.forEach(row => {
         row.style.display = 'none';
     });
     
-    // Filtrelenmiş satırlardan sadece ilgili sayfadakini göster
     filteredRows.forEach((row, index) => {
         if (index >= startIndex && index < endIndex) {
             row.style.display = '';
