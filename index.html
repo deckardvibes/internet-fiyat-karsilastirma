@@ -805,9 +805,363 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     margin-top: 14px;
 }
 .w-no-result { text-align: center; padding: 20px; color: var(--text-secondary); }
+
+
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(3px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+
+.modal-box {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 28px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    margin: 20px;
+    animation: slideUp 0.2s ease;
+}
+@keyframes slideUp {
+    from { transform: translateY(16px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+.modal-header h3 { font-size: 1.05em; font-weight: 700; color: var(--text); }
+.modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 1.1em;
+    padding: 2px 6px;
+}
+.modal-firma-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--controls-bg);
+    color: var(--text-secondary);
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+.form-group { margin-bottom: 13px; }
+.form-group label {
+    display: block;
+    font-size: 0.82em;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 5px;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    font-size: 0.9em;
+    color: var(--text);
+    background: var(--card-bg);
+    font-family: inherit;
+    transition: border-color 0.15s;
+}
+.form-group input:focus,
+.form-group textarea:focus { outline: none; border-color: #4a5568; }
+.form-group textarea { resize: vertical; min-height: 70px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.modal-buttons { display: flex; gap: 8px; margin-top: 20px; }
+.btn-gonder {
+    flex: 1;
+    padding: 10px;
+    background: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-gonder:hover { background: #2d3748; }
+.btn-gonder:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-iptal {
+    padding: 10px 16px;
+    background: var(--controls-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.success-msg { display: none; text-align: center; padding: 20px 0; }
+.success-msg .checkmark { font-size: 2.5em; margin-bottom: 10px; }
+.success-msg h4 { font-size: 1em; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.success-msg p { font-size: 0.85em; color: var(--text-secondary); }
+
+/* Hata Bildir Bar */
+.bildir-bar {
+    margin: 10px 30px 24px;
+    padding: 11px 16px;
+    background: var(--controls-bg);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.bildir-bar-text {
+    font-size: 0.83em;
+    color: var(--text-secondary);
+}
+.bildir-bar-btn {
+    padding: 7px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82em;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.15s;
+    flex-shrink: 0;
+}
+.bildir-bar-btn:hover {
+    background: #fff1f2;
+    border-color: #fca5a5;
+    color: #ef4444;
+}
+[data-theme="dark"] .bildir-bar-btn:hover {
+    background: #450a0a;
+    border-color: #ef4444;
+    color: #fca5a5;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    font-size: 0.9em;
+    color: var(--text);
+    background: var(--card-bg);
+    font-family: inherit;
+    transition: border-color 0.15s;
+    cursor: pointer;
+}
+.form-group select:focus { outline: none; border-color: #4a5568; }
 </style>
 </head>
 <body>
+
+<!-- Hata Bildir Modal -->
+<div class="modal-overlay" id="bildirModal">
+    <div class="modal-box">
+        <div id="bildirFormContent">
+            <div class="modal-header">
+                <h3>⚠️ Hata Bildir</h3>
+                <button class="modal-close" onclick="modalKapat()">✕</button>
+            </div>
+
+            <form id="bildirForm" onsubmit="formGonder(event)">
+                <div class="form-group">
+                    <label>Firma</label>
+                    <select name="firma" id="firmaGizli" required>
+                        <option value="">-- Firma seçin --</option>
+                        <option value="10LİNE">10LİNE</option>
+                        <option value="4GNET">4GNET</option>
+                        <option value="AKDENİZNET">AKDENİZNET</option>
+                        <option value="ALANYANET">ALANYANET</option>
+                        <option value="ATLANTİSNET">ATLANTİSNET</option>
+                        <option value="AY TELEKOM">AY TELEKOM</option>
+                        <option value="BCNNET">BCNNET</option>
+                        <option value="BELENATLANTİS">BELENATLANTİS</option>
+                        <option value="BEST TELEKOM">BEST TELEKOM</option>
+                        <option value="BURSA İNTERNET">BURSA İNTERNET</option>
+                        <option value="BİNBİRNET">BİNBİRNET</option>
+                        <option value="BİNET">BİNET</option>
+                        <option value="BİRNET">BİRNET</option>
+                        <option value="BİZİMİNTERNET">BİZİMİNTERNET</option>
+                        <option value="CANNET">CANNET</option>
+                        <option value="CERENNET">CERENNET</option>
+                        <option value="DAHAONLİNE">DAHAONLİNE</option>
+                        <option value="DİDİMNET">DİDİMNET</option>
+                        <option value="DİJİTAL NET">DİJİTAL NET</option>
+                        <option value="EFSANENET">EFSANENET</option>
+                        <option value="ELMA TELEKOM">ELMA TELEKOM</option>
+                        <option value="EPLANET">EPLANET</option>
+                        <option value="EURONET">EURONET</option>
+                        <option value="EXPRESNET">EXPRESNET</option>
+                        <option value="EXTRANET">EXTRANET</option>
+                        <option value="EYLÜLNET">EYLÜLNET</option>
+                        <option value="FACE TELEKOM">FACE TELEKOM</option>
+                        <option value="FARKNET">FARKNET</option>
+                        <option value="FIRATNET">FIRATNET</option>
+                        <option value="FLİXNET">FLİXNET</option>
+                        <option value="FREEFİBER">FREEFİBER</option>
+                        <option value="FULLNET">FULLNET</option>
+                        <option value="FİBA TELEKOM">FİBA TELEKOM</option>
+                        <option value="FİBERWİ">FİBERWİ</option>
+                        <option value="FİBİMNET">FİBİMNET</option>
+                        <option value="FİLİKANET">FİLİKANET</option>
+                        <option value="FİNET">FİNET</option>
+                        <option value="FİXNET">FİXNET</option>
+                        <option value="FİZYNET">FİZYNET</option>
+                        <option value="GAP TELEKOM">GAP TELEKOM</option>
+                        <option value="GENERALNET">GENERALNET</option>
+                        <option value="GESNET">GESNET</option>
+                        <option value="GLOBALNET">GLOBALNET</option>
+                        <option value="GÖLHİSARNET">GÖLHİSARNET</option>
+                        <option value="GÜLDÜRENNET">GÜLDÜRENNET</option>
+                        <option value="GİBİRNET">GİBİRNET</option>
+                        <option value="GİGASPEED">GİGASPEED</option>
+                        <option value="HATFİBER">HATFİBER</option>
+                        <option value="HAZARNET">HAZARNET</option>
+                        <option value="HİPERONLİNE">HİPERONLİNE</option>
+                        <option value="HİZONLİNE">HİZONLİNE</option>
+                        <option value="JETNET">JETNET</option>
+                        <option value="KABLOSUZONLİNE">KABLOSUZONLİNE</option>
+                        <option value="KAREL İLETİŞİM">KAREL İLETİŞİM</option>
+                        <option value="KARUNNET">KARUNNET</option>
+                        <option value="KAYINET">KAYINET</option>
+                        <option value="KIRNET BİLİŞİM">KIRNET BİLİŞİM</option>
+                        <option value="KOCAELİ İNTERNET">KOCAELİ İNTERNET</option>
+                        <option value="KÖYCEĞİZNET">KÖYCEĞİZNET</option>
+                        <option value="LİNYİTNET">LİNYİTNET</option>
+                        <option value="MAVİFİBER">MAVİFİBER</option>
+                        <option value="MAVİNET">MAVİNET</option>
+                        <option value="MERKÜRNET">MERKÜRNET</option>
+                        <option value="MERNET">MERNET</option>
+                        <option value="MERTSKY TELEKOM">MERTSKY TELEKOM</option>
+                        <option value="MOBİLFREE">MOBİLFREE</option>
+                        <option value="MOBİSMART">MOBİSMART</option>
+                        <option value="MODEXI">MODEXI</option>
+                        <option value="MİGROSNET">MİGROSNET</option>
+                        <option value="MİLLENİCOM">MİLLENİCOM</option>
+                        <option value="NAZNET">NAZNET</option>
+                        <option value="NEONET">NEONET</option>
+                        <option value="NETBONE">NETBONE</option>
+                        <option value="NETGSM">NETGSM</option>
+                        <option value="NETGİGABİT">NETGİGABİT</option>
+                        <option value="NETMAN">NETMAN</option>
+                        <option value="NETMAX">NETMAX</option>
+                        <option value="NETPLUS">NETPLUS</option>
+                        <option value="NETPRİME">NETPRİME</option>
+                        <option value="NETSPEED">NETSPEED</option>
+                        <option value="NETWİFİ">NETWİFİ</option>
+                        <option value="NETİNTERNET">NETİNTERNET</option>
+                        <option value="NOKTAONLİNE">NOKTAONLİNE</option>
+                        <option value="NOKTAWİFİ">NOKTAWİFİ</option>
+                        <option value="NİDA TELEKOM">NİDA TELEKOM</option>
+                        <option value="NİTROİNTERNET">NİTROİNTERNET</option>
+                        <option value="ORİS TELEKOM">ORİS TELEKOM</option>
+                        <option value="OSAWI TELEKOM">OSAWI TELEKOM</option>
+                        <option value="OSNET">OSNET</option>
+                        <option value="OTELEKOM">OTELEKOM</option>
+                        <option value="PANANET">PANANET</option>
+                        <option value="PASİFİK TELEKOM">PASİFİK TELEKOM</option>
+                        <option value="PLUSNET">PLUSNET</option>
+                        <option value="POWERNET">POWERNET</option>
+                        <option value="RAMTEK">RAMTEK</option>
+                        <option value="REKORNET">REKORNET</option>
+                        <option value="SADENET">SADENET</option>
+                        <option value="SAKNET">SAKNET</option>
+                        <option value="SARIKAYANET">SARIKAYANET</option>
+                        <option value="SARNET TELEKOM">SARNET TELEKOM</option>
+                        <option value="SONET">SONET</option>
+                        <option value="SPEEDNET">SPEEDNET</option>
+                        <option value="SUKNET">SUKNET</option>
+                        <option value="SURNET">SURNET</option>
+                        <option value="SİBANET">SİBANET</option>
+                        <option value="TBTNET">TBTNET</option>
+                        <option value="TEKNET">TEKNET</option>
+                        <option value="TEKNOBİL TELEKOM">TEKNOBİL TELEKOM</option>
+                        <option value="TEKNOSANET">TEKNOSANET</option>
+                        <option value="TELKOMNET">TELKOMNET</option>
+                        <option value="TELKOTURK">TELKOTURK</option>
+                        <option value="TEPENET">TEPENET</option>
+                        <option value="TRFASTNET">TRFASTNET</option>
+                        <option value="TRNET">TRNET</option>
+                        <option value="TURBONET">TURBONET</option>
+                        <option value="TURKCELL SUPERONLİNE">TURKCELL SUPERONLİNE</option>
+                        <option value="TURKHOST">TURKHOST</option>
+                        <option value="TURKNET">TURKNET</option>
+                        <option value="TURUNCUNET">TURUNCUNET</option>
+                        <option value="TÜRK TELEKOM">TÜRK TELEKOM</option>
+                        <option value="TÜRKİYEMNET">TÜRKİYEMNET</option>
+                        <option value="TİKLANET">TİKLANET</option>
+                        <option value="ULUHAN NET">ULUHAN NET</option>
+                        <option value="ULUNET">ULUNET</option>
+                        <option value="VATAN İNTERNET">VATAN İNTERNET</option>
+                        <option value="VEGANET">VEGANET</option>
+                        <option value="VIPNET TELEKOM">VIPNET TELEKOM</option>
+                        <option value="VİVANET">VİVANET</option>
+                        <option value="WAAYNET">WAAYNET</option>
+                        <option value="WENETWİFİ">WENETWİFİ</option>
+                        <option value="WORLDNET">WORLDNET</option>
+                        <option value="WİFİ TELEKOM">WİFİ TELEKOM</option>
+                        <option value="YENİNET">YENİNET</option>
+                        <option value="ÇABUKNET">ÇABUKNET</option>
+                        <option value="İCENET TELEKOM">İCENET TELEKOM</option>
+                        <option value="İNCİNET">İNCİNET</option>
+                        <option value="İNTERNET KUTUSU">İNTERNET KUTUSU</option>
+                        <option value="İREMNET">İREMNET</option>
+                        <option value="ŞOKNET">ŞOKNET</option>
+
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Hatalı Fiyat</label>
+                        <input type="text" name="hatali_fiyat" placeholder="Örn: 575,00₺" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Doğru Fiyat</label>
+                        <input type="text" name="dogru_fiyat" placeholder="Örn: 620,00₺" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Kaynak</label>
+                    <input type="url" name="kaynak" placeholder="https://firma.com/tarifeler" required>
+                </div>
+                <div class="form-group">
+                    <label>Ek Açıklama <span style="font-weight:400; color:#9ca3af;">(opsiyonel)</span></label>
+                    <textarea name="aciklama" placeholder="Modem kira bilgisi güncel değilse veya eksikse buraya yazabilirsiniz..."></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-iptal" onclick="modalKapat()">İptal</button>
+                    <button type="submit" class="btn-gonder" id="gonderBtn">📨 Gönder</button>
+                </div>
+            </form>
+        </div>
+        <div class="success-msg" id="bildirSuccess">
+            <div class="checkmark">✅</div>
+            <h4>Bildirim Gönderildi!</h4>
+            <p>Teşekkürler, en kısa sürede kontrol edeceğiz.</p>
+            <br>
+            <button class="btn-iptal" onclick="modalKapat()">Kapat</button>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <header>
         <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙 Koyu Mod</button>
@@ -896,6 +1250,10 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
         </div>
     </div>
 
+    <div class="bildir-bar">
+        <span class="bildir-bar-text">📋 Tabloda hatalı veya güncelliğini yitirmiş bir bilgi mi gördünüz?</span>
+        <button class="bildir-bar-btn" onclick="hataBildir('')">⚠️ Hata Bildir</button>
+    </div>
     <div class="controls">
         <!-- Filtreler sola alındı -->
         <div class="sort-buttons">
@@ -972,7 +1330,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         AKDENİZNET 
         <a href="https://www.akdeniznet.com.tr/akdeniznet-fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">800,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1013,7 +1371,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         BCNNET 
         <a href="https://www.bcnnet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 625,00₺ / FİBER 675,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1033,7 +1391,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         BEST TELEKOM 
         <a href="https://besttelekom.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">İlk 3 ay 499,00₺</span></td>
     <td><span class="price-increase">699,00₺</span></td>
     <td><span class="modem-paid">80,00₺</span></td>
@@ -1073,7 +1431,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         BİRNET 
         <a href="https://www.birnet.net.tr/fiber-vdsl-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">699,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1083,7 +1441,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         BURSA İNTERNET 
         <a href="https://www.bursafiberinternet.com/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">700,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1113,7 +1471,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         ÇABUKNET 
         <a href="https://www.cabuknet.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">790,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1133,7 +1491,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         DİJİTAL NET 
         <a href="https://dijitalnet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">649,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1143,7 +1501,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         DİDİMNET 
         <a href="https://www.didimnet.com.tr/kablolu-tarifeler.html" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">450,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
@@ -1174,7 +1532,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         ELMA TELEKOM 
         <a href="https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 400,00₺ / FİBER 450,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1184,7 +1542,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         EPLANET 
         <a href="https://www.eplanet.com.tr/kampanyalar.html" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">569,99₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">119,90₺</span></td>
@@ -1214,7 +1572,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         EXTRANET 
         <a href="https://www.extranet.com.tr/kampanya/yeni-musteri-kampanyalari" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">629,00₺</span></td>
     <td><span class="price-same">31.12.2026 tarihine kadar geçerli kampanya</span></td>
     <td><span class="modem-paid">100,00₺</span></td>
@@ -1224,7 +1582,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         EYLÜLNET 
         <a href="https://www.eylulnet.com.tr/tarifeler.html" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">620,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">70,00₺</span></td>
@@ -1264,7 +1622,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FİZYNET 
         <a href="https://www.fizynet.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">600,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1284,7 +1642,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FİBERWİ 
         <a href="https://fiberwi.com.tr/bireysel-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">750,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1294,7 +1652,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FİNET 
         <a href="https://www.finet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">630,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
@@ -1304,7 +1662,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FİBİMNET 
         <a href="https://www.fibim.com.tr/tarife-incele/2026-10020-on-odemeli-fiber-internet-kampanyasi-165" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">790,00₺</span></td>
     <td><span class="price-same">1 Haziran 2026'ya kadar sabit fiyat</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1314,7 +1672,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FİLİKANET 
         <a href="https://www.filika.net.tr/kablolu-internet" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">689,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
@@ -1324,7 +1682,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FIRATNET 
         <a href="https://firatnet.com/pricing/xdsl-fiber" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 580,00₺ / FİBER 660,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1344,7 +1702,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FREEFİBER 
         <a href="https://www.freefiber.com.tr/bireysel-tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">650,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1354,7 +1712,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         FULLNET 
         <a href="https://fullnet.com.tr/adsl-vdsl-internet-paketleri/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">795,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1364,7 +1722,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         GAP TELEKOM 
         <a href="https://www.cdntelekom.com/tarifeler/6" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">800,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1384,7 +1742,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         GENERALNET 
         <a href="https://general.net.tr/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">499,90₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
@@ -1414,7 +1772,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         GLOBALNET 
         <a href="https://www.globalnetinternet.com/fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">700,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1424,7 +1782,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         GÖLHİSARNET 
         <a href="https://golhisarnet.net.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">650,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1455,7 +1813,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         HAZARNET 
         <a href="https://www.hazarnet.com/#tarife" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">720,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1475,7 +1833,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         HİPERONLİNE 
         <a href="https://hiperonline.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 625,00₺ / FİBER 700,00₺</span></td>
     <td><span class="price-same">1 Temmuz 2026'ya kadar sabit fiyat</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
@@ -1485,7 +1843,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         İCENET TELEKOM 
         <a href="https://www.icenet.net.tr/tr" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">859,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">100,00₺</span></td>
@@ -1506,7 +1864,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
         İNCİNET 
         <a href="https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL" target="_blank" class="link-badge">VDSL</a>
         <a href="https://www.incinet.com.tr/tr/tarifelerimiz?tarife=FIBER" target="_blank" class="link-badge">Fiber</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 499,90₺ / FİBER 599,90₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1566,7 +1924,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         KAYINET 
         <a href="https://kayinet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">675,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">80,00₺</span></td>
@@ -1576,7 +1934,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         KIRNET BİLİŞİM 
         <a href="https://kirnetbilisim.com.tr/package-fiber/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">560,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1587,7 +1945,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
         KOCAELİ İNTERNET 
         <a href="https://kocaeliinternet.com.tr/tarife/vdsl" target="_blank" class="link-badge">VDSL</a>
         <a href="https://kocaeliinternet.com.tr/tarife/fiber" target="_blank" class="link-badge">Fiber</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 650,00₺ / FİBER 575,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">75,00₺</span></td>
@@ -1597,7 +1955,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         KÖYCEĞİZNET 
         <a href="https://koycegiznet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">700,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1647,7 +2005,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         MERTSKY TELEKOM 
         <a href="https://mertsky.com.tr/100-megabit/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">400,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1657,7 +2015,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         MERNET 
         <a href="https://mernet.com.tr/sayfa-tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">652,00₺</span></td>
     <td><span class="price-increase">Taahhütlü tarife</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1709,7 +2067,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
         MODEXI 
         <a href="https://modexi.com.tr/100-mbps-fiber-internet/" target="_blank" class="link-badge">Fiber</a>
         <a href="https://modexi.com.tr/100-mbps-vdsl-internet/" target="_blank" class="link-badge">VDSL</a>
-    </td>
+                    </td>
     <td><span class="price">579,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1801,7 +2159,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         NETPLUS 
         <a href="https://netplus.net.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">600,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Ücretsiz</span></td>
@@ -1821,7 +2179,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         NETWİFİ 
         <a href="https://netwifi.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">500,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1831,7 +2189,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
                     <td class="firma-name">
                         NETPRİME 
                         <a href="https://netprime.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
-                        <a href="https://netprime.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>                   
+                        <a href="https://netprime.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
                     </td>
                     <td><span class="price">VDSL 680,00₺ / FİBER 800,00₺</span></td>
                     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
@@ -1874,7 +2232,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         NOKTAONLİNE 
         <a href="https://noktaonline.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">390,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1895,7 +2253,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         OSAWI TELEKOM 
         <a href="https://osawi.com.tr/packages" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">675,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -1945,7 +2303,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         PLUSNET 
         <a href="https://plusnet.com.tr/tarife" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">550,00₺</span></td>
     <td><span class="price-same">6 ay sabit fiyat garantisi</span></td>
     <td><span class="modem-paid">70,00₺</span></td>
@@ -1995,7 +2353,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         SAKNET 
         <a href="https://www.saknet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 599,90₺ / FİBER 659,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2006,7 +2364,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
         SARNET TELEKOM 
         <a href="https://www.sarnettelekom.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
         <a href="https://www.sarnettelekom.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
-    </td>
+                    </td>
     <td><span class="price">700,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2016,7 +2374,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         SARIKAYANET 
         <a href="https://www.sarikayanet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 650,00₺ / FİBER 750,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2026,7 +2384,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         SİBANET 
         <a href="https://sibanet.com.tr/bireysel-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">1050,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2036,7 +2394,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         SONET 
         <a href="https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 609,90₺ / FİBER 619,90₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">69,90₺</span></td>
@@ -2057,7 +2415,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         SURNET 
         <a href="https://www.surnet.com.tr/tarifeler-c-14" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">750,00₺</span></td>
     <td><span class="price-increase">12 ay taahhütlü tarife</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2067,7 +2425,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         SUKNET 
         <a href="https://suknet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 660,00₺ / FİBER 680,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">60,00₺</span></td>
@@ -2098,7 +2456,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
         TEPENET 
         <a href="https://tepenet.com.tr/tr/paketler/roket-vdsl/" target="_blank" class="link-badge">VDSL</a>
         <a href="https://tepenet.com.tr/tr/paketler/roket-fiber/" target="_blank" class="link-badge">Fiber</a>
-    </td>
+                    </td>
     <td><span class="price">VDSL 635,00₺ / FİBER 690,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2128,7 +2486,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         TEKNOBİL TELEKOM 
         <a href="https://www.teknobiltelekom.com.tr/tarifeler.php" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">550,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2178,7 +2536,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         TRNET 
         <a href="https://tr-net.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">775,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2219,7 +2577,8 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
                     <td class="firma-name">
                         TURKCELL SUPERONLİNE 
                         <a href="https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar" target="_blank" class="link-badge">VDSL</a>
-                        <a href="https://www.superonline.net/ev-interneti/fiber-internet/taahhutsuz-fiberde-super-teklif/100-mbps-ye-kadar" target="_blank" class="link-badge">Fiber</a>                    </td>
+                        <a href="https://www.superonline.net/ev-interneti/fiber-internet/taahhutsuz-fiberde-super-teklif/100-mbps-ye-kadar" target="_blank" class="link-badge">Fiber</a>
+                    </td>
                     <td><span class="price">VDSL/FİBER 750,00₺</span></td>
                     <td><span class="price-same">1 Haziran 2026'ya kadar geçerli kampanya</span></td>
                     <td><span class="modem-paid">80,00₺</span></td>
@@ -2229,7 +2588,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         TURBONET
         <a href="https://turbo.net.tr/paket/bireysel.html" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">649,00₺</span></td>
                     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2271,7 +2630,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         ULUHAN NET 
         <a href="https://www.uluhan.net.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">700,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2291,7 +2650,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         VEGANET 
         <a href="https://www.veganet.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">750,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2301,7 +2660,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         VİVANET 
         <a href="https://vivanet.tr/100-mbps-vdsl-fiber/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">599,00₺</span></td>
     <td><span class="price-same">01.08.2026'ya kadar sabit fiyat</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
@@ -2311,7 +2670,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         VIPNET TELEKOM 
         <a href="https://vipnetbilisim.com.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">620,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
@@ -2361,7 +2720,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     <td class="firma-name">
         YENİNET 
         <a href="https://www.yeninet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
-    </td>
+                    </td>
     <td><span class="price">599,00₺</span></td>
     <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-paid">70,00₺</span></td>
@@ -5504,6 +5863,100 @@ function changePage(direction) {
         showPage(newPage);
     }
 }
+
+
+// Hata Bildir
+function hataBildir(firmaAdi) {
+
+    document.getElementById('firmaGizli').value = firmaAdi;
+    document.getElementById('bildirFormContent').style.display = 'block';
+    document.getElementById('bildirSuccess').style.display = 'none';
+    document.getElementById('bildirForm').reset();
+    document.getElementById('bildirModal').classList.add('active');
+}
+
+function modalKapat() {
+    document.getElementById('bildirModal').classList.remove('active');
+}
+
+async function formGonder(e) {
+    e.preventDefault();
+    
+    const firma = document.getElementById('firmaGizli').value;
+    if (!firma) {
+        document.getElementById('firmaGizli').style.borderColor = '#ef4444';
+        document.getElementById('firmaGizli').focus();
+        return;
+    }
+    document.getElementById('firmaGizli').style.borderColor = '';
+
+    // Diğer zorunlu alanları kontrol et
+    const required = ['hatali_fiyat', 'dogru_fiyat', 'kaynak'];
+    let valid = true;
+    required.forEach(name => {
+        const el = document.querySelector(`[name="${name}"]`);
+        if (!el.value.trim()) {
+            el.style.borderColor = '#ef4444';
+            if (valid) el.focus();
+            valid = false;
+        } else {
+            el.style.borderColor = '';
+        }
+    });
+    if (!valid) return;
+
+    const btn = document.getElementById('gonderBtn');
+    btn.disabled = true;
+    btn.textContent = 'Gönderiliyor...';
+
+    const form = document.getElementById('bildirForm');
+    const data = new FormData(form);
+
+    try {
+        const res = await fetch('https://formspree.io/f/xeelpkor', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+            document.getElementById('bildirFormContent').style.display = 'none';
+            document.getElementById('bildirSuccess').style.display = 'block';
+        } else {
+            alert('Gönderim başarısız, lütfen tekrar deneyin.');
+            btn.disabled = false;
+            btn.textContent = '📨 Gönder';
+        }
+    } catch(err) {
+        alert('Bağlantı hatası, lütfen tekrar deneyin.');
+        btn.disabled = false;
+        btn.textContent = '📨 Gönder';
+    }
+}
+
+document.getElementById('bildirModal').addEventListener('click', function(e) {
+    if (e.target === this) modalKapat();
+});
+
+// Tarih badge renklerini otomatik hesapla
+function updateDateBadges() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    document.querySelectorAll('.date-badge[data-updated]').forEach(el => {
+        const updated = new Date(el.getAttribute('data-updated'));
+        const diff = Math.floor((today - updated) / (1000 * 60 * 60 * 24));
+
+        el.classList.remove('date-green', 'date-yellow', 'date-red');
+        if (diff <= 30) {
+            el.classList.add('date-green');
+        } else if (diff <= 60) {
+            el.classList.add('date-yellow');
+        } else {
+            el.classList.add('date-red');
+        }
+    });
+}
+updateDateBadges();
 
 // Koyu mod
 function toggleTheme() {
