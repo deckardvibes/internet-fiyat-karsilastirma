@@ -635,6 +635,176 @@ tr:hover {
     }
 }
 
+
+/* Benim İçin Seç */
+.wizard-trigger {
+    margin: 0 30px 0;
+    padding: 14px;
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    width: calc(100% - 60px);
+    transition: opacity 0.2s;
+}
+.wizard-trigger:hover { opacity: 0.9; }
+
+.wizard-wrap {
+    display: none;
+    margin: 16px 30px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+.wizard-wrap.open { display: block; }
+
+.wizard-head {
+    background: #4a5568;
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wizard-head h3 { font-size: 1em; font-weight: 700; }
+.wizard-head p { font-size: 0.8em; opacity: 0.8; margin-top: 2px; }
+.wizard-close {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1em;
+    flex-shrink: 0;
+}
+
+.w-step-bar {
+    display: flex;
+    gap: 6px;
+    padding: 12px 24px;
+    background: var(--controls-bg);
+    border-bottom: 1px solid var(--border);
+}
+.w-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.3s;
+}
+.w-dot.active { background: #4a5568; }
+.w-dot.done { background: #22c55e; }
+
+.w-step { display: none; padding: 24px; }
+.w-step.active { display: block; }
+.w-step h4 { font-size: 0.92em; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+
+.w-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.w-option {
+    padding: 14px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    background: var(--card-bg);
+}
+.w-option:hover { border-color: #9ca3af; }
+.w-option.selected { border-color: #4a5568; }
+.w-option .wi { font-size: 1.4em; margin-bottom: 5px; }
+.w-option .wt { font-size: 0.85em; font-weight: 600; color: var(--text); }
+.w-option .wd { font-size: 0.73em; color: var(--text-secondary); margin-top: 2px; }
+
+.budget-display {
+    font-size: 2em;
+    font-weight: 700;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 12px;
+}
+input[type="range"] { width: 100%; accent-color: #4a5568; }
+.budget-labels { display: flex; justify-content: space-between; font-size: 0.75em; color: var(--text-secondary); margin-top: 6px; }
+
+.w-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--controls-bg);
+}
+.w-btn-prev {
+    padding: 9px 18px;
+    background: var(--btn-bg);
+    border: 1px solid var(--input-border);
+    color: var(--btn-text);
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+.w-btn-next {
+    padding: 9px 22px;
+    background: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+.w-step-label { font-size: 0.78em; color: var(--text-secondary); }
+
+/* Sonuçlar */
+.w-result-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: var(--card-bg);
+}
+.w-result-card:first-child { border-color: #22c55e; background: #f0fdf4; }
+[data-theme="dark"] .w-result-card:first-child { background: #052e16; }
+.w-rank { font-size: 0.72em; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+.w-result-card:first-child .w-rank { color: #166534; }
+.w-firma { font-size: 1em; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.w-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.w-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 14px;
+    background: #4a5568;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.78em;
+    font-weight: 600;
+}
+.w-restart {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: var(--btn-bg);
+    border: 1px solid var(--input-border);
+    color: var(--btn-text);
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-top: 14px;
+}
+.w-no-result { text-align: center; padding: 20px; color: var(--text-secondary); }
 </style>
 </head>
 <body>
@@ -651,6 +821,81 @@ tr:hover {
         • Modem kira ücretleri Fiber internet içindir.
     </div>
     
+
+    <button class="wizard-trigger" onclick="toggleWizard()">🎯 Benim İçin En İyi Paketi Seç</button>
+
+    <div class="wizard-wrap" id="wizardWrap">
+        <div class="wizard-head">
+            <div>
+                <h3>🎯 Benim İçin Seç</h3>
+                <p>3 adımda sana en uygun paketi buluyoruz.</p>
+            </div>
+            <button class="wizard-close" onclick="toggleWizard()">✕</button>
+        </div>
+
+        <div class="w-step-bar">
+            <div class="w-dot active" id="wd1"></div>
+            <div class="w-dot" id="wd2"></div>
+            <div class="w-dot" id="wd3"></div>
+        </div>
+
+        <!-- Adım 1: Bütçe -->
+        <div class="w-step active" id="ws1">
+            <h4>💰 Aylık bütçeniz ne kadar?</h4>
+            <div class="budget-display" id="budgetDisplay">600₺</div>
+            <input type="range" id="budgetRange" min="300" max="1000" step="50" value="600"
+                oninput="document.getElementById('budgetDisplay').textContent = this.value + '₺'">
+            <div class="budget-labels"><span>300₺</span><span>1000₺</span></div>
+        </div>
+
+        <!-- Adım 2: Modem -->
+        <div class="w-step" id="ws2">
+            <h4>📡 Modem tercihiniz?</h4>
+            <div class="w-options">
+                <div class="w-option selected" onclick="wSelect(this, 'modem')" data-val="free">
+                    <div class="wi">🆓</div>
+                    <div class="wt">Ücretsiz olsun</div>
+                    <div class="wd">Tarifeye dahil veya ücretsiz</div>
+                </div>
+                <div class="w-option" onclick="wSelect(this, 'modem')" data-val="any">
+                    <div class="wi">💳</div>
+                    <div class="wt">Fark etmez</div>
+                    <div class="wd">Ücretli de olabilir</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adım 3: Öncelik -->
+        <div class="w-step" id="ws3">
+            <h4>🎯 Önceliğiniz ne?</h4>
+            <div class="w-options">
+                <div class="w-option selected" onclick="wSelect(this, 'oncelik')" data-val="fiyat">
+                    <div class="wi">💰</div>
+                    <div class="wt">En ucuz fiyat</div>
+                    <div class="wd">İlk dönem fiyatı düşük olsun</div>
+                </div>
+                <div class="w-option" onclick="wSelect(this, 'oncelik')" data-val="sabit">
+                    <div class="wi">📌</div>
+                    <div class="wt">Sabit fiyat</div>
+                    <div class="wd">Fiyat artmasın</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sonuçlar -->
+        <div class="w-step" id="ws-result">
+            <h4>✅ Sana en uygun paketler:</h4>
+            <div id="wResults"></div>
+            <button class="w-restart" onclick="wRestart()">🔄 Tekrar Dene</button>
+        </div>
+
+        <div class="w-footer" id="wFooter">
+            <button class="w-btn-prev" id="wPrev" onclick="wPrev()" style="visibility:hidden">◀ Geri</button>
+            <span class="w-step-label" id="wLabel">Adım 1 / 3</span>
+            <button class="w-btn-next" id="wNext" onclick="wNext()">Devam →</button>
+        </div>
+    </div>
+
     <div class="controls">
         <!-- Filtreler sola alındı -->
         <div class="sort-buttons">
@@ -5267,6 +5512,119 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', newTheme);
     document.getElementById('themeBtn').textContent = isDark ? '🌙 Koyu Mod' : '☀️ Açık Mod';
     localStorage.setItem('theme', newTheme);
+}
+
+
+// Firma verisi
+const wFirmas = [{"name": "10LİNE", "link": "https://10line.com.tr/tarifeler/", "price": 575.0, "priceText": "575,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "4GNET", "link": "https://4gnet.com.tr/bireysel_tarifeler", "price": 649.99, "priceText": "649,99₺", "modemFree": false, "modemCost": 0}, {"name": "ALANYANET", "link": "https://www.alanyanet.com.tr/VdslTarifeler.html", "price": 620.0, "priceText": "VDSL 570,00₺ / FİBER 620,00₺", "modemFree": false, "modemCost": 0}, {"name": "AKDENİZNET", "link": "https://www.akdeniznet.com.tr/akdeniznet-fiber-tarifeler/", "price": 800.0, "priceText": "800,00₺", "modemFree": false, "modemCost": 0}, {"name": "ATLANTİSNET", "link": "https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/", "price": 600.0, "priceText": "600,00₺", "modemFree": false, "modemCost": 0}, {"name": "AY TELEKOM", "link": "https://aytelekom.com.tr/tarife/vdsl", "price": 599.0, "priceText": "VDSL 589,00₺ / FİBER 599,00₺", "modemFree": false, "modemCost": 60.0}, {"name": "BCNNET", "link": "https://www.bcnnet.com.tr/tarifeler", "price": 675.0, "priceText": "VDSL 625,00₺ / FİBER 675,00₺", "modemFree": false, "modemCost": 0}, {"name": "BELENATLANTİS", "link": "https://belenatlantis.com.tr/kampanyalar.php", "price": 600.0, "priceText": "600,00₺", "modemFree": false, "modemCost": 0}, {"name": "BEST TELEKOM", "link": "https://besttelekom.com.tr/", "price": 499.0, "priceText": "İlk 3 ay 499,00₺", "modemFree": false, "modemCost": 80.0}, {"name": "BİZİMİNTERNET", "link": "https://merkez.biziminternet.com.tr/tarifelerimiz", "price": 600.0, "priceText": "600,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "BİNBİRNET", "link": "https://binbirnet.com.tr/", "price": 740.0, "priceText": "740,00₺", "modemFree": false, "modemCost": 0}, {"name": "BİNET", "link": "https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim", "price": 390.0, "priceText": "390,00₺", "modemFree": false, "modemCost": 0}, {"name": "BİRNET", "link": "https://www.birnet.net.tr/fiber-vdsl-tarifeler/", "price": 699.0, "priceText": "699,00₺", "modemFree": false, "modemCost": 0}, {"name": "BURSA İNTERNET", "link": "https://www.bursafiberinternet.com/", "price": 700.0, "priceText": "700,00₺", "modemFree": false, "modemCost": 0}, {"name": "CANNET", "link": "https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim", "price": 499.0, "priceText": "4 ay sabit 499,00₺", "modemFree": false, "modemCost": 100.0}, {"name": "CERENNET", "link": "https://www.cerennet.com.tr/", "price": 700.0, "priceText": "VDSL 650,00₺ / FİBER 700,00₺", "modemFree": false, "modemCost": 0}, {"name": "ÇABUKNET", "link": "https://www.cabuknet.com.tr/tarifeler/", "price": 790.0, "priceText": "790,00₺", "modemFree": false, "modemCost": 0}, {"name": "DAHAONLİNE", "link": "https://www.dahaonline.com.tr/paketlerimiz/", "price": 575.0, "priceText": "575,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "DİJİTAL NET", "link": "https://dijitalnet.com.tr/#tarifeler", "price": 649.0, "priceText": "649,00₺", "modemFree": false, "modemCost": 0}, {"name": "DİDİMNET", "link": "https://www.didimnet.com.tr/kablolu-tarifeler.html", "price": 450.0, "priceText": "450,00₺", "modemFree": true, "modemCost": 0}, {"name": "EFSANENET", "link": "https://www.efsanenet.com.tr/vdsl-internet/", "price": 530.0, "priceText": "VDSL 480,00₺ / FİBER 530,00₺", "modemFree": true, "modemCost": 0}, {"name": "ELMA TELEKOM", "link": "https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/", "price": 450.0, "priceText": "VDSL 400,00₺ / FİBER 450,00₺", "modemFree": false, "modemCost": 0}, {"name": "EPLANET", "link": "https://www.eplanet.com.tr/kampanyalar.html", "price": 569.99, "priceText": "569,99₺", "modemFree": false, "modemCost": 119.9}, {"name": "EURONET", "link": "https://www.euronet.com.tr/internet-paketleri/vdsl", "price": 629.0, "priceText": "629,00₺", "modemFree": true, "modemCost": 0}, {"name": "EXPRESNET", "link": "https://expresnet.com.tr/fiber-internet", "price": 650.0, "priceText": "650,00₺", "modemFree": false, "modemCost": 0}, {"name": "EXTRANET", "link": "https://www.extranet.com.tr/kampanya/yeni-musteri-kampanyalari", "price": 629.0, "priceText": "629,00₺", "modemFree": false, "modemCost": 100.0}, {"name": "EYLÜLNET", "link": "https://www.eylulnet.com.tr/tarifeler.html", "price": 620.0, "priceText": "620,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "FARKNET", "link": "https://farknet.com.tr/internetpaketleri/", "price": 599.0, "priceText": "VDSL 579,00₺ / FİBER 599,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "FACE TELEKOM", "link": "https://facetelekom.com.tr/tarifeler/", "price": 569.0, "priceText": "569,00₺", "modemFree": true, "modemCost": 0}, {"name": "FİBA TELEKOM", "link": "https://fibatelekom.com.tr/tr/packages", "price": 750.0, "priceText": "750,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "FİZYNET", "link": "https://www.fizynet.com.tr/fiber-tarifeler", "price": 600.0, "priceText": "600,00₺", "modemFree": false, "modemCost": 0}, {"name": "FİXNET", "link": "https://www.fixnet.com.tr/eviniz#paketler", "price": 500.0, "priceText": "VDSL 450,00₺ / FİBER 500,00₺", "modemFree": false, "modemCost": 0}, {"name": "FİBERWİ", "link": "https://fiberwi.com.tr/bireysel-tarifeler/", "price": 750.0, "priceText": "750,00₺", "modemFree": false, "modemCost": 0}, {"name": "FİNET", "link": "https://www.finet.com.tr/tarifeler", "price": 630.0, "priceText": "630,00₺", "modemFree": true, "modemCost": 0}, {"name": "FİBİMNET", "link": "https://www.fibim.com.tr/tarife-incele/2026-10020-on-odemeli-fiber-internet-kampanyasi-165", "price": 790.0, "priceText": "790,00₺", "modemFree": false, "modemCost": 0}, {"name": "FİLİKANET", "link": "https://www.filika.net.tr/kablolu-internet", "price": 689.0, "priceText": "689,00₺", "modemFree": true, "modemCost": 0}, {"name": "FIRATNET", "link": "https://firatnet.com/pricing/xdsl-fiber", "price": 660.0, "priceText": "VDSL 580,00₺ / FİBER 660,00₺", "modemFree": false, "modemCost": 0}, {"name": "FLİXNET", "link": "https://flix.net.tr/tarifeler", "price": 520.0, "priceText": "520,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "FREEFİBER", "link": "https://www.freefiber.com.tr/bireysel-tarifelerimiz", "price": 650.0, "priceText": "650,00₺", "modemFree": false, "modemCost": 0}, {"name": "FULLNET", "link": "https://fullnet.com.tr/adsl-vdsl-internet-paketleri/", "price": 795.0, "priceText": "795,00₺", "modemFree": false, "modemCost": 0}, {"name": "GAP TELEKOM", "link": "https://www.cdntelekom.com/tarifeler/6", "price": 800.0, "priceText": "800,00₺", "modemFree": false, "modemCost": 0}, {"name": "GESNET", "link": "https://gesnet.com.tr/tarife-detay?id=13", "price": 500.0, "priceText": "500,00₺", "modemFree": true, "modemCost": 0}, {"name": "GENERALNET", "link": "https://general.net.tr/", "price": 499.9, "priceText": "499,90₺", "modemFree": true, "modemCost": 0}, {"name": "GİGASPEED", "link": "https://gigaspeed.com.tr/paketler", "price": 449.9, "priceText": "İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺", "modemFree": false, "modemCost": 65.0}, {"name": "GİBİRNET", "link": "https://gibir.net.tr/", "price": 480.0, "priceText": "İlk 3 Ay: 480,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "GLOBALNET", "link": "https://www.globalnetinternet.com/fiber-tarifeler/", "price": 700.0, "priceText": "700,00₺", "modemFree": false, "modemCost": 0}, {"name": "GÖLHİSARNET", "link": "https://golhisarnet.net.tr/tarifeler", "price": 650.0, "priceText": "650,00₺", "modemFree": false, "modemCost": 0}, {"name": "GÜLDÜRENNET", "link": "https://guldurennet.com.tr/tarifeler.php", "price": 550.0, "priceText": "550,00₺", "modemFree": false, "modemCost": 100.0}, {"name": "HATFİBER", "link": "https://hatfiber.com.tr/vdsl-tarifeler/", "price": 599.0, "priceText": "599,00₺", "modemFree": false, "modemCost": 0}, {"name": "HAZARNET", "link": "https://www.hazarnet.com/#tarife", "price": 720.0, "priceText": "720,00₺", "modemFree": false, "modemCost": 0}, {"name": "HİZONLİNE", "link": "https://www.hizonline.com/kampanyalar.php", "price": 749.0, "priceText": "749,00₺", "modemFree": false, "modemCost": 0}, {"name": "HİPERONLİNE", "link": "https://hiperonline.com.tr/", "price": 700.0, "priceText": "VDSL 625,00₺ / FİBER 700,00₺", "modemFree": true, "modemCost": 0}, {"name": "İCENET TELEKOM", "link": "https://www.icenet.net.tr/tr", "price": 859.0, "priceText": "859,00₺", "modemFree": false, "modemCost": 100.0}, {"name": "İNTERNET KUTUSU", "link": "https://internetkutusu.com.tr/tarifeler", "price": 549.9, "priceText": "549,90₺", "modemFree": false, "modemCost": 0}, {"name": "İNCİNET", "link": "https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL", "price": 599.9, "priceText": "VDSL 499,90₺ / FİBER 599,90₺", "modemFree": false, "modemCost": 0}, {"name": "İREMNET", "link": "https://iremnet.com.tr/index.php/fiber-internet/", "price": 700.0, "priceText": "700,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "JETNET", "link": "https://www.jetnettelekom.com.tr/tarife/vdsl", "price": 580.0, "priceText": "580,00₺", "modemFree": false, "modemCost": 0}, {"name": "KAREL İLETİŞİM", "link": "https://kareliletisim.com.tr/kampanyalar/", "price": 569.0, "priceText": "VDSL 569,00₺ / FİBER 569,00₺", "modemFree": false, "modemCost": 0}, {"name": "KABLOSUZONLİNE", "link": "https://www.kablosuzonline.com.tr/wisp/bireysel-tarife.php#fiber-internet", "price": 429.0, "priceText": "429,00₺", "modemFree": false, "modemCost": 0}, {"name": "KARUNNET", "link": "https://karunnet.com.tr/", "price": 610.0, "priceText": "VDSL 580,00₺ / FİBER 610,00₺", "modemFree": false, "modemCost": 0}, {"name": "KAYINET", "link": "https://kayinet.com.tr/", "price": 675.0, "priceText": "675,00₺", "modemFree": false, "modemCost": 80.0}, {"name": "KIRNET BİLİŞİM", "link": "https://kirnetbilisim.com.tr/package-fiber/", "price": 560.0, "priceText": "560,00₺", "modemFree": false, "modemCost": 0}, {"name": "KOCAELİ İNTERNET", "link": "https://kocaeliinternet.com.tr/tarife/vdsl", "price": 575.0, "priceText": "VDSL 650,00₺ / FİBER 575,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "KÖYCEĞİZNET", "link": "https://koycegiznet.com.tr/tarifelerimiz/", "price": 700.0, "priceText": "700,00₺", "modemFree": false, "modemCost": 0}, {"name": "LİNYİTNET", "link": "https://www.linyitnet.com.tr/vdsl-ve-fiber-tarifeler/", "price": 399.0, "priceText": "İlk 3 ay 399,00₺", "modemFree": false, "modemCost": 0}, {"name": "MAVİNET", "link": "https://mavinetbilisim.com.tr/tarifelerimiz/", "price": 630.0, "priceText": "VDSL 570,00₺ / FİBER 630,00₺", "modemFree": true, "modemCost": 0}, {"name": "MAVİFİBER", "link": "https://mavifiber.com.tr", "price": 450.0, "priceText": "450,00₺", "modemFree": false, "modemCost": 0}, {"name": "MERKÜRNET", "link": "https://www.merkurnet.com.tr/merkure-ilk-adim/", "price": 649.9, "priceText": "VDSL 569,90₺ / FİBER 649,90₺", "modemFree": false, "modemCost": 75.0}, {"name": "MERTSKY TELEKOM", "link": "https://mertsky.com.tr/100-megabit/", "price": 400.0, "priceText": "400,00₺", "modemFree": false, "modemCost": 0}, {"name": "MERNET", "link": "https://mernet.com.tr/sayfa-tarifelerimiz", "price": 652.0, "priceText": "652,00₺", "modemFree": false, "modemCost": 0}, {"name": "MİGROSNET", "link": "https://www.migrosnet.com.tr/", "price": 419.0, "priceText": "İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺", "modemFree": true, "modemCost": 0}, {"name": "MİLLENİCOM", "link": "https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet", "price": 399.9, "priceText": "İlk 4 Ay: 399,90₺", "modemFree": false, "modemCost": 70.0}, {"name": "MOBİLFREE", "link": "https://mobilfree.com.tr/tarifeler?commitment=taahhutsuz", "price": 599.0, "priceText": "599,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "MOBİSMART", "link": "https://neonet.net.tr/vdsl-tarifeler/", "price": 800.0, "priceText": "VDSL 680,00₺ /FİBER 800,00₺", "modemFree": false, "modemCost": 0}, {"name": "MODEXI", "link": "https://modexi.com.tr/100-mbps-fiber-internet/", "price": 579.0, "priceText": "579,00₺", "modemFree": false, "modemCost": 0}, {"name": "NAZNET", "link": "https://www.naznet.com.tr/web/tarifeler/", "price": 720.0, "priceText": "720,00₺", "modemFree": false, "modemCost": 100.0}, {"name": "NEONET", "link": "https://neonet.net.tr/vdsl-tarifeler/", "price": 675.0, "priceText": "VDSL 599,00₺ / FİBER 675,00₺", "modemFree": false, "modemCost": 0}, {"name": "NETBONE", "link": "https://www.netbone.com.tr/", "price": 579.9, "priceText": "579,90₺", "modemFree": false, "modemCost": 70.0}, {"name": "NETGİGABİT", "link": "https://www.netgigabit.com.tr/vdsltarifeler.html", "price": 650.0, "priceText": "650,00₺", "modemFree": false, "modemCost": 0}, {"name": "NETGSM", "link": "https://www.netgsm.com.tr/internet/", "price": 575.0, "priceText": "575,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "NETİNTERNET", "link": "https://www.netinternet.tr/fiber-internet", "price": 649.0, "priceText": "649,00₺", "modemFree": false, "modemCost": 79.0}, {"name": "NETMAN", "link": "https://www.netman.com.tr/", "price": 599.0, "priceText": "599,00₺", "modemFree": false, "modemCost": 0}, {"name": "NETMAX", "link": "https://netmax.com.tr/tarifeler/fiber", "price": 580.0, "priceText": "580,00₺", "modemFree": false, "modemCost": 100.0}, {"name": "NETPLUS", "link": "https://netplus.net.tr/tarifeler/", "price": 600.0, "priceText": "600,00₺", "modemFree": true, "modemCost": 0}, {"name": "NETSPEED", "link": "https://www.netspeed.com.tr/kampanyalar", "price": 399.9, "priceText": "İlk 4 Ay: 399,90₺", "modemFree": true, "modemCost": 0}, {"name": "NETWİFİ", "link": "https://netwifi.com.tr/fiber-tarifeler", "price": 500.0, "priceText": "500,00₺", "modemFree": false, "modemCost": 0}, {"name": "NETPRİME", "link": "https://netprime.com.tr/vdsl-tarifeler/", "price": 800.0, "priceText": "VDSL 680,00₺ / FİBER 800,00₺", "modemFree": false, "modemCost": 0}, {"name": "NİDA TELEKOM", "link": "https://www.nidatelekom.com.tr/xdsl_internet_paketleri", "price": 629.0, "priceText": "VDSL 599,00₺ / FİBER 629,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "NİTROİNTERNET", "link": "https://nitrointernet.com.tr/", "price": 650.0, "priceText": "650,00₺", "modemFree": false, "modemCost": 0}, {"name": "NOKTAWİFİ", "link": "https://noktawifi.com.tr/vdsl-tarifeler/", "price": 725.0, "priceText": "VDSL 700,00₺ / FİBER 725,00₺", "modemFree": true, "modemCost": 0}, {"name": "NOKTAONLİNE", "link": "https://noktaonline.com.tr/kampanyalar", "price": 390.0, "priceText": "390,00₺", "modemFree": false, "modemCost": 0}, {"name": "OSNET", "link": "https://www.osnet.com.tr/vdsl-tarifeler/", "price": 650.0, "priceText": "VDSL 750,00₺ / FİBER 650,00₺", "modemFree": false, "modemCost": 0}, {"name": "OSAWI TELEKOM", "link": "https://osawi.com.tr/packages", "price": 675.0, "priceText": "675,00₺", "modemFree": false, "modemCost": 0}, {"name": "OTELEKOM", "link": "https://www.otelekom.com.tr/kampanyalar/", "price": 675.0, "priceText": "VDSL 600,00₺ / FİBER 675,00₺", "modemFree": false, "modemCost": 0}, {"name": "ORİS TELEKOM", "link": "https://www.oristelekom.com/kampanya-paketler/oris-faturali-taahhutsuz-on-odemeli-ev-interneti", "price": 299.9, "priceText": "İlk 3 ay 299,90₺", "modemFree": false, "modemCost": 50.0}, {"name": "PANANET", "link": "https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html", "price": 575.0, "priceText": "575,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "PASİFİK TELEKOM", "link": "https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/", "price": 480.0, "priceText": "İlk 3 Ay: 480,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "PLUSNET", "link": "https://plusnet.com.tr/tarife", "price": 550.0, "priceText": "550,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "POWERNET", "link": "https://powernet.com.tr/paketler/fiber-internet-tarifeleri", "price": 600.0, "priceText": "600,00₺", "modemFree": false, "modemCost": 50.0}, {"name": "RAMTEK", "link": "https://www.ramtek.net.tr/ramtek-vae-hizmeti", "price": 599.0, "priceText": "599,00₺", "modemFree": false, "modemCost": 0}, {"name": "REKORNET", "link": "https://rekornet.com.tr/", "price": 570.0, "priceText": "570,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "SADENET", "link": "https://sadenet.com.tr/Kampanyalar/yok-artik-fiber-kampanyasi-100mbps-taahhutsuz", "price": 319.0, "priceText": "İlk 4 Ay: 319,00₺", "modemFree": false, "modemCost": 150.0}, {"name": "SAKNET", "link": "https://www.saknet.com.tr/#tarifeler", "price": 659.0, "priceText": "VDSL 599,90₺ / FİBER 659,00₺", "modemFree": false, "modemCost": 0}, {"name": "SARNET TELEKOM", "link": "https://www.sarnettelekom.com.tr/vdsl-tarifeler/", "price": 700.0, "priceText": "700,00₺", "modemFree": false, "modemCost": 0}, {"name": "SARIKAYANET", "link": "https://www.sarikayanet.com.tr/tarifeler", "price": 750.0, "priceText": "VDSL 650,00₺ / FİBER 750,00₺", "modemFree": false, "modemCost": 0}, {"name": "SİBANET", "link": "https://sibanet.com.tr/bireysel-tarifeler/", "price": 1050.0, "priceText": "1050,00₺", "modemFree": false, "modemCost": 0}, {"name": "SONET", "link": "https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html", "price": 619.9, "priceText": "VDSL 609,90₺ / FİBER 619,90₺", "modemFree": false, "modemCost": 69.9}, {"name": "SPEEDNET", "link": "https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler", "price": 800.0, "priceText": "VDSL 900,00₺ / FİBER 800,00₺", "modemFree": false, "modemCost": 0}, {"name": "SURNET", "link": "https://www.surnet.com.tr/tarifeler-c-14", "price": 750.0, "priceText": "750,00₺", "modemFree": false, "modemCost": 0}, {"name": "SUKNET", "link": "https://suknet.com.tr/", "price": 680.0, "priceText": "VDSL 660,00₺ / FİBER 680,00₺", "modemFree": false, "modemCost": 60.0}, {"name": "ŞOKNET", "link": "https://www.soknetinternet.com.tr/kampanyalar", "price": 449.0, "priceText": "İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺", "modemFree": true, "modemCost": 0}, {"name": "TBTNET", "link": "https://tbtnet.net/bireysel-internet", "price": 639.0, "priceText": "639,00₺", "modemFree": false, "modemCost": 65.0}, {"name": "TEPENET", "link": "https://tepenet.com.tr/tr/paketler/roket-vdsl/", "price": 690.0, "priceText": "VDSL 635,00₺ / FİBER 690,00₺", "modemFree": false, "modemCost": 0}, {"name": "TEKNET", "link": "https://tek.net.tr/paketler", "price": 569.0, "priceText": "569,00₺", "modemFree": false, "modemCost": 0}, {"name": "TEKNOSANET", "link": "https://www.teknosanet.com/", "price": 449.0, "priceText": "İlk 3 Ay: 449,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "TEKNOBİL TELEKOM", "link": "https://www.teknobiltelekom.com.tr/tarifeler.php", "price": 550.0, "priceText": "550,00₺", "modemFree": false, "modemCost": 0}, {"name": "TELKOMNET", "link": "https://www.telkomnet.com.tr/tarifeler", "price": 620.0, "priceText": "VDSL 580,00₺ / FİBER 620,00₺", "modemFree": true, "modemCost": 0}, {"name": "TELKOTURK", "link": "https://www.telkoturk.net/efsane-fiberly-100", "price": 345.0, "priceText": "İlk 3 ay 345,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "TİKLANET", "link": "https://tiklanet.com.tr/tarifeler/", "price": 560.0, "priceText": "VDSL 520,00₺ / FİBER 560,00₺", "modemFree": false, "modemCost": 0}, {"name": "TRFASTNET", "link": "https://trfastnet.com.tr/internet-tarifeleri-uygun-fiyatli-ve-hizli-paketler-tr-fastnet__trashed/meganet-100-mbps-paket/", "price": 600.0, "priceText": "600,00₺", "modemFree": false, "modemCost": 0}, {"name": "TRNET", "link": "https://tr-net.com.tr/tarifeler/", "price": 775.0, "priceText": "775,00₺", "modemFree": false, "modemCost": 0}, {"name": "TURKHOST", "link": "https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri", "price": 550.0, "priceText": "İlk Ay: VDSL 359,00₺ / Fiber 550,00₺", "modemFree": false, "modemCost": 65.0}, {"name": "TURKNET", "link": "https://www.turk.net/", "price": 699.9, "priceText": "699,90₺", "modemFree": true, "modemCost": 0}, {"name": "TURUNCUNET", "link": "https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet", "price": 589.9, "priceText": "VDSL 549,90₺ / FİBER 589,90₺", "modemFree": false, "modemCost": 60.0}, {"name": "TURKCELL SUPERONLİNE", "link": "https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar", "price": 750.0, "priceText": "VDSL/FİBER 750,00₺", "modemFree": false, "modemCost": 80.0}, {"name": "TURBONET", "link": "https://turbo.net.tr/paket/bireysel.html", "price": 649.0, "priceText": "649,00₺", "modemFree": false, "modemCost": 0}, {"name": "TÜRKİYEMNET", "link": "https://www.turkiyemnet.com.tr/#tarifeler", "price": 639.0, "priceText": "VDSL 589,00₺ / FİBER 639,00₺", "modemFree": false, "modemCost": 0}, {"name": "TÜRK TELEKOM", "link": "https://bireysel.turktelekom.com.tr/evde-internet/yeni-musteri-kampanyalari/tum-yeni-musteri-kampanyalari?taahhut=12&hiz=100&siralama=fiyatArtan", "price": 9999, "priceText": "", "modemFree": false, "modemCost": 75.0}, {"name": "ULUNET", "link": "https://www.ulu.net.tr/paketler/VDSL", "price": 570.0, "priceText": "570,00₺", "modemFree": false, "modemCost": 70.0}, {"name": "ULUHAN NET", "link": "https://www.uluhan.net.tr/fiber-tarifeler", "price": 700.0, "priceText": "700,00₺", "modemFree": false, "modemCost": 0}, {"name": "VATAN İNTERNET", "link": "https://www.vataninternet.com.tr/kablolu-paketler/", "price": 700.0, "priceText": "700,00₺", "modemFree": true, "modemCost": 0}, {"name": "VEGANET", "link": "https://www.veganet.com.tr/fiber-tarifeler", "price": 750.0, "priceText": "750,00₺", "modemFree": false, "modemCost": 0}, {"name": "VİVANET", "link": "https://vivanet.tr/100-mbps-vdsl-fiber/", "price": 599.0, "priceText": "599,00₺", "modemFree": true, "modemCost": 0}, {"name": "VIPNET TELEKOM", "link": "https://vipnetbilisim.com.tr/fiber-internet", "price": 620.0, "priceText": "620,00₺", "modemFree": false, "modemCost": 0}, {"name": "WAAYNET", "link": "https://waaynet.com.tr/tarifelerimiz.php", "price": 599.0, "priceText": "599,00₺", "modemFree": false, "modemCost": 75.0}, {"name": "WENETWİFİ", "link": "http://www.wenetwifi.com/tr/PaketAyrinti/hiperfiber-internet-7", "price": 799.99, "priceText": "799,99₺", "modemFree": false, "modemCost": 0}, {"name": "WİFİ TELEKOM", "link": "https://wifi.net.tr/wifi-vdsl-fiber-100mb/", "price": 749.9, "priceText": "749,90₺", "modemFree": false, "modemCost": 0}, {"name": "WORLDNET", "link": "https://worldnet.com.tr/tarifelerimiz/", "price": 814.0, "priceText": "VDSL 714,00₺ / FİBER 814,00₺", "modemFree": false, "modemCost": 0}, {"name": "YENİNET", "link": "https://www.yeninet.com.tr/tarifelerimiz/", "price": 599.0, "priceText": "599,00₺", "modemFree": false, "modemCost": 70.0}];
+
+let wStep = 1;
+const wTotal = 3;
+
+function toggleWizard() {
+    const w = document.getElementById('wizardWrap');
+    w.classList.toggle('open');
+    if (w.classList.contains('open')) {
+        w.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+    }
+}
+
+function wNext() {
+    if (wStep < wTotal) {
+        wGoto(wStep + 1);
+    } else {
+        wShowResults();
+    }
+}
+
+function wPrev() {
+    if (wStep > 1) wGoto(wStep - 1);
+}
+
+function wGoto(step) {
+    document.getElementById(`ws${wStep}`).classList.remove('active');
+    document.getElementById(`wd${wStep}`).classList.remove('active');
+    document.getElementById(`wd${wStep}`).classList.add('done');
+    wStep = step;
+    document.getElementById(`ws${wStep}`).classList.add('active');
+    document.getElementById(`wd${wStep}`).classList.remove('done');
+    document.getElementById(`wd${wStep}`).classList.add('active');
+    document.getElementById('wPrev').style.visibility = wStep > 1 ? 'visible' : 'hidden';
+    document.getElementById('wNext').textContent = wStep === wTotal ? 'Sonuçları Gör →' : 'Devam →';
+    document.getElementById('wLabel').textContent = `Adım ${wStep} / ${wTotal}`;
+}
+
+function wSelect(el, grup) {
+    el.closest('.w-options').querySelectorAll('.w-option').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+}
+
+function wShowResults() {
+    const budget = parseInt(document.getElementById('budgetRange').value);
+    const modemPref = document.querySelector('#ws2 .w-option.selected')?.dataset.val || 'any';
+    const oncelik = document.querySelector('#ws3 .w-option.selected')?.dataset.val || 'fiyat';
+
+    let results = wFirmas.filter(f => {
+        if (f.price > budget) return false;
+        if (modemPref === 'free' && !f.modemFree) return false;
+        return true;
+    });
+
+    if (oncelik === 'sabit') {
+        results.sort((a, b) => a.price - b.price);
+    } else {
+        results.sort((a, b) => (a.price + a.modemCost) - (b.price + b.modemCost));
+    }
+
+    results = results.slice(0, 3);
+
+    const medals = ['🥇', '🥈', '🥉'];
+    const ranks = ['En İyi Seçim', '2. Seçenek', '3. Seçenek'];
+
+    let html = '';
+    if (results.length === 0) {
+        html = '<div class="w-no-result">😔 Kriterlerinize uygun firma bulunamadı. Bütçeyi artırmayı veya modem tercihini değiştirmeyi deneyin.</div>';
+    } else {
+        results.forEach((f, i) => {
+            const modemBadge = f.modemFree
+                ? '<span class="badge badge-green">Modem Dahil</span>'
+                : f.modemCost > 0
+                    ? `<span class="badge badge-yellow">Modem: ${f.modemCost.toLocaleString('tr-TR')}₺</span>`
+                    : '<span class="badge badge-gray">Modem Bilgi Yok</span>';
+            html += `
+            <div class="w-result-card">
+                <div class="w-rank">${medals[i]} ${ranks[i]}</div>
+                <div class="w-firma">${f.name}</div>
+                <div class="w-badges">
+                    <span class="badge badge-green">${f.priceText}</span>
+                    ${modemBadge}
+                </div>
+                <a href="${f.link}" target="_blank" class="w-link">Tarifeye Git →</a>
+            </div>`;
+        });
+    }
+
+    document.getElementById('wResults').innerHTML = html;
+    document.getElementById(`ws${wStep}`).classList.remove('active');
+    document.getElementById(`wd${wStep}`).classList.add('done');
+    document.getElementById('ws-result').classList.add('active');
+    document.getElementById('wFooter').style.display = 'none';
+}
+
+function wRestart() {
+    wStep = 1;
+    document.getElementById('ws-result').classList.remove('active');
+    document.getElementById('ws1').classList.add('active');
+    document.getElementById('wFooter').style.display = 'flex';
+    document.querySelectorAll('.w-dot').forEach((d, i) => {
+        d.classList.remove('active', 'done');
+        if (i === 0) d.classList.add('active');
+    });
+    document.getElementById('wPrev').style.visibility = 'hidden';
+    document.getElementById('wNext').textContent = 'Devam →';
+    document.getElementById('wLabel').textContent = 'Adım 1 / 3';
+    document.getElementById('budgetRange').value = 600;
+    document.getElementById('budgetDisplay').textContent = '600₺';
 }
 
 // Sayfa açılışında kaydedilen temayı uygula
