@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>100 Mbps İnternet Tarifeleri Karşılaştırma</title>
+<title>100 MBPS İnternet Tarifeleri Karşılaştırma</title>
 <style>
 :root {
     --bg: #f5f7fa;
@@ -295,19 +295,48 @@ tr:hover {
 }
 
 .price {
-    color: #059669;
+    display: inline-block;
+    padding: 4px 10px;
+    background: #dcfce7;
+    color: #166534;
+    border-radius: 5px;
+    font-size: 0.82em;
     font-weight: 600;
+}
+
+[data-theme="dark"] .price {
+    background: #14532d;
+    color: #86efac;
 }
 
 .price-increase {
-    color: #dc2626;
+    display: inline-block;
+    padding: 4px 10px;
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 5px;
+    font-size: 0.82em;
     font-weight: 600;
 }
 
+[data-theme="dark"] .price-increase {
+    background: #450a0a;
+    color: #fca5a5;
+}
+
 .price-same {
-    color: #0891b2;
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e0f2fe;
+    color: #075985;
+    border-radius: 5px;
+    font-size: 0.82em;
     font-weight: 500;
-    font-style: italic;
+}
+
+[data-theme="dark"] .price-same {
+    background: #0c3550;
+    color: #7dd3fc;
 }
 
 .modem-free {
@@ -326,8 +355,18 @@ tr:hover {
 }
 
 .modem-paid {
-    color: #f59e0b;
-    font-weight: 500;
+    display: inline-block;
+    padding: 3px 10px;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 4px;
+    font-size: 0.82em;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .modem-paid {
+    background: #422006;
+    color: #fcd34d;
 }
 
 .date-badge {
@@ -511,7 +550,8 @@ tr:hover {
 <div class="container">
     <header>
         <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙 Koyu Mod</button>
-        <h1>100 Mbps İnternet Tarife Fiyatları</h1>
+        <h1>100 MBPS İnternet Tarife Fiyatları</h1>
+        <p class="update-date">📅 Son Güncelleme: 22 Şubat 2026</p>
     </header>
     
     <div class="info-notice">
@@ -567,9 +607,9 @@ tr:hover {
                         10LİNE 
                         <a href="https://10line.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">575,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">575,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -577,8 +617,8 @@ tr:hover {
                         4GNET 
                         <a href="https://4gnet.com.tr/bireysel_tarifeler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">649,99₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">649,99₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -588,8 +628,8 @@ tr:hover {
                         <a href="https://www.alanyanet.com.tr/VdslTarifeler.html" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.alanyanet.com.tr/FiberTarife.html" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 570,00₺ / FİBER 620,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 570,00₺ / FİBER 620,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -598,8 +638,8 @@ tr:hover {
         AKDENİZNET 
         <a href="https://www.akdeniznet.com.tr/akdeniznet-fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">800,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">800,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -608,8 +648,8 @@ tr:hover {
                         ATLANTİSNET 
                         <a href="https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">600,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">600,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -619,9 +659,9 @@ tr:hover {
                         <a href="https://aytelekom.com.tr/tarife/vdsl" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://aytelekom.com.tr/tarife/fiber" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 589,00₺ / FİBER 599,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">60,00₺</td>
+                    <td><span class="price">VDSL 589,00₺ / FİBER 599,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">60,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                  </tr>
@@ -629,8 +669,8 @@ tr:hover {
                         AYD TELEKOM 
                         <a href="https://www.aydtelekom.com/ttarifeler/" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">650,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">650,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Ücretsiz</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -639,8 +679,8 @@ tr:hover {
         BCNNET 
         <a href="https://www.bcnnet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 625,00₺ / FİBER 675,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">VDSL 625,00₺ / FİBER 675,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -649,8 +689,8 @@ tr:hover {
                         BELENATLANTİS 
                         <a href="https://belenatlantis.com.tr/kampanyalar.php" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">600,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">600,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -659,9 +699,9 @@ tr:hover {
         BEST TELEKOM 
         <a href="https://besttelekom.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">İlk 3 ay 499,00₺</td>
-    <td class="price-increase">699,00₺</td>
-    <td class="modem-paid">80,00₺</td>
+    <td><span class="price">İlk 3 ay 499,00₺</span></td>
+    <td><span class="price-increase">699,00₺</span></td>
+    <td><span class="modem-paid">80,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                   <tr>
@@ -669,9 +709,9 @@ tr:hover {
                         BİZİMİNTERNET 
                         <a href="https://merkez.biziminternet.com.tr/tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">600,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">600,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -679,8 +719,8 @@ tr:hover {
                         BİNBİRNET 
                         <a href="https://binbirnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">740,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">740,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -689,8 +729,8 @@ tr:hover {
                         BİNET 
                         <a href="https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">390,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">390,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -699,8 +739,8 @@ tr:hover {
         BİRNET 
         <a href="https://www.birnet.net.tr/fiber-vdsl-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">699,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">699,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -709,8 +749,8 @@ tr:hover {
         BURSA İNTERNET 
         <a href="https://www.bursafiberinternet.com/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">700,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">700,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -719,9 +759,9 @@ tr:hover {
                         CANNET 
                         <a href="https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">4 ay sabit 499,00₺</td>
-                    <td class="price-increase">699,00₺</td>
-                    <td class="modem-paid">100,00₺</td>
+                    <td><span class="price">4 ay sabit 499,00₺</span></td>
+                    <td><span class="price-increase">699,00₺</span></td>
+                    <td><span class="modem-paid">100,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -729,8 +769,8 @@ tr:hover {
                         CERENNET 
                         <a href="https://www.cerennet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 650,00₺ / FİBER 700,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 650,00₺ / FİBER 700,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -739,8 +779,8 @@ tr:hover {
         ÇABUKNET 
         <a href="https://www.cabuknet.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">790,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">790,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -749,9 +789,9 @@ tr:hover {
                         DAHAONLİNE 
                         <a href="https://www.dahaonline.com.tr/paketlerimiz/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">575,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">575,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
             <tr>
@@ -759,8 +799,8 @@ tr:hover {
         DİJİTAL NET 
         <a href="https://dijitalnet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">649,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">649,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -769,8 +809,8 @@ tr:hover {
         DİDİMNET 
         <a href="https://www.didimnet.com.tr/kablolu-tarifeler.html" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">450,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">450,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -779,8 +819,8 @@ tr:hover {
                         DURUNET 
                         <a href="https://durunet.com.tr/ev-interneti" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">650,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">650,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Ücretsiz</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -790,8 +830,8 @@ tr:hover {
                         <a href="https://www.efsanenet.com.tr/vdsl-internet/" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.efsanenet.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 480,00₺ / FİBER 530,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 480,00₺ / FİBER 530,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -800,8 +840,8 @@ tr:hover {
         ELMA TELEKOM 
         <a href="https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 400,00₺ / FİBER 450,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">VDSL 400,00₺ / FİBER 450,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -810,9 +850,9 @@ tr:hover {
         EPLANET 
         <a href="https://www.eplanet.com.tr/kampanyalar.html" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">569,99₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">119,90₺</td>
+    <td><span class="price">569,99₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">119,90₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -820,8 +860,8 @@ tr:hover {
                         EURONET 
                         <a href="https://www.euronet.com.tr/internet-paketleri/vdsl" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">629,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">629,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -830,8 +870,8 @@ tr:hover {
                         EXPRESNET 
                         <a href="https://expresnet.com.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">650,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">650,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -840,9 +880,9 @@ tr:hover {
         EXTRANET 
         <a href="https://www.extranet.com.tr/kampanya/yeni-musteri-kampanyalari" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">629,00₺</td>
-    <td class="price-same">31.12.2026 tarihine kadar geçerli kampanya</td>
-    <td class="modem-paid">100,00₺</td>
+    <td><span class="price">629,00₺</span></td>
+    <td><span class="price-same">31.12.2026 tarihine kadar geçerli kampanya</span></td>
+    <td><span class="modem-paid">100,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -850,9 +890,9 @@ tr:hover {
         EYLÜLNET 
         <a href="https://www.eylulnet.com.tr/tarifeler.html" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">620,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">70,00₺</td>
+    <td><span class="price">620,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -860,9 +900,9 @@ tr:hover {
                         FARKNET 
                         <a href="https://farknet.com.tr/internetpaketleri/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 579,00₺ / FİBER 599,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">VDSL 579,00₺ / FİBER 599,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                  <tr>
@@ -870,8 +910,8 @@ tr:hover {
                         FACE TELEKOM 
                         <a href="https://facetelekom.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">569,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">569,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Ücretsiz</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -880,9 +920,9 @@ tr:hover {
                         FİBA TELEKOM 
                         <a href="https://fibatelekom.com.tr/tr/packages" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">750,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">750,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
             <tr>
@@ -890,8 +930,8 @@ tr:hover {
         FİZYNET 
         <a href="https://www.fizynet.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">600,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">600,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -900,8 +940,8 @@ tr:hover {
                         FİXNET 
                         <a href="https://www.fixnet.com.tr/eviniz#paketler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 450,00₺ / FİBER 500,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 450,00₺ / FİBER 500,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -910,8 +950,8 @@ tr:hover {
         FİBERWİ 
         <a href="https://fiberwi.com.tr/bireysel-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">750,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">750,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -920,8 +960,8 @@ tr:hover {
         FİNET 
         <a href="https://www.finet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">630,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">630,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -930,8 +970,8 @@ tr:hover {
         FİBİMNET 
         <a href="https://www.fibim.com.tr/tarife-incele/2026-10020-on-odemeli-fiber-internet-kampanyasi-165" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">790,00₺</td>
-    <td class="price-same">1 Haziran 2026'ya kadar sabit fiyat</td>
+    <td><span class="price">790,00₺</span></td>
+    <td><span class="price-same">1 Haziran 2026'ya kadar sabit fiyat</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -940,8 +980,8 @@ tr:hover {
         FİLİKANET 
         <a href="https://www.filika.net.tr/kablolu-internet" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">689,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">689,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -950,8 +990,8 @@ tr:hover {
         FIRATNET 
         <a href="https://firatnet.com/pricing/xdsl-fiber" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 580,00₺ / FİBER 660,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">VDSL 580,00₺ / FİBER 660,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -960,9 +1000,9 @@ tr:hover {
                         FLİXNET 
                         <a href="https://flix.net.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">520,00₺</td>
-                    <td class="price-same">2026 Temmuz ayına kadar sabit fiyat</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">520,00₺</span></td>
+                    <td><span class="price-same">2026 Temmuz ayına kadar sabit fiyat</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
             <tr>
@@ -970,8 +1010,8 @@ tr:hover {
         FREEFİBER 
         <a href="https://www.freefiber.com.tr/bireysel-tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">650,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">650,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -980,8 +1020,8 @@ tr:hover {
         FULLNET 
         <a href="https://fullnet.com.tr/adsl-vdsl-internet-paketleri/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">795,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">795,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -990,8 +1030,8 @@ tr:hover {
         GAP TELEKOM 
         <a href="https://www.cdntelekom.com/tarifeler/6" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">800,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">800,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1000,8 +1040,8 @@ tr:hover {
                         GESNET 
                         <a href="https://gesnet.com.tr/tarife-detay?id=13" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">500,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">500,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1010,8 +1050,8 @@ tr:hover {
         GENERALNET 
         <a href="https://general.net.tr/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">499,90₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">499,90₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1020,9 +1060,9 @@ tr:hover {
                         GİGASPEED 
                         <a href="https://gigaspeed.com.tr/paketler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺</td>
-                    <td class="price-increase">VDSL 479,90₺ / FİBER 499,90₺ (1 Temmuz 2026'ya kadar sabit)</td>
-                   <td class="modem-paid">65,00₺</td>
+                    <td><span class="price">İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺</span></td>
+                    <td><span class="price-increase">VDSL 479,90₺ / FİBER 499,90₺ (1 Temmuz 2026'ya kadar sabit)</span></td>
+                   <td><span class="modem-paid">65,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1030,9 +1070,9 @@ tr:hover {
                         GİBİRNET 
                         <a href="https://gibir.net.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 Ay: 480,00₺</td>
-                    <td class="price-increase">580,00₺</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">İlk 3 Ay: 480,00₺</span></td>
+                    <td><span class="price-increase">580,00₺</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
             <tr>
@@ -1040,8 +1080,8 @@ tr:hover {
         GLOBALNET 
         <a href="https://www.globalnetinternet.com/fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">700,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">700,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1050,8 +1090,8 @@ tr:hover {
         GÖLHİSARNET 
         <a href="https://golhisarnet.net.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">650,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">650,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1060,9 +1100,9 @@ tr:hover {
                         GÜLDÜRENNET 
                         <a href="https://guldurennet.com.tr/tarifeler.php" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">550,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">100,00₺</td>
+                    <td><span class="price">550,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">100,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1071,8 +1111,8 @@ tr:hover {
                         <a href="https://hatfiber.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://hatfiber.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">599,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">599,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1081,8 +1121,8 @@ tr:hover {
         HAZARNET 
         <a href="https://www.hazarnet.com/#tarife" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">720,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">720,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1091,8 +1131,8 @@ tr:hover {
                         HİZONLİNE 
                         <a href="https://www.hizonline.com/kampanyalar.php" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">749,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">749,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1101,8 +1141,8 @@ tr:hover {
         HİPERONLİNE 
         <a href="https://hiperonline.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 625,00₺ / FİBER 700,00₺</td>
-    <td class="price-same">1 Temmuz 2026'ya kadar sabit fiyat</td>
+    <td><span class="price">VDSL 625,00₺ / FİBER 700,00₺</span></td>
+    <td><span class="price-same">1 Temmuz 2026'ya kadar sabit fiyat</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1111,9 +1151,9 @@ tr:hover {
         İCENET TELEKOM 
         <a href="https://www.icenet.net.tr/tr" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">859,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">100,00₺</td>
+    <td><span class="price">859,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">100,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1121,8 +1161,8 @@ tr:hover {
                         İNTERNET KUTUSU 
                         <a href="https://internetkutusu.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">549,90₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">549,90₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1132,8 +1172,8 @@ tr:hover {
         <a href="https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL" target="_blank" class="link-badge">VDSL</a>
         <a href="https://www.incinet.com.tr/tr/tarifelerimiz?tarife=FIBER" target="_blank" class="link-badge">Fiber</a>
     </td>
-    <td class="price">VDSL 499,90₺ / FİBER 599,90₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">VDSL 499,90₺ / FİBER 599,90₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1142,9 +1182,9 @@ tr:hover {
                         İREMNET 
                         <a href="https://iremnet.com.tr/index.php/fiber-internet/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">700,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">700,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1152,8 +1192,8 @@ tr:hover {
                         JETNET 
                         <a href="https://www.jetnettelekom.com.tr/tarife/vdsl" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">580,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">580,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1162,8 +1202,8 @@ tr:hover {
                         KAREL İLETİŞİM 
                         <a href="https://kareliletisim.com.tr/kampanyalar/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 569,00₺ / FİBER 569,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 569,00₺ / FİBER 569,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1172,8 +1212,8 @@ tr:hover {
                         KABLOSUZONLİNE 
                         <a href="https://www.kablosuzonline.com.tr/wisp/bireysel-tarife.php#fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">429,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">429,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1182,8 +1222,8 @@ tr:hover {
                         KARUNNET 
                         <a href="https://karunnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 580,00₺ / FİBER 610,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 580,00₺ / FİBER 610,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1192,9 +1232,9 @@ tr:hover {
         KAYINET 
         <a href="https://kayinet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">675,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">80,00₺</td>
+    <td><span class="price">675,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">80,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1202,8 +1242,8 @@ tr:hover {
         KIRNET BİLİŞİM 
         <a href="https://kirnetbilisim.com.tr/package-fiber/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">560,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">560,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1213,9 +1253,9 @@ tr:hover {
         <a href="https://kocaeliinternet.com.tr/tarife/vdsl" target="_blank" class="link-badge">VDSL</a>
         <a href="https://kocaeliinternet.com.tr/tarife/fiber" target="_blank" class="link-badge">Fiber</a>
     </td>
-    <td class="price">VDSL 650,00₺ / FİBER 575,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">75,00₺</td>
+    <td><span class="price">VDSL 650,00₺ / FİBER 575,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1223,8 +1263,8 @@ tr:hover {
         KÖYCEĞİZNET 
         <a href="https://koycegiznet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">700,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">700,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1233,8 +1273,8 @@ tr:hover {
                         LİNYİTNET 
                         <a href="https://www.linyitnet.com.tr/vdsl-ve-fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 ay 399,00₺</td>
-                    <td class="price-increase">699,00</td>
+                    <td><span class="price">İlk 3 ay 399,00₺</span></td>
+                    <td><span class="price-increase">699,00</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1243,8 +1283,8 @@ tr:hover {
                         MAVİNET 
                         <a href="https://mavinetbilisim.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 570,00₺ / FİBER 630,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 570,00₺ / FİBER 630,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1253,8 +1293,8 @@ tr:hover {
                         MAVİFİBER 
                         <a href="https://mavifiber.com.tr" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">450,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">450,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1263,9 +1303,9 @@ tr:hover {
                         MERKÜRNET 
                         <a href="https://www.merkurnet.com.tr/merkure-ilk-adim/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 569,90₺ / FİBER 649,90₺</td>
-                    <td class="price-increase">689,00₺</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">VDSL 569,90₺ / FİBER 649,90₺</span></td>
+                    <td><span class="price-increase">689,00₺</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1273,8 +1313,8 @@ tr:hover {
         MERTSKY TELEKOM 
         <a href="https://mertsky.com.tr/100-megabit/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">400,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">400,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1283,8 +1323,8 @@ tr:hover {
         MERNET 
         <a href="https://mernet.com.tr/sayfa-tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">652,00₺</td>
-    <td class="price-increase">Taahhütlü tarife</td>
+    <td><span class="price">652,00₺</span></td>
+    <td><span class="price-increase">Taahhütlü tarife</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1293,8 +1333,8 @@ tr:hover {
                         MİGROSNET 
                         <a href="https://www.migrosnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺</td>
-                    <td class="price-increase">VDSL 649,00₺ / FİBER 699,00₺</td>
+                    <td><span class="price">İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺</span></td>
+                    <td><span class="price-increase">VDSL 649,00₺ / FİBER 699,00₺</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1303,9 +1343,9 @@ tr:hover {
                         MİLLENİCOM 
                         <a href="https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 4 Ay: 399,90₺</td>
-                    <td class="price-increase">690,00₺</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">İlk 4 Ay: 399,90₺</span></td>
+                    <td><span class="price-increase">690,00₺</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                  <tr>
@@ -1313,9 +1353,9 @@ tr:hover {
                         MOBİLFREE 
                         <a href="https://mobilfree.com.tr/tarifeler?commitment=taahhutsuz" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">599,00₺</td>
-                    <td class="price-same">1 Ocak 2027'ye kadar sabit fiyat</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">599,00₺</span></td>
+                    <td><span class="price-same">1 Ocak 2027'ye kadar sabit fiyat</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1324,8 +1364,8 @@ tr:hover {
                        <a href="https://neonet.net.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://mobismart.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 680,00₺ /FİBER 800,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 680,00₺ /FİBER 800,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1335,8 +1375,8 @@ tr:hover {
         <a href="https://modexi.com.tr/100-mbps-fiber-internet/" target="_blank" class="link-badge">Fiber</a>
         <a href="https://modexi.com.tr/100-mbps-vdsl-internet/" target="_blank" class="link-badge">VDSL</a>
     </td>
-    <td class="price">579,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">579,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1345,9 +1385,9 @@ tr:hover {
                         NAZNET 
                         <a href="https://www.naznet.com.tr/web/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">720,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">100,00₺</td>
+                    <td><span class="price">720,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">100,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1356,8 +1396,8 @@ tr:hover {
                         <a href="https://neonet.net.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://neonet.net.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 599,00₺ / FİBER 675,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 599,00₺ / FİBER 675,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1366,9 +1406,9 @@ tr:hover {
                         NETBONE 
                         <a href="https://www.netbone.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">579,90₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">579,90₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1377,8 +1417,8 @@ tr:hover {
                         <a href="https://www.netgigabit.com.tr/vdsltarifeler.html" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.netgigabit.com.tr/fibertarifeler.html" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">650,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">650,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1387,9 +1427,9 @@ tr:hover {
                         NETGSM 
                         <a href="https://www.netgsm.com.tr/internet/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">575,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">575,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1397,9 +1437,9 @@ tr:hover {
                         NETİNTERNET 
                         <a href="https://www.netinternet.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">649,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">79,00₺</td>
+                    <td><span class="price">649,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">79,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1407,8 +1447,8 @@ tr:hover {
                         NETMAN 
                         <a href="https://www.netman.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">599,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">599,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1417,9 +1457,9 @@ tr:hover {
                         NETMAX 
                         <a href="https://netmax.com.tr/tarifeler/fiber" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">580,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">100,00₺</td>
+                    <td><span class="price">580,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">100,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1427,8 +1467,8 @@ tr:hover {
         NETPLUS 
         <a href="https://netplus.net.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">600,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">600,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-free">Ücretsiz</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1437,8 +1477,8 @@ tr:hover {
                         NETSPEED 
                         <a href="https://www.netspeed.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 4 Ay: 399,90₺</td>
-                    <td class="price-increase">649,90₺</td>
+                    <td><span class="price">İlk 4 Ay: 399,90₺</span></td>
+                    <td><span class="price-increase">649,90₺</span></td>
                     <td><span class="modem-free">Ücretsiz</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1447,8 +1487,8 @@ tr:hover {
         NETWİFİ 
         <a href="https://netwifi.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">500,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">500,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1458,8 +1498,8 @@ tr:hover {
                         <a href="https://netprime.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://netprime.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>                   
                     </td>
-                    <td class="price">VDSL 680,00₺ / FİBER 800,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 680,00₺ / FİBER 800,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1469,9 +1509,9 @@ tr:hover {
                         <a href="https://www.nidatelekom.com.tr/xdsl_internet_paketleri" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.nidatelekom.com.tr/fiber_internet_paketleri" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 599,00₺ / FİBER 629,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">VDSL 599,00₺ / FİBER 629,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1479,8 +1519,8 @@ tr:hover {
                         NİTROİNTERNET 
                         <a href="https://nitrointernet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">650,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">650,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1490,8 +1530,8 @@ tr:hover {
                         <a href="https://noktawifi.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://noktawifi.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 700,00₺ / FİBER 725,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 700,00₺ / FİBER 725,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Ücretsiz</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1500,8 +1540,8 @@ tr:hover {
         NOKTAONLİNE 
         <a href="https://noktaonline.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">390,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">390,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1511,8 +1551,8 @@ tr:hover {
                         <a href="https://www.osnet.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.osnet.com.tr/" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 750,00₺ / FİBER 650,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 750,00₺ / FİBER 650,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1521,8 +1561,8 @@ tr:hover {
         OSAWI TELEKOM 
         <a href="https://osawi.com.tr/packages" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">675,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">675,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1531,8 +1571,8 @@ tr:hover {
                         OTELEKOM 
                         <a href="https://www.otelekom.com.tr/kampanyalar/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 600,00₺ / FİBER 675,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 600,00₺ / FİBER 675,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1541,9 +1581,9 @@ tr:hover {
                         ORİS TELEKOM 
                         <a href="https://www.oristelekom.com/kampanya-paketler/oris-faturali-taahhutsuz-on-odemeli-ev-interneti" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 ay 299,90₺</td>
-                   <td class="price-increase">649,90₺</td>
-                    <td class="modem-paid">50,00₺</td>
+                    <td><span class="price">İlk 3 ay 299,90₺</span></td>
+                   <td><span class="price-increase">649,90₺</span></td>
+                    <td><span class="modem-paid">50,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1551,9 +1591,9 @@ tr:hover {
                         PANANET 
                         <a href="https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">575,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">575,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1561,9 +1601,9 @@ tr:hover {
                         PASİFİK TELEKOM 
                         <a href="https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 Ay: 480,00₺</td>
-                    <td class="price-increase">560,00₺</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">İlk 3 Ay: 480,00₺</span></td>
+                    <td><span class="price-increase">560,00₺</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1571,9 +1611,9 @@ tr:hover {
         PLUSNET 
         <a href="https://plusnet.com.tr/tarife" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">550,00₺</td>
-    <td class="price-same">6 ay sabit fiyat garantisi</td>
-    <td class="modem-paid">70,00₺</td>
+    <td><span class="price">550,00₺</span></td>
+    <td><span class="price-same">6 ay sabit fiyat garantisi</span></td>
+    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1581,9 +1621,9 @@ tr:hover {
                         POWERNET 
                         <a href="https://powernet.com.tr/paketler/fiber-internet-tarifeleri" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">600,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">50,00₺</td>
+                    <td><span class="price">600,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">50,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1591,8 +1631,8 @@ tr:hover {
                         RAMTEK 
                         <a href="https://www.ramtek.net.tr/ramtek-vae-hizmeti" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">599,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">599,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1601,9 +1641,9 @@ tr:hover {
                         REKORNET 
                         <a href="https://rekornet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">570,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">570,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1611,9 +1651,9 @@ tr:hover {
                         SADENET 
                         <a href="https://sadenet.com.tr/Kampanyalar/yok-artik-fiber-kampanyasi-100mbps-taahhutsuz" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 4 Ay: 319,00₺</td>
-                    <td class="price-increase">610,00₺</td>
-                    <td class="modem-paid">150,00₺</td>
+                    <td><span class="price">İlk 4 Ay: 319,00₺</span></td>
+                    <td><span class="price-increase">610,00₺</span></td>
+                    <td><span class="modem-paid">150,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1621,8 +1661,8 @@ tr:hover {
         SAKNET 
         <a href="https://www.saknet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 599,90₺ / FİBER 659,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">VDSL 599,90₺ / FİBER 659,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1632,8 +1672,8 @@ tr:hover {
         <a href="https://www.sarnettelekom.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
         <a href="https://www.sarnettelekom.com.tr/fiber-tarifeler/" target="_blank" class="link-badge">Fiber</a>
     </td>
-    <td class="price">700,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">700,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1642,8 +1682,8 @@ tr:hover {
         SARIKAYANET 
         <a href="https://www.sarikayanet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 650,00₺ / FİBER 750,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">VDSL 650,00₺ / FİBER 750,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1652,8 +1692,8 @@ tr:hover {
         SİBANET 
         <a href="https://sibanet.com.tr/bireysel-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">1050,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">1050,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1662,9 +1702,9 @@ tr:hover {
         SONET 
         <a href="https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 609,90₺ / FİBER 619,90₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">69,90₺</td>
+    <td><span class="price">VDSL 609,90₺ / FİBER 619,90₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">69,90₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
 <tr>
@@ -1673,8 +1713,8 @@ tr:hover {
                         <a href="https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.speednet.com.tr/tr/urunler/speed-fiber-gpon" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">VDSL 900,00₺ / FİBER 800,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 900,00₺ / FİBER 800,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1683,8 +1723,8 @@ tr:hover {
         SURNET 
         <a href="https://www.surnet.com.tr/tarifeler-c-14" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">750,00₺</td>
-    <td class="price-increase">12 ay taahhütlü tarife</td>
+    <td><span class="price">750,00₺</span></td>
+    <td><span class="price-increase">12 ay taahhütlü tarife</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1693,9 +1733,9 @@ tr:hover {
         SUKNET 
         <a href="https://suknet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">VDSL 660,00₺ / FİBER 680,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">60,00₺</td>
+    <td><span class="price">VDSL 660,00₺ / FİBER 680,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">60,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1703,8 +1743,8 @@ tr:hover {
                         ŞOKNET 
                         <a href="https://www.soknetinternet.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺</td>
-                    <td class="price-increase">VDSL 619,00₺ / Fiber 689,00₺</td>
+                    <td><span class="price">İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺</span></td>
+                    <td><span class="price-increase">VDSL 619,00₺ / Fiber 689,00₺</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1713,9 +1753,9 @@ tr:hover {
                         TBTNET 
                         <a href="https://tbtnet.net/bireysel-internet" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">639,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">65,00₺</td>
+                    <td><span class="price">639,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">65,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1724,8 +1764,8 @@ tr:hover {
         <a href="https://tepenet.com.tr/tr/paketler/roket-vdsl/" target="_blank" class="link-badge">VDSL</a>
         <a href="https://tepenet.com.tr/tr/paketler/roket-fiber/" target="_blank" class="link-badge">Fiber</a>
     </td>
-    <td class="price">VDSL 635,00₺ / FİBER 690,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">VDSL 635,00₺ / FİBER 690,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1734,8 +1774,8 @@ tr:hover {
                         TEKNET 
                         <a href="https://tek.net.tr/paketler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">569,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">569,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1744,9 +1784,9 @@ tr:hover {
                         TEKNOSANET 
                         <a href="https://www.teknosanet.com/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 Ay: 449,00₺</td>
-                    <td class="price-increase">689,00₺</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">İlk 3 Ay: 449,00₺</span></td>
+                    <td><span class="price-increase">689,00₺</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1754,8 +1794,8 @@ tr:hover {
         TEKNOBİL TELEKOM 
         <a href="https://www.teknobiltelekom.com.tr/tarifeler.php" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">550,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">550,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1764,8 +1804,8 @@ tr:hover {
                         TELKOMNET 
                         <a href="https://www.telkomnet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 580,00₺ / FİBER 620,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 580,00₺ / FİBER 620,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1774,9 +1814,9 @@ tr:hover {
                         TELKOTURK 
                         <a href="https://www.telkoturk.net/efsane-fiberly-100" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">İlk 3 ay 345,00₺</td>
-                    <td class="price-increase">689,00₺ (15 ay sabit fiyat garantisi)</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">İlk 3 ay 345,00₺</span></td>
+                    <td><span class="price-increase">689,00₺ (15 ay sabit fiyat garantisi)</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1784,8 +1824,8 @@ tr:hover {
                         TİKLANET 
                         <a href="https://tiklanet.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 520,00₺ / FİBER 560,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 520,00₺ / FİBER 560,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1794,8 +1834,8 @@ tr:hover {
                         TRFASTNET 
                         <a href="https://trfastnet.com.tr/internet-tarifeleri-uygun-fiyatli-ve-hizli-paketler-tr-fastnet__trashed/meganet-100-mbps-paket/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">600,00₺</td>
-                    <td class="price-same"> 31.12.2026 tarihine kadar geçerli</td>
+                    <td><span class="price">600,00₺</span></td>
+                    <td><span class="price-same"> 31.12.2026 tarihine kadar geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1804,8 +1844,8 @@ tr:hover {
         TRNET 
         <a href="https://tr-net.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">775,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">775,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1815,9 +1855,9 @@ tr:hover {
                         <a href="https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.turkhost.net.tr/limitsiz-fiber-ftth-internet-paketleri" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">İlk Ay: VDSL 359,00₺ / Fiber 550,00₺</td>
-                    <td class="price-increase">VDSL 409,00₺ / Fiber 650,00₺</td>
-                    <td class="modem-paid">65,00₺</td>
+                    <td><span class="price">İlk Ay: VDSL 359,00₺ / Fiber 550,00₺</span></td>
+                    <td><span class="price-increase">VDSL 409,00₺ / Fiber 650,00₺</span></td>
+                    <td><span class="modem-paid">65,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1825,8 +1865,8 @@ tr:hover {
                         TURKNET 
                         <a href="https://www.turk.net/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">699,90₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">699,90₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1835,9 +1875,9 @@ tr:hover {
                         TURUNCUNET 
                         <a href="https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 549,90₺ / FİBER 589,90₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">60,00₺</td>
+                    <td><span class="price">VDSL 549,90₺ / FİBER 589,90₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">60,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1845,9 +1885,9 @@ tr:hover {
                         TURKCELL SUPERONLİNE 
                         <a href="https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.superonline.net/ev-interneti/fiber-internet/taahhutsuz-fiberde-super-teklif/100-mbps-ye-kadar" target="_blank" class="link-badge">Fiber</a>                    </td>
-                    <td class="price">VDSL/FİBER 750,00₺</td>
-                    <td class="price-same">1 Haziran 2026'ya kadar geçerli kampanya</td>
-                    <td class="modem-paid">80,00₺</td>
+                    <td><span class="price">VDSL/FİBER 750,00₺</span></td>
+                    <td><span class="price-same">1 Haziran 2026'ya kadar geçerli kampanya</span></td>
+                    <td><span class="modem-paid">80,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                    <tr>
@@ -1855,8 +1895,8 @@ tr:hover {
         TURBONET
         <a href="https://turbo.net.tr/paket/bireysel.html" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">649,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">649,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1865,8 +1905,8 @@ tr:hover {
                         TÜRKİYEMNET 
                         <a href="https://www.turkiyemnet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 589,00₺ / FİBER 639,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 589,00₺ / FİBER 639,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1876,9 +1916,9 @@ tr:hover {
                         <a href="https://bireysel.turktelekom.com.tr/evde-internet/yeni-musteri-kampanyalari/tum-yeni-musteri-kampanyalari?taahhut=12&hiz=100&siralama=fiyatArtan" target="_blank" class="link-badge">12 AY TAAHHÜTLÜ</a>
                          <a href="https://bireysel.turktelekom.com.tr/evde-internet/yeni-musteri-kampanyalari/tum-yeni-musteri-kampanyalari?taahhut=18&hiz=100&siralama=fiyatArtan" target="_blank" class="link-badge">18 AY TAAHHÜTLÜ</a>
                     </td>
-                    <td class="price-increase">Taahhütlü tarife</td>
-                    <td class="price-increase">Taahhütlü tarife</td>
-<td class="modem-paid">75,00₺</td>
+                    <td><span class="price-increase">Taahhütlü tarife</span></td>
+                    <td><span class="price-increase">Taahhütlü tarife</span></td>
+<td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
                 <tr>
@@ -1887,9 +1927,9 @@ tr:hover {
                         <a href="https://www.ulu.net.tr/paketler/VDSL" target="_blank" class="link-badge">VDSL</a>
                         <a href="https://www.ulu.net.tr/paketler/FIBER" target="_blank" class="link-badge">Fiber</a>
                     </td>
-                    <td class="price">570,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">70,00₺</td>
+                    <td><span class="price">570,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
             <tr>
@@ -1897,8 +1937,8 @@ tr:hover {
         ULUHAN NET 
         <a href="https://www.uluhan.net.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">700,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">700,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1907,8 +1947,8 @@ tr:hover {
                         VATAN İNTERNET 
                         <a href="https://www.vataninternet.com.tr/kablolu-paketler/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">700,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">700,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-free">Ücretsiz</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1917,8 +1957,8 @@ tr:hover {
         VEGANET 
         <a href="https://www.veganet.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">750,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">750,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1927,8 +1967,8 @@ tr:hover {
         VİVANET 
         <a href="https://vivanet.tr/100-mbps-vdsl-fiber/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">599,00₺</td>
-    <td class="price-same">01.08.2026'ya kadar sabit fiyat</td>
+    <td><span class="price">599,00₺</span></td>
+    <td><span class="price-same">01.08.2026'ya kadar sabit fiyat</span></td>
     <td><span class="modem-free">Tarifeye Dahil</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1937,8 +1977,8 @@ tr:hover {
         VIPNET TELEKOM 
         <a href="https://vipnetbilisim.com.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">620,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
+    <td><span class="price">620,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1947,9 +1987,9 @@ tr:hover {
                         WAAYNET 
                         <a href="https://waaynet.com.tr/tarifelerimiz.php" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">599,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
-                    <td class="modem-paid">75,00₺</td>
+                    <td><span class="price">599,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+                    <td><span class="modem-paid">75,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
 <tr>
@@ -1957,8 +1997,8 @@ tr:hover {
                         WENETWİFİ 
                         <a href="http://www.wenetwifi.com/tr/PaketAyrinti/hiperfiber-internet-7" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">799,99₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">799,99₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1967,8 +2007,8 @@ tr:hover {
                         WİFİ TELEKOM 
                         <a href="https://wifi.net.tr/wifi-vdsl-fiber-100mb/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">749,90₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">749,90₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1977,8 +2017,8 @@ tr:hover {
                         WORLDNET 
                         <a href="https://worldnet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
                     </td>
-                    <td class="price">VDSL 714,00₺ / FİBER 814,00₺</td>
-                    <td class="price-same">İlk dönem fiyatı geçerli</td>
+                    <td><span class="price">VDSL 714,00₺ / FİBER 814,00₺</span></td>
+                    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
                     <td><span class="modem-unknown">Bilgi Yok</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
@@ -1987,9 +2027,9 @@ tr:hover {
         YENİNET 
         <a href="https://www.yeninet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
     </td>
-    <td class="price">599,00₺</td>
-    <td class="price-same">İlk dönem fiyatı geçerli</td>
-    <td class="modem-paid">70,00₺</td>
+    <td><span class="price">599,00₺</span></td>
+    <td><span class="price-same">İlk dönem fiyatı geçerli</span></td>
+    <td><span class="modem-paid">70,00₺</span></td>
                     <td><span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span></td>
                 </tr>
             </tbody>
