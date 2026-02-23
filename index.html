@@ -544,32 +544,88 @@ tr:hover {
     transition: background 0.3s;
 }
 
+
+/* Mobil kart görünümü */
+.card-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    padding: 16px;
+}
+
+.firma-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow);
+    padding: 16px;
+    border: 1px solid var(--border-light);
+    transition: background 0.3s;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.card-firma {
+    font-weight: 700;
+    font-size: 0.95em;
+    color: var(--text);
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 0.82em;
+    gap: 8px;
+}
+
+.card-row-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.card-row-value {
+    text-align: right;
+}
+
+.card-footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: flex-end;
+}
+
 @media (max-width: 768px) {
+    .table-container {
+        display: none;
+    }
+    .card-grid {
+        display: grid;
+    }
     .controls {
         flex-direction: column;
     }
-    
     .search-box {
         width: 100%;
     }
-    
     .sort-buttons {
         width: 100%;
         justify-content: center;
     }
-    
     h1 {
         font-size: 1.5em;
     }
-    
-    table {
-        font-size: 0.85em;
-    }
-    
-    td, th {
-        padding: 12px 8px;
-    }
 }
+
 </style>
 </head>
 <body>
@@ -2064,6 +2120,2929 @@ tr:hover {
         </div>
     </div>
     
+    
+    <div class="card-grid" id="cardGrid">
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">10LİNE</span>
+                <a href="https://10line.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">575,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">4GNET</span>
+                <a href="https://4gnet.com.tr/bireysel_tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">649,99₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ALANYANET</span>
+                <a href="https://www.alanyanet.com.tr/VdslTarifeler.html" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 570,00₺ / FİBER 620,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">AKDENİZNET</span>
+                <a href="https://www.akdeniznet.com.tr/akdeniznet-fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">800,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ATLANTİSNET</span>
+                <a href="https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">600,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">AY TELEKOM</span>
+                <a href="https://aytelekom.com.tr/tarife/vdsl" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 589,00₺ / FİBER 599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">60,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BCNNET</span>
+                <a href="https://www.bcnnet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 625,00₺ / FİBER 675,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BELENATLANTİS</span>
+                <a href="https://belenatlantis.com.tr/kampanyalar.php" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">600,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BEST TELEKOM</span>
+                <a href="https://besttelekom.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 ay 499,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">699,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">80,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BİZİMİNTERNET</span>
+                <a href="https://merkez.biziminternet.com.tr/tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">600,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BİNBİRNET</span>
+                <a href="https://binbirnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">740,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BİNET</span>
+                <a href="https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">390,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BİRNET</span>
+                <a href="https://www.birnet.net.tr/fiber-vdsl-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">699,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">BURSA İNTERNET</span>
+                <a href="https://www.bursafiberinternet.com/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">CANNET</span>
+                <a href="https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">4 ay sabit 499,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">699,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">100,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">CERENNET</span>
+                <a href="https://www.cerennet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 650,00₺ / FİBER 700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ÇABUKNET</span>
+                <a href="https://www.cabuknet.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">790,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">DAHAONLİNE</span>
+                <a href="https://www.dahaonline.com.tr/paketlerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">575,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">DİJİTAL NET</span>
+                <a href="https://dijitalnet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">649,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">DİDİMNET</span>
+                <a href="https://www.didimnet.com.tr/kablolu-tarifeler.html" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">450,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">EFSANENET</span>
+                <a href="https://www.efsanenet.com.tr/vdsl-internet/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 480,00₺ / FİBER 530,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ELMA TELEKOM</span>
+                <a href="https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 400,00₺ / FİBER 450,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">EPLANET</span>
+                <a href="https://www.eplanet.com.tr/kampanyalar.html" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">569,99₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">119,90₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">EURONET</span>
+                <a href="https://www.euronet.com.tr/internet-paketleri/vdsl" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">629,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">EXPRESNET</span>
+                <a href="https://expresnet.com.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">650,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">EXTRANET</span>
+                <a href="https://www.extranet.com.tr/kampanya/yeni-musteri-kampanyalari" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">629,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">31.12.2026 tarihine kadar geçerli kampanya</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">100,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">EYLÜLNET</span>
+                <a href="https://www.eylulnet.com.tr/tarifeler.html" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">620,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FARKNET</span>
+                <a href="https://farknet.com.tr/internetpaketleri/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 579,00₺ / FİBER 599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FACE TELEKOM</span>
+                <a href="https://facetelekom.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">569,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Ücretsiz</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FİBA TELEKOM</span>
+                <a href="https://fibatelekom.com.tr/tr/packages" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">750,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FİZYNET</span>
+                <a href="https://www.fizynet.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">600,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FİXNET</span>
+                <a href="https://www.fixnet.com.tr/eviniz#paketler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 450,00₺ / FİBER 500,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FİBERWİ</span>
+                <a href="https://fiberwi.com.tr/bireysel-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">750,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FİNET</span>
+                <a href="https://www.finet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">630,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FİBİMNET</span>
+                <a href="https://www.fibim.com.tr/tarife-incele/2026-10020-on-odemeli-fiber-internet-kampanyasi-165" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">790,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">1 Haziran 2026'ya kadar sabit fiyat</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FİLİKANET</span>
+                <a href="https://www.filika.net.tr/kablolu-internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">689,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FIRATNET</span>
+                <a href="https://firatnet.com/pricing/xdsl-fiber" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 580,00₺ / FİBER 660,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FLİXNET</span>
+                <a href="https://flix.net.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">520,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">2026 Temmuz ayına kadar sabit fiyat</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FREEFİBER</span>
+                <a href="https://www.freefiber.com.tr/bireysel-tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">650,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">FULLNET</span>
+                <a href="https://fullnet.com.tr/adsl-vdsl-internet-paketleri/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">795,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GAP TELEKOM</span>
+                <a href="https://www.cdntelekom.com/tarifeler/6" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">800,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GESNET</span>
+                <a href="https://gesnet.com.tr/tarife-detay?id=13" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">500,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GENERALNET</span>
+                <a href="https://general.net.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">499,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GİGASPEED</span>
+                <a href="https://gigaspeed.com.tr/paketler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">VDSL 479,90₺ / FİBER 499,90₺ (1 Temmuz 2026'ya kadar sabit)</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">65,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GİBİRNET</span>
+                <a href="https://gibir.net.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 Ay: 480,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">580,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GLOBALNET</span>
+                <a href="https://www.globalnetinternet.com/fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GÖLHİSARNET</span>
+                <a href="https://golhisarnet.net.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">650,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">GÜLDÜRENNET</span>
+                <a href="https://guldurennet.com.tr/tarifeler.php" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">550,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">100,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">HATFİBER</span>
+                <a href="https://hatfiber.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">HAZARNET</span>
+                <a href="https://www.hazarnet.com/#tarife" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">720,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">HİZONLİNE</span>
+                <a href="https://www.hizonline.com/kampanyalar.php" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">749,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">HİPERONLİNE</span>
+                <a href="https://hiperonline.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 625,00₺ / FİBER 700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">1 Temmuz 2026'ya kadar sabit fiyat</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">İCENET TELEKOM</span>
+                <a href="https://www.icenet.net.tr/tr" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">859,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">100,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">İNTERNET KUTUSU</span>
+                <a href="https://internetkutusu.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">549,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">İNCİNET</span>
+                <a href="https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 499,90₺ / FİBER 599,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">İREMNET</span>
+                <a href="https://iremnet.com.tr/index.php/fiber-internet/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">JETNET</span>
+                <a href="https://www.jetnettelekom.com.tr/tarife/vdsl" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">580,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">KAREL İLETİŞİM</span>
+                <a href="https://kareliletisim.com.tr/kampanyalar/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 569,00₺ / FİBER 569,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">KABLOSUZONLİNE</span>
+                <a href="https://www.kablosuzonline.com.tr/wisp/bireysel-tarife.php#fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">429,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">KARUNNET</span>
+                <a href="https://karunnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 580,00₺ / FİBER 610,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">KAYINET</span>
+                <a href="https://kayinet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">675,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">80,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">KIRNET BİLİŞİM</span>
+                <a href="https://kirnetbilisim.com.tr/package-fiber/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">560,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">KOCAELİ İNTERNET</span>
+                <a href="https://kocaeliinternet.com.tr/tarife/vdsl" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 650,00₺ / FİBER 575,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">KÖYCEĞİZNET</span>
+                <a href="https://koycegiznet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">LİNYİTNET</span>
+                <a href="https://www.linyitnet.com.tr/vdsl-ve-fiber-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 ay 399,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">699,00</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MAVİNET</span>
+                <a href="https://mavinetbilisim.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 570,00₺ / FİBER 630,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MAVİFİBER</span>
+                <a href="https://mavifiber.com.tr" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">450,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MERKÜRNET</span>
+                <a href="https://www.merkurnet.com.tr/merkure-ilk-adim/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 569,90₺ / FİBER 649,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">689,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MERTSKY TELEKOM</span>
+                <a href="https://mertsky.com.tr/100-megabit/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">400,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MERNET</span>
+                <a href="https://mernet.com.tr/sayfa-tarifelerimiz" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">652,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">Taahhütlü tarife</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MİGROSNET</span>
+                <a href="https://www.migrosnet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">VDSL 649,00₺ / FİBER 699,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MİLLENİCOM</span>
+                <a href="https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 4 Ay: 399,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">690,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MOBİLFREE</span>
+                <a href="https://mobilfree.com.tr/tarifeler?commitment=taahhutsuz" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">1 Ocak 2027'ye kadar sabit fiyat</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MOBİSMART</span>
+                <a href="https://neonet.net.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 680,00₺ /FİBER 800,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">MODEXI</span>
+                <a href="https://modexi.com.tr/100-mbps-fiber-internet/" target="_blank" class="link-badge">Fiber</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">579,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NAZNET</span>
+                <a href="https://www.naznet.com.tr/web/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">720,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">100,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NEONET</span>
+                <a href="https://neonet.net.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 599,00₺ / FİBER 675,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETBONE</span>
+                <a href="https://www.netbone.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">579,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETGİGABİT</span>
+                <a href="https://www.netgigabit.com.tr/vdsltarifeler.html" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">650,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETGSM</span>
+                <a href="https://www.netgsm.com.tr/internet/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">575,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETİNTERNET</span>
+                <a href="https://www.netinternet.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">649,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">79,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETMAN</span>
+                <a href="https://www.netman.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETMAX</span>
+                <a href="https://netmax.com.tr/tarifeler/fiber" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">580,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">100,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETPLUS</span>
+                <a href="https://netplus.net.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">600,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Ücretsiz</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETSPEED</span>
+                <a href="https://www.netspeed.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 4 Ay: 399,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">649,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Ücretsiz</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETWİFİ</span>
+                <a href="https://netwifi.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">500,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NETPRİME</span>
+                <a href="https://netprime.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 680,00₺ / FİBER 800,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NİDA TELEKOM</span>
+                <a href="https://www.nidatelekom.com.tr/xdsl_internet_paketleri" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 599,00₺ / FİBER 629,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NİTROİNTERNET</span>
+                <a href="https://nitrointernet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">650,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NOKTAWİFİ</span>
+                <a href="https://noktawifi.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 700,00₺ / FİBER 725,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Ücretsiz</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">NOKTAONLİNE</span>
+                <a href="https://noktaonline.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">390,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">OSNET</span>
+                <a href="https://www.osnet.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 750,00₺ / FİBER 650,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">OSAWI TELEKOM</span>
+                <a href="https://osawi.com.tr/packages" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">675,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">OTELEKOM</span>
+                <a href="https://www.otelekom.com.tr/kampanyalar/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 600,00₺ / FİBER 675,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ORİS TELEKOM</span>
+                <a href="https://www.oristelekom.com/kampanya-paketler/oris-faturali-taahhutsuz-on-odemeli-ev-interneti" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 ay 299,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">649,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">50,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">PANANET</span>
+                <a href="https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">575,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">PASİFİK TELEKOM</span>
+                <a href="https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 Ay: 480,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">560,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">PLUSNET</span>
+                <a href="https://plusnet.com.tr/tarife" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">550,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">6 ay sabit fiyat garantisi</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">POWERNET</span>
+                <a href="https://powernet.com.tr/paketler/fiber-internet-tarifeleri" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">600,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">50,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">RAMTEK</span>
+                <a href="https://www.ramtek.net.tr/ramtek-vae-hizmeti" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">REKORNET</span>
+                <a href="https://rekornet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">570,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SADENET</span>
+                <a href="https://sadenet.com.tr/Kampanyalar/yok-artik-fiber-kampanyasi-100mbps-taahhutsuz" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 4 Ay: 319,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">610,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">150,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SAKNET</span>
+                <a href="https://www.saknet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 599,90₺ / FİBER 659,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SARNET TELEKOM</span>
+                <a href="https://www.sarnettelekom.com.tr/vdsl-tarifeler/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SARIKAYANET</span>
+                <a href="https://www.sarikayanet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 650,00₺ / FİBER 750,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SİBANET</span>
+                <a href="https://sibanet.com.tr/bireysel-tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">1050,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SONET</span>
+                <a href="https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 609,90₺ / FİBER 619,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">69,90₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SPEEDNET</span>
+                <a href="https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 900,00₺ / FİBER 800,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SURNET</span>
+                <a href="https://www.surnet.com.tr/tarifeler-c-14" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">750,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">12 ay taahhütlü tarife</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">SUKNET</span>
+                <a href="https://suknet.com.tr/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 660,00₺ / FİBER 680,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">60,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ŞOKNET</span>
+                <a href="https://www.soknetinternet.com.tr/kampanyalar" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">VDSL 619,00₺ / Fiber 689,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TBTNET</span>
+                <a href="https://tbtnet.net/bireysel-internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">639,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">65,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TEPENET</span>
+                <a href="https://tepenet.com.tr/tr/paketler/roket-vdsl/" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 635,00₺ / FİBER 690,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TEKNET</span>
+                <a href="https://tek.net.tr/paketler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">569,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TEKNOSANET</span>
+                <a href="https://www.teknosanet.com/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 Ay: 449,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">689,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TEKNOBİL TELEKOM</span>
+                <a href="https://www.teknobiltelekom.com.tr/tarifeler.php" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">550,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TELKOMNET</span>
+                <a href="https://www.telkomnet.com.tr/tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 580,00₺ / FİBER 620,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TELKOTURK</span>
+                <a href="https://www.telkoturk.net/efsane-fiberly-100" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk 3 ay 345,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">689,00₺ (15 ay sabit fiyat garantisi)</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TİKLANET</span>
+                <a href="https://tiklanet.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 520,00₺ / FİBER 560,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TRFASTNET</span>
+                <a href="https://trfastnet.com.tr/internet-tarifeleri-uygun-fiyatli-ve-hizli-paketler-tr-fastnet__trashed/meganet-100-mbps-paket/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">600,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same"> 31.12.2026 tarihine kadar geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TRNET</span>
+                <a href="https://tr-net.com.tr/tarifeler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">775,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TURKHOST</span>
+                <a href="https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">İlk Ay: VDSL 359,00₺ / Fiber 550,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">VDSL 409,00₺ / Fiber 650,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">65,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TURKNET</span>
+                <a href="https://www.turk.net/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">699,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TURUNCUNET</span>
+                <a href="https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 549,90₺ / FİBER 589,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">60,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TURKCELL SUPERONLİNE</span>
+                <a href="https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL/FİBER 750,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">1 Haziran 2026'ya kadar geçerli kampanya</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">80,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TURBONET</span>
+                <a href="https://turbo.net.tr/paket/bireysel.html" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">649,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TÜRKİYEMNET</span>
+                <a href="https://www.turkiyemnet.com.tr/#tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 589,00₺ / FİBER 639,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">TÜRK TELEKOM</span>
+                <a href="https://bireysel.turktelekom.com.tr/evde-internet/yeni-musteri-kampanyalari/tum-yeni-musteri-kampanyalari?taahhut=12&hiz=100&siralama=fiyatArtan" target="_blank" class="link-badge">12 AY TAAHHÜTLÜ</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price-increase">Taahhütlü tarife</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-increase">Taahhütlü tarife</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ULUNET</span>
+                <a href="https://www.ulu.net.tr/paketler/VDSL" target="_blank" class="link-badge">VDSL</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">570,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">ULUHAN NET</span>
+                <a href="https://www.uluhan.net.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">VATAN İNTERNET</span>
+                <a href="https://www.vataninternet.com.tr/kablolu-paketler/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">700,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Ücretsiz</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">VEGANET</span>
+                <a href="https://www.veganet.com.tr/fiber-tarifeler" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">750,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">VİVANET</span>
+                <a href="https://vivanet.tr/100-mbps-vdsl-fiber/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">01.08.2026'ya kadar sabit fiyat</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-free">Tarifeye Dahil</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">VIPNET TELEKOM</span>
+                <a href="https://vipnetbilisim.com.tr/fiber-internet" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">620,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">WAAYNET</span>
+                <a href="https://waaynet.com.tr/tarifelerimiz.php" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">75,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">WENETWİFİ</span>
+                <a href="http://www.wenetwifi.com/tr/PaketAyrinti/hiperfiber-internet-7" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">799,99₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">WİFİ TELEKOM</span>
+                <a href="https://wifi.net.tr/wifi-vdsl-fiber-100mb/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">749,90₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">WORLDNET</span>
+                <a href="https://worldnet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">VDSL 714,00₺ / FİBER 814,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-unknown">Bilgi Yok</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+        <div class="firma-card">
+            <div class="card-header">
+                <span class="card-firma">YENİNET</span>
+                <a href="https://www.yeninet.com.tr/tarifelerimiz/" target="_blank" class="link-badge">Tarifeler</a>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">İlk Dönem</span>
+                <span class="card-row-value"><span class="price">599,00₺</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Sonraki Dönem</span>
+                <span class="card-row-value"><span class="price-same">İlk dönem fiyatı geçerli</span></span>
+            </div>
+            <div class="card-row">
+                <span class="card-row-label">Modem</span>
+                <span class="card-row-value"><span class="modem-paid">70,00₺</span></span>
+            </div>
+            <div class="card-footer">
+                <span class="date-badge date-green" data-updated="2026-02-22">22 Şub 2026</span>
+            </div>
+        </div>
+    </div>
+
     <div class="pagination">
         <button class="page-btn" onclick="changePage(-1)" id="prevBtn">◀ Önceki</button>
         <span class="page-info">Sayfa <span id="currentPage">1</span> / <span id="totalPages">1</span></span>
