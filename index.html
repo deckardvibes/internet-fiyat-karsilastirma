@@ -4,1045 +4,454 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>100 Mbps İnternet Tarife Fiyatları Karşılaştırma</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ══════ TOKENS ══════ */
 :root {
-    --bg: #f5f7fa;
-    --card-bg: white;
-    --text: #2d3748;
-    --text-secondary: #6b7280;
-    --border: #e5e7eb;
-    --border-light: #f3f4f6;
-    --controls-bg: #f9fafb;
-    --header-bg: #4a5568;
-    --th-bg: #f9fafb;
-    --th-text: #374151;
-    --input-border: #d1d5db;
-    --btn-bg: white;
-    --btn-text: #374151;
-    --btn-hover: #f3f4f6;
-    --btn-active-bg: #4a5568;
-    --link-badge-bg: #4a5568;
-    --link-badge-hover: #2d3748;
-    --row-hover: #fafbfc;
-    --notice-bg: #fef3c7;
-    --notice-border: #f59e0b;
-    --notice-text: #92400e;
-    --shadow: rgba(0,0,0,0.07);
-    --dropdown-shadow: rgba(0,0,0,0.1);
-    
-       /* VDSL - Teal */
-    --vdsl-bg: #ccfbf1;
-    --vdsl-text: #0f766e;
-    --vdsl-border: #5eead4;
-    
-    /* Fiber - Royal Blue */
-    --fiber-bg: #dbeafe;
-    --fiber-text: #1e40af;
-    --fiber-border: #60a5fa;
-    
-    /* Tek Fiyat - Amber */
-    --single-bg: #fef3c7;
-    --single-text: #d97706;
-    --single-border: #fbbf24;
+    --bg:#f0f4ff; --card-bg:#ffffff; --text:#0d1117; --text-secondary:#6e7891;
+    --border:#e2e8f4; --border-light:#eef2f9; --controls-bg:#f7f9fe;
+    --th-bg:#f4f6fb; --th-text:#4a5568; --input-border:#d4dce8;
+    --btn-bg:#ffffff; --btn-text:#374151; --btn-hover:#f0f4ff;
+    --row-hover:#f8faff; --notice-bg:#fffbeb; --notice-border:#f59e0b; --notice-text:#92400e;
+    --shadow:rgba(13,17,23,0.07); --shadow-md:rgba(13,17,23,0.10); --dropdown-shadow:rgba(13,17,23,0.12);
+    --vdsl-bg:#ccfbf1; --vdsl-text:#0f766e; --vdsl-border:#5eead4;
+    --fiber-bg:#dbeafe; --fiber-text:#1e40af; --fiber-border:#60a5fa;
+    --single-bg:#fef3c7; --single-text:#d97706; --single-border:#fbbf24;
+    --green:#059669; --green-lt:#ecfdf5; --red:#dc2626; --red-lt:#fef2f2;
+    --blue:#2563eb; --blue-lt:#eff6ff;
 }
-
 [data-theme="dark"] {
-    /* Genel dark tema değişkenleri */
-    --bg: #0f172a;
-    --card-bg: #1e293b;
-    --text: #e2e8f0;
-    --text-secondary: #94a3b8;
-    --border: #334155;
-    --border-light: #1e293b;
-    --controls-bg: #162032;
-    --header-bg: #1e293b;
-    --th-bg: #162032;
-    --th-text: #cbd5e1;
-    --input-border: #334155;
-    --btn-bg: #1e293b;
-    --btn-text: #cbd5e1;
-    --btn-hover: #273548;
-    --btn-active-bg: #3b82f6;
-    --link-badge-bg: #3b82f6;
-    --link-badge-hover: #2563eb;
-    --row-hover: #243044;
-    --notice-bg: #1c1a0f;
-    --notice-border: #b45309;
-    --notice-text: #fcd34d;
-    --shadow: rgba(0,0,0,0.3);
-    --dropdown-shadow: rgba(0,0,0,0.4);
-    
-    /* VDSL Dark */
-    --vdsl-bg: #134e4a;
-    --vdsl-text: #5eead4;
-    --vdsl-border: #14b8a6;
-    
-    /* Fiber Dark */
-    --fiber-bg: #1e3a8a;
-    --fiber-text: #93c5fd;
-    --fiber-border: #3b82f6;
-    
-    /* Tek Fiyat Dark */
-    --single-bg: #78350f;
-    --single-text: #fcd34d;
-    --single-border: #f59e0b;
+    --bg:#090e1a; --card-bg:#111827; --text:#e2e8f0; --text-secondary:#94a3b8;
+    --border:#1f2d40; --border-light:#172033; --controls-bg:#0e1625;
+    --th-bg:#0e1625; --th-text:#94a3b8; --input-border:#1f2d40;
+    --btn-bg:#111827; --btn-text:#cbd5e1; --btn-hover:#1a2740;
+    --row-hover:#141f30; --notice-bg:#1c1506; --notice-border:#b45309; --notice-text:#fcd34d;
+    --shadow:rgba(0,0,0,0.4); --shadow-md:rgba(0,0,0,0.5); --dropdown-shadow:rgba(0,0,0,0.5);
+    --vdsl-bg:#134e4a; --vdsl-text:#5eead4; --vdsl-border:#14b8a6;
+    --fiber-bg:#1e3a8a; --fiber-text:#93c5fd; --fiber-border:#3b82f6;
+    --single-bg:#78350f; --single-text:#fcd34d; --single-border:#f59e0b;
+    --green:#10b981; --green-lt:#052e16; --red:#f87171; --red-lt:#450a0a;
+    --blue:#3b82f6; --blue-lt:#1e3a8a;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ══════ RESET & BASE ══════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: var(--bg);
-    padding: 20px;
-    color: var(--text);
-    transition: background 0.3s, color 0.3s;
+    font-family:'Outfit',-apple-system,sans-serif;
+    background:var(--bg); color:var(--text);
+    transition:background 0.3s,color 0.3s; min-height:100vh;
 }
 
+/* font-family tüm form elemanlarına tek seferinde */
+button, input, select, textarea {
+    font-family:'Outfit',sans-serif;
+}
+
+/* ══════ CONTAINER ══════ */
 .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px var(--shadow);
-    overflow: hidden;
-    transition: background 0.3s;
+    max-width:1380px; margin:28px auto;
+    background:var(--card-bg); border-radius:20px;
+    box-shadow:0 8px 32px var(--shadow);
+    overflow:hidden; transition:background 0.3s;
 }
 
+/* ══════ HEADER ══════ */
 header {
-    background: var(--header-bg);
-    color: white;
-    padding: 40px 30px;
-    text-align: center;
-    position: relative;
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#0e7490 100%);
+    color:white; padding:48px 36px 44px; text-align:center;
+    position:relative; overflow:hidden;
 }
-
+header::before {
+    content:''; position:absolute; top:-80px; left:-80px;
+    width:400px; height:400px;
+    background:radial-gradient(circle,rgba(99,102,241,0.25) 0%,transparent 70%);
+    pointer-events:none;
+}
+header::after {
+    content:''; position:absolute; bottom:-60px; right:-60px;
+    width:360px; height:360px;
+    background:radial-gradient(circle,rgba(14,116,144,0.3) 0%,transparent 70%);
+    pointer-events:none;
+}
 .theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
-    color: white;
-    padding: 8px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    transition: background 0.2s;
+    position:absolute; top:20px; right:24px;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
+    color:white; padding:8px 16px; border-radius:100px;
+    cursor:pointer; font-size:13px; font-weight:600;
+    transition:background 0.2s; z-index:2;
 }
+.theme-toggle:hover { background:rgba(255,255,255,0.22); }
 
-.theme-toggle:hover {
-    background: rgba(255,255,255,0.25);
+.header-eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:600;
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18);
+    padding:5px 14px; border-radius:100px; margin-bottom:20px;
+    color:rgba(255,255,255,0.88); position:relative; z-index:1;
 }
-
-@media (max-width: 768px) {
-    .theme-toggle {
-        position: static;
-        display: block;
-        margin: 12px auto 0;
-        width: fit-content;
-    }
+.live-dot {
+    width:6px; height:6px; background:#4ade80;
+    border-radius:50%; animation:livePulse 2s infinite;
 }
-
+@keyframes livePulse {
+    0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(74,222,128,0.5); }
+    50%      { opacity:0.7; box-shadow:0 0 0 5px rgba(74,222,128,0); }
+}
 h1 {
-    font-size: 1.8em;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size:clamp(24px,4vw,40px); font-weight:800;
+    letter-spacing:-0.8px; line-height:1.1; margin-bottom:10px;
+    position:relative; z-index:1;
+}
+h1 em { font-style:italic; color:#60d9f8; }
+.header-sub {
+    font-size:15px; color:rgba(255,255,255,0.65); margin-bottom:32px;
+    position:relative; z-index:1;
+}
+.header-stats { display:flex; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+.hstat { padding:14px 28px; border-right:1px solid rgba(255,255,255,0.12); text-align:center; }
+.hstat:last-child { border-right:none; }
+.hstat-val { font-size:26px; font-weight:800; letter-spacing:-0.5px; color:white; display:block; }
+.hstat-val.green { color:#4ade80; }
+.hstat-val.red   { color:#f87171; }
+.hstat-label { font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.8px; margin-top:2px; display:block; }
+
+@media (max-width:768px) {
+    .theme-toggle { position:static; display:block; margin:14px auto 0; width:fit-content; }
+    h1 { font-size:22px; }
+    .hstat { padding:10px 16px; }
+    .hstat-val { font-size:20px; }
 }
 
-.update-date {
-    font-size: 0.9em;
-    opacity: 0.9;
-}
-
+/* ══════ NOTICE ══════ */
 .info-notice {
-    background: var(--notice-bg);
-    border-left: 4px solid var(--notice-border);
-    padding: 16px 24px;
-    margin: 24px 30px;
-    border-radius: 6px;
-    font-size: 0.9em;
-    color: var(--notice-text);
-    transition: background 0.3s, color 0.3s;
+    background:var(--notice-bg); border-left:4px solid var(--notice-border);
+    padding:14px 20px; margin:20px 28px; border-radius:0 10px 10px 0;
+    font-size:13px; color:var(--notice-text); line-height:1.7;
+    transition:background 0.3s,color 0.3s;
 }
 
-.controls {
-    padding: 20px 30px;
-    background: var(--controls-bg);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    transition: background 0.3s;
-}
-
-.search-box {
-    flex: 0 0 auto;
-    width: 280px;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid var(--input-border);
-    border-radius: 6px;
-    font-size: 13px;
-    background: var(--card-bg);
-    color: var(--text);
-    transition: background 0.3s, color 0.3s, border-color 0.3s;
-}
-
-.search-box input:focus {
-    outline: none;
-    border-color: #4a5568;
-}
-
-.sort-buttons {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.sort-btn {
-    padding: 10px 18px;
-    border: 1px solid var(--input-border);
-    background: var(--btn-bg);
-    color: var(--btn-text);
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.sort-btn:hover {
-    background: var(--btn-hover);
-    border-color: #9ca3af;
-}
-
-.sort-btn.active {
-    background: var(--btn-active-bg);
-    color: white;
-    border-color: var(--btn-active-bg);
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-btn {
-    cursor: pointer;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--card-bg);
-    min-width: 140px;
-    box-shadow: 0 4px 6px var(--dropdown-shadow);
-    z-index: 1000;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    margin-top: 4px;
-}
-
-.dropdown-content a {
-    color: var(--btn-text);
-    padding: 10px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.dropdown-content a:first-child {
-    border-radius: 6px 6px 0 0;
-}
-
-.dropdown-content a:last-child {
-    border-radius: 0 0 6px 6px;
-}
-
-.dropdown-content a:hover {
-    background-color: var(--btn-hover);
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.table-container {
-    padding: 30px;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    background: var(--th-bg);
-    color: var(--th-text);
-    padding: 14px 16px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 2px solid var(--border);
-    transition: background 0.3s, color 0.3s;
-}
-
-td {
-    padding: 16px;
-    border-bottom: 1px solid var(--border-light);
-    font-size: 0.95em;
-}
-
-tr:hover {
-    background: var(--row-hover);
-}
-
-.firma-name {
-    font-weight: 600;
-    color: var(--text);
-}
-
-.link-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    margin-left: 6px;
-    background: var(--link-badge-bg);
-    color: white;
-    border-radius: 4px;
-    font-size: 0.75em;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.link-badge:hover {
-    background: var(--link-badge-hover);
-}
-
-/* YENİ: Yuvarlak Fiyat Badge'leri - VDSL/Fiber/Tek Fiyat */
-.price-badges {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-start;
-}
-
-.price-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 9999px;
-    font-size: 0.9em;
-    font-weight: 600;
-    border: 1px solid transparent;
-    white-space: nowrap;
-}
-
-/* VDSL - Yeşil */
-.price-badge.vdsl {
-    background: var(--vdsl-bg);
-    color: var(--vdsl-text);
-    border-color: var(--vdsl-border);
-}
-
-/* Fiber - Mor */
-.price-badge.fiber {
-    background: var(--fiber-bg);
-    color: var(--fiber-text);
-    border-color: var(--fiber-border);
-}
-
-/* Tek Fiyat - Turuncu */
-.price-badge.single {
-    background: var(--single-bg);
-    color: var(--single-text);
-    border-color: var(--single-border);
-}
-
-.price-same {
-    display: inline-block;
-    padding: 4px 10px;
-    background: #e0f2fe;
-    color: #075985;
-    border-radius: 5px;
-    font-size: 0.82em;
-    font-weight: 500;
-}
-
-[data-theme="dark"] .price-same {
-    background: #0c3550;
-    color: #7dd3fc;
-}
-
-.price-increase {
-    display: inline-block;
-    padding: 4px 10px;
-    background: #fee2e2;
-    color: #991b1b;
-    border-radius: 5px;
-    font-size: 0.82em;
-    font-weight: 600;
-}
-
-[data-theme="dark"] .price-increase {
-    background: #450a0a;
-    color: #fca5a5;
-}
-
-.modem-free {
-    display: inline-block;
-    padding: 3px 10px;
-    background: #dcfce7;
-    color: #166534;
-    border-radius: 4px;
-    font-size: 0.82em;
-    font-weight: 600;
-}
-
-[data-theme="dark"] .modem-free {
-    background: #14532d;
-    color: #86efac;
-}
-
-.modem-paid {
-    display: inline-block;
-    padding: 3px 10px;
-    background: #fef3c7;
-    color: #92400e;
-    border-radius: 4px;
-    font-size: 0.82em;
-    font-weight: 600;
-}
-
-[data-theme="dark"] .modem-paid {
-    background: #422006;
-    color: #fcd34d;
-}
-
-.modem-unknown {
-    display: inline-block;
-    padding: 3px 10px;
-    background: #f3f4f6;
-    color: #6b7280;
-    border-radius: 4px;
-    font-size: 0.82em;
-    font-weight: 500;
-}
-
-[data-theme="dark"] .modem-unknown {
-    background: #273548;
-    color: #64748b;
-}
-
-.date-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.88em;
-    font-weight: 500;
-    color: var(--text);
-}
-
-.date-badge::before {
-    content: '';
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.date-green::before { background: #22c55e; }
-.date-yellow::before { background: #eab308; }
-.date-red::before { background: #ef4444; }
-
-.date-legend {
-    display: flex;
-    gap: 16px;
-    padding: 10px 30px;
-    background: var(--controls-bg);
-    border-bottom: 1px solid var(--border);
-    font-size: 0.82em;
-    flex-wrap: wrap;
-    align-items: center;
-    color: var(--text-secondary);
-}
-
-.date-legend strong {
-    color: var(--text);
-    margin-right: 4px;
-}
-
-.no-results {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-secondary);
-    font-size: 1.1em;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    padding: 24px;
-    border-top: 1px solid var(--border);
-}
-
-.page-btn {
-    padding: 10px 20px;
-    border: 1px solid var(--input-border);
-    background: var(--btn-bg);
-    color: var(--btn-text);
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.page-btn:hover:not(:disabled) {
-    background: var(--btn-hover);
-}
-
-.page-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.page-info {
-    font-size: 14px;
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.stats {
-    display: flex;
-    justify-content: space-around;
-    padding: 24px 30px;
-    background: var(--controls-bg);
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-    gap: 20px;
-    transition: background 0.3s;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 2em;
-    font-weight: 700;
-    color: var(--btn-active-bg);
-}
-
-.stat-label {
-    font-size: 0.9em;
-    color: var(--text-secondary);
-    margin-top: 4px;
-}
-
-.disclaimer-section {
-    background: var(--controls-bg);
-    border-top: 2px solid var(--border);
-    padding: 24px 30px;
-    transition: background 0.3s;
-}
-
-.disclaimer-section h4 {
-    font-size: 0.82em;
-    font-weight: 700;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-}
-
-.disclaimer-section p {
-    font-size: 0.78em;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 8px;
-    opacity: 0.8;
-}
-
-.disclaimer-section p:last-child { margin-bottom: 0; }
-
-.footer {
-    padding: 20px 30px;
-    background: var(--controls-bg);
-    text-align: center;
-    font-size: 0.85em;
-    color: var(--text-secondary);
-    border-top: 1px solid var(--border);
-    transition: background 0.3s;
-}
-
-
-/* Mobil kart görünümü */
-.card-grid {
-    display: none;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
-    padding: 16px;
-}
-
-.firma-card {
-    background: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 2px 8px var(--shadow);
-    padding: 16px;
-    border: 1px solid var(--border-light);
-    transition: background 0.3s;
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.card-firma {
-    font-weight: 700;
-    font-size: 0.95em;
-    color: var(--text);
-}
-
-.card-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-    font-size: 0.82em;
-    gap: 8px;
-}
-
-.card-row-label {
-    color: var(--text-secondary);
-    font-weight: 500;
-    flex-shrink: 0;
-}
-
-.card-row-value {
-    text-align: right;
-}
-
-.card-footer {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-light);
-    display: flex;
-    justify-content: flex-end;
-}
-
-@media (max-width: 768px) {
-    .table-container {
-        display: none;
-    }
-    .card-grid {
-        display: grid;
-    }
-    .controls {
-        flex-direction: column;
-    }
-    .search-box {
-        width: 100%;
-    }
-    .sort-buttons {
-        width: 100%;
-        justify-content: center;
-    }
-    h1 {
-        font-size: 1.5em;
-    }
-}
-
-
-/* Benim İçin Seç */
+/* ══════ ACTION BUTTONS ══════ */
+.action-buttons { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 28px; }
 .wizard-trigger {
-    margin: 0 30px 0;
-    padding: 14px;
-    background: linear-gradient(135deg, #4a5568, #2d3748);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.95em;
-    font-weight: 600;
-    cursor: pointer;
-    width: calc(100% - 60px);
-    transition: opacity 0.2s;
+    padding:14px 20px; background:linear-gradient(135deg,#1e3a8a,#2563eb);
+    color:white; border:none; border-radius:12px; font-size:14px; font-weight:700;
+    cursor:pointer; transition:opacity 0.2s,transform 0.1s;
+    text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;
 }
-.wizard-trigger:hover { opacity: 0.9; }
+.wizard-trigger:hover  { opacity:0.92; transform:translateY(-1px); }
+.wizard-trigger:active { transform:translateY(0); }
+.wizard-trigger.altyapi { background:linear-gradient(135deg,#6d28d9,#7c3aed); }
 
+@media (max-width:600px) { .action-buttons { grid-template-columns:1fr; } }
+
+/* ══════ WIZARD ══════ */
 .wizard-wrap {
-    display: none;
-    margin: 16px 30px;
-    background: var(--card-bg);
-    border-radius: 14px;
-    box-shadow: 0 4px 20px var(--shadow);
-    overflow: hidden;
-    border: 1px solid var(--border);
+    display:none; margin:16px 28px; background:var(--card-bg);
+    border-radius:16px; box-shadow:0 8px 32px var(--shadow-md);
+    overflow:hidden; border:1px solid var(--border);
 }
-.wizard-wrap.open { display: block; }
-
+.wizard-wrap.open { display:block; }
 .wizard-head {
-    background: #4a5568;
-    color: white;
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white;
+    padding:18px 24px; display:flex; justify-content:space-between; align-items:center;
 }
-.wizard-head h3 { font-size: 1em; font-weight: 700; }
-.wizard-head p { font-size: 0.8em; opacity: 0.8; margin-top: 2px; }
+.wizard-head h3 { font-size:15px; font-weight:800; }
+.wizard-head p  { font-size:12px; opacity:0.75; margin-top:2px; }
 .wizard-close {
-    background: rgba(255,255,255,0.15);
-    border: none;
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1em;
-    flex-shrink: 0;
+    background:rgba(255,255,255,0.15); border:none; color:white;
+    width:30px; height:30px; border-radius:50%; cursor:pointer;
+    font-size:14px; flex-shrink:0; transition:background 0.15s;
 }
+.wizard-close:hover { background:rgba(255,255,255,0.25); }
 
-.w-step-bar {
-    display: flex;
-    gap: 6px;
-    padding: 12px 24px;
-    background: var(--controls-bg);
-    border-bottom: 1px solid var(--border);
-}
-.w-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--border);
-    transition: background 0.3s;
-}
-.w-dot.active { background: #4a5568; }
-.w-dot.done { background: #22c55e; }
+.w-step-bar { display:flex; gap:6px; padding:12px 24px; background:var(--controls-bg); border-bottom:1px solid var(--border); }
+.w-dot { width:8px; height:8px; border-radius:50%; background:var(--border); transition:background 0.3s; }
+.w-dot.active { background:var(--blue); }
+.w-dot.done   { background:var(--green); }
 
-.w-step { display: none; padding: 24px; }
-.w-step.active { display: block; }
-.w-step h4 { font-size: 0.92em; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+.w-step { display:none; padding:24px; }
+.w-step.active { display:block; }
+.w-step h4 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:16px; }
 
-.w-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 20px;
-}
+.w-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
 .w-option {
-    padding: 14px;
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
-    background: var(--card-bg);
+    padding:16px; border:2px solid var(--border); border-radius:12px;
+    cursor:pointer; text-align:center; transition:all 0.2s; background:var(--card-bg);
 }
-.w-option:hover { border-color: #9ca3af; }
-.w-option.selected { border-color: #4a5568; }
-.w-option .wi { font-size: 1.4em; margin-bottom: 5px; }
-.w-option .wt { font-size: 0.85em; font-weight: 600; color: var(--text); }
-.w-option .wd { font-size: 0.73em; color: var(--text-secondary); margin-top: 2px; }
+.w-option:hover, .w-option.selected { border-color:var(--blue); background:var(--blue-lt); }
+.w-option .wi { font-size:1.5em; margin-bottom:6px; }
+.w-option .wt { font-size:13px; font-weight:700; color:var(--text); }
+.w-option .wd { font-size:11px; color:var(--text-secondary); margin-top:3px; }
 
-.budget-display {
-    font-size: 2em;
-    font-weight: 700;
-    color: #4a5568;
-    text-align: center;
-    margin-bottom: 12px;
-}
-input[type="range"] { width: 100%; accent-color: #4a5568; }
-.budget-labels { display: flex; justify-content: space-between; font-size: 0.75em; color: var(--text-secondary); margin-top: 6px; }
+.budget-display { font-size:2.2em; font-weight:800; color:var(--blue); text-align:center; margin-bottom:12px; letter-spacing:-1px; }
+input[type="range"] { width:100%; accent-color:var(--blue); }
+.budget-labels { display:flex; justify-content:space-between; font-size:12px; color:var(--text-secondary); margin-top:6px; }
 
 .w-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 24px;
-    border-top: 1px solid var(--border);
-    background: var(--controls-bg);
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 24px; border-top:1px solid var(--border); background:var(--controls-bg);
 }
 .w-btn-prev {
-    padding: 9px 18px;
-    background: var(--btn-bg);
-    border: 1px solid var(--input-border);
-    color: var(--btn-text);
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 0.85em;
-    font-weight: 500;
+    padding:9px 18px; background:var(--btn-bg); border:1.5px solid var(--input-border);
+    color:var(--btn-text); border-radius:9px; cursor:pointer; font-size:13px; font-weight:600; transition:all 0.15s;
 }
 .w-btn-next {
-    padding: 9px 22px;
-    background: #4a5568;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 0.85em;
-    font-weight: 600;
+    padding:9px 22px; background:var(--blue); color:white; border:none;
+    border-radius:9px; cursor:pointer; font-size:13px; font-weight:700; transition:background 0.15s;
 }
-.w-step-label { font-size: 0.78em; color: var(--text-secondary); }
+.w-btn-next:hover { background:#1d4ed8; }
+.w-step-label { font-size:12px; color:var(--text-secondary); font-weight:500; }
 
-/* Sonuçlar */
-.w-result-card {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    margin-bottom: 10px;
-    background: var(--card-bg);
-}
-.w-result-card:first-child { border-color: #22c55e; background: #f0fdf4; }
-[data-theme="dark"] .w-result-card:first-child { background: #052e16; }
-.w-rank { font-size: 0.72em; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
-.w-result-card:first-child .w-rank { color: #166534; }
-.w-firma { font-size: 1em; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-.w-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.w-result-card { border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:10px; background:var(--card-bg); }
+.w-result-card:first-child { border-color:var(--green); background:var(--green-lt); }
+.w-rank { font-size:11px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:5px; }
+.w-result-card:first-child .w-rank { color:var(--green); }
+.w-firma { font-size:15px; font-weight:800; color:var(--text); margin-bottom:8px; }
+.w-badges { display:flex; gap:6px; flex-wrap:wrap; }
 .w-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 6px 14px;
-    background: #4a5568;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.78em;
-    font-weight: 600;
+    display:inline-flex; align-items:center; gap:4px; margin-top:12px;
+    padding:7px 16px; background:var(--blue); color:white;
+    border-radius:8px; text-decoration:none; font-size:12px; font-weight:700; transition:background 0.15s;
 }
+.w-link:hover { background:#1d4ed8; }
 .w-restart {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: var(--btn-bg);
-    border: 1px solid var(--input-border);
-    color: var(--btn-text);
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 0.85em;
-    font-weight: 500;
-    margin-top: 14px;
+    display:block; width:100%; padding:11px; background:var(--btn-bg);
+    border:1.5px solid var(--input-border); color:var(--btn-text);
+    border-radius:10px; cursor:pointer; font-size:13px; font-weight:600;
+    margin-top:14px; transition:all 0.15s;
 }
-.w-no-result { text-align: center; padding: 20px; color: var(--text-secondary); }
+.w-no-result { text-align:center; padding:24px; color:var(--text-secondary); }
 
-
-.modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    backdrop-filter: blur(3px);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-}
-.modal-overlay.active { display: flex; }
-
-.modal-box {
-    background: var(--card-bg);
-    border-radius: 14px;
-    padding: 28px;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    margin: 20px;
-    animation: slideUp 0.2s ease;
-}
-@keyframes slideUp {
-    from { transform: translateY(16px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 6px;
-}
-.modal-header h3 { font-size: 1.05em; font-weight: 700; color: var(--text); }
-.modal-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-secondary);
-    font-size: 1.1em;
-    padding: 2px 6px;
-}
-.modal-firma-tag {
-    display: inline-block;
-    padding: 2px 10px;
-    background: var(--controls-bg);
-    color: var(--text-secondary);
-    border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: 600;
-    margin-bottom: 18px;
-}
-.form-group { margin-bottom: 13px; }
-.form-group label {
-    display: block;
-    font-size: 0.82em;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 5px;
-}
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 9px 12px;
-    border: 1px solid var(--input-border);
-    border-radius: 7px;
-    font-size: 0.9em;
-    color: var(--text);
-    background: var(--card-bg);
-    font-family: inherit;
-    transition: border-color 0.15s;
-}
-.form-group input:focus,
-.form-group textarea:focus { outline: none; border-color: #4a5568; }
-.form-group textarea { resize: vertical; min-height: 70px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-.modal-buttons { display: flex; gap: 8px; margin-top: 20px; }
-.btn-gonder {
-    flex: 1;
-    padding: 10px;
-    background: #4a5568;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9em;
-    font-weight: 600;
-    cursor: pointer;
-}
-.btn-gonder:hover { background: #2d3748; }
-.btn-gonder:disabled { opacity: 0.6; cursor: not-allowed; }
-.btn-iptal {
-    padding: 10px 16px;
-    background: var(--controls-bg);
-    color: var(--btn-text);
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9em;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.success-msg { display: none; text-align: center; padding: 20px 0; }
-.success-msg .checkmark { font-size: 2.5em; margin-bottom: 10px; }
-.success-msg h4 { font-size: 1em; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-.success-msg p { font-size: 0.85em; color: var(--text-secondary); }
-
-/* Hata Bildir Bar */
+/* ══════ HATA BİLDİR BAR ══════ */
 .bildir-bar {
-    margin: 10px 30px 24px;
-    padding: 11px 16px;
-    background: var(--controls-bg);
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    margin:16px 28px; padding:13px 18px; background:var(--controls-bg);
+    border:1.5px dashed var(--border); border-radius:12px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
 }
-.bildir-bar-text {
-    font-size: 0.83em;
-    color: var(--text-secondary);
-}
+.bildir-bar-text { font-size:13px; color:var(--text-secondary); font-weight:500; }
 .bildir-bar-btn {
-    padding: 7px 16px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.82em;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: all 0.15s;
-    flex-shrink: 0;
+    padding:8px 18px; background:var(--card-bg); border:1.5px solid var(--border);
+    color:var(--text-secondary); border-radius:8px; cursor:pointer;
+    font-size:12px; font-weight:700; white-space:nowrap; flex-shrink:0; transition:all 0.15s;
 }
-.bildir-bar-btn:hover {
-    background: #fff1f2;
-    border-color: #fca5a5;
-    color: #ef4444;
+.bildir-bar-btn:hover { background:var(--red-lt); border-color:var(--red); color:var(--red); }
+
+/* ══════ CONTROLS ══════ */
+.controls {
+    padding:16px 28px; background:var(--controls-bg);
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    justify-content:space-between; transition:background 0.3s;
 }
-[data-theme="dark"] .bildir-bar-btn:hover {
-    background: #450a0a;
-    border-color: #ef4444;
-    color: #fca5a5;
+.sort-buttons { display:flex; gap:8px; flex-wrap:wrap; }
+.sort-btn {
+    padding:9px 18px; border:1.5px solid var(--input-border);
+    background:var(--btn-bg); color:var(--btn-text); border-radius:100px;
+    cursor:pointer; font-size:13px; font-weight:600; transition:all 0.15s;
+}
+.sort-btn:hover  { background:var(--btn-hover); border-color:var(--blue); color:var(--blue); }
+.sort-btn.active { background:var(--blue); color:white; border-color:var(--blue); }
+
+.dropdown { position:relative; display:inline-block; }
+.dropdown-content {
+    display:none; position:absolute; background:var(--card-bg); min-width:150px;
+    box-shadow:0 8px 24px var(--dropdown-shadow); z-index:1000;
+    border-radius:12px; border:1px solid var(--border); margin-top:4px; overflow:hidden;
+}
+.dropdown-content.open { display:block; }
+.dropdown-content a { color:var(--btn-text); padding:11px 16px; text-decoration:none; display:block; font-size:13px; font-weight:600; transition:background 0.12s; }
+.dropdown-content a:hover { background:var(--btn-hover); color:var(--blue); }
+
+.search-box { flex:0 0 auto; width:270px; }
+.search-box input {
+    width:100%; padding:9px 14px; border:1.5px solid var(--input-border);
+    border-radius:100px; font-size:13px; font-weight:500;
+    background:var(--card-bg); color:var(--text); transition:border-color 0.15s;
+}
+.search-box input:focus { outline:none; border-color:var(--blue); }
+
+/* ══════ DATE LEGEND ══════ */
+.date-legend {
+    display:flex; gap:16px; padding:10px 28px; background:var(--controls-bg);
+    border-bottom:1px solid var(--border); font-size:12px;
+    flex-wrap:wrap; align-items:center; color:var(--text-secondary);
+}
+.date-legend strong { color:var(--text); margin-right:4px; font-weight:700; }
+.date-badge { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--text); }
+.date-badge::before { content:''; display:inline-block; width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.date-green::before  { background:#22c55e; }
+.date-yellow::before { background:#eab308; }
+.date-red::before    { background:#ef4444; }
+
+/* ══════ TABLE ══════ */
+.table-container { padding:24px 28px; overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+th {
+    background:var(--th-bg); color:var(--th-text); padding:12px 16px;
+    text-align:left; font-weight:700; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.8px; border-bottom:2px solid var(--border); transition:background 0.3s;
+}
+td { padding:15px 16px; border-bottom:1px solid var(--border-light); font-size:14px; vertical-align:middle; }
+tbody tr { transition:background 0.1s; animation:rowFadeIn 0.2s ease both; }
+tbody tr:hover { background:var(--row-hover); }
+tbody tr:last-child td { border-bottom:none; }
+
+@keyframes rowFadeIn {
+    from { opacity:0; transform:translateY(6px); }
+    to   { opacity:1; transform:translateY(0); }
+}
+tbody tr:nth-child(1)  { animation-delay:0.02s }
+tbody tr:nth-child(2)  { animation-delay:0.04s }
+tbody tr:nth-child(3)  { animation-delay:0.06s }
+tbody tr:nth-child(4)  { animation-delay:0.08s }
+tbody tr:nth-child(5)  { animation-delay:0.10s }
+tbody tr:nth-child(6)  { animation-delay:0.12s }
+tbody tr:nth-child(7)  { animation-delay:0.14s }
+tbody tr:nth-child(8)  { animation-delay:0.16s }
+tbody tr:nth-child(9)  { animation-delay:0.18s }
+tbody tr:nth-child(10) { animation-delay:0.20s }
+
+.firma-name { font-weight:700; color:var(--text); font-size:14px; }
+
+/* ══════ BADGES — ortak base ══════ */
+.badge {
+    display:inline-flex; align-items:center; gap:4px;
+    padding:5px 11px; border-radius:8px; font-size:12px; font-weight:700;
+    white-space:nowrap; border:1.5px solid transparent;
 }
 
-.form-group select {
-    width: 100%;
-    padding: 9px 12px;
-    border: 1px solid var(--input-border);
-    border-radius: 7px;
-    font-size: 0.9em;
-    color: var(--text);
-    background: var(--card-bg);
-    font-family: inherit;
-    transition: border-color 0.15s;
-    cursor: pointer;
+/* Link badge */
+.link-badge {
+    display:inline-flex; align-items:center; gap:3px;
+    padding:4px 10px; margin-left:8px;
+    background:#fdf2f8; color:#be185d; border:1px solid #f9a8d4;
+    border-radius:6px; font-size:11px; font-weight:700;
+    text-decoration:none; transition:all 0.15s;
 }
-.form-group select:focus { outline: none; border-color: #4a5568; }
+.link-badge:hover { background:#be185d; color:white; border-color:#be185d; }
+[data-theme="dark"] .link-badge { background:#4a0028; color:#f9a8d4; border-color:#9d174d; }
+[data-theme="dark"] .link-badge:hover { background:#be185d; color:white; border-color:#be185d; }
 
-/* Tablo başlık altındaki açıklama */
-.th-legend {
-    display: flex;
-    gap: 12px;
-    margin-top: 6px;
-    font-size: 0.75em;
-    font-weight: 500;
-    text-transform: none;
-    letter-spacing: normal;
-    opacity: 0.9;
+/* Fiyat badge'leri */
+.price-badges { display:flex; flex-direction:column; gap:5px; align-items:flex-start; }
+.price-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:5px 13px; border-radius:100px; font-size:13px; font-weight:700;
+    border:1.5px solid transparent; white-space:nowrap;
+}
+.price-badge.vdsl   { background:var(--vdsl-bg);   color:var(--vdsl-text);   border-color:var(--vdsl-border); }
+.price-badge.fiber  { background:var(--fiber-bg);  color:var(--fiber-text);  border-color:var(--fiber-border); }
+.price-badge.single { background:var(--single-bg); color:var(--single-text); border-color:var(--single-border); }
+
+/* Sonraki dönem */
+.price-same     { background:var(--green-lt); color:var(--green); }
+.price-increase { background:var(--red-lt);   color:var(--red);   }
+.price-increase-vdsl,
+.price-increase-fiber { background:var(--red-lt); color:var(--red); border-color:var(--red); border-radius:100px; }
+
+.price-info { background:#f5f3ff; color:#7c3aed; border-color:#c4b5fd; }
+[data-theme="dark"] .price-info { background:#2e1065; color:#c4b5fd; border-color:#7c3aed; }
+
+/* Modem */
+.modem-free    { background:var(--green-lt); color:var(--green); }
+.modem-paid    { background:#fff7ed; color:#c2410c; border-color:#fb923c; }
+.modem-unknown { background:#f1f1f1; color:#1a1a1a; border-color:#d1d1d1; }
+[data-theme="dark"] .modem-paid    { background:#431407; color:#fb923c; border-color:#c2410c; }
+[data-theme="dark"] .modem-unknown { background:#1f1f1f; color:#a0a0a0; border-color:#3a3a3a; }
+
+/* Tablo legend */
+.th-legend { display:flex; gap:10px; margin-top:5px; font-size:10px; font-weight:600; text-transform:none; letter-spacing:normal; opacity:0.85; }
+.legend-item { display:inline-flex; align-items:center; gap:4px; }
+.legend-dot { width:7px; height:7px; border-radius:50%; display:inline-block; }
+.legend-dot.vdsl   { background:var(--vdsl-text); }
+.legend-dot.fiber  { background:var(--fiber-text); }
+.legend-dot.single { background:var(--single-text); }
+
+/* ══════ NO RESULTS ══════ */
+.no-results { text-align:center; padding:48px; color:var(--text-secondary); font-size:15px; font-weight:500; }
+
+/* ══════ PAGINATION ══════ */
+.pagination { display:flex; justify-content:center; align-items:center; gap:12px; padding:20px 28px; border-top:1px solid var(--border); }
+.page-btn {
+    padding:9px 20px; border:1.5px solid var(--input-border);
+    background:var(--btn-bg); color:var(--btn-text); border-radius:100px;
+    cursor:pointer; font-size:13px; font-weight:700; transition:all 0.15s;
+}
+.page-btn:hover:not(:disabled) { background:var(--blue); color:white; border-color:var(--blue); }
+.page-btn:disabled { opacity:0.4; cursor:not-allowed; }
+.page-info { font-size:13px; color:var(--text-secondary); font-weight:600; }
+
+/* ══════ DISCLAIMER & FOOTER ══════ */
+.disclaimer-section { background:var(--controls-bg); border-top:2px solid var(--border); padding:24px 28px; transition:background 0.3s; }
+.disclaimer-section h4 { font-size:11px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
+.disclaimer-section p  { font-size:12px; color:var(--text-secondary); line-height:1.7; margin-bottom:8px; opacity:0.8; }
+.disclaimer-section p:last-child { margin-bottom:0; }
+
+.footer { padding:22px 28px; background:var(--controls-bg); text-align:center; font-size:13px; color:var(--text-secondary); border-top:1px solid var(--border); line-height:1.8; transition:background 0.3s; }
+.footer a { color:var(--blue); text-decoration:none; font-weight:600; }
+.footer a:hover { text-decoration:underline; }
+
+/* ══════ MOBİL KART ══════ */
+.card-grid { display:none; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; padding:16px; }
+.firma-card { background:var(--card-bg); border-radius:14px; box-shadow:0 2px 12px var(--shadow); padding:16px; border:1px solid var(--border-light); transition:background 0.3s; }
+.card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid var(--border-light); }
+.card-firma { font-weight:800; font-size:14px; color:var(--text); }
+.card-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:12.5px; gap:8px; }
+.card-row-label { color:var(--text-secondary); font-weight:600; flex-shrink:0; }
+.card-row-value { text-align:right; }
+.card-footer { margin-top:10px; padding-top:10px; border-top:1px solid var(--border-light); display:flex; justify-content:flex-end; }
+
+@media (max-width:768px) {
+    .table-container { display:none; }
+    .card-grid { display:grid; }
+    .controls { flex-direction:column; }
+    .search-box { width:100%; }
+    .sort-buttons { width:100%; justify-content:center; }
+    .action-buttons { grid-template-columns:1fr; }
 }
 
-.legend-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+/* ══════ MODAL ══════ */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; }
+.modal-overlay.active { display:flex; }
+.modal-box { background:var(--card-bg); border-radius:18px; padding:28px; width:100%; max-width:440px; box-shadow:0 24px 64px rgba(0,0,0,0.25); margin:20px; animation:slideUp 0.22s ease; border:1px solid var(--border); }
+@keyframes slideUp {
+    from { transform:translateY(16px); opacity:0; }
+    to   { transform:translateY(0);    opacity:1; }
 }
+.modal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.modal-header h3 { font-size:16px; font-weight:800; color:var(--text); }
+.modal-close { background:var(--th-bg); border:none; cursor:pointer; color:var(--text-secondary); font-size:14px; width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
+.modal-close:hover { background:var(--border); }
+.modal-firma-tag { display:inline-block; padding:3px 12px; background:var(--controls-bg); color:var(--text-secondary); border-radius:100px; font-size:12px; font-weight:700; margin-bottom:20px; }
 
-.legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
+.form-group { margin-bottom:14px; }
+.form-group label { display:block; font-size:12px; font-weight:700; color:var(--text); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
+.form-group input, .form-group textarea, .form-group select {
+    width:100%; padding:10px 13px; border:1.5px solid var(--input-border);
+    border-radius:10px; font-size:14px; color:var(--text);
+    background:var(--card-bg); transition:border-color 0.15s;
 }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline:none; border-color:var(--blue); }
+.form-group textarea { resize:vertical; min-height:72px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
-.legend-dot.vdsl { background: var(--vdsl-text); }
-.legend-dot.fiber { background: var(--fiber-text); }
-.legend-dot.single { background: var(--single-text); }
+.modal-buttons { display:flex; gap:8px; margin-top:20px; }
+.btn-gonder { flex:1; padding:11px; background:var(--blue); color:white; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; transition:background 0.15s; }
+.btn-gonder:hover    { background:#1d4ed8; }
+.btn-gonder:disabled { opacity:0.6; cursor:not-allowed; }
+.btn-iptal { padding:11px 18px; background:var(--controls-bg); color:var(--btn-text); border:1.5px solid var(--border); border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.15s; }
+.btn-iptal:hover { background:var(--border); }
+
+.success-msg { display:none; text-align:center; padding:24px 0; }
+.success-msg .checkmark { font-size:3em; margin-bottom:12px; }
+.success-msg h4 { font-size:16px; font-weight:800; color:var(--text); margin-bottom:6px; }
+.success-msg p  { font-size:13px; color:var(--text-secondary); }
 </style>
 </head>
 <body>
 
-<!-- Hata Bildir Modal -->
+<!-- ═══ MODAL ═══ -->
 <div class="modal-overlay" id="bildirModal">
     <div class="modal-box">
         <div id="bildirFormContent">
@@ -1050,151 +459,12 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
                 <h3>⚠️ Hata Bildir</h3>
                 <button class="modal-close" onclick="modalKapat()">✕</button>
             </div>
-
             <form id="bildirForm" onsubmit="formGonder(event)">
                 <div class="form-group">
                     <label>Firma</label>
                     <select name="firma" id="firmaGizli" required>
                         <option value="">-- Firma seçin --</option>
-                        <option value="10LİNE">10LİNE</option>
-                        <option value="4GNET">4GNET</option>
-                        <option value="AKDENİZNET">AKDENİZNET</option>
-                        <option value="ALANYANET">ALANYANET</option>
-                        <option value="ATLANTİSNET">ATLANTİSNET</option>
-                        <option value="AY TELEKOM">AY TELEKOM</option>
-                        <option value="BCNNET">BCNNET</option>
-                        <option value="BELENATLANTİS">BELENATLANTİS</option>
-                        <option value="BEST TELEKOM">BEST TELEKOM</option>
-                        <option value="BURSA İNTERNET">BURSA İNTERNET</option>
-                        <option value="BİNBİRNET">BİNBİRNET</option>
-                        <option value="BİNET">BİNET</option>
-                        <option value="BİRNET">BİRNET</option>
-                        <option value="BİZİMİNTERNET">BİZİMİNTERNET</option>
-                        <option value="CANNET">CANNET</option>
-                        <option value="CERENNET">CERENNET</option>
-                        <option value="DAHAONLİNE">DAHAONLİNE</option>
-                        <option value="DİDİMNET">DİDİMNET</option>
-                        <option value="DİJİTAL NET">DİJİTAL NET</option>
-                        <option value="EFSANENET">EFSANENET</option>
-                        <option value="ELMA TELEKOM">ELMA TELEKOM</option>
-                        <option value="EPLANET">EPLANET</option>
-                        <option value="EURONET">EURONET</option>
-                        <option value="EXPRESNET">EXPRESNET</option>
-                        <option value="EXTRANET">EXTRANET</option>
-                        <option value="EYLÜLNET">EYLÜLNET</option>
-                        <option value="FACE TELEKOM">FACE TELEKOM</option>
-                        <option value="FARKNET">FARKNET</option>
-                        <option value="FIRATNET">FIRATNET</option>
-                        <option value="FLİXNET">FLİXNET</option>
-                        <option value="FREEFİBER">FREEFİBER</option>
-                        <option value="FULLNET">FULLNET</option>
-                        <option value="FİBA TELEKOM">FİBA TELEKOM</option>
-                        <option value="FİBERWİ">FİBERWİ</option>
-                        <option value="FİBİMNET">FİBİMNET</option>
-                        <option value="FİLİKANET">FİLİKANET</option>
-                        <option value="FİNET">FİNET</option>
-                        <option value="FİXNET">FİXNET</option>
-                        <option value="FİZYNET">FİZYNET</option>
-                        <option value="GAP TELEKOM">GAP TELEKOM</option>
-                        <option value="GENERALNET">GENERALNET</option>
-                        <option value="GESNET">GESNET</option>
-                        <option value="GLOBALNET">GLOBALNET</option>
-                        <option value="GÖLHİSARNET">GÖLHİSARNET</option>
-                        <option value="GÜLDÜRENNET">GÜLDÜRENNET</option>
-                        <option value="GİBİRNET">GİBİRNET</option>
-                        <option value="GİGASPEED">GİGASPEED</option>
-                        <option value="HATFİBER">HATFİBER</option>
-                        <option value="HAZARNET">HAZARNET</option>
-                        <option value="HİPERONLİNE">HİPERONLİNE</option>
-                        <option value="HİZONLİNE">HİZONLİNE</option>
-                        <option value="JETNET">JETNET</option>
-                        <option value="KABLOSUZONLİNE">KABLOSUZONLİNE</option>
-                        <option value="KAREL İLETİŞİM">KAREL İLETİŞİM</option>
-                        <option value="KARUNNET">KARUNNET</option>
-                        <option value="KAYINET">KAYINET</option>
-                        <option value="KIRNET BİLİŞİM">KIRNET BİLİŞİM</option>
-                        <option value="KOCAELİ İNTERNET">KOCAELİ İNTERNET</option>
-                        <option value="KÖYCEĞİZNET">KÖYCEĞİZNET</option>
-                        <option value="LİNYİTNET">LİNYİTNET</option>
-                        <option value="MAVİFİBER">MAVİFİBER</option>
-                        <option value="MAVİNET">MAVİNET</option>
-                        <option value="MERKÜRNET">MERKÜRNET</option>
-                        <option value="MERNET">MERNET</option>
-                        <option value="MERTSKY TELEKOM">MERTSKY TELEKOM</option>
-                        <option value="MOBİLFREE">MOBİLFREE</option>
-                        <option value="MOBİSMART">MOBİSMART</option>
-                        <option value="MODEXI">MODEXI</option>
-                        <option value="MİGROSNET">MİGROSNET</option>
-                        <option value="MİLLENİCOM">MİLLENİCOM</option>
-                        <option value="NAZNET">NAZNET</option>
-                        <option value="NEONET">NEONET</option>
-                        <option value="NETBONE">NETBONE</option>
-                        <option value="NETGSM">NETGSM</option>
-                        <option value="NETGİGABİT">NETGİGABİT</option>
-                        <option value="NETMAN">NETMAN</option>
-                        <option value="NETMAX">NETMAX</option>
-                        <option value="NETPLUS">NETPLUS</option>
-                        <option value="NETPRİME">NETPRİME</option>
-                        <option value="NETSPEED">NETSPEED</option>
-                        <option value="NETWİFİ">NETWİFİ</option>
-                        <option value="NETİNTERNET">NETİNTERNET</option>
-                        <option value="NOKTAONLİNE">NOKTAONLİNE</option>
-                        <option value="NOKTAWİFİ">NOKTAWİFİ</option>
-                        <option value="NİDA TELEKOM">NİDA TELEKOM</option>
-                        <option value="NİTROİNTERNET">NİTROİNTERNET</option>
-                        <option value="ORİS TELEKOM">ORİS TELEKOM</option>
-                        <option value="OSAWI TELEKOM">OSAWI TELEKOM</option>
-                        <option value="OSNET">OSNET</option>
-                        <option value="OTELEKOM">OTELEKOM</option>
-                        <option value="PANANET">PANANET</option>
-                        <option value="PASİFİK TELEKOM">PASİFİK TELEKOM</option>
-                        <option value="PLUSNET">PLUSNET</option>
-                        <option value="POWERNET">POWERNET</option>
-                        <option value="RAMTEK">RAMTEK</option>
-                        <option value="REKORNET">REKORNET</option>
-                        <option value="SADENET">SADENET</option>
-                        <option value="SAKNET">SAKNET</option>
-                        <option value="SARIKAYANET">SARIKAYANET</option>
-                        <option value="SARNET TELEKOM">SARNET TELEKOM</option>
-                        <option value="SONET">SONET</option>
-                        <option value="SPEEDNET">SPEEDNET</option>
-                        <option value="SUKNET">SUKNET</option>
-                        <option value="SURNET">SURNET</option>
-                        <option value="SİBANET">SİBANET</option>
-                        <option value="TBTNET">TBTNET</option>
-                        <option value="TEKNET">TEKNET</option>
-                        <option value="TEKNOBİL TELEKOM">TEKNOBİL TELEKOM</option>
-                        <option value="TEKNOSANET">TEKNOSANET</option>
-                        <option value="TELKOMNET">TELKOMNET</option>
-                        <option value="TELKOTURK">TELKOTURK</option>
-                        <option value="TEPENET">TEPENET</option>
-                        <option value="TRFASTNET">TRFASTNET</option>
-                        <option value="TRNET">TRNET</option>
-                        <option value="TURBONET">TURBONET</option>
-                        <option value="TURKCELL SUPERONLİNE">TURKCELL SUPERONLİNE</option>
-                        <option value="TURKHOST">TURKHOST</option>
-                        <option value="TURKNET">TURKNET</option>
-                        <option value="TURUNCUNET">TURUNCUNET</option>
-                        <option value="TÜRK TELEKOM">TÜRK TELEKOM</option>
-                        <option value="TÜRKİYEMNET">TÜRKİYEMNET</option>
-                        <option value="TİKLANET">TİKLANET</option>
-                        <option value="ULUHAN NET">ULUHAN NET</option>
-                        <option value="ULUNET">ULUNET</option>
-                        <option value="VATAN İNTERNET">VATAN İNTERNET</option>
-                        <option value="VEGANET">VEGANET</option>
-                        <option value="VIPNET TELEKOM">VIPNET TELEKOM</option>
-                        <option value="VİVANET">VİVANET</option>
-                        <option value="WAAYNET">WAAYNET</option>
-                        <option value="WENETWİFİ">WENETWİFİ</option>
-                        <option value="WORLDNET">WORLDNET</option>
-                        <option value="WİFİ TELEKOM">WİFİ TELEKOM</option>
-                        <option value="YENİNET">YENİNET</option>
-                        <option value="ÇABUKNET">ÇABUKNET</option>
-                        <option value="İCENET TELEKOM">İCENET TELEKOM</option>
-                        <option value="İNCİNET">İNCİNET</option>
-                        <option value="İNTERNET KUTUSU">İNTERNET KUTUSU</option>
-                        <option value="İREMNET">İREMNET</option>
-                        <option value="ŞOKNET">ŞOKNET</option>
+                        <option>10LİNE</option><option>4GNET</option><option>AKDENİZNET</option><option>ALANYANET</option><option>ATLANTİSNET</option><option>AY TELEKOM</option><option>BCNNET</option><option>BELENATLANTİS</option><option>BEST TELEKOM</option><option>BURSA İNTERNET</option><option>BİNBİRNET</option><option>BİNET</option><option>BİRNET</option><option>BİZİMİNTERNET</option><option>CANNET</option><option>CERENNET</option><option>DAHAONLİNE</option><option>DİDİMNET</option><option>DİJİTAL NET</option><option>EFSANENET</option><option>ELMA TELEKOM</option><option>EPLANET</option><option>EURONET</option><option>EXPRESNET</option><option>EXTRANET</option><option>EYLÜLNET</option><option>FACE TELEKOM</option><option>FARKNET</option><option>FIRATNET</option><option>FLİXNET</option><option>FREEFİBER</option><option>FULLNET</option><option>FİBA TELEKOM</option><option>FİBERWİ</option><option>FİBİMNET</option><option>FİLİKANET</option><option>FİNET</option><option>FİXNET</option><option>FİZYNET</option><option>GAP TELEKOM</option><option>GENERALNET</option><option>GESNET</option><option>GLOBALNET</option><option>GÖLHİSARNET</option><option>GÜLDÜRENNET</option><option>GİBİRNET</option><option>GİGASPEED</option><option>HATFİBER</option><option>HAZARNET</option><option>HİPERONLİNE</option><option>HİZONLİNE</option><option>JETNET</option><option>KABLOSUZONLİNE</option><option>KAREL İLETİŞİM</option><option>KARUNNET</option><option>KAYINET</option><option>KIRNET BİLİŞİM</option><option>KOCAELİ İNTERNET</option><option>KÖYCEĞİZNET</option><option>LİNYİTNET</option><option>MAVİFİBER</option><option>MAVİNET</option><option>MERKÜRNET</option><option>MERNET</option><option>MERTSKY TELEKOM</option><option>MOBİLFREE</option><option>MOBİSMART</option><option>MODEXI</option><option>MİGROSNET</option><option>MİLLENİCOM</option><option>NAZNET</option><option>NEONET</option><option>NETBONE</option><option>NETGSM</option><option>NETGİGABİT</option><option>NETMAN</option><option>NETMAX</option><option>NETPLUS</option><option>NETPRİME</option><option>NETSPEED</option><option>NETWİFİ</option><option>NETİNTERNET</option><option>NOKTAONLİNE</option><option>NOKTAWİFİ</option><option>NİDA TELEKOM</option><option>NİTROİNTERNET</option><option>ORİS TELEKOM</option><option>OSAWI TELEKOM</option><option>OSNET</option><option>OTELEKOM</option><option>PANANET</option><option>PASİFİK TELEKOM</option><option>PLUSNET</option><option>POWERNET</option><option>RAMTEK</option><option>REKORNET</option><option>SADENET</option><option>SAKNET</option><option>SARIKAYANET</option><option>SARNET TELEKOM</option><option>SONET</option><option>SPEEDNET</option><option>SUKNET</option><option>SURNET</option><option>SİBANET</option><option>TBTNET</option><option>TEKNET</option><option>TEKNOBİL TELEKOM</option><option>TEKNOSANET</option><option>TELKOMNET</option><option>TELKOTURK</option><option>TEPENET</option><option>TRFASTNET</option><option>TRNET</option><option>TURBONET</option><option>TURKCELL SUPERONLİNE</option><option>TURKHOST</option><option>TURKNET</option><option>TURUNCUNET</option><option>TÜRK TELEKOM</option><option>TÜRKİYEMNET</option><option>TİKLANET</option><option>ULUHAN NET</option><option>ULUNET</option><option>VATAN İNTERNET</option><option>VEGANET</option><option>VIPNET TELEKOM</option><option>VİVANET</option><option>WAAYNET</option><option>WENETWİFİ</option><option>WORLDNET</option><option>WİFİ TELEKOM</option><option>YENİNET</option><option>ÇABUKNET</option><option>İCENET TELEKOM</option><option>İNCİNET</option><option>İNTERNET KUTUSU</option><option>İREMNET</option><option>ŞOKNET</option>
                     </select>
                 </div>
                 <div class="form-row">
@@ -1212,7 +482,7 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
                     <input type="url" name="kaynak" placeholder="https://firma.com/tarifeler" required>
                 </div>
                 <div class="form-group">
-                    <label>Ek Açıklama <span style="font-weight:400; color:#9ca3af;">(opsiyonel)</span></label>
+                    <label>Ek Açıklama <span style="font-weight:400;color:#9ca3af;">(opsiyonel)</span></label>
                     <textarea name="aciklama" placeholder="Modem kira bilgisi güncel değilse veya eksikse buraya yazabilirsiniz..."></textarea>
                 </div>
                 <div class="modal-buttons">
@@ -1231,90 +501,67 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
     </div>
 </div>
 
+<!-- ═══ CONTAINER ═══ -->
 <div class="container">
+
     <header>
         <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙 Koyu Mod</button>
-        <h1>100 Mbps İnternet Tarife Fiyatları</h1>
+        <div class="header-eyebrow"><span class="live-dot"></span> Şubat 2026 · Güncel Veriler</div>
+        <h1>100 Mbps İnternet<br><em>Tarife Karşılaştırması</em></h1>
+        <p class="header-sub">Türkiye'deki tüm internet servis sağlayıcılarını tek ekranda karşılaştırın.</p>
+        <div class="header-stats">
+            <div class="hstat"><span class="hstat-val" id="totalProviders">—</span><span class="hstat-label">Sağlayıcı</span></div>
+            <div class="hstat"><span class="hstat-val green">299,90₺</span><span class="hstat-label">En Düşük</span></div>
+            <div class="hstat"><span class="hstat-val red">1.050₺</span><span class="hstat-label">En Yüksek</span></div>
+        </div>
     </header>
-    
+
     <div class="info-notice">
         <strong>⚠️ Önemli Notlar:</strong><br>
-        • Tablodaki fiyat bilgileri güncel olmayabilir. En doğru ve güncel fiyatlar için lütfen firma isimlerinin yanındaki bağlantılara tıklayarak resmi web sitelerini ziyaret edin.<br>
-        • Kullanılan filtreler, VDSL fiyatlandırması baz alınarak belirlenmiştir.<br>
-        • Modem kira ücretleri Fiber internet içindir.
+        • Tablodaki fiyat bilgileri güncel olmayabilir. En doğru fiyatlar için firma isimlerinin yanındaki bağlantılara tıklayarak resmi web sitelerini ziyaret edin.<br>
+        • Kullanılan filtreler VDSL fiyatlandırmasını baz alır. Modem kira ücretleri Fiber internet içindir.
     </div>
-    
 
-    <button class="wizard-trigger" onclick="toggleWizard()">🎯 Benim İçin En İyi Paketi Seç</button>
+    <div class="action-buttons" style="margin-top:20px">
+        <button class="wizard-trigger" onclick="toggleWizard()">🎯 Benim İçin En İyi Paketi Seç</button>
+        <a href="https://www.issaraclari.com/altyapi-sorgulama" target="_blank" class="wizard-trigger altyapi">🔍 Altyapı Sorgulama</a>
+    </div>
 
-<a href="https://www.issaraclari.com/altyapi-sorgulama" target="_blank" class="wizard-trigger" style="margin-top: 12px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); text-decoration: none; display: block; text-align: center;">
-    🔍 Altyapı Sorgulama
-</a>
     <div class="wizard-wrap" id="wizardWrap">
         <div class="wizard-head">
-            <div>
-                <h3>🎯 Benim İçin Seç</h3>
-                <p>3 adımda sana en uygun paketi buluyoruz.</p>
-            </div>
+            <div><h3>🎯 Benim İçin Seç</h3><p>3 adımda sana en uygun paketi buluyoruz.</p></div>
             <button class="wizard-close" onclick="toggleWizard()">✕</button>
         </div>
-
         <div class="w-step-bar">
             <div class="w-dot active" id="wd1"></div>
             <div class="w-dot" id="wd2"></div>
             <div class="w-dot" id="wd3"></div>
         </div>
-
-        <!-- Adım 1: Bütçe -->
         <div class="w-step active" id="ws1">
             <h4>💰 Aylık bütçeniz ne kadar?</h4>
             <div class="budget-display" id="budgetDisplay">600₺</div>
-            <input type="range" id="budgetRange" min="300" max="1000" step="50" value="600"
-                oninput="document.getElementById('budgetDisplay').textContent = this.value + '₺'">
+            <input type="range" id="budgetRange" min="300" max="1000" step="50" value="600" oninput="document.getElementById('budgetDisplay').textContent=this.value+'₺'">
             <div class="budget-labels"><span>300₺</span><span>1000₺</span></div>
         </div>
-
-        <!-- Adım 2: Modem -->
         <div class="w-step" id="ws2">
             <h4>📡 Modem tercihiniz?</h4>
             <div class="w-options">
-                <div class="w-option selected" onclick="wSelect(this, 'modem')" data-val="free">
-                    <div class="wi">🆓</div>
-                    <div class="wt">Ücretsiz olsun</div>
-                    <div class="wd">Tarifeye dahil veya ücretsiz</div>
-                </div>
-                <div class="w-option" onclick="wSelect(this, 'modem')" data-val="any">
-                    <div class="wi">💳</div>
-                    <div class="wt">Fark etmez</div>
-                    <div class="wd">Ücretli de olabilir</div>
-                </div>
+                <div class="w-option selected" onclick="wSelect(this)" data-val="free"><div class="wi">🆓</div><div class="wt">Ücretsiz olsun</div><div class="wd">Tarifeye dahil veya ücretsiz</div></div>
+                <div class="w-option" onclick="wSelect(this)" data-val="any"><div class="wi">💳</div><div class="wt">Fark etmez</div><div class="wd">Ücretli de olabilir</div></div>
             </div>
         </div>
-
-        <!-- Adım 3: Öncelik -->
         <div class="w-step" id="ws3">
             <h4>🎯 Önceliğiniz ne?</h4>
             <div class="w-options">
-                <div class="w-option selected" onclick="wSelect(this, 'oncelik')" data-val="fiyat">
-                    <div class="wi">💰</div>
-                    <div class="wt">En ucuz fiyat</div>
-                    <div class="wd">İlk dönem fiyatı düşük olsun</div>
-                </div>
-                <div class="w-option" onclick="wSelect(this, 'oncelik')" data-val="sabit">
-                    <div class="wi">📌</div>
-                    <div class="wt">Sabit fiyat</div>
-                    <div class="wd">Fiyat artmasın</div>
-                </div>
+                <div class="w-option selected" onclick="wSelect(this)" data-val="fiyat"><div class="wi">💰</div><div class="wt">En ucuz fiyat</div><div class="wd">İlk dönem fiyatı düşük olsun</div></div>
+                <div class="w-option" onclick="wSelect(this)" data-val="sabit"><div class="wi">📌</div><div class="wt">Sabit fiyat</div><div class="wd">Fiyat artmasın</div></div>
             </div>
         </div>
-
-        <!-- Sonuçlar -->
         <div class="w-step" id="ws-result">
             <h4>✅ Sana en uygun paketler:</h4>
             <div id="wResults"></div>
             <button class="w-restart" onclick="wRestart()">🔄 Tekrar Dene</button>
         </div>
-
         <div class="w-footer" id="wFooter">
             <button class="w-btn-prev" id="wPrev" onclick="wPrev()" style="visibility:hidden">◀ Geri</button>
             <span class="w-step-label" id="wLabel">Adım 1 / 3</span>
@@ -1326,28 +573,27 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
         <span class="bildir-bar-text">📋 Tabloda hatalı veya güncelliğini yitirmiş bir bilgi mi gördünüz?</span>
         <button class="bildir-bar-btn" onclick="hataBildir('')">⚠️ Hata Bildir</button>
     </div>
+
     <div class="controls">
-        <!-- Filtreler sola alındı -->
         <div class="sort-buttons">
-            <button class="sort-btn" onclick="sortTable('price-asc')">💰 En Ucuz</button>
-            <button class="sort-btn" onclick="sortTable('price-desc')">💰 En Pahalı</button>
+            <button class="sort-btn" onclick="sortTable('price-asc',event)">💰 En Ucuz</button>
+            <button class="sort-btn" onclick="sortTable('price-desc',event)">💰 En Pahalı</button>
             <div class="dropdown">
-                <button class="sort-btn dropdown-btn">📊 Fiyat Aralığı ▼</button>
-                <div class="dropdown-content">
-                    <a href="#" onclick="filterByPriceRange(200, 400); return false;">200-400₺</a>
-                    <a href="#" onclick="filterByPriceRange(400, 600); return false;">400-600₺</a>
-                    <a href="#" onclick="filterByPriceRange(600, 800); return false;">600-800₺</a>
-                    <a href="#" onclick="filterByPriceRange(800, 1000); return false;">800₺+</a>
+                <button class="sort-btn" onclick="toggleDropdown(event)">📊 Fiyat Aralığı ▼</button>
+                <div class="dropdown-content" id="fiyatDropdown">
+                    <a href="#" onclick="filterByPriceRange(200,400);return false;">200–400₺</a>
+                    <a href="#" onclick="filterByPriceRange(400,600);return false;">400–600₺</a>
+                    <a href="#" onclick="filterByPriceRange(600,800);return false;">600–800₺</a>
+                    <a href="#" onclick="filterByPriceRange(800,Infinity);return false;">800₺+</a>
                 </div>
             </div>
             <button class="sort-btn" onclick="resetTable()">🔄 Sıfırla</button>
         </div>
-        <!-- Arama kutusu sağa alındı ve küçültüldü -->
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
         </div>
     </div>
-    
+
     <div class="date-legend">
         <strong>🕒 Son Güncelleme:</strong>
         <span><span class="date-badge date-green">Son 30 gün</span> — Güncel</span>
@@ -1357,541 +603,375 @@ input[type="range"] { width: 100%; accent-color: #4a5568; }
 
     <div class="table-container">
         <table id="priceTable">
-            <thead>
-                <tr>
-                    <th>Firma</th>
-                    <th>
-                        İlk Dönem Ücret
-                        <div class="th-legend">
-                            <span class="legend-item">
-                                <span class="legend-dot vdsl"></span> VDSL
-                            </span>
-                            <span class="legend-item">
-                                <span class="legend-dot fiber"></span> Fiber
-                            </span>
-                            <span class="legend-item">
-                                <span class="legend-dot single"></span> VDSL/Fiber Aynı Fiyat
-                            </span>
-                        </div>
-                    </th>
-                    <th>Sonraki Dönem</th>
-                    <th>Modem Kira</th>
-                    <th>Son Güncelleme</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <!-- Veriler JavaScript ile doldurulacak -->
-            </tbody>
+            <thead><tr>
+                <th>Firma</th>
+                <th>İlk Dönem Ücreti
+                    <div class="th-legend">
+                        <span class="legend-item"><span class="legend-dot vdsl"></span> VDSL</span>
+                        <span class="legend-item"><span class="legend-dot fiber"></span> Fiber</span>
+                        <span class="legend-item"><span class="legend-dot single"></span> Aynı Fiyat</span>
+                    </div>
+                </th>
+                <th>Sonraki Dönem</th>
+                <th>Modem Kira</th>
+                <th>Son Güncelleme</th>
+            </tr></thead>
+            <tbody id="tableBody"></tbody>
         </table>
-        <div id="noResults" class="no-results" style="display: none;">
-            🔍 Aradığınız kriterlere uygun firma bulunamadı.
-        </div>
+        <div id="noResults" class="no-results" style="display:none;">🔍 Aradığınız kriterlere uygun firma bulunamadı.</div>
     </div>
-    
-    <div class="card-grid" id="cardGrid">
-        <!-- Kartlar JavaScript ile doldurulacak -->
-    </div>
+
+    <div class="card-grid" id="cardGrid"></div>
 
     <div class="pagination">
         <button class="page-btn" onclick="changePage(-1)" id="prevBtn">◀ Önceki</button>
         <span class="page-info">Sayfa <span id="currentPage">1</span> / <span id="totalPages">1</span></span>
         <button class="page-btn" onclick="changePage(1)" id="nextBtn">Sonraki ▶</button>
     </div>
-    
-    <div class="stats">
-        <div class="stat-item">
-            <div class="stat-value" id="totalProviders">138</div>
-            <div class="stat-label">Toplam Sağlayıcı</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">299,90₺</div>
-            <div class="stat-label">En Düşük Fiyat</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">1050,00₺</div>
-            <div class="stat-label">En Yüksek Fiyat</div>
-        </div>
-    </div>
-    
-  <div class="disclaimer-section">
+
+    <div class="disclaimer-section">
         <h4>⚖️ Sorumluluk Reddi Beyanı</h4>
         <p>Bu web sitesinde sunulan tüm içerik, yalnızca bilgilendirme amaçlı olup ticari bir nitelik taşımamaktadır.</p>
-        <p>Sitede yer alan fiyat, tarife ve diğer bilgiler, ilgili internet servis sağlayıcılarının kamuya açık resmi web siteleri esas alınarak derlenmiştir. Söz konusu bilgilerin doğruluğu, güncelliği ve eksiksizliği konusunda herhangi bir garanti verilmemektedir. Fiyat ve tarife bilgileri, hizmet sağlayıcılar tarafından önceden bildirimde bulunulmaksızın değiştirilebilir.</p>
-        <p>Bu sitedeki bilgilere dayanılarak gerçekleştirilen abonelik işlemleri, sözleşmeler veya diğer eylemlerden doğabilecek maddi ya da manevi zararlardan site sahibi sorumlu tutulamaz. Kullanıcıların herhangi bir hizmet satın almadan önce ilgili firmanın resmi web sitesini ziyaret ederek güncel koşulları bizzat teyit etmesi tavsiye olunur.</p>
-        <p>Bu sitede üçüncü taraf web sitelerine yönlendiren bağlantılar yer almaktadır. Söz konusu sitelerin içeriği, gizlilik politikaları veya uygulamalarından site sahibi sorumlu değildir.</p>
+        <p>Sitede yer alan fiyat, tarife ve diğer bilgiler, ilgili internet servis sağlayıcılarının kamuya açık resmi web siteleri esas alınarak derlenmiştir. Söz konusu bilgilerin doğruluğu, güncelliği ve eksiksizliği konusunda herhangi bir garanti verilmemektedir.</p>
+        <p>Bu sitedeki bilgilere dayanılarak gerçekleştirilen abonelik işlemleri veya diğer eylemlerden doğabilecek zararlardan site sahibi sorumlu tutulamaz. Kullanıcıların herhangi bir hizmet satın almadan önce ilgili firmanın resmi web sitesini ziyaret ederek güncel koşulları bizzat teyit etmesi tavsiye olunur.</p>
+        <p>Bu sitede üçüncü taraf web sitelerine yönlendiren bağlantılar yer almaktadır. Söz konusu sitelerin içeriği veya gizlilik politikalarından site sahibi sorumlu değildir.</p>
     </div>
 
-  <div class="footer" style="line-height: 1.8;">
-    <div style="margin-bottom: 8px;">
-        💼 <strong>Hazırlayan:</strong> deckardvibes
-        <span style="opacity: 0.5; margin: 0 6px;">•</span>
-        <a href="https://forum.donanimhaber.com/profil/3279461" target="_blank" style="color: #4a5568; text-decoration: underline; transition: color 0.2s;">DH Forum</a>
-        <span style="opacity: 0.5; margin: 0 6px;">•</span>
-        <a href="https://github.com/deckardvibes" target="_blank" style="color: #4a5568; text-decoration: underline; transition: color 0.2s;">GitHub</a>
+    <div class="footer">
+        <div style="margin-bottom:6px">💼 <strong>Hazırlayan:</strong> deckardvibes &nbsp;·&nbsp; <a href="https://forum.donanimhaber.com/profil/3279461" target="_blank">DH Forum</a> &nbsp;·&nbsp; <a href="https://github.com/deckardvibes" target="_blank">GitHub</a></div>
+        <div style="font-size:11px;opacity:0.5;margin-top:6px">2026</div>
     </div>
-    <div style="font-size: 0.75em; opacity: 0.5; margin-top: 8px;">
-        2026
-    </div>
+
 </div>
-    
+
 <script>
-// Firma verileri
+// ═══ VERİ ═══
 const firmsData = [
-    {name: "10LİNE", link: "https://10line.com.tr/tarifeler/", priceText: "575,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "4GNET", link: "https://4gnet.com.tr/bireysel_tarifeler/", priceText: "649,99₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "ALANYANET", link: "https://www.alanyanet.com.tr/VdslTarifeler.html", priceText: "VDSL 570,00₺ / FİBER 620,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "AKDENİZNET", link: "https://www.akdeniznet.com.tr/akdeniznet-fiber-tarifeler/", priceText: "800,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "ATLANTİSNET", link: "https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/", priceText: "600,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "AY TELEKOM", link: "https://aytelekom.com.tr/tarife/vdsl", priceText: "VDSL 589,00₺ / FİBER 599,00₺", type: "dual", nextPeriod: "Sabit", modem: "paid", modemCost: "60,00₺", date: "22 Şub 2026"},
-    {name: "BCNNET", link: "https://www.bcnnet.com.tr/tarifeler", priceText: "VDSL 625,00₺ / FİBER 675,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "BELENATLANTİS", link: "https://belenatlantis.com.tr/kampanyalar.php", priceText: "600,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "BEST TELEKOM", link: "https://besttelekom.com.tr/", priceText: "İlk 3 ay 499,00₺", type: "single", nextPeriod: "699,00₺", modem: "paid", modemCost: "80,00₺", date: "22 Şub 2026"},
-    {name: "BİZİMİNTERNET", link: "https://merkez.biziminternet.com.tr/tarifelerimiz", priceText: "600,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "BİNBİRNET", link: "https://binbirnet.com.tr/", priceText: "740,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "BİNET", link: "https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim", priceText: "390,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "BİRNET", link: "https://www.birnet.net.tr/fiber-vdsl-tarifeler/", priceText: "699,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "BURSA İNTERNET", link: "https://www.bursafiberinternet.com/", priceText: "700,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "CANNET", link: "https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim", priceText: "4 ay sabit 499,00₺", type: "single", nextPeriod: "699,00₺", modem: "paid", modemCost: "100,00₺", date: "22 Şub 2026"},
-    {name: "CERENNET", link: "https://www.cerennet.com.tr/", priceText: "VDSL 650,00₺ / FİBER 700,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "ÇABUKNET", link: "https://www.cabuknet.com.tr/tarifeler/", priceText: "790,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "DAHAONLİNE", link: "https://www.dahaonline.com.tr/paketlerimiz/", priceText: "575,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "DİJİTAL NET", link: "https://dijitalnet.com.tr/#tarifeler", priceText: "649,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "DİDİMNET", link: "https://www.didimnet.com.tr/kablolu-tarifeler.html", priceText: "450,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "EFSANENET", link: "https://www.efsanenet.com.tr/vdsl-internet/", priceText: "VDSL 480,00₺ / FİBER 530,00₺", type: "dual", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "ELMA TELEKOM", link: "https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/", priceText: "VDSL 400,00₺ / FİBER 450,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "EPLANET", link: "https://www.eplanet.com.tr/kampanyalar.html", priceText: "569,99₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "119,90₺", date: "22 Şub 2026"},
-    {name: "EURONET", link: "https://www.euronet.com.tr/internet-paketleri/vdsl", priceText: "629,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "EXPRESNET", link: "https://expresnet.com.tr/fiber-internet", priceText: "650,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "EXTRANET", link: "https://www.extranet.com.tr/kampanya/yeni-musteri-kampanyalari", priceText: "629,00₺", type: "single", nextPeriod: "31.12.2026'ya kadar", modem: "paid", modemCost: "100,00₺", date: "22 Şub 2026"},
-    {name: "EYLÜLNET", link: "https://www.eylulnet.com.tr/tarifeler.html", priceText: "620,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "FARKNET", link: "https://farknet.com.tr/internetpaketleri/", priceText: "VDSL 579,00₺ / FİBER 599,00₺", type: "dual", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "FACE TELEKOM", link: "https://facetelekom.com.tr/tarifeler/", priceText: "569,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "FİBA TELEKOM", link: "https://fibatelekom.com.tr/tr/packages", priceText: "750,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "FİZYNET", link: "https://www.fizynet.com.tr/fiber-tarifeler", priceText: "600,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "FİXNET", link: "https://www.fixnet.com.tr/eviniz#paketler", priceText: "VDSL 450,00₺ / FİBER 500,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "FİBERWİ", link: "https://fiberwi.com.tr/bireysel-tarifeler/", priceText: "750,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "FİNET", link: "https://www.finet.com.tr/tarifeler", priceText: "630,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "FİBİMNET", link: "https://www.fibim.com.tr/tarife-incele/2026-10020-on-odemeli-fiber-internet-kampanyasi-165", priceText: "790,00₺", type: "single", nextPeriod: "1 Haziran 2026'ya kadar", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "FİLİKANET", link: "https://www.filika.net.tr/kablolu-internet", priceText: "689,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "FIRATNET", link: "https://firatnet.com/pricing/xdsl-fiber", priceText: "VDSL 580,00₺ / FİBER 660,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "FLİXNET", link: "https://flix.net.tr/tarifeler", priceText: "520,00₺", type: "single", nextPeriod: "Temmuz 2026'ya kadar", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "FREEFİBER", link: "https://www.freefiber.com.tr/bireysel-tarifelerimiz", priceText: "650,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "FULLNET", link: "https://fullnet.com.tr/adsl-vdsl-internet-paketleri/", priceText: "795,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "GAP TELEKOM", link: "https://www.cdntelekom.com/tarifeler/6", priceText: "800,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "GESNET", link: "https://gesnet.com.tr/tarife-detay?id=13", priceText: "500,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "GENERALNET", link: "https://general.net.tr/", priceText: "499,90₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "GİGASPEED", link: "https://gigaspeed.com.tr/paketler", priceText: "İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺", type: "dual", nextPeriod: "VDSL 479,90₺ / FİBER 499,90₺", modem: "paid", modemCost: "65,00₺", date: "22 Şub 2026"},
-    {name: "GİBİRNET", link: "https://gibir.net.tr/", priceText: "İlk 3 Ay: 480,00₺", type: "single", nextPeriod: "580,00₺", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "GLOBALNET", link: "https://www.globalnetinternet.com/fiber-tarifeler/", priceText: "700,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "GÖLHİSARNET", link: "https://golhisarnet.net.tr/tarifeler", priceText: "650,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "GÜLDÜRENNET", link: "https://guldurennet.com.tr/tarifeler.php", priceText: "550,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "100,00₺", date: "22 Şub 2026"},
-    {name: "HATFİBER", link: "https://hatfiber.com.tr/vdsl-tarifeler/", priceText: "599,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "HAZARNET", link: "https://www.hazarnet.com/#tarife", priceText: "720,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "HİZONLİNE", link: "https://www.hizonline.com/kampanyalar.php", priceText: "749,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "HİPERONLİNE", link: "https://hiperonline.com.tr/", priceText: "VDSL 625,00₺ / FİBER 700,00₺", type: "dual", nextPeriod: "1 Temmuz 2026'ya kadar", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "İCENET TELEKOM", link: "https://www.icenet.net.tr/tr", priceText: "859,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "100,00₺", date: "22 Şub 2026"},
-    {name: "İNTERNET KUTUSU", link: "https://internetkutusu.com.tr/tarifeler", priceText: "549,90₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "İNCİNET", link: "https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL", priceText: "VDSL 499,90₺ / FİBER 599,90₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "İREMNET", link: "https://iremnet.com.tr/index.php/fiber-internet/", priceText: "700,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "JETNET", link: "https://www.jetnettelekom.com.tr/tarife/vdsl", priceText: "580,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "KAREL İLETİŞİM", link: "https://kareliletisim.com.tr/kampanyalar/", priceText: "VDSL 569,00₺ / FİBER 569,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "KABLOSUZONLİNE", link: "https://www.kablosuzonline.com.tr/wisp/bireysel-tarife.php#fiber-internet", priceText: "429,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "KARUNNET", link: "https://karunnet.com.tr/", priceText: "VDSL 580,00₺ / FİBER 610,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "KAYINET", link: "https://kayinet.com.tr/", priceText: "675,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "80,00₺", date: "22 Şub 2026"},
-    {name: "KIRNET BİLİŞİM", link: "https://kirnetbilisim.com.tr/package-fiber/", priceText: "560,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "KOCAELİ İNTERNET", link: "https://kocaeliinternet.com.tr/tarife/vdsl", priceText: "VDSL 650,00₺ / FİBER 575,00₺", type: "dual", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "KÖYCEĞİZNET", link: "https://koycegiznet.com.tr/tarifelerimiz/", priceText: "700,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "LİNYİTNET", link: "https://www.linyitnet.com.tr/vdsl-ve-fiber-tarifeler/", priceText: "İlk 3 ay 399,00₺", type: "single", nextPeriod: "699,00₺", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "MAVİNET", link: "https://mavinetbilisim.com.tr/tarifelerimiz/", priceText: "VDSL 570,00₺ / FİBER 630,00₺", type: "dual", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "MAVİFİBER", link: "https://mavifiber.com.tr", priceText: "450,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "MERKÜRNET", link: "https://www.merkurnet.com.tr/merkure-ilk-adim/", priceText: "VDSL 569,90₺ / FİBER 649,90₺", type: "dual", nextPeriod: "689,00₺", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "MERTSKY TELEKOM", link: "https://mertsky.com.tr/100-megabit/", priceText: "400,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "MERNET", link: "https://mernet.com.tr/sayfa-tarifelerimiz", priceText: "652,00₺", type: "single", nextPeriod: "Taahhütlü", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "MİGROSNET", link: "https://www.migrosnet.com.tr/", priceText: "İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺", type: "dual", nextPeriod: "VDSL 649,00₺ / FİBER 699,00₺", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "MİLLENİCOM", link: "https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet", priceText: "İlk 4 Ay: 399,90₺", type: "single", nextPeriod: "690,00₺", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "MOBİLFREE", link: "https://mobilfree.com.tr/tarifeler?commitment=taahhutsuz", priceText: "599,00₺", type: "single", nextPeriod: "1 Ocak 2027'ye kadar", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "MOBİSMART", link: "https://neonet.net.tr/vdsl-tarifeler/", priceText: "VDSL 680,00₺ /FİBER 800,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "MODEXI", link: "https://modexi.com.tr/100-mbps-fiber-internet/", priceText: "579,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "NAZNET", link: "https://www.naznet.com.tr/web/tarifeler/", priceText: "720,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "100,00₺", date: "22 Şub 2026"},
-    {name: "NEONET", link: "https://neonet.net.tr/vdsl-tarifeler/", priceText: "VDSL 599,00₺ / FİBER 675,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "NETBONE", link: "https://www.netbone.com.tr/", priceText: "579,90₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "NETGİGABİT", link: "https://www.netgigabit.com.tr/vdsltarifeler.html", priceText: "650,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "NETGSM", link: "https://www.netgsm.com.tr/internet/", priceText: "575,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "NETİNTERNET", link: "https://www.netinternet.tr/fiber-internet", priceText: "649,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "79,00₺", date: "22 Şub 2026"},
-    {name: "NETMAN", link: "https://www.netman.com.tr/", priceText: "599,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "NETMAX", link: "https://netmax.com.tr/tarifeler/fiber", priceText: "580,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "100,00₺", date: "22 Şub 2026"},
-    {name: "NETPLUS", link: "https://netplus.net.tr/tarifeler/", priceText: "600,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "NETSPEED", link: "https://www.netspeed.com.tr/kampanyalar", priceText: "İlk 4 Ay: 399,90₺", type: "single", nextPeriod: "649,90₺", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "NETWİFİ", link: "https://netwifi.com.tr/fiber-tarifeler", priceText: "500,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "NETPRİME", link: "https://netprime.com.tr/vdsl-tarifeler/", priceText: "VDSL 680,00₺ / FİBER 800,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "NİDA TELEKOM", link: "https://www.nidatelekom.com.tr/xdsl_internet_paketleri", priceText: "VDSL 599,00₺ / FİBER 629,00₺", type: "dual", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "NİTROİNTERNET", link: "https://nitrointernet.com.tr/", priceText: "650,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "NOKTAWİFİ", link: "https://noktawifi.com.tr/vdsl-tarifeler/", priceText: "VDSL 700,00₺ / FİBER 725,00₺", type: "dual", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "NOKTAONLİNE", link: "https://noktaonline.com.tr/kampanyalar", priceText: "390,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "OSNET", link: "https://www.osnet.com.tr/vdsl-tarifeler/", priceText: "VDSL 750,00₺ / FİBER 650,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "OSAWI TELEKOM", link: "https://osawi.com.tr/packages", priceText: "675,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "OTELEKOM", link: "https://www.otelekom.com.tr/kampanyalar/", priceText: "VDSL 600,00₺ / FİBER 675,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "ORİS TELEKOM", link: "https://www.oristelekom.com/kampanya-paketler/oris-faturali-taahhutsuz-on-odemeli-ev-interneti", priceText: "İlk 3 ay 299,90₺", type: "single", nextPeriod: "649,90₺", modem: "paid", modemCost: "50,00₺", date: "22 Şub 2026"},
-    {name: "PANANET", link: "https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html", priceText: "575,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "PASİFİK TELEKOM", link: "https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/", priceText: "İlk 3 Ay: 480,00₺", type: "single", nextPeriod: "560,00₺", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "PLUSNET", link: "https://plusnet.com.tr/tarife", priceText: "550,00₺", type: "single", nextPeriod: "6 ay sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "POWERNET", link: "https://powernet.com.tr/paketler/fiber-internet-tarifeleri", priceText: "600,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "50,00₺", date: "22 Şub 2026"},
-    {name: "RAMTEK", link: "https://www.ramtek.net.tr/ramtek-vae-hizmeti", priceText: "599,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "REKORNET", link: "https://rekornet.com.tr/", priceText: "570,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "SADENET", link: "https://sadenet.com.tr/Kampanyalar/yok-artik-fiber-kampanyasi-100mbps-taahhutsuz", priceText: "İlk 4 Ay: 319,00₺", type: "single", nextPeriod: "610,00₺", modem: "paid", modemCost: "150,00₺", date: "22 Şub 2026"},
-    {name: "SAKNET", link: "https://www.saknet.com.tr/#tarifeler", priceText: "VDSL 599,90₺ / FİBER 659,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "SARNET TELEKOM", link: "https://www.sarnettelekom.com.tr/vdsl-tarifeler/", priceText: "700,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "SARIKAYANET", link: "https://www.sarikayanet.com.tr/tarifeler", priceText: "VDSL 650,00₺ / FİBER 750,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "SİBANET", link: "https://sibanet.com.tr/bireysel-tarifeler/", priceText: "1050,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "SONET", link: "https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html", priceText: "VDSL 609,90₺ / FİBER 619,90₺", type: "dual", nextPeriod: "Sabit", modem: "paid", modemCost: "69,90₺", date: "22 Şub 2026"},
-    {name: "SPEEDNET", link: "https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler", priceText: "VDSL 900,00₺ / FİBER 800,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "SURNET", link: "https://www.surnet.com.tr/tarifeler-c-14", priceText: "750,00₺", type: "single", nextPeriod: "Taahhütlü", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "SUKNET", link: "https://suknet.com.tr/", priceText: "VDSL 660,00₺ / FİBER 680,00₺", type: "dual", nextPeriod: "Sabit", modem: "paid", modemCost: "60,00₺", date: "22 Şub 2026"},
-    {name: "ŞOKNET", link: "https://www.soknetinternet.com.tr/kampanyalar", priceText: "İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺", type: "dual", nextPeriod: "VDSL 619,00₺ / Fiber 689,00₺", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "TBTNET", link: "https://tbtnet.net/bireysel-internet", priceText: "639,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "65,00₺", date: "22 Şub 2026"},
-    {name: "TEPENET", link: "https://tepenet.com.tr/tr/paketler/roket-vdsl/", priceText: "VDSL 635,00₺ / FİBER 690,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TEKNET", link: "https://tek.net.tr/paketler", priceText: "569,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TEKNOSANET", link: "https://www.teknosanet.com/", priceText: "İlk 3 Ay: 449,00₺", type: "single", nextPeriod: "689,00₺", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "TEKNOBİL TELEKOM", link: "https://www.teknobiltelekom.com.tr/tarifeler.php", priceText: "550,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TELKOMNET", link: "https://www.telkomnet.com.tr/tarifeler", priceText: "VDSL 580,00₺ / FİBER 620,00₺", type: "dual", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "TELKOTURK", link: "https://www.telkoturk.net/efsane-fiberly-100", priceText: "İlk 3 ay 345,00₺", type: "single", nextPeriod: "689,00₺", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "TİKLANET", link: "https://tiklanet.com.tr/tarifeler/", priceText: "VDSL 520,00₺ / FİBER 560,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TRFASTNET", link: "https://trfastnet.com.tr/internet-tarifeleri-uygun-fiyatli-ve-hizli-paketler-tr-fastnet__trashed/meganet-100-mbps-paket/", priceText: "600,00₺", type: "single", nextPeriod: "31.12.2026'ya kadar", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TRNET", link: "https://tr-net.com.tr/tarifeler/", priceText: "775,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TURKHOST", link: "https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri", priceText: "İlk Ay: VDSL 359,00₺ / Fiber 550,00₺", type: "dual", nextPeriod: "VDSL 409,00₺ / Fiber 650,00₺", modem: "paid", modemCost: "65,00₺", date: "22 Şub 2026"},
-    {name: "TURKNET", link: "https://www.turk.net/", priceText: "699,90₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "TURUNCUNET", link: "https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet", priceText: "VDSL 549,90₺ / FİBER 589,90₺", type: "dual", nextPeriod: "Sabit", modem: "paid", modemCost: "60,00₺", date: "22 Şub 2026"},
-    {name: "TURKCELL SUPERONLİNE", link: "https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar", priceText: "VDSL/FİBER 750,00₺", type: "single", nextPeriod: "1 Haziran 2026'ya kadar", modem: "paid", modemCost: "80,00₺", date: "22 Şub 2026"},
-    {name: "TURBONET", link: "https://turbo.net.tr/paket/bireysel.html", priceText: "649,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TÜRKİYEMNET", link: "https://www.turkiyemnet.com.tr/#tarifeler", priceText: "VDSL 589,00₺ / FİBER 639,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "TÜRK TELEKOM", link: "https://bireysel.turktelekom.com.tr/evde-internet/yeni-musteri-kampanyalari/tum-yeni-musteri-kampanyalari?taahhut=12&hiz=100&siralama=fiyatArtan", priceText: "Taahhütlü", type: "single", nextPeriod: "Taahhütlü", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "ULUNET", link: "https://www.ulu.net.tr/paketler/VDSL", priceText: "570,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"},
-    {name: "ULUHAN NET", link: "https://www.uluhan.net.tr/fiber-tarifeler", priceText: "700,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "VATAN İNTERNET", link: "https://www.vataninternet.com.tr/kablolu-paketler/", priceText: "700,00₺", type: "single", nextPeriod: "Sabit", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "VEGANET", link: "https://www.veganet.com.tr/fiber-tarifeler", priceText: "750,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "VİVANET", link: "https://vivanet.tr/100-mbps-vdsl-fiber/", priceText: "599,00₺", type: "single", nextPeriod: "01.08.2026'ya kadar", modem: "free", modemCost: "", date: "22 Şub 2026"},
-    {name: "VIPNET TELEKOM", link: "https://vipnetbilisim.com.tr/fiber-internet", priceText: "620,00₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "WAAYNET", link: "https://waaynet.com.tr/tarifelerimiz.php", priceText: "599,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "75,00₺", date: "22 Şub 2026"},
-    {name: "WENETWİFİ", link: "http://www.wenetwifi.com/tr/PaketAyrinti/hiperfiber-internet-7", priceText: "799,99₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "WİFİ TELEKOM", link: "https://wifi.net.tr/wifi-vdsl-fiber-100mb/", priceText: "749,90₺", type: "single", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "WORLDNET", link: "https://worldnet.com.tr/tarifelerimiz/", priceText: "VDSL 714,00₺ / FİBER 814,00₺", type: "dual", nextPeriod: "Sabit", modem: "unknown", modemCost: "", date: "22 Şub 2026"},
-    {name: "YENİNET", link: "https://www.yeninet.com.tr/tarifelerimiz/", priceText: "599,00₺", type: "single", nextPeriod: "Sabit", modem: "paid", modemCost: "70,00₺", date: "22 Şub 2026"}
+    {name:"10LİNE",link:"https://10line.com.tr/tarifeler/",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"4GNET",link:"https://4gnet.com.tr/bireysel_tarifeler/",priceText:"649,99₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"ALANYANET",link:"https://www.alanyanet.com.tr/VdslTarifeler.html",priceText:"VDSL 570,00₺ / FİBER 620,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"AKDENİZNET",link:"https://www.akdeniznet.com.tr/akdeniznet-fiber-tarifeler/",priceText:"800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"ATLANTİSNET",link:"https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"AY TELEKOM",link:"https://aytelekom.com.tr/tarife/vdsl",priceText:"VDSL 589,00₺ / FİBER 599,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
+    {name:"BCNNET",link:"https://www.bcnnet.com.tr/tarifeler",priceText:"VDSL 625,00₺ / FİBER 675,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"BELENATLANTİS",link:"https://belenatlantis.com.tr/kampanyalar.php",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"BEST TELEKOM",link:"https://besttelekom.com.tr/",priceText:"İlk 3 ay 499,00₺",type:"single",nextPeriod:"699,00₺",modem:"paid",modemCost:"80,00₺",date:"22 Şub 2026"},
+    {name:"BİZİMİNTERNET",link:"https://merkez.biziminternet.com.tr/tarifelerimiz",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"BİNBİRNET",link:"https://binbirnet.com.tr/",priceText:"740,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"BİNET",link:"https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim",priceText:"390,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"BİRNET",link:"https://www.birnet.net.tr/fiber-vdsl-tarifeler/",priceText:"699,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"BURSA İNTERNET",link:"https://www.bursafiberinternet.com/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"CANNET",link:"https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim",priceText:"4 ay sabit 499,00₺",type:"single",nextPeriod:"699,00₺",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
+    {name:"CERENNET",link:"https://www.cerennet.com.tr/",priceText:"VDSL 650,00₺ / FİBER 700,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"ÇABUKNET",link:"https://www.cabuknet.com.tr/tarifeler/",priceText:"790,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"DAHAONLİNE",link:"https://www.dahaonline.com.tr/paketlerimiz/",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"DİJİTAL NET",link:"https://dijitalnet.com.tr/#tarifeler",priceText:"649,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"DİDİMNET",link:"https://www.didimnet.com.tr/kablolu-tarifeler.html",priceText:"450,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"EFSANENET",link:"https://www.efsanenet.com.tr/vdsl-internet/",priceText:"VDSL 480,00₺ / FİBER 530,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"ELMA TELEKOM",link:"https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/",priceText:"VDSL 400,00₺ / FİBER 450,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"EPLANET",link:"https://www.eplanet.com.tr/kampanyalar.html",priceText:"569,99₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"119,90₺",date:"22 Şub 2026"},
+    {name:"EURONET",link:"https://www.euronet.com.tr/internet-paketleri/vdsl",priceText:"629,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"EXPRESNET",link:"https://expresnet.com.tr/fiber-internet",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"EXTRANET",link:"https://www.extranet.com.tr/kampanya/yeni-musteri-kampanyalari",priceText:"629,00₺",type:"single",nextPeriod:"31.12.2026'ya kadar",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
+    {name:"EYLÜLNET",link:"https://www.eylulnet.com.tr/tarifeler.html",priceText:"620,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"FARKNET",link:"https://farknet.com.tr/internetpaketleri/",priceText:"VDSL 579,00₺ / FİBER 599,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"FACE TELEKOM",link:"https://facetelekom.com.tr/tarifeler/",priceText:"569,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"FİBA TELEKOM",link:"https://fibatelekom.com.tr/tr/packages",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"FİZYNET",link:"https://www.fizynet.com.tr/fiber-tarifeler",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FİXNET",link:"https://www.fixnet.com.tr/eviniz#paketler",priceText:"VDSL 450,00₺ / FİBER 500,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FİBERWİ",link:"https://fiberwi.com.tr/bireysel-tarifeler/",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FİNET",link:"https://www.finet.com.tr/tarifeler",priceText:"630,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"FİBİMNET",link:"https://www.fibim.com.tr/tarife-incele/2026-10020-on-odemeli-fiber-internet-kampanyasi-165",priceText:"790,00₺",type:"single",nextPeriod:"1 Haziran 2026'ya kadar",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FİLİKANET",link:"https://www.filika.net.tr/kablolu-internet",priceText:"689,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"FIRATNET",link:"https://firatnet.com/pricing/xdsl-fiber",priceText:"VDSL 580,00₺ / FİBER 660,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FLİXNET",link:"https://flix.net.tr/tarifeler",priceText:"520,00₺",type:"single",nextPeriod:"Temmuz 2026'ya kadar",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"FREEFİBER",link:"https://www.freefiber.com.tr/bireysel-tarifelerimiz",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FULLNET",link:"https://fullnet.com.tr/adsl-vdsl-internet-paketleri/",priceText:"795,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"GAP TELEKOM",link:"https://www.cdntelekom.com/tarifeler/6",priceText:"800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"GESNET",link:"https://gesnet.com.tr/tarife-detay?id=13",priceText:"500,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"GENERALNET",link:"https://general.net.tr/",priceText:"499,90₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"GİGASPEED",link:"https://gigaspeed.com.tr/paketler",priceText:"İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺",type:"dual",nextPeriod:"VDSL 479,90₺ / FİBER 499,90₺",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
+    {name:"GİBİRNET",link:"https://gibir.net.tr/",priceText:"İlk 3 Ay: 480,00₺",type:"single",nextPeriod:"580,00₺",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"GLOBALNET",link:"https://www.globalnetinternet.com/fiber-tarifeler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"GÖLHİSARNET",link:"https://golhisarnet.net.tr/tarifeler",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"GÜLDÜRENNET",link:"https://guldurennet.com.tr/tarifeler.php",priceText:"550,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
+    {name:"HATFİBER",link:"https://hatfiber.com.tr/vdsl-tarifeler/",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"HAZARNET",link:"https://www.hazarnet.com/#tarife",priceText:"720,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"HİZONLİNE",link:"https://www.hizonline.com/kampanyalar.php",priceText:"749,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"HİPERONLİNE",link:"https://hiperonline.com.tr/",priceText:"VDSL 625,00₺ / FİBER 700,00₺",type:"dual",nextPeriod:"1 Temmuz 2026'ya kadar",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"İCENET TELEKOM",link:"https://www.icenet.net.tr/tr",priceText:"859,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
+    {name:"İNTERNET KUTUSU",link:"https://internetkutusu.com.tr/tarifeler",priceText:"549,90₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"İNCİNET",link:"https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL",priceText:"VDSL 499,90₺ / FİBER 599,90₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"İREMNET",link:"https://iremnet.com.tr/index.php/fiber-internet/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"JETNET",link:"https://www.jetnettelekom.com.tr/tarife/vdsl",priceText:"580,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"KAREL İLETİŞİM",link:"https://kareliletisim.com.tr/kampanyalar/",priceText:"VDSL 569,00₺ / FİBER 569,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"KABLOSUZONLİNE",link:"https://www.kablosuzonline.com.tr/wisp/bireysel-tarife.php#fiber-internet",priceText:"429,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"KARUNNET",link:"https://karunnet.com.tr/",priceText:"VDSL 580,00₺ / FİBER 610,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"KAYINET",link:"https://kayinet.com.tr/",priceText:"675,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"80,00₺",date:"22 Şub 2026"},
+    {name:"KIRNET BİLİŞİM",link:"https://kirnetbilisim.com.tr/package-fiber/",priceText:"560,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"KOCAELİ İNTERNET",link:"https://kocaeliinternet.com.tr/tarife/vdsl",priceText:"VDSL 650,00₺ / FİBER 575,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"KÖYCEĞİZNET",link:"https://koycegiznet.com.tr/tarifelerimiz/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"LİNYİTNET",link:"https://www.linyitnet.com.tr/vdsl-ve-fiber-tarifeler/",priceText:"İlk 3 ay 399,00₺",type:"single",nextPeriod:"699,00₺",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"MAVİNET",link:"https://mavinetbilisim.com.tr/tarifelerimiz/",priceText:"VDSL 570,00₺ / FİBER 630,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"MAVİFİBER",link:"https://mavifiber.com.tr",priceText:"450,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"MERKÜRNET",link:"https://www.merkurnet.com.tr/merkure-ilk-adim/",priceText:"VDSL 569,90₺ / FİBER 649,90₺",type:"dual",nextPeriod:"689,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"MERTSKY TELEKOM",link:"https://mertsky.com.tr/100-megabit/",priceText:"400,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"MERNET",link:"https://mernet.com.tr/sayfa-tarifelerimiz",priceText:"652,00₺",type:"single",nextPeriod:"Taahhütlü",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"MİGROSNET",link:"https://www.migrosnet.com.tr/",priceText:"İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺",type:"dual",nextPeriod:"VDSL 649,00₺ / FİBER 699,00₺",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"MİLLENİCOM",link:"https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet",priceText:"İlk 4 Ay: 399,90₺",type:"single",nextPeriod:"690,00₺",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"MOBİLFREE",link:"https://mobilfree.com.tr/tarifeler?commitment=taahhutsuz",priceText:"599,00₺",type:"single",nextPeriod:"1 Ocak 2027'ye kadar",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"MOBİSMART",link:"https://neonet.net.tr/vdsl-tarifeler/",priceText:"VDSL 680,00₺ /FİBER 800,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"MODEXI",link:"https://modexi.com.tr/100-mbps-fiber-internet/",priceText:"579,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NAZNET",link:"https://www.naznet.com.tr/web/tarifeler/",priceText:"720,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
+    {name:"NEONET",link:"https://neonet.net.tr/vdsl-tarifeler/",priceText:"VDSL 599,00₺ / FİBER 675,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NETBONE",link:"https://www.netbone.com.tr/",priceText:"579,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"NETGİGABİT",link:"https://www.netgigabit.com.tr/vdsltarifeler.html",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NETGSM",link:"https://www.netgsm.com.tr/internet/",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"NETİNTERNET",link:"https://www.netinternet.tr/fiber-internet",priceText:"649,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"79,00₺",date:"22 Şub 2026"},
+    {name:"NETMAN",link:"https://www.netman.com.tr/",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NETMAX",link:"https://netmax.com.tr/tarifeler/fiber",priceText:"580,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
+    {name:"NETPLUS",link:"https://netplus.net.tr/tarifeler/",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"NETSPEED",link:"https://www.netspeed.com.tr/kampanyalar",priceText:"İlk 4 Ay: 399,90₺",type:"single",nextPeriod:"649,90₺",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"NETWİFİ",link:"https://netwifi.com.tr/fiber-tarifeler",priceText:"500,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NETPRİME",link:"https://netprime.com.tr/vdsl-tarifeler/",priceText:"VDSL 680,00₺ / FİBER 800,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NİDA TELEKOM",link:"https://www.nidatelekom.com.tr/xdsl_internet_paketleri",priceText:"VDSL 599,00₺ / FİBER 629,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"NİTROİNTERNET",link:"https://nitrointernet.com.tr/",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NOKTAWİFİ",link:"https://noktawifi.com.tr/vdsl-tarifeler/",priceText:"VDSL 700,00₺ / FİBER 725,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"NOKTAONLİNE",link:"https://noktaonline.com.tr/kampanyalar",priceText:"390,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"OSNET",link:"https://www.osnet.com.tr/vdsl-tarifeler/",priceText:"VDSL 750,00₺ / FİBER 650,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"OSAWI TELEKOM",link:"https://osawi.com.tr/packages",priceText:"675,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"OTELEKOM",link:"https://www.otelekom.com.tr/kampanyalar/",priceText:"VDSL 600,00₺ / FİBER 675,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"ORİS TELEKOM",link:"https://www.oristelekom.com/kampanya-paketler/oris-faturali-taahhutsuz-on-odemeli-ev-interneti",priceText:"İlk 3 ay 299,90₺",type:"single",nextPeriod:"649,90₺",modem:"paid",modemCost:"50,00₺",date:"22 Şub 2026"},
+    {name:"PANANET",link:"https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"PASİFİK TELEKOM",link:"https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/",priceText:"İlk 3 Ay: 480,00₺",type:"single",nextPeriod:"560,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"PLUSNET",link:"https://plusnet.com.tr/tarife",priceText:"550,00₺",type:"single",nextPeriod:"6 ay sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"POWERNET",link:"https://powernet.com.tr/paketler/fiber-internet-tarifeleri",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"50,00₺",date:"22 Şub 2026"},
+    {name:"RAMTEK",link:"https://www.ramtek.net.tr/ramtek-vae-hizmeti",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"REKORNET",link:"https://rekornet.com.tr/",priceText:"570,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"SADENET",link:"https://sadenet.com.tr/Kampanyalar/yok-artik-fiber-kampanyasi-100mbps-taahhutsuz",priceText:"İlk 4 Ay: 319,00₺",type:"single",nextPeriod:"610,00₺",modem:"paid",modemCost:"150,00₺",date:"22 Şub 2026"},
+    {name:"SAKNET",link:"https://www.saknet.com.tr/#tarifeler",priceText:"VDSL 599,90₺ / FİBER 659,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SARNET TELEKOM",link:"https://www.sarnettelekom.com.tr/vdsl-tarifeler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SARIKAYANET",link:"https://www.sarikayanet.com.tr/tarifeler",priceText:"VDSL 650,00₺ / FİBER 750,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SİBANET",link:"https://sibanet.com.tr/bireysel-tarifeler/",priceText:"1050,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SONET",link:"https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html",priceText:"VDSL 609,90₺ / FİBER 619,90₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"69,90₺",date:"22 Şub 2026"},
+    {name:"SPEEDNET",link:"https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler",priceText:"VDSL 900,00₺ / FİBER 800,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SURNET",link:"https://www.surnet.com.tr/tarifeler-c-14",priceText:"750,00₺",type:"single",nextPeriod:"Taahhütlü",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SUKNET",link:"https://suknet.com.tr/",priceText:"VDSL 660,00₺ / FİBER 680,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
+    {name:"ŞOKNET",link:"https://www.soknetinternet.com.tr/kampanyalar",priceText:"İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺",type:"dual",nextPeriod:"VDSL 619,00₺ / FİBER 689,00₺",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"TBTNET",link:"https://tbtnet.net/bireysel-internet",priceText:"639,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
+    {name:"TEPENET",link:"https://tepenet.com.tr/tr/paketler/roket-vdsl/",priceText:"VDSL 635,00₺ / FİBER 690,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TEKNET",link:"https://tek.net.tr/paketler",priceText:"569,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TEKNOSANET",link:"https://www.teknosanet.com/",priceText:"İlk 3 Ay: 449,00₺",type:"single",nextPeriod:"689,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"TEKNOBİL TELEKOM",link:"https://www.teknobiltelekom.com.tr/tarifeler.php",priceText:"550,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TELKOMNET",link:"https://www.telkomnet.com.tr/tarifeler",priceText:"VDSL 580,00₺ / FİBER 620,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"TELKOTURK",link:"https://www.telkoturk.net/efsane-fiberly-100",priceText:"İlk 3 ay 345,00₺",type:"single",nextPeriod:"689,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"TİKLANET",link:"https://tiklanet.com.tr/tarifeler/",priceText:"VDSL 520,00₺ / FİBER 560,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TRFASTNET",link:"https://trfastnet.com.tr/internet-tarifeleri-uygun-fiyatli-ve-hizli-paketler-tr-fastnet__trashed/meganet-100-mbps-paket/",priceText:"600,00₺",type:"single",nextPeriod:"31.12.2026'ya kadar",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TRNET",link:"https://tr-net.com.tr/tarifeler/",priceText:"775,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TURBONET",link:"https://turbo.net.tr/paket/bireysel.html",priceText:"649,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TURKCELL SUPERONLİNE",link:"https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar",priceText:"VDSL/FİBER 750,00₺",type:"single",nextPeriod:"1 Haziran 2026'ya kadar",modem:"paid",modemCost:"80,00₺",date:"22 Şub 2026"},
+    {name:"TURKHOST",link:"https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri",priceText:"İlk Ay: VDSL 359,00₺ / Fiber 550,00₺",type:"dual",nextPeriod:"VDSL 409,00₺ / Fiber 650,00₺",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
+    {name:"TURKNET",link:"https://www.turk.net/",priceText:"699,90₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"TURUNCUNET",link:"https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet",priceText:"VDSL 549,90₺ / FİBER 589,90₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
+    {name:"TÜRKİYEMNET",link:"https://www.turkiyemnet.com.tr/#tarifeler",priceText:"VDSL 589,00₺ / FİBER 639,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TÜRK TELEKOM",link:"https://bireysel.turktelekom.com.tr/evde-internet/yeni-musteri-kampanyalari/tum-yeni-musteri-kampanyalari?taahhut=12&hiz=100&siralama=fiyatArtan",priceText:"Taahhütlü",type:"single",nextPeriod:"Taahhütlü",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"ULUNET",link:"https://www.ulu.net.tr/paketler/VDSL",priceText:"570,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"ULUHAN NET",link:"https://www.uluhan.net.tr/fiber-tarifeler",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"VATAN İNTERNET",link:"https://www.vataninternet.com.tr/kablolu-paketler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"VEGANET",link:"https://www.veganet.com.tr/fiber-tarifeler",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"VİVANET",link:"https://vivanet.tr/100-mbps-vdsl-fiber/",priceText:"599,00₺",type:"single",nextPeriod:"01.08.2026'ya kadar",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"VIPNET TELEKOM",link:"https://vipnetbilisim.com.tr/fiber-internet",priceText:"620,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"WAAYNET",link:"https://waaynet.com.tr/tarifelerimiz.php",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"WENETWİFİ",link:"http://www.wenetwifi.com/tr/PaketAyrinti/hiperfiber-internet-7",priceText:"799,99₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"WİFİ TELEKOM",link:"https://wifi.net.tr/wifi-vdsl-fiber-100mb/",priceText:"749,90₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"WORLDNET",link:"https://worldnet.com.tr/tarifelerimiz/",priceText:"VDSL 714,00₺ / FİBER 814,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"YENİNET",link:"https://www.yeninet.com.tr/tarifelerimiz/",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"}
 ];
 
-// Sayfalama değişkenleri
+// ═══ SAYFALAMA ═══
 const rowsPerPage = 20;
 let currentPage = 1;
 let filteredData = [...firmsData];
 
-// Fiyat badge HTML'i oluştur - Sadece fiyatlar, VDSL/Fiber etiketleri kaldırıldı
-function createPriceBadge(priceText, type) {
+// ═══ BADGE RENDER ═══
+function priceBadge(priceText, type) {
+    if (type !== 'dual') return `<div class="price-badges"><span class="price-badge single">${priceText}</span></div>`;
+    const vm = priceText.match(/VDSL\s+([\d.,]+)₺/);
+    const fm = priceText.match(/F[İI]BER\s+([\d.,]+)₺/i);
+    let h = '<div class="price-badges">';
+    if (vm) h += `<span class="price-badge vdsl">${vm[1]}₺</span>`;
+    if (fm) h += `<span class="price-badge fiber">${fm[1]}₺</span>`;
+    if (!vm && !fm) h += `<span class="price-badge single">${priceText}</span>`;
+    return h + '</div>';
+}
+
+function nextPeriodBadge(np, type) {
+    if (/sabit/i.test(np)) return `<span class="badge price-same">✓ Sabit</span>`;
+    if (/\d{1,2}[.\-]\d{1,2}[.\-]\d{4}|kadar|taahhüt/i.test(np)) return `<span class="badge price-info">📅 ${np}</span>`;
     if (type === 'dual') {
-        // VDSL ve Fiber ayrı fiyatlar - sadece sayıları al
-        const vdslMatch = priceText.match(/VDSL\s+([\d.,]+)₺/);
-        const fiberMatch = priceText.match(/F[İI]BER\s+([\d.,]+)₺/);
-        
-        let html = '<div class="price-badges">';
-        if (vdslMatch) {
-            // Sadece fiyat, VDSL etiketi yok
-            html += `<span class="price-badge vdsl">${vdslMatch[1]}₺</span>`;
+        const vm = np.match(/VDSL\s+([\d.,]+)₺/);
+        const fm = np.match(/F[İI]BER\s+([\d.,]+)₺/i);
+        if (vm || fm) {
+            let h = '<div class="price-badges">';
+            if (vm) h += `<span class="badge price-increase-vdsl">↑ ${vm[1]}₺</span>`;
+            if (fm) h += `<span class="badge price-increase-fiber">↑ ${fm[1]}₺</span>`;
+            return h + '</div>';
         }
-        if (fiberMatch) {
-            // Sadece fiyat, FİBER etiketi yok
-            html += `<span class="price-badge fiber">${fiberMatch[1]}₺</span>`;
-        }
-        if (!vdslMatch && !fiberMatch) {
-            html += `<span class="price-badge single">${priceText}</span>`;
-        }
-        html += '</div>';
-        return html;
-    } else {
-        // Tek fiyat
-        return `<div class="price-badges"><span class="price-badge single">${priceText}</span></div>`;
     }
+    return `<span class="badge price-increase">↑ ${np}</span>`;
 }
 
-// Sonraki dönem badge'i
-function createNextPeriodBadge(nextPeriod) {
-    if (nextPeriod === 'Sabit' || nextPeriod.includes('sabit')) {
-        return `<span class="price-same">İlk dönem fiyatı geçerli</span>`;
-    } else {
-        return `<span class="price-increase">${nextPeriod}</span>`;
-    }
+function modemBadge(modem, cost) {
+    if (modem === 'free') return `<span class="badge modem-free">✓ Dahil</span>`;
+    if (modem === 'paid') return `<span class="badge modem-paid">${cost}</span>`;
+    return `<span class="badge modem-unknown">—</span>`;
 }
 
-// Modem badge'i
-function createModemBadge(modem, cost) {
-    if (modem === 'free') {
-        return `<span class="modem-free">Tarifeye Dahil</span>`;
-    } else if (modem === 'paid') {
-        return `<span class="modem-paid">${cost}</span>`;
-    } else {
-        return `<span class="modem-unknown">Bilgi Yok</span>`;
-    }
+function extractPrice(p) {
+    const m = p.match(/(\d+)[,\.](\d+)/g);
+    return m ? Math.min(...m.map(x => parseFloat(x.replace(',','.')))) : 999999;
 }
 
-// Tabloyu doldur
+// ═══ RENDER ═══
 function renderTable() {
-    const tbody = document.getElementById('tableBody');
-    const startIndex = (currentPage - 1) * rowsPerPage;
-    const endIndex = startIndex + rowsPerPage;
-    const pageData = filteredData.slice(startIndex, endIndex);
-    
-    tbody.innerHTML = pageData.map((firm, index) => `
-        <tr data-index="${startIndex + index}">
-            <td class="firma-name">
-                ${firm.name}
-                <a href="${firm.link}" target="_blank" class="link-badge">Tarifeler</a>
-            </td>
-            <td>${createPriceBadge(firm.priceText, firm.type)}</td>
-            <td>${createNextPeriodBadge(firm.nextPeriod)}</td>
-            <td>${createModemBadge(firm.modem, firm.modemCost)}</td>
-            <td><span class="date-badge date-green">${firm.date}</span></td>
-        </tr>
-    `).join('');
-    
-    // Kart görünümünü de güncelle
-    renderCards();
-    updatePagination();
-}
+    const start = (currentPage - 1) * rowsPerPage;
+    const page  = filteredData.slice(start, start + rowsPerPage);
 
-// Kart görünümünü doldur
-function renderCards() {
-    const cardGrid = document.getElementById('cardGrid');
-    const startIndex = (currentPage - 1) * rowsPerPage;
-    const endIndex = startIndex + rowsPerPage;
-    const pageData = filteredData.slice(startIndex, endIndex);
-    
-    cardGrid.innerHTML = pageData.map((firm, index) => `
-        <div class="firma-card" data-index="${startIndex + index}">
-            <div class="card-header">
-                <span class="card-firma">${firm.name}</span>
-                <a href="${firm.link}" target="_blank" class="link-badge">Tarifeler</a>
-            </div>
-            <div class="card-row">
-                <span class="card-row-label">İlk Dönem</span>
-                <span class="card-row-value">${createPriceBadge(firm.priceText, firm.type)}</span>
-            </div>
-            <div class="card-row">
-                <span class="card-row-label">Sonraki Dönem</span>
-                <span class="card-row-value">${createNextPeriodBadge(firm.nextPeriod)}</span>
-            </div>
-            <div class="card-row">
-                <span class="card-row-label">Modem</span>
-                <span class="card-row-value">${createModemBadge(firm.modem, firm.modemCost)}</span>
-            </div>
-            <div class="card-footer">
-                <span class="date-badge date-green">${firm.date}</span>
-            </div>
-        </div>
-    `).join('');
-}
+    document.getElementById('tableBody').innerHTML = page.map(f => `
+        <tr>
+            <td class="firma-name">${f.name}<a href="${f.link}" target="_blank" class="link-badge">↗ Tarifeler</a></td>
+            <td>${priceBadge(f.priceText, f.type)}</td>
+            <td>${nextPeriodBadge(f.nextPeriod, f.type)}</td>
+            <td>${modemBadge(f.modem, f.modemCost)}</td>
+            <td><span class="date-badge date-green">${f.date}</span></td>
+        </tr>`).join('');
 
-// Sayfalama güncelle
-function updatePagination() {
-    const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-    document.getElementById('currentPage').textContent = currentPage;
-    document.getElementById('totalPages').textContent = totalPages || 1;
-    document.getElementById('prevBtn').disabled = currentPage === 1;
-    document.getElementById('nextBtn').disabled = currentPage === totalPages || totalPages === 0;
+    document.getElementById('cardGrid').innerHTML = page.map(f => `
+        <div class="firma-card">
+            <div class="card-header"><span class="card-firma">${f.name}</span><a href="${f.link}" target="_blank" class="link-badge">↗</a></div>
+            <div class="card-row"><span class="card-row-label">İlk Dönem</span><span class="card-row-value">${priceBadge(f.priceText, f.type)}</span></div>
+            <div class="card-row"><span class="card-row-label">Sonraki</span><span class="card-row-value">${nextPeriodBadge(f.nextPeriod, f.type)}</span></div>
+            <div class="card-row"><span class="card-row-label">Modem</span><span class="card-row-value">${modemBadge(f.modem, f.modemCost)}</span></div>
+            <div class="card-footer"><span class="date-badge date-green">${f.date}</span></div>
+        </div>`).join('');
+
+    const total = Math.ceil(filteredData.length / rowsPerPage) || 1;
+    document.getElementById('currentPage').textContent  = currentPage;
+    document.getElementById('totalPages').textContent   = total;
+    document.getElementById('prevBtn').disabled         = currentPage === 1;
+    document.getElementById('nextBtn').disabled         = currentPage >= total;
     document.getElementById('totalProviders').textContent = filteredData.length;
 }
 
-// Sayfa değiştir
-function changePage(direction) {
-    const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-    const newPage = currentPage + direction;
-    
-    if (newPage >= 1 && newPage <= totalPages) {
-        currentPage = newPage;
-        renderTable();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+function changePage(dir) {
+    const total = Math.ceil(filteredData.length / rowsPerPage);
+    const np = currentPage + dir;
+    if (np >= 1 && np <= total) { currentPage = np; renderTable(); window.scrollTo({top:0,behavior:'smooth'}); }
 }
 
-// Arama fonksiyonu
+// ═══ ARAMA & SIRALAMA ═══
 document.getElementById('searchInput').addEventListener('keyup', function() {
-    const searchValue = this.value.toLowerCase();
-    
-    filteredData = firmsData.filter(firm => 
-        firm.name.toLowerCase().includes(searchValue)
-    );
-    
-    document.getElementById('noResults').style.display = filteredData.length === 0 ? 'block' : 'none';
-    currentPage = 1;
-    renderTable();
+    filteredData = firmsData.filter(f => f.name.toLowerCase().includes(this.value.toLowerCase()));
+    document.getElementById('noResults').style.display = filteredData.length ? 'none' : 'block';
+    currentPage = 1; renderTable();
 });
 
-// Fiyat çıkarma fonksiyonu
-function extractPrice(priceText) {
-    const matches = priceText.match(/(\d+)[,\.](\d+)/g);
-    if (!matches) return 999999;
-    
-    const prices = matches.map(p => parseFloat(p.replace(',', '.')));
-    return Math.min(...prices);
+function clearActive() { document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active')); }
+
+function sortTable(type, e) {
+    clearActive(); if (e?.target) e.target.classList.add('active');
+    filteredData.sort((a,b) => type === 'price-asc'
+        ? extractPrice(a.priceText) - extractPrice(b.priceText)
+        : extractPrice(b.priceText) - extractPrice(a.priceText));
+    currentPage = 1; renderTable();
 }
 
-// Sıralama fonksiyonu
-function sortTable(type) {
-    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    filteredData.sort((a, b) => {
-        const priceA = extractPrice(a.priceText);
-        const priceB = extractPrice(b.priceText);
-        
-        if (type === 'price-asc') {
-            return priceA - priceB;
-        } else {
-            return priceB - priceA;
-        }
-    });
-    
-    currentPage = 1;
-    renderTable();
+function filterByPriceRange(min, max) {
+    clearActive();
+    filteredData = firmsData.filter(f => { const p = extractPrice(f.priceText); return p >= min && p < max; });
+    document.getElementById('noResults').style.display = filteredData.length ? 'none' : 'block';
+    currentPage = 1; renderTable();
 }
 
-// Fiyat aralığına göre filtrele
-function filterByPriceRange(minPrice, maxPrice) {
-    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
-    
-    filteredData = firmsData.filter(firm => {
-        const price = extractPrice(firm.priceText);
-        return price >= minPrice && price < maxPrice;
-    });
-    
-    document.getElementById('noResults').style.display = filteredData.length === 0 ? 'block' : 'none';
-    currentPage = 1;
-    renderTable();
-}
-
-// Tabloyu sıfırla
 function resetTable() {
     filteredData = [...firmsData];
     document.getElementById('searchInput').value = '';
     document.getElementById('noResults').style.display = 'none';
-    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
-    currentPage = 1;
-    renderTable();
+    clearActive(); currentPage = 1; renderTable();
 }
 
-// Hata Bildir
-function hataBildir(firmaAdi) {
-    document.getElementById('firmaGizli').value = firmaAdi;
+// ═══ DROPDOWN ═══
+function toggleDropdown(e) { e.stopPropagation(); document.getElementById('fiyatDropdown').classList.toggle('open'); }
+document.addEventListener('click', () => document.getElementById('fiyatDropdown').classList.remove('open'));
+
+// ═══ MODAL ═══
+function hataBildir(firma) {
+    document.getElementById('firmaGizli').value = firma;
     document.getElementById('bildirFormContent').style.display = 'block';
     document.getElementById('bildirSuccess').style.display = 'none';
     document.getElementById('bildirForm').reset();
     document.getElementById('bildirModal').classList.add('active');
 }
-
-function modalKapat() {
-    document.getElementById('bildirModal').classList.remove('active');
-}
+function modalKapat() { document.getElementById('bildirModal').classList.remove('active'); }
+document.getElementById('bildirModal').addEventListener('click', e => { if (e.target === e.currentTarget) modalKapat(); });
 
 async function formGonder(e) {
     e.preventDefault();
-    
     const firma = document.getElementById('firmaGizli').value;
-    if (!firma) {
-        document.getElementById('firmaGizli').style.borderColor = '#ef4444';
-        document.getElementById('firmaGizli').focus();
-        return;
-    }
-    document.getElementById('firmaGizli').style.borderColor = '';
-
-    const required = ['hatali_fiyat', 'dogru_fiyat', 'kaynak'];
+    if (!firma) { document.getElementById('firmaGizli').style.borderColor='#ef4444'; document.getElementById('firmaGizli').focus(); return; }
+    document.getElementById('firmaGizli').style.borderColor='';
     let valid = true;
-    required.forEach(name => {
+    ['hatali_fiyat','dogru_fiyat','kaynak'].forEach(name => {
         const el = document.querySelector(`[name="${name}"]`);
-        if (!el.value.trim()) {
-            el.style.borderColor = '#ef4444';
-            if (valid) el.focus();
-            valid = false;
-        } else {
-            el.style.borderColor = '';
-        }
+        if (!el.value.trim()) { el.style.borderColor='#ef4444'; if(valid) el.focus(); valid=false; }
+        else el.style.borderColor='';
     });
     if (!valid) return;
-
     const btn = document.getElementById('gonderBtn');
-    btn.disabled = true;
-    btn.textContent = 'Gönderiliyor...';
-
-    const form = document.getElementById('bildirForm');
-    const data = new FormData(form);
-
+    btn.disabled = true; btn.textContent = 'Gönderiliyor...';
     try {
         const res = await fetch('https://formspree.io/f/xeelpkor', {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
+            method:'POST', body:new FormData(document.getElementById('bildirForm')), headers:{'Accept':'application/json'}
         });
-        if (res.ok) {
-            document.getElementById('bildirFormContent').style.display = 'none';
-            document.getElementById('bildirSuccess').style.display = 'block';
-        } else {
-            alert('Gönderim başarısız, lütfen tekrar deneyin.');
-            btn.disabled = false;
-            btn.textContent = '📨 Gönder';
-        }
-    } catch(err) {
-        alert('Bağlantı hatası, lütfen tekrar deneyin.');
-        btn.disabled = false;
-        btn.textContent = '📨 Gönder';
-    }
+        if (res.ok) { document.getElementById('bildirFormContent').style.display='none'; document.getElementById('bildirSuccess').style.display='block'; }
+        else { alert('Gönderim başarısız.'); btn.disabled=false; btn.textContent='📨 Gönder'; }
+    } catch { alert('Bağlantı hatası.'); btn.disabled=false; btn.textContent='📨 Gönder'; }
 }
 
-document.getElementById('bildirModal').addEventListener('click', function(e) {
-    if (e.target === this) modalKapat();
-});
-
-// Koyu mod
+// ═══ TEMA ═══
 function toggleTheme() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const newTheme = isDark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    document.getElementById('themeBtn').textContent = isDark ? '🌙 Koyu Mod' : '☀️ Açık Mod';
-    localStorage.setItem('theme', newTheme);
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const t = dark ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    document.getElementById('themeBtn').textContent = dark ? '🌙 Koyu Mod' : '☀️ Açık Mod';
+    localStorage.setItem('theme', t);
 }
-
-// Sayfa açılışında kaydedilen temayı uygula
 (function() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        const btn = document.getElementById('themeBtn');
-        if (btn) btn.textContent = '☀️ Açık Mod';
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme','dark');
+        const b = document.getElementById('themeBtn');
+        if (b) b.textContent = '☀️ Açık Mod';
     }
 })();
 
-// Wizard fonksiyonları
+// ═══ WIZARD ═══
 let wStep = 1;
 const wTotal = 3;
 
 function toggleWizard() {
     const w = document.getElementById('wizardWrap');
     w.classList.toggle('open');
-    if (w.classList.contains('open')) {
-        w.scrollIntoView({behavior: 'smooth', block: 'nearest'});
-    }
+    if (w.classList.contains('open')) w.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-
-function wNext() {
-    if (wStep < wTotal) {
-        wGoto(wStep + 1);
-    } else {
-        wShowResults();
-    }
-}
-
-function wPrev() {
-    if (wStep > 1) wGoto(wStep - 1);
-}
+function wNext() { wStep < wTotal ? wGoto(wStep+1) : wShowResults(); }
+function wPrev() { if (wStep > 1) wGoto(wStep-1); }
 
 function wGoto(step) {
     document.getElementById(`ws${wStep}`).classList.remove('active');
     document.getElementById(`wd${wStep}`).classList.remove('active');
-    document.getElementById(`wd${wStep}`).classList.add('done');
+    step > wStep
+        ? document.getElementById(`wd${wStep}`).classList.add('done')
+        : document.getElementById(`wd${step}`).classList.remove('done');
     wStep = step;
     document.getElementById(`ws${wStep}`).classList.add('active');
     document.getElementById(`wd${wStep}`).classList.remove('done');
@@ -1901,57 +981,34 @@ function wGoto(step) {
     document.getElementById('wLabel').textContent = `Adım ${wStep} / ${wTotal}`;
 }
 
-function wSelect(el, grup) {
+function wSelect(el) {
     el.closest('.w-options').querySelectorAll('.w-option').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
 }
 
 function wShowResults() {
-    const budget = parseInt(document.getElementById('budgetRange').value);
+    const budget    = parseInt(document.getElementById('budgetRange').value);
     const modemPref = document.querySelector('#ws2 .w-option.selected')?.dataset.val || 'any';
-    const oncelik = document.querySelector('#ws3 .w-option.selected')?.dataset.val || 'fiyat';
+    const oncelik   = document.querySelector('#ws3 .w-option.selected')?.dataset.val || 'fiyat';
 
     let results = firmsData.filter(f => {
-        const price = extractPrice(f.priceText);
-        if (price > budget) return false;
+        if (extractPrice(f.priceText) > budget) return false;
         if (modemPref === 'free' && f.modem !== 'free') return false;
         return true;
     });
+    if (oncelik === 'sabit') results = results.filter(f => /sabit/i.test(f.nextPeriod));
+    results = results.sort((a,b) => extractPrice(a.priceText)-extractPrice(b.priceText)).slice(0,3);
 
-    if (oncelik === 'sabit') {
-        results = results.filter(f => f.nextPeriod === 'Sabit' || f.nextPeriod.includes('sabit'));
-    }
-    
-    results.sort((a, b) => extractPrice(a.priceText) - extractPrice(b.priceText));
-    results = results.slice(0, 3);
+    const medals = ['🥇','🥈','🥉'], ranks = ['En İyi Seçim','2. Seçenek','3. Seçenek'];
+    document.getElementById('wResults').innerHTML = results.length
+        ? results.map((f,i) => `<div class="w-result-card">
+            <div class="w-rank">${medals[i]} ${ranks[i]}</div>
+            <div class="w-firma">${f.name}</div>
+            <div class="w-badges">${priceBadge(f.priceText,f.type)} ${modemBadge(f.modem,f.modemCost)}</div>
+            <a href="${f.link}" target="_blank" class="w-link">↗ Tarifeye Git</a>
+          </div>`).join('')
+        : '<div class="w-no-result">😔 Kriterlerinize uygun firma bulunamadı. Bütçeyi artırmayı veya modem tercihini değiştirmeyi deneyin.</div>';
 
-    const medals = ['🥇', '🥈', '🥉'];
-    const ranks = ['En İyi Seçim', '2. Seçenek', '3. Seçenek'];
-
-    let html = '';
-    if (results.length === 0) {
-        html = '<div class="w-no-result">😔 Kriterlerinize uygun firma bulunamadı. Bütçeyi artırmayı veya modem tercihini değiştirmeyi deneyin.</div>';
-    } else {
-        results.forEach((f, i) => {
-            const modemBadge = f.modem === 'free'
-                ? '<span class="modem-free">Modem Dahil</span>'
-                : f.modem === 'paid'
-                    ? `<span class="modem-paid">Modem: ${f.modemCost}</span>`
-                    : '<span class="modem-unknown">Modem Bilgi Yok</span>';
-            html += `
-            <div class="w-result-card">
-                <div class="w-rank">${medals[i]} ${ranks[i]}</div>
-                <div class="w-firma">${f.name}</div>
-                <div class="w-badges">
-                    ${createPriceBadge(f.priceText, f.type)}
-                    ${modemBadge}
-                </div>
-                <a href="${f.link}" target="_blank" class="w-link">Tarifeye Git →</a>
-            </div>`;
-        });
-    }
-
-    document.getElementById('wResults').innerHTML = html;
     document.getElementById(`ws${wStep}`).classList.remove('active');
     document.getElementById(`wd${wStep}`).classList.add('done');
     document.getElementById('ws-result').classList.add('active');
@@ -1963,10 +1020,7 @@ function wRestart() {
     document.getElementById('ws-result').classList.remove('active');
     document.getElementById('ws1').classList.add('active');
     document.getElementById('wFooter').style.display = 'flex';
-    document.querySelectorAll('.w-dot').forEach((d, i) => {
-        d.classList.remove('active', 'done');
-        if (i === 0) d.classList.add('active');
-    });
+    document.querySelectorAll('.w-dot').forEach((d,i) => { d.classList.remove('active','done'); if(i===0) d.classList.add('active'); });
     document.getElementById('wPrev').style.visibility = 'hidden';
     document.getElementById('wNext').textContent = 'Devam →';
     document.getElementById('wLabel').textContent = 'Adım 1 / 3';
@@ -1974,7 +1028,8 @@ function wRestart() {
     document.getElementById('budgetDisplay').textContent = '600₺';
 }
 
-// Sayfa yüklendiğinde
+// ═══ BAŞLAT ═══
+document.getElementById('totalProviders').textContent = firmsData.length;
 renderTable();
 </script>
 </body>
