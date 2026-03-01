@@ -4,656 +4,1812 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>100 Mbps İnternet Tarife Fiyatları Karşılaştırma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ══════ TOKENS ══════ */
 :root {
-    --bg:#f0f4ff; --card-bg:#ffffff; --text:#0d1117; --text-secondary:#6e7891;
-    --border:#e2e8f4; --border-light:#eef2f9; --controls-bg:#f7f9fe;
-    --th-bg:#f4f6fb; --th-text:#4a5568; --input-border:#d4dce8;
-    --btn-bg:#ffffff; --btn-text:#374151; --btn-hover:#f0f4ff;
-    --row-hover:#f8faff; --notice-bg:#fffbeb; --notice-border:#f59e0b; --notice-text:#92400e;
-    --shadow:rgba(13,17,23,0.07); --shadow-md:rgba(13,17,23,0.10); --dropdown-shadow:rgba(13,17,23,0.12);
-    --vdsl-bg:#ccfbf1; --vdsl-text:#0f766e; --vdsl-border:#5eead4;
-    --fiber-bg:#dbeafe; --fiber-text:#1e40af; --fiber-border:#60a5fa;
-    --single-bg:#fef3c7; --single-text:#d97706; --single-border:#fbbf24;
-    --green:#059669; --green-lt:#ecfdf5; --red:#dc2626; --red-lt:#fef2f2;
-    --blue:#2563eb; --blue-lt:#eff6ff;
-}
-[data-theme="dark"] {
-    --bg:#090e1a; --card-bg:#111827; --text:#e2e8f0; --text-secondary:#94a3b8;
-    --border:#1f2d40; --border-light:#172033; --controls-bg:#0e1625;
-    --th-bg:#0e1625; --th-text:#94a3b8; --input-border:#1f2d40;
-    --btn-bg:#111827; --btn-text:#cbd5e1; --btn-hover:#1a2740;
-    --row-hover:#141f30; --notice-bg:#1c1506; --notice-border:#b45309; --notice-text:#fcd34d;
-    --shadow:rgba(0,0,0,0.4); --shadow-md:rgba(0,0,0,0.5); --dropdown-shadow:rgba(0,0,0,0.5);
-    --vdsl-bg:#134e4a; --vdsl-text:#5eead4; --vdsl-border:#14b8a6;
-    --fiber-bg:#1e3a8a; --fiber-text:#93c5fd; --fiber-border:#3b82f6;
-    --single-bg:#78350f; --single-text:#fcd34d; --single-border:#f59e0b;
-    --green:#10b981; --green-lt:#052e16; --red:#f87171; --red-lt:#450a0a;
-    --blue:#3b82f6; --blue-lt:#1e3a8a;
+  --bg:#f0f4ff;
+  --card-bg:#ffffff;
+  --text:#0d1117;
+  --text-secondary:#6e7891;
+  --border:#e2e8f4;
+  --border-light:#eef2f9;
+  --controls-bg:#f7f9fe;
+  --th-bg:#f4f6fb;
+  --th-text:#4a5568;
+  --input-border:#d4dce8;
+  --btn-bg:#ffffff;
+  --btn-text:#374151;
+  --btn-hover:#f0f4ff;
+  --row-hover:#f8faff;
+  --notice-bg:#fffbeb;
+  --notice-border:#f59e0b;
+  --notice-text:#92400e;
+  --shadow:rgba(13,17,23,0.07);
+  --shadow-md:rgba(13,17,23,0.10);
+  --dropdown-shadow:rgba(13,17,23,0.12);
+  --vdsl-bg:#ccfbf1;
+  --vdsl-text:#0f766e;
+  --vdsl-border:#5eead4;
+  --fiber-bg:#dbeafe;
+  --fiber-text:#1e40af;
+  --fiber-border:#60a5fa;
+  --single-bg:#fef3c7;
+  --single-text:#d97706;
+  --single-border:#fbbf24;
+  --green:#059669;
+  --green-lt:#ecfdf5;
+  --red:#dc2626;
+  --red-lt:#fef2f2;
+  --blue:#2563eb;
+  --blue-lt:#eff6ff;
 }
 
-/* ══════ RESET & BASE ══════ */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+[data-theme="dark"] {
+  --bg:#090e1a;
+  --card-bg:#111827;
+  --text:#e2e8f0;
+  --text-secondary:#94a3b8;
+  --border:#1f2d40;
+  --border-light:#172033;
+  --controls-bg:#0e1625;
+  --th-bg:#0e1625;
+  --th-text:#94a3b8;
+  --input-border:#1f2d40;
+  --btn-bg:#111827;
+  --btn-text:#cbd5e1;
+  --btn-hover:#1a2740;
+  --row-hover:#141f30;
+  --notice-bg:#1c1506;
+  --notice-border:#b45309;
+  --notice-text:#fcd34d;
+  --shadow:rgba(0,0,0,0.4);
+  --shadow-md:rgba(0,0,0,0.5);
+  --dropdown-shadow:rgba(0,0,0,0.5);
+  --vdsl-bg:#134e4a;
+  --vdsl-text:#5eead4;
+  --vdsl-border:#14b8a6;
+  --fiber-bg:#1e3a8a;
+  --fiber-text:#93c5fd;
+  --fiber-border:#3b82f6;
+  --single-bg:#78350f;
+  --single-text:#fcd34d;
+  --single-border:#f59e0b;
+  --green:#10b981;
+  --green-lt:#052e16;
+  --red:#f87171;
+  --red-lt:#450a0a;
+  --blue:#3b82f6;
+  --blue-lt:#1e3a8a;
+}
+
+*,*::before,*::after {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body {
-    font-family:'Outfit',-apple-system,sans-serif;
-    background:var(--bg); color:var(--text);
-    transition:background 0.3s,color 0.3s; min-height:100vh;
+  font-family:'Outfit',-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:background 0.3s,color 0.3s;
+  min-height:100vh;
 }
 
-/* font-family tüm form elemanlarına tek seferinde */
-button, input, select, textarea {
-    font-family:'Outfit',sans-serif;
+button,input,select,textarea {
+  font-family:'Outfit',sans-serif;
 }
 
-/* ══════ CONTAINER ══════ */
 .container {
-    max-width:1380px; margin:28px auto;
-    background:var(--card-bg); border-radius:20px;
-    box-shadow:0 8px 32px var(--shadow);
-    overflow:hidden; transition:background 0.3s;
+  max-width:1380px;
+  margin:28px auto;
+  background:var(--card-bg);
+  border-radius:20px;
+  box-shadow:0 8px 32px var(--shadow);
+  overflow:hidden;
+  transition:background 0.3s;
 }
 
-/* ══════ HEADER ══════ */
 header {
-    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#0e7490 100%);
-    color:white; padding:48px 36px 44px; text-align:center;
-    position:relative; overflow:hidden;
+  background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#0e7490 100%);
+  color:white;
+  padding:48px 36px 44px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
 }
+
 header::before {
-    content:''; position:absolute; top:-80px; left:-80px;
-    width:400px; height:400px;
-    background:radial-gradient(circle,rgba(99,102,241,0.25) 0%,transparent 70%);
-    pointer-events:none;
+  content:'';
+  position:absolute;
+  top:-80px;
+  left:-80px;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle,rgba(99,102,241,0.25) 0%,transparent 70%);
+  pointer-events:none;
 }
+
 header::after {
-    content:''; position:absolute; bottom:-60px; right:-60px;
-    width:360px; height:360px;
-    background:radial-gradient(circle,rgba(14,116,144,0.3) 0%,transparent 70%);
-    pointer-events:none;
+  content:'';
+  position:absolute;
+  bottom:-60px;
+  right:-60px;
+  width:360px;
+  height:360px;
+  background:radial-gradient(circle,rgba(14,116,144,0.3) 0%,transparent 70%);
+  pointer-events:none;
 }
+
 .theme-toggle {
-    position:absolute; top:20px; right:24px;
-    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
-    color:white; padding:8px 16px; border-radius:100px;
-    cursor:pointer; font-size:13px; font-weight:600;
-    transition:background 0.2s; z-index:2;
+  position:absolute;
+  top:20px;
+  right:24px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.2);
+  color:white;
+  padding:8px 16px;
+  border-radius:100px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+  transition:background 0.2s;
+  z-index:2;
 }
-.theme-toggle:hover { background:rgba(255,255,255,0.22); }
+
+.theme-toggle:hover {
+  background:rgba(255,255,255,0.22);
+}
 
 .header-eyebrow {
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:12px; font-weight:600;
-    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18);
-    padding:5px 14px; border-radius:100px; margin-bottom:20px;
-    color:rgba(255,255,255,0.88); position:relative; z-index:1;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.18);
+  padding:5px 14px;
+  border-radius:100px;
+  margin-bottom:20px;
+  color:rgba(255,255,255,0.88);
+  position:relative;
+  z-index:1;
 }
+
 .live-dot {
-    width:6px; height:6px; background:#4ade80;
-    border-radius:50%; animation:livePulse 2s infinite;
+  width:6px;
+  height:6px;
+  background:#4ade80;
+  border-radius:50%;
+  animation:livePulse 2s infinite;
 }
+
 @keyframes livePulse {
-    0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(74,222,128,0.5); }
-    50%      { opacity:0.7; box-shadow:0 0 0 5px rgba(74,222,128,0); }
+  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,0.5)}
+  50%{opacity:0.7;box-shadow:0 0 0 5px rgba(74,222,128,0)}
 }
+
 h1 {
-    font-size:clamp(24px,4vw,40px); font-weight:800;
-    letter-spacing:-0.8px; line-height:1.1; margin-bottom:10px;
-    position:relative; z-index:1;
+  font-size:clamp(24px,4vw,40px);
+  font-weight:800;
+  letter-spacing:-0.8px;
+  line-height:1.1;
+  margin-bottom:10px;
+  position:relative;
+  z-index:1;
 }
-h1 em { font-style:italic; color:#60d9f8; }
+
+h1 em {
+  font-style:italic;
+  color:#60d9f8;
+}
+
 .header-sub {
-    font-size:15px; color:rgba(255,255,255,0.65); margin-bottom:32px;
-    position:relative; z-index:1;
-}
-.header-stats { display:flex; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
-.hstat { padding:14px 28px; border-right:1px solid rgba(255,255,255,0.12); text-align:center; }
-.hstat:last-child { border-right:none; }
-.hstat-val { font-size:26px; font-weight:800; letter-spacing:-0.5px; color:white; display:block; }
-.hstat-val.green { color:#4ade80; }
-.hstat-val.red   { color:#f87171; }
-.hstat-label { font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.8px; margin-top:2px; display:block; }
-
-@media (max-width:768px) {
-    .theme-toggle { position:static; display:block; margin:14px auto 0; width:fit-content; }
-    h1 { font-size:22px; }
-    .hstat { padding:10px 16px; }
-    .hstat-val { font-size:20px; }
+  font-size:15px;
+  color:rgba(255,255,255,0.65);
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
 }
 
-/* ══════ NOTICE ══════ */
+.header-stats {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  position:relative;
+  z-index:1;
+}
+
+.hstat {
+  padding:14px 28px;
+  border-right:1px solid rgba(255,255,255,0.12);
+  text-align:center;
+}
+
+.hstat:last-child {
+  border-right:none;
+}
+
+.hstat-val {
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:-0.5px;
+  color:white;
+  display:block;
+}
+
+.hstat-val.green {
+  color:#4ade80;
+}
+
+.hstat-val.red {
+  color:#f87171;
+}
+
+.hstat-label {
+  font-size:11px;
+  font-weight:600;
+  color:rgba(255,255,255,0.5);
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  margin-top:2px;
+  display:block;
+}
+
+@media(max-width:768px) {
+
+.theme-toggle {
+  position:static;
+  display:block;
+  margin:14px auto 0;
+  width:fit-content;
+}
+
+h1 {
+  font-size:22px;
+}
+
+.hstat {
+  padding:10px 16px;
+}
+
+.hstat-val {
+  font-size:20px;
+}
+}
+
 .info-notice {
-    background:var(--notice-bg); border-left:4px solid var(--notice-border);
-    padding:14px 20px; margin:20px 28px; border-radius:0 10px 10px 0;
-    font-size:13px; color:var(--notice-text); line-height:1.7;
-    transition:background 0.3s,color 0.3s;
+  background:var(--notice-bg);
+  border-left:4px solid var(--notice-border);
+  padding:14px 20px;
+  margin:20px 28px;
+  border-radius:0 10px 10px 0;
+  font-size:13px;
+  color:var(--notice-text);
+  line-height:1.7;
+  transition:background 0.3s,color 0.3s;
 }
 
-/* ══════ ACTION BUTTONS ══════ */
-.action-buttons { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 28px; }
+.action-buttons {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:0 28px;
+}
+
 .wizard-trigger {
-    padding:14px 20px; background:linear-gradient(135deg,#1e3a8a,#2563eb);
-    color:white; border:none; border-radius:12px; font-size:14px; font-weight:700;
-    cursor:pointer; transition:opacity 0.2s,transform 0.1s;
-    text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 20px;
+  background:linear-gradient(135deg,#1e3a8a,#2563eb);
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:opacity 0.2s,transform 0.1s;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 }
-.wizard-trigger:hover  { opacity:0.92; transform:translateY(-1px); }
-.wizard-trigger:active { transform:translateY(0); }
-.wizard-trigger.altyapi { background:linear-gradient(135deg,#6d28d9,#7c3aed); }
 
-@media (max-width:600px) { .action-buttons { grid-template-columns:1fr; } }
+.wizard-trigger:hover {
+  opacity:0.92;
+  transform:translateY(-1px);
+}
 
-/* ══════ WIZARD ══════ */
+.wizard-trigger:active {
+  transform:translateY(0);
+}
+
+.wizard-trigger.altyapi {
+  background:linear-gradient(135deg,#6d28d9,#7c3aed);
+}
+
+@media(max-width:600px) {
+
+.action-buttons {
+  grid-template-columns:1fr;
+}
+}
+
 .wizard-wrap {
-    display:none; margin:16px 28px; background:var(--card-bg);
-    border-radius:16px; box-shadow:0 8px 32px var(--shadow-md);
-    overflow:hidden; border:1px solid var(--border);
+  display:none;
+  margin:16px 28px;
+  background:var(--card-bg);
+  border-radius:16px;
+  box-shadow:0 8px 32px var(--shadow-md);
+  overflow:hidden;
+  border:1px solid var(--border);
 }
-.wizard-wrap.open { display:block; }
+
+.wizard-wrap.open {
+  display:block;
+}
+
 .wizard-head {
-    background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white;
-    padding:18px 24px; display:flex; justify-content:space-between; align-items:center;
+  background:linear-gradient(135deg,#1e3a8a,#2563eb);
+  color:white;
+  padding:18px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.wizard-head h3 { font-size:15px; font-weight:800; }
-.wizard-head p  { font-size:12px; opacity:0.75; margin-top:2px; }
+
+.wizard-head h3 {
+  font-size:15px;
+  font-weight:800;
+}
+
+.wizard-head p {
+  font-size:12px;
+  opacity:0.75;
+  margin-top:2px;
+}
+
 .wizard-close {
-    background:rgba(255,255,255,0.15); border:none; color:white;
-    width:30px; height:30px; border-radius:50%; cursor:pointer;
-    font-size:14px; flex-shrink:0; transition:background 0.15s;
+  background:rgba(255,255,255,0.15);
+  border:none;
+  color:white;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:14px;
+  flex-shrink:0;
+  transition:background 0.15s;
 }
-.wizard-close:hover { background:rgba(255,255,255,0.25); }
 
-.w-step-bar { display:flex; gap:6px; padding:12px 24px; background:var(--controls-bg); border-bottom:1px solid var(--border); }
-.w-dot { width:8px; height:8px; border-radius:50%; background:var(--border); transition:background 0.3s; }
-.w-dot.active { background:var(--blue); }
-.w-dot.done   { background:var(--green); }
+.wizard-close:hover {
+  background:rgba(255,255,255,0.25);
+}
 
-.w-step { display:none; padding:24px; }
-.w-step.active { display:block; }
-.w-step h4 { font-size:14px; font-weight:700; color:var(--text); margin-bottom:16px; }
+.w-step-bar {
+  display:flex;
+  gap:6px;
+  padding:12px 24px;
+  background:var(--controls-bg);
+  border-bottom:1px solid var(--border);
+}
 
-.w-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+.w-dot {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--border);
+  transition:background 0.3s;
+}
+
+.w-dot.active {
+  background:var(--blue);
+}
+
+.w-dot.done {
+  background:var(--green);
+}
+
+.w-step {
+  display:none;
+  padding:24px;
+}
+
+.w-step.active {
+  display:block;
+}
+
+.w-step h4 {
+  font-size:14px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:16px;
+}
+
+.w-options {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+}
+
 .w-option {
-    padding:16px; border:2px solid var(--border); border-radius:12px;
-    cursor:pointer; text-align:center; transition:all 0.2s; background:var(--card-bg);
+  padding:16px;
+  border:2px solid var(--border);
+  border-radius:12px;
+  cursor:pointer;
+  text-align:center;
+  transition:all 0.2s;
+  background:var(--card-bg);
 }
-.w-option:hover, .w-option.selected { border-color:var(--blue); background:var(--blue-lt); }
-.w-option .wi { font-size:1.5em; margin-bottom:6px; }
-.w-option .wt { font-size:13px; font-weight:700; color:var(--text); }
-.w-option .wd { font-size:11px; color:var(--text-secondary); margin-top:3px; }
 
-.budget-display { font-size:2.2em; font-weight:800; color:var(--blue); text-align:center; margin-bottom:12px; letter-spacing:-1px; }
-input[type="range"] { width:100%; accent-color:var(--blue); }
-.budget-labels { display:flex; justify-content:space-between; font-size:12px; color:var(--text-secondary); margin-top:6px; }
+.w-option:hover,.w-option.selected {
+  border-color:var(--blue);
+  background:var(--blue-lt);
+}
+
+.w-option .wi {
+  font-size:1.5em;
+  margin-bottom:6px;
+}
+
+.w-option .wt {
+  font-size:13px;
+  font-weight:700;
+  color:var(--text);
+}
+
+.w-option .wd {
+  font-size:11px;
+  color:var(--text-secondary);
+  margin-top:3px;
+}
+
+.budget-display {
+  font-size:2.2em;
+  font-weight:800;
+  color:var(--blue);
+  text-align:center;
+  margin-bottom:12px;
+  letter-spacing:-1px;
+}
+
+input[type="range"] {
+  width:100%;
+  accent-color:var(--blue);
+}
+
+.budget-labels {
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--text-secondary);
+  margin-top:6px;
+}
 
 .w-footer {
-    display:flex; justify-content:space-between; align-items:center;
-    padding:14px 24px; border-top:1px solid var(--border); background:var(--controls-bg);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 24px;
+  border-top:1px solid var(--border);
+  background:var(--controls-bg);
 }
+
 .w-btn-prev {
-    padding:9px 18px; background:var(--btn-bg); border:1.5px solid var(--input-border);
-    color:var(--btn-text); border-radius:9px; cursor:pointer; font-size:13px; font-weight:600; transition:all 0.15s;
+  padding:9px 18px;
+  background:var(--btn-bg);
+  border:1.5px solid var(--input-border);
+  color:var(--btn-text);
+  border-radius:9px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+  transition:all 0.15s;
 }
+
 .w-btn-next {
-    padding:9px 22px; background:var(--blue); color:white; border:none;
-    border-radius:9px; cursor:pointer; font-size:13px; font-weight:700; transition:background 0.15s;
+  padding:9px 22px;
+  background:var(--blue);
+  color:white;
+  border:none;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:700;
+  transition:background 0.15s;
 }
-.w-btn-next:hover { background:#1d4ed8; }
-.w-step-label { font-size:12px; color:var(--text-secondary); font-weight:500; }
 
-.w-result-card { border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:10px; background:var(--card-bg); }
-.w-result-card:first-child { border-color:var(--green); background:var(--green-lt); }
-.w-rank { font-size:11px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:5px; }
-.w-result-card:first-child .w-rank { color:var(--green); }
-.w-firma { font-size:15px; font-weight:800; color:var(--text); margin-bottom:8px; }
-.w-badges { display:flex; gap:6px; flex-wrap:wrap; }
+.w-btn-next:hover,.w-link:hover,.btn-gonder:hover {
+  background:#1d4ed8;
+}
+
+.w-step-label {
+  font-size:12px;
+  color:var(--text-secondary);
+  font-weight:500;
+}
+
+.w-result-card {
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:10px;
+  background:var(--card-bg);
+}
+
+.w-result-card:first-child {
+  border-color:var(--green);
+  background:var(--green-lt);
+}
+
+.w-rank {
+  font-size:11px;
+  font-weight:700;
+  color:var(--text-secondary);
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  margin-bottom:5px;
+}
+
+.w-result-card:first-child .w-rank {
+  color:var(--green);
+}
+
+.w-firma {
+  font-size:15px;
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:8px;
+}
+
+.w-badges {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
 .w-link {
-    display:inline-flex; align-items:center; gap:4px; margin-top:12px;
-    padding:7px 16px; background:var(--blue); color:white;
-    border-radius:8px; text-decoration:none; font-size:12px; font-weight:700; transition:background 0.15s;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-top:12px;
+  padding:7px 16px;
+  background:var(--blue);
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  transition:background 0.15s;
 }
-.w-link:hover { background:#1d4ed8; }
+
 .w-restart {
-    display:block; width:100%; padding:11px; background:var(--btn-bg);
-    border:1.5px solid var(--input-border); color:var(--btn-text);
-    border-radius:10px; cursor:pointer; font-size:13px; font-weight:600;
-    margin-top:14px; transition:all 0.15s;
+  display:block;
+  width:100%;
+  padding:11px;
+  background:var(--btn-bg);
+  border:1.5px solid var(--input-border);
+  color:var(--btn-text);
+  border-radius:10px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+  margin-top:14px;
+  transition:all 0.15s;
 }
-.w-no-result { text-align:center; padding:24px; color:var(--text-secondary); }
 
-/* ══════ HATA BİLDİR BAR ══════ */
+.w-no-result {
+  text-align:center;
+  padding:24px;
+  color:var(--text-secondary);
+}
+
 .bildir-bar {
-    margin:16px 28px; padding:13px 18px; background:var(--controls-bg);
-    border:1.5px dashed var(--border); border-radius:12px;
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  margin:16px 28px;
+  padding:13px 18px;
+  background:var(--controls-bg);
+  border:1.5px dashed var(--border);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
 }
-.bildir-bar-text { font-size:13px; color:var(--text-secondary); font-weight:500; }
+
+.bildir-bar-text {
+  font-size:13px;
+  color:var(--text-secondary);
+  font-weight:500;
+}
+
 .bildir-bar-btn {
-    padding:8px 18px; background:var(--card-bg); border:1.5px solid var(--border);
-    color:var(--text-secondary); border-radius:8px; cursor:pointer;
-    font-size:12px; font-weight:700; white-space:nowrap; flex-shrink:0; transition:all 0.15s;
+  padding:8px 18px;
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  color:var(--text-secondary);
+  border-radius:8px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+  flex-shrink:0;
+  transition:all 0.15s;
 }
-.bildir-bar-btn:hover { background:var(--red-lt); border-color:var(--red); color:var(--red); }
 
-/* ══════ CONTROLS ══════ */
+.bildir-bar-btn:hover {
+  background:var(--red-lt);
+  border-color:var(--red);
+  color:var(--red);
+}
+
 .controls {
-    padding:16px 28px; background:var(--controls-bg);
-    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    justify-content:space-between; transition:background 0.3s;
+  padding:16px 28px;
+  background:var(--controls-bg);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  transition:background 0.3s;
 }
-.sort-buttons { display:flex; gap:8px; flex-wrap:wrap; }
+
+.sort-buttons {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
 .sort-btn {
-    padding:9px 18px; border:1.5px solid var(--input-border);
-    background:var(--btn-bg); color:var(--btn-text); border-radius:100px;
-    cursor:pointer; font-size:13px; font-weight:600; transition:all 0.15s;
+  padding:9px 18px;
+  border:1.5px solid var(--input-border);
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  border-radius:100px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+  transition:all 0.15s;
 }
-.sort-btn:hover  { background:var(--btn-hover); border-color:var(--blue); color:var(--blue); }
-.sort-btn.active { background:var(--blue); color:white; border-color:var(--blue); }
 
-.dropdown { position:relative; display:inline-block; }
+.sort-btn:hover {
+  background:var(--btn-hover);
+  border-color:var(--blue);
+  color:var(--blue);
+}
+
+.sort-btn.active {
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+
+.dropdown {
+  position:relative;
+  display:inline-block;
+}
+
 .dropdown-content {
-    display:none; position:absolute; background:var(--card-bg); min-width:150px;
-    box-shadow:0 8px 24px var(--dropdown-shadow); z-index:1000;
-    border-radius:12px; border:1px solid var(--border); margin-top:4px; overflow:hidden;
+  display:none;
+  position:absolute;
+  background:var(--card-bg);
+  min-width:150px;
+  box-shadow:0 8px 24px var(--dropdown-shadow);
+  z-index:1000;
+  border-radius:12px;
+  border:1px solid var(--border);
+  margin-top:4px;
+  overflow:hidden;
 }
-.dropdown-content.open { display:block; }
-.dropdown-content a { color:var(--btn-text); padding:11px 16px; text-decoration:none; display:block; font-size:13px; font-weight:600; transition:background 0.12s; }
-.dropdown-content a:hover { background:var(--btn-hover); color:var(--blue); }
 
-.search-box { flex:0 0 auto; width:270px; }
+.dropdown-content.open {
+  display:block;
+}
+
+.dropdown-content a {
+  color:var(--btn-text);
+  padding:11px 16px;
+  text-decoration:none;
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  transition:background 0.12s;
+}
+
+.dropdown-content a:hover {
+  background:var(--btn-hover);
+  color:var(--blue);
+}
+
+.search-box {
+  flex:0 0 auto;
+  width:270px;
+}
+
 .search-box input {
-    width:100%; padding:9px 14px; border:1.5px solid var(--input-border);
-    border-radius:100px; font-size:13px; font-weight:500;
-    background:var(--card-bg); color:var(--text); transition:border-color 0.15s;
+  width:100%;
+  padding:9px 14px;
+  border:1.5px solid var(--input-border);
+  border-radius:100px;
+  font-size:13px;
+  font-weight:500;
+  background:var(--card-bg);
+  color:var(--text);
+  transition:border-color 0.15s;
 }
-.search-box input:focus { outline:none; border-color:var(--blue); }
 
-/* ══════ DATE LEGEND ══════ */
+.search-box input:focus {
+  outline:none;
+  border-color:var(--blue);
+}
+
 .date-legend {
-    display:flex; gap:16px; padding:10px 28px; background:var(--controls-bg);
-    border-bottom:1px solid var(--border); font-size:12px;
-    flex-wrap:wrap; align-items:center; color:var(--text-secondary);
+  display:flex;
+  gap:16px;
+  padding:10px 28px;
+  background:var(--controls-bg);
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  color:var(--text-secondary);
 }
-.date-legend strong { color:var(--text); margin-right:4px; font-weight:700; }
-.date-badge { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--text); }
-.date-badge::before { content:''; display:inline-block; width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-.date-green::before  { background:#22c55e; }
-.date-yellow::before { background:#eab308; }
-.date-red::before    { background:#ef4444; }
 
-/* ══════ TABLE ══════ */
-.table-container { padding:24px 28px; overflow-x:auto; }
-table { width:100%; border-collapse:collapse; }
-th {
-    background:var(--th-bg); color:var(--th-text); padding:12px 16px;
-    text-align:left; font-weight:700; font-size:11px; text-transform:uppercase;
-    letter-spacing:0.8px; border-bottom:2px solid var(--border); transition:background 0.3s;
+.date-legend strong {
+  color:var(--text);
+  margin-right:4px;
+  font-weight:700;
 }
-td { padding:15px 16px; border-bottom:1px solid var(--border-light); font-size:14px; vertical-align:middle; }
-tbody tr { transition:background 0.1s; animation:rowFadeIn 0.2s ease both; }
-tbody tr:hover { background:var(--row-hover); }
-tbody tr:last-child td { border-bottom:none; }
+
+.date-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--text);
+}
+
+.date-badge::before {
+  content:'';
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+.date-green::before {
+  background:#22c55e;
+}
+
+.date-yellow::before {
+  background:#eab308;
+}
+
+.date-red::before {
+  background:#ef4444;
+}
+
+.table-container {
+  padding:24px 28px;
+  overflow-x:auto;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+th {
+  background:var(--th-bg);
+  color:var(--th-text);
+  padding:12px 16px;
+  text-align:left;
+  font-weight:700;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  border-bottom:2px solid var(--border);
+  transition:background 0.3s;
+}
+
+td {
+  padding:15px 16px;
+  border-bottom:1px solid var(--border-light);
+  font-size:14px;
+  vertical-align:middle;
+}
+
+tbody tr {
+  transition:background 0.1s;
+  animation:rowFadeIn 0.2s ease both;
+}
+
+tbody tr:hover {
+  background:var(--row-hover);
+}
+
+tbody tr:last-child td {
+  border-bottom:none;
+}
 
 @keyframes rowFadeIn {
-    from { opacity:0; transform:translateY(6px); }
-    to   { opacity:1; transform:translateY(0); }
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
 }
-tbody tr:nth-child(1)  { animation-delay:0.02s }
-tbody tr:nth-child(2)  { animation-delay:0.04s }
-tbody tr:nth-child(3)  { animation-delay:0.06s }
-tbody tr:nth-child(4)  { animation-delay:0.08s }
-tbody tr:nth-child(5)  { animation-delay:0.10s }
-tbody tr:nth-child(6)  { animation-delay:0.12s }
-tbody tr:nth-child(7)  { animation-delay:0.14s }
-tbody tr:nth-child(8)  { animation-delay:0.16s }
-tbody tr:nth-child(9)  { animation-delay:0.18s }
-tbody tr:nth-child(10) { animation-delay:0.20s }
 
-.firma-name { font-weight:700; color:var(--text); font-size:14px; }
+tbody tr:nth-child(1){animation-delay:.02s}
+tbody tr:nth-child(2){animation-delay:.04s}
+tbody tr:nth-child(3){animation-delay:.06s}
+tbody tr:nth-child(4){animation-delay:.08s}
+tbody tr:nth-child(5){animation-delay:.10s}
+tbody tr:nth-child(6){animation-delay:.12s}
+tbody tr:nth-child(7){animation-delay:.14s}
+tbody tr:nth-child(8){animation-delay:.16s}
+tbody tr:nth-child(9){animation-delay:.18s}
+tbody tr:nth-child(10){animation-delay:.20s}
 
-/* ══════ BADGES — ortak base ══════ */
+tbody tr.row-vdsl td,tbody tr.row-fiber td {
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+/* VDSL link badge - paylaşılan stiller */
+.row-vdsl .link-badge-sub,
+.link-badge-vdsl-name {
+  background:#ccfbf1;
+  color:#0f766e;
+  border-color:#5eead4;
+}
+
+.row-vdsl .link-badge-sub:hover,
+.link-badge-vdsl-name:hover {
+  background:#0f766e;
+  color:white;
+  border-color:#0f766e;
+}
+
+/* Fiber link badge - paylaşılan stiller */
+.row-fiber .link-badge-sub,
+.link-badge-fiber-name {
+  background:#dbeafe;
+  color:#1e40af;
+  border-color:#60a5fa;
+}
+
+.row-fiber .link-badge-sub:hover,
+.link-badge-fiber-name:hover {
+  background:#1e40af;
+  color:white;
+  border-color:#1e40af;
+}
+
+[data-theme="dark"] .row-vdsl .link-badge-sub,
+[data-theme="dark"] .link-badge-vdsl-name {
+  background:#134e4a;
+  color:#5eead4;
+  border-color:#14b8a6;
+}
+
+[data-theme="dark"] .row-fiber .link-badge-sub,
+[data-theme="dark"] .link-badge-fiber-name {
+  background:#1e3a8a;
+  color:#93c5fd;
+  border-color:#3b82f6;
+}
+
+.firma-name {
+  font-weight:700;
+  color:var(--text);
+  font-size:14px;
+}
+
 .badge {
-    display:inline-flex; align-items:center; gap:4px;
-    padding:5px 11px; border-radius:8px; font-size:12px; font-weight:700;
-    white-space:nowrap; border:1.5px solid transparent;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:5px 11px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+  border:1.5px solid transparent;
 }
 
-/* Link badge */
 .link-badge {
-    display:inline-flex; align-items:center; gap:3px;
-    padding:4px 10px; margin-left:8px;
-    background:#fdf2f8; color:#be185d; border:1px solid #f9a8d4;
-    border-radius:6px; font-size:11px; font-weight:700;
-    text-decoration:none; transition:all 0.15s;
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  padding:4px 10px;
+  margin-left:8px;
+  background:#fdf2f8;
+  color:#be185d;
+  border:1px solid #f9a8d4;
+  border-radius:6px;
+  font-size:11px;
+  font-weight:700;
+  text-decoration:none;
+  transition:all 0.15s;
 }
-.link-badge:hover { background:#be185d; color:white; border-color:#be185d; }
-[data-theme="dark"] .link-badge { background:#4a0028; color:#f9a8d4; border-color:#9d174d; }
-[data-theme="dark"] .link-badge:hover { background:#be185d; color:white; border-color:#be185d; }
 
-/* Fiyat badge'leri */
-.price-badges { display:flex; flex-direction:column; gap:5px; align-items:flex-start; }
+.link-badge:hover {
+  background:#be185d;
+  color:white;
+  border-color:#be185d;
+}
+
+[data-theme="dark"] .link-badge {
+  background:#4a0028;
+  color:#f9a8d4;
+  border-color:#9d174d;
+}
+
+[data-theme="dark"] .link-badge:hover {
+  background:#be185d;
+  color:white;
+  border-color:#be185d;
+}
+
+.price-badges {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  gap:5px;
+  align-items:center;
+}
+
 .price-badge {
-    display:inline-flex; align-items:center; gap:6px;
-    padding:5px 13px; border-radius:100px; font-size:13px; font-weight:700;
-    border:1.5px solid transparent; white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 13px;
+  border-radius:100px;
+  font-size:13px;
+  font-weight:700;
+  border:1.5px solid transparent;
+  white-space:nowrap;
 }
-.price-badge.vdsl   { background:var(--vdsl-bg);   color:var(--vdsl-text);   border-color:var(--vdsl-border); }
-.price-badge.fiber  { background:var(--fiber-bg);  color:var(--fiber-text);  border-color:var(--fiber-border); }
-.price-badge.single { background:var(--single-bg); color:var(--single-text); border-color:var(--single-border); }
 
-/* Sonraki dönem */
-.price-same     { background:var(--green-lt); color:var(--green); }
-.price-increase { background:var(--red-lt);   color:var(--red);   }
+.price-badge.vdsl {
+  background:var(--vdsl-bg);
+  color:var(--vdsl-text);
+  border-color:var(--vdsl-border);
+}
+
+.price-badge.fiber {
+  background:var(--fiber-bg);
+  color:var(--fiber-text);
+  border-color:var(--fiber-border);
+}
+
+.price-badge.single {
+  background:var(--single-bg);
+  color:var(--single-text);
+  border-color:var(--single-border);
+}
+
+.price-same {
+  background:var(--green-lt);
+  color:var(--green);
+}
+
+.price-increase,
 .price-increase-vdsl,
-.price-increase-fiber { background:var(--red-lt); color:var(--red); border-color:var(--red); border-radius:100px; }
+.price-increase-fiber {
+  background:var(--red-lt);
+  color:var(--red);
+}
 
-.price-info { background:#f5f3ff; color:#7c3aed; border-color:#c4b5fd; }
-[data-theme="dark"] .price-info { background:#2e1065; color:#c4b5fd; border-color:#7c3aed; }
+.price-increase-vdsl,
+.price-increase-fiber {
+  border-color:var(--red);
+  border-radius:100px;
+}
 
-/* Modem */
-.modem-free    { background:var(--green-lt); color:var(--green); }
-.modem-paid    { background:#fff7ed; color:#c2410c; border-color:#fb923c; }
-.modem-unknown { background:#f1f1f1; color:#1a1a1a; border-color:#d1d1d1; }
-[data-theme="dark"] .modem-paid    { background:#431407; color:#fb923c; border-color:#c2410c; }
-[data-theme="dark"] .modem-unknown { background:#1f1f1f; color:#a0a0a0; border-color:#3a3a3a; }
+.price-info {
+  background:#f5f3ff;
+  color:#7c3aed;
+  border-color:#c4b5fd;
+}
 
-/* Tablo legend */
-.th-legend { display:flex; gap:10px; margin-top:5px; font-size:10px; font-weight:600; text-transform:none; letter-spacing:normal; opacity:0.85; }
-.legend-item { display:inline-flex; align-items:center; gap:4px; }
-.legend-dot { width:7px; height:7px; border-radius:50%; display:inline-block; }
-.legend-dot.vdsl   { background:var(--vdsl-text); }
-.legend-dot.fiber  { background:var(--fiber-text); }
-.legend-dot.single { background:var(--single-text); }
+[data-theme="dark"] .price-info {
+  background:#2e1065;
+  color:#c4b5fd;
+  border-color:#7c3aed;
+}
 
-/* ══════ NO RESULTS ══════ */
-.no-results { text-align:center; padding:48px; color:var(--text-secondary); font-size:15px; font-weight:500; }
+.price-commitment,
+.modem-paid {
+  background:#fff7ed;
+  color:#c2410c;
+  border-color:#fb923c;
+}
 
-/* ══════ PAGINATION ══════ */
-.pagination { display:flex; justify-content:center; align-items:center; gap:12px; padding:20px 28px; border-top:1px solid var(--border); }
+[data-theme="dark"] .price-commitment {
+  background:#431407;
+  color:#fb923c;
+  border-color:#c2410c;
+}
+
+.modem-free {
+  background:var(--green-lt);
+  color:var(--green);
+}
+
+.modem-unknown {
+  background:#f1f1f1;
+  color:#1a1a1a;
+  border-color:#d1d1d1;
+}
+
+[data-theme="dark"] .modem-paid {
+  background:#431407;
+  color:#fb923c;
+  border-color:#c2410c;
+}
+
+[data-theme="dark"] .modem-unknown {
+  background:#1f1f1f;
+  color:#a0a0a0;
+  border-color:#3a3a3a;
+}
+
+.th-legend {
+  display:flex;
+  gap:10px;
+  margin-top:5px;
+  font-size:10px;
+  font-weight:600;
+  text-transform:none;
+  letter-spacing:normal;
+  opacity:0.85;
+}
+
+.legend-item {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+
+.legend-dot {
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.legend-dot.vdsl {
+  background:var(--vdsl-text);
+}
+
+.legend-dot.fiber {
+  background:var(--fiber-text);
+}
+
+.legend-dot.single {
+  background:var(--single-text);
+}
+
+}
+
+.no-results {
+  text-align:center;
+  padding:48px;
+  color:var(--text-secondary);
+  font-size:15px;
+  font-weight:500;
+}
+
+.pagination {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  padding:20px 28px;
+  border-top:1px solid var(--border);
+}
+
+.active-filter-chip {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:5px 12px;
+  background:var(--blue-lt);
+  color:var(--blue);
+  border:1.5px solid var(--blue);
+  border-radius:100px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.rows-per-page {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:var(--text-secondary);
+  font-weight:600;
+}
+
+.rows-per-page select {
+  padding:4px 8px;
+  border:1.5px solid var(--input-border);
+  border-radius:8px;
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
 .page-btn {
-    padding:9px 20px; border:1.5px solid var(--input-border);
-    background:var(--btn-bg); color:var(--btn-text); border-radius:100px;
-    cursor:pointer; font-size:13px; font-weight:700; transition:all 0.15s;
-}
-.page-btn:hover:not(:disabled) { background:var(--blue); color:white; border-color:var(--blue); }
-.page-btn:disabled { opacity:0.4; cursor:not-allowed; }
-.page-info { font-size:13px; color:var(--text-secondary); font-weight:600; }
-
-/* ══════ DISCLAIMER & FOOTER ══════ */
-.disclaimer-section { background:var(--controls-bg); border-top:2px solid var(--border); padding:24px 28px; transition:background 0.3s; }
-.disclaimer-section h4 { font-size:11px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
-.disclaimer-section p  { font-size:12px; color:var(--text-secondary); line-height:1.7; margin-bottom:8px; opacity:0.8; }
-.disclaimer-section p:last-child { margin-bottom:0; }
-
-.footer { padding:22px 28px; background:var(--controls-bg); text-align:center; font-size:13px; color:var(--text-secondary); border-top:1px solid var(--border); line-height:1.8; transition:background 0.3s; }
-.footer a { color:var(--blue); text-decoration:none; font-weight:600; }
-.footer a:hover { text-decoration:underline; }
-
-/* ══════ MOBİL KART ══════ */
-.card-grid { display:none; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; padding:16px; }
-.firma-card { background:var(--card-bg); border-radius:14px; box-shadow:0 2px 12px var(--shadow); padding:16px; border:1px solid var(--border-light); transition:background 0.3s; }
-.card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid var(--border-light); }
-.card-firma { font-weight:800; font-size:14px; color:var(--text); }
-.card-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:12.5px; gap:8px; }
-.card-row-label { color:var(--text-secondary); font-weight:600; flex-shrink:0; }
-.card-row-value { text-align:right; }
-.card-footer { margin-top:10px; padding-top:10px; border-top:1px solid var(--border-light); display:flex; justify-content:flex-end; }
-
-@media (max-width:768px) {
-    .table-container { display:none; }
-    .card-grid { display:grid; }
-    .controls { flex-direction:column; }
-    .search-box { width:100%; }
-    .sort-buttons { width:100%; justify-content:center; }
-    .action-buttons { grid-template-columns:1fr; }
+  padding:9px 20px;
+  border:1.5px solid var(--input-border);
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  border-radius:100px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:700;
+  transition:all 0.15s;
 }
 
-/* ══════ MODAL ══════ */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center; }
-.modal-overlay.active { display:flex; }
-.modal-box { background:var(--card-bg); border-radius:18px; padding:28px; width:100%; max-width:440px; box-shadow:0 24px 64px rgba(0,0,0,0.25); margin:20px; animation:slideUp 0.22s ease; border:1px solid var(--border); }
+.page-btn:hover:not(:disabled) {
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+
+.page-btn:disabled {
+  opacity:0.4;
+  cursor:not-allowed;
+}
+
+.page-info {
+  font-size:13px;
+  color:var(--text-secondary);
+  font-weight:600;
+}
+
+.disclaimer-section {
+  background:var(--controls-bg);
+  border-top:2px solid var(--border);
+  padding:24px 28px;
+  transition:background 0.3s;
+}
+
+.disclaimer-section h4 {
+  font-size:11px;
+  font-weight:700;
+  color:var(--text-secondary);
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  margin-bottom:12px;
+}
+
+.disclaimer-section p {
+  font-size:12px;
+  color:var(--text-secondary);
+  line-height:1.7;
+  margin-bottom:8px;
+  opacity:0.8;
+}
+
+.footer {
+  padding:22px 28px;
+  background:var(--controls-bg);
+  text-align:center;
+  font-size:13px;
+  color:var(--text-secondary);
+  border-top:1px solid var(--border);
+  line-height:1.8;
+  transition:background 0.3s;
+}
+
+.footer a {
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:600;
+}
+
+.footer a:hover {
+  text-decoration:underline;
+}
+.footer-top {
+  margin-bottom:6px;
+}
+.footer-year {
+  font-size:11px;
+  opacity:0.5;
+  margin-top:6px;
+}
+
+.card-grid {
+  display:none;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:12px;
+  padding:16px;
+}
+
+.firma-card {
+  background:var(--card-bg);
+  border-radius:14px;
+  box-shadow:0 2px 12px var(--shadow);
+  padding:16px;
+  border:1px solid var(--border-light);
+  transition:background 0.3s;
+}
+
+.card-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--border-light);
+}
+
+.card-firma {
+  font-weight:800;
+  font-size:14px;
+  color:var(--text);
+}
+
+.card-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:5px 0;
+  font-size:12.5px;
+  gap:8px;
+}
+
+.card-row-label {
+  color:var(--text-secondary);
+  font-weight:600;
+  flex-shrink:0;
+}
+
+.card-row-value {
+  text-align:right;
+}
+
+.card-footer {
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid var(--border-light);
+  display:flex;
+  justify-content:flex-end;
+}
+
+@media(max-width:768px) {
+
+.table-container {
+  display:none;
+}
+
+.card-grid {
+  display:grid;
+}
+
+.controls {
+  flex-direction:column;
+}
+
+.search-box {
+  width:100%;
+}
+
+.sort-buttons {
+  width:100%;
+  justify-content:center;
+}
+
+.action-buttons {
+  grid-template-columns:1fr;
+}
+}
+
+.modal-overlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(4px);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal-overlay.active {
+  display:flex;
+}
+
+.modal-box {
+  background:var(--card-bg);
+  border-radius:18px;
+  padding:28px;
+  width:100%;
+  max-width:440px;
+  box-shadow:0 24px 64px rgba(0,0,0,0.25);
+  margin:20px;
+  animation:slideUp 0.22s ease;
+  border:1px solid var(--border);
+}
+
 @keyframes slideUp {
-    from { transform:translateY(16px); opacity:0; }
-    to   { transform:translateY(0);    opacity:1; }
+  from{transform:translateY(16px);opacity:0}
+  to{transform:translateY(0);opacity:1}
 }
-.modal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
-.modal-header h3 { font-size:16px; font-weight:800; color:var(--text); }
-.modal-close { background:var(--th-bg); border:none; cursor:pointer; color:var(--text-secondary); font-size:14px; width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
-.modal-close:hover { background:var(--border); }
-.modal-firma-tag { display:inline-block; padding:3px 12px; background:var(--controls-bg); color:var(--text-secondary); border-radius:100px; font-size:12px; font-weight:700; margin-bottom:20px; }
 
-.form-group { margin-bottom:14px; }
-.form-group label { display:block; font-size:12px; font-weight:700; color:var(--text); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
-.form-group input, .form-group textarea, .form-group select {
-    width:100%; padding:10px 13px; border:1.5px solid var(--input-border);
-    border-radius:10px; font-size:14px; color:var(--text);
-    background:var(--card-bg); transition:border-color 0.15s;
+.modal-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:6px;
 }
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline:none; border-color:var(--blue); }
-.form-group textarea { resize:vertical; min-height:72px; }
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
-.modal-buttons { display:flex; gap:8px; margin-top:20px; }
-.btn-gonder { flex:1; padding:11px; background:var(--blue); color:white; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; transition:background 0.15s; }
-.btn-gonder:hover    { background:#1d4ed8; }
-.btn-gonder:disabled { opacity:0.6; cursor:not-allowed; }
-.btn-iptal { padding:11px 18px; background:var(--controls-bg); color:var(--btn-text); border:1.5px solid var(--border); border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.15s; }
-.btn-iptal:hover { background:var(--border); }
+.modal-header h3 {
+  font-size:16px;
+  font-weight:800;
+  color:var(--text);
+}
 
-.success-msg { display:none; text-align:center; padding:24px 0; }
-.success-msg .checkmark { font-size:3em; margin-bottom:12px; }
-.success-msg h4 { font-size:16px; font-weight:800; color:var(--text); margin-bottom:6px; }
-.success-msg p  { font-size:13px; color:var(--text-secondary); }
+.modal-close {
+  background:var(--th-bg);
+  border:none;
+  cursor:pointer;
+  color:var(--text-secondary);
+  font-size:14px;
+  width:30px;
+  height:30px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background 0.15s;
+}
+
+.modal-close:hover {
+  background:var(--border);
+}
+
+.form-group {
+  margin-bottom:14px;
+}
+
+.form-group label {
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:6px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+.form-group input,.form-group textarea,.form-group select {
+  width:100%;
+  padding:10px 13px;
+  border:1.5px solid var(--input-border);
+  border-radius:10px;
+  font-size:14px;
+  color:var(--text);
+  background:var(--card-bg);
+  transition:border-color 0.15s;
+}
+
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus {
+  outline:none;
+  border-color:var(--blue);
+}
+
+.form-group textarea {
+  resize:vertical;
+  min-height:72px;
+}
+
+.form-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.modal-buttons {
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+
+.btn-gonder {
+  flex:1;
+  padding:11px;
+  background:var(--blue);
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:background 0.15s;
+}
+
+.btn-gonder:disabled {
+  opacity:0.6;
+  cursor:not-allowed;
+}
+
+.btn-iptal {
+  padding:11px 18px;
+  background:var(--controls-bg);
+  color:var(--btn-text);
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:background 0.15s;
+}
+
+.btn-iptal:hover {
+  background:var(--border);
+}
+
+.success-msg {
+  display:none;
+  text-align:center;
+  padding:24px 0;
+}
+
+.success-msg .checkmark {
+  font-size:3em;
+  margin-bottom:12px;
+}
+
+.success-msg h4 {
+  font-size:16px;
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:6px;
+}
+
+.success-msg p {
+  font-size:13px;
+  color:var(--text-secondary);
+}
 </style>
 </head>
 <body>
-
-<!-- ═══ MODAL ═══ -->
 <div class="modal-overlay" id="bildirModal">
-    <div class="modal-box">
-        <div id="bildirFormContent">
-            <div class="modal-header">
-                <h3>⚠️ Hata Bildir</h3>
-                <button class="modal-close" onclick="modalKapat()">✕</button>
-            </div>
-            <form id="bildirForm" onsubmit="formGonder(event)">
-                <div class="form-group">
-                    <label>Firma</label>
-                    <select name="firma" id="firmaGizli" required>
-                        <option value="">-- Firma seçin --</option>
-                        <option>10LİNE</option><option>4GNET</option><option>AKDENİZNET</option><option>ALANYANET</option><option>ATLANTİSNET</option><option>AY TELEKOM</option><option>BCNNET</option><option>BELENATLANTİS</option><option>BEST TELEKOM</option><option>BURSA İNTERNET</option><option>BİNBİRNET</option><option>BİNET</option><option>BİRNET</option><option>BİZİMİNTERNET</option><option>CANNET</option><option>CERENNET</option><option>DAHAONLİNE</option><option>DİDİMNET</option><option>DİJİTAL NET</option><option>EFSANENET</option><option>ELMA TELEKOM</option><option>EPLANET</option><option>EURONET</option><option>EXPRESNET</option><option>EXTRANET</option><option>EYLÜLNET</option><option>FACE TELEKOM</option><option>FARKNET</option><option>FIRATNET</option><option>FLİXNET</option><option>FREEFİBER</option><option>FULLNET</option><option>FİBA TELEKOM</option><option>FİBERWİ</option><option>FİBİMNET</option><option>FİLİKANET</option><option>FİNET</option><option>FİXNET</option><option>FİZYNET</option><option>GAP TELEKOM</option><option>GENERALNET</option><option>GESNET</option><option>GLOBALNET</option><option>GÖLHİSARNET</option><option>GÜLDÜRENNET</option><option>GİBİRNET</option><option>GİGASPEED</option><option>HATFİBER</option><option>HAZARNET</option><option>HİPERONLİNE</option><option>HİZONLİNE</option><option>JETNET</option><option>KABLOSUZONLİNE</option><option>KAREL İLETİŞİM</option><option>KARUNNET</option><option>KAYINET</option><option>KIRNET BİLİŞİM</option><option>KOCAELİ İNTERNET</option><option>KÖYCEĞİZNET</option><option>LİNYİTNET</option><option>MAVİFİBER</option><option>MAVİNET</option><option>MERKÜRNET</option><option>MERNET</option><option>MERTSKY TELEKOM</option><option>MOBİLFREE</option><option>MOBİSMART</option><option>MODEXI</option><option>MİGROSNET</option><option>MİLLENİCOM</option><option>NAZNET</option><option>NEONET</option><option>NETBONE</option><option>NETGSM</option><option>NETGİGABİT</option><option>NETMAN</option><option>NETMAX</option><option>NETPLUS</option><option>NETPRİME</option><option>NETSPEED</option><option>NETWİFİ</option><option>NETİNTERNET</option><option>NOKTAONLİNE</option><option>NOKTAWİFİ</option><option>NİDA TELEKOM</option><option>NİTROİNTERNET</option><option>ORİS TELEKOM</option><option>OSAWI TELEKOM</option><option>OSNET</option><option>OTELEKOM</option><option>PANANET</option><option>PASİFİK TELEKOM</option><option>PLUSNET</option><option>POWERNET</option><option>RAMTEK</option><option>REKORNET</option><option>SADENET</option><option>SAKNET</option><option>SARIKAYANET</option><option>SARNET TELEKOM</option><option>SONET</option><option>SPEEDNET</option><option>SUKNET</option><option>SURNET</option><option>SİBANET</option><option>TBTNET</option><option>TEKNET</option><option>TEKNOBİL TELEKOM</option><option>TEKNOSANET</option><option>TELKOMNET</option><option>TELKOTURK</option><option>TEPENET</option><option>TRFASTNET</option><option>TRNET</option><option>TURBONET</option><option>TURKCELL SUPERONLİNE</option><option>TURKHOST</option><option>TURKNET</option><option>TURUNCUNET</option><option>TÜRK TELEKOM</option><option>TÜRKİYEMNET</option><option>TİKLANET</option><option>ULUHAN NET</option><option>ULUNET</option><option>VATAN İNTERNET</option><option>VEGANET</option><option>VIPNET TELEKOM</option><option>VİVANET</option><option>WAAYNET</option><option>WENETWİFİ</option><option>WORLDNET</option><option>WİFİ TELEKOM</option><option>YENİNET</option><option>ÇABUKNET</option><option>İCENET TELEKOM</option><option>İNCİNET</option><option>İNTERNET KUTUSU</option><option>İREMNET</option><option>ŞOKNET</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Hatalı Fiyat</label>
-                        <input type="text" name="hatali_fiyat" placeholder="Örn: 575,00₺" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Doğru Fiyat</label>
-                        <input type="text" name="dogru_fiyat" placeholder="Örn: 620,00₺" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Kaynak</label>
-                    <input type="url" name="kaynak" placeholder="https://firma.com/tarifeler" required>
-                </div>
-                <div class="form-group">
-                    <label>Ek Açıklama <span style="font-weight:400;color:#9ca3af;">(opsiyonel)</span></label>
-                    <textarea name="aciklama" placeholder="Modem kira bilgisi güncel değilse veya eksikse buraya yazabilirsiniz..."></textarea>
-                </div>
-                <div class="modal-buttons">
-                    <button type="button" class="btn-iptal" onclick="modalKapat()">İptal</button>
-                    <button type="submit" class="btn-gonder" id="gonderBtn">📨 Gönder</button>
-                </div>
-            </form>
+  <div class="modal-box">
+    <div id="bildirFormContent">
+      <div class="modal-header">
+        <h3>&#9888;️ Hata Bildir</h3>
+        <button class="modal-close" onclick="modalKapat()">
+          ✕
+        </button>
+      </div>
+      <form id="bildirForm" onsubmit="formGonder(event)">
+        <div class="form-group"><label>
+          Firma</label>
+          <select name="firma" id="firmaGizli" required></select>
         </div>
-        <div class="success-msg" id="bildirSuccess">
-            <div class="checkmark">✅</div>
-            <h4>Bildirim Gönderildi!</h4>
-            <p>Teşekkürler, en kısa sürede kontrol edeceğiz.</p>
-            <br>
-            <button class="btn-iptal" onclick="modalKapat()">Kapat</button>
+        <div class="form-row">
+          <div class="form-group"><label>
+            Hatalı Fiyat</label>
+            <input type="text" name="hatali_fiyat" placeholder="Örn: 575,00₺" required>
+          </div>
+          <div class="form-group"><label>
+            Doğru Fiyat</label>
+            <input type="text" name="dogru_fiyat" placeholder="Örn: 620,00₺" required>
+          </div>
         </div>
+        <div class="form-group"><label>
+          Kaynak</label>
+          <input type="url" name="kaynak" placeholder="https://firma.com/tarifeler" required>
+        </div>
+        <div class="form-group"><label>
+          Ek Açıklama<span style="font-weight:400;color:#9ca3af;">
+          (opsiyonel)</span></label>
+          <textarea name="aciklama" placeholder="Modem kira bilgisi güncel değilse...">
+          </textarea>
+        </div>
+        <div class="modal-buttons">
+          <button type="button" class="btn-iptal" onclick="modalKapat()">
+            İptal
+          </button>
+          <button type="submit" class="btn-gonder" id="gonderBtn">
+            📨 Gönder
+          </button>
+        </div>
+      </form>
     </div>
+    <div class="success-msg" id="bildirSuccess">
+      <div class="checkmark">
+        ✅
+      </div>
+      <h4>Bildirim Gönderildi!</h4>
+      <p>Teşekkürler, en kısa sürede kontrol edeceğiz.</p>
+      <br>
+      <button class="btn-iptal" onclick="modalKapat()">
+        Kapat
+      </button>
+    </div>
+  </div>
 </div>
-
-<!-- ═══ CONTAINER ═══ -->
 <div class="container">
+  <header>
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
+      🌙 Koyu Mod
+    </button>
 
-    <header>
-        <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙 Koyu Mod</button>
-        <div class="header-eyebrow"><span class="live-dot"></span> Şubat 2026 · Güncel Veriler</div>
-        <h1>100 Mbps İnternet<br><em>Tarife Karşılaştırması</em></h1>
-        <p class="header-sub">Türkiye'deki tüm internet servis sağlayıcılarını tek ekranda karşılaştırın.</p>
-        <div class="header-stats">
-            <div class="hstat"><span class="hstat-val" id="totalProviders">—</span><span class="hstat-label">Sağlayıcı</span></div>
-            <div class="hstat"><span class="hstat-val green">299,90₺</span><span class="hstat-label">En Düşük</span></div>
-            <div class="hstat"><span class="hstat-val red">1.050₺</span><span class="hstat-label">En Yüksek</span></div>
-        </div>
-    </header>
-
-    <div class="info-notice">
-        <strong>⚠️ Önemli Notlar:</strong><br>
-        • Tablodaki fiyat bilgileri güncel olmayabilir. En doğru fiyatlar için firma isimlerinin yanındaki bağlantılara tıklayarak resmi web sitelerini ziyaret edin.<br>
-        • Kullanılan filtreler VDSL fiyatlandırmasını baz alır. Modem kira ücretleri Fiber internet içindir.
+    <h1>
+      100 Mbps İnternet
+      <br><em>
+      Tarife Karşılaştırması</em>
+    </h1>
+    <p class="header-sub">
+      Türkiye’deki tüm internet servis sağlayıcılarını tek ekranda karşılaştırın.
+    </p>
+    <div class="header-stats">
+      <div class="hstat"><span class="hstat-val" id="totalProviders">
+        —</span><span class="hstat-label">
+        Sağlayıcı</span>
+      </div>
+      <div class="hstat"><span class="hstat-val green">
+        299,90₺</span><span class="hstat-label">
+        En Düşük</span>
+      </div>
+      <div class="hstat"><span class="hstat-val red">
+        1.050₺</span><span class="hstat-label">
+        En Yüksek</span>
+      </div>
     </div>
-
-    <div class="action-buttons" style="margin-top:20px">
-        <button class="wizard-trigger" onclick="toggleWizard()">🎯 Benim İçin En İyi Paketi Seç</button>
-        <a href="https://www.issaraclari.com/altyapi-sorgulama" target="_blank" class="wizard-trigger altyapi">🔍 Altyapı Sorgulama</a>
+  </header>
+  <div class="info-notice"><strong>
+    ⚠️ Önemli Notlar:</strong>
+    <br>
+    • Tablodaki fiyat bilgileri güncel olmayabilir. En doğru fiyatlar için firma isimlerinin yanındaki bağlantılara tıklayarak resmi web sitelerini ziyaret edin.
+    <br>
+    • Kullanılan filtreler VDSL fiyatlandırmasını baz alır. Modem kira ücretleri Fiber internet içindir.
+  </div>
+  <div class="action-buttons" style="margin-top:20px">
+    <button class="wizard-trigger" onclick="toggleWizard()">
+      🎯 Benim İçin En İyi Paketi Seç
+    </button><a href="https://www.issaraclari.com/altyapi-sorgulama" target="_blank" class="wizard-trigger altyapi">
+    🔍 Altıyapı Sorgulama</a>
+  </div>
+  <div class="wizard-wrap" id="wizardWrap">
+    <div class="wizard-head">
+      <div>
+        <h3>🎯 Benim İçin Seç</h3>
+        <p>3 adımda sana en uygun paketi buluyoruz.</p>
+      </div>
+      <button class="wizard-close" onclick="toggleWizard()">
+        ✕
+      </button>
     </div>
-
-    <div class="wizard-wrap" id="wizardWrap">
-        <div class="wizard-head">
-            <div><h3>🎯 Benim İçin Seç</h3><p>3 adımda sana en uygun paketi buluyoruz.</p></div>
-            <button class="wizard-close" onclick="toggleWizard()">✕</button>
+    <div class="w-step-bar">
+      <div class="w-dot active" id="wd1">
+      </div>
+      <div class="w-dot" id="wd2"></div>
+      <div class="w-dot" id="wd3"></div>
+    </div>
+    <div class="w-step active" id="ws1">
+      <h4>💰 Aylık bütçeniz ne kadar?</h4>
+      <div class="budget-display" id="budgetDisplay">
+        600₺
+      </div>
+      <input type="range" id="budgetRange" min="300" max="1000" step="50" value="600" oninput="document.getElementById('budgetDisplay').textContent=this.value+'₺'">
+      <div class="budget-labels"><span>
+        300₺</span><span>
+        1000₺</span>
+      </div>
+    </div>
+    <div class="w-step" id="ws2">
+      <h4>📡 Modem tercihiniz?</h4>
+      <div class="w-options">
+        <div class="w-option selected" onclick="wSelect(this)" data-val="free">
+          <div class="wi">
+            🆓
+          </div>
+          <div class="wt">
+            Ücretsiz olsun
+          </div>
+          <div class="wd">
+            Tarifeye dahil veya ücretsiz
+          </div>
         </div>
-        <div class="w-step-bar">
-            <div class="w-dot active" id="wd1"></div>
-            <div class="w-dot" id="wd2"></div>
-            <div class="w-dot" id="wd3"></div>
+        <div class="w-option" onclick="wSelect(this)" data-val="any">
+          <div class="wi">
+            💳
+          </div>
+          <div class="wt">
+            Fark etmez
+          </div>
+          <div class="wd">
+            Ücretli de olabilir
+          </div>
         </div>
-        <div class="w-step active" id="ws1">
-            <h4>💰 Aylık bütçeniz ne kadar?</h4>
-            <div class="budget-display" id="budgetDisplay">600₺</div>
-            <input type="range" id="budgetRange" min="300" max="1000" step="50" value="600" oninput="document.getElementById('budgetDisplay').textContent=this.value+'₺'">
-            <div class="budget-labels"><span>300₺</span><span>1000₺</span></div>
+      </div>
+    </div>
+    <div class="w-step" id="ws3">
+      <h4>🎯 Önceliğiniz ne?</h4>
+      <div class="w-options">
+        <div class="w-option selected" onclick="wSelect(this)" data-val="fiyat">
+          <div class="wi">
+            💰
+          </div>
+          <div class="wt">
+            En ucuz fiyat
+          </div>
+          <div class="wd">
+            İlk dönem fiyatı düşük olsun
+          </div>
         </div>
-        <div class="w-step" id="ws2">
-            <h4>📡 Modem tercihiniz?</h4>
-            <div class="w-options">
-                <div class="w-option selected" onclick="wSelect(this)" data-val="free"><div class="wi">🆓</div><div class="wt">Ücretsiz olsun</div><div class="wd">Tarifeye dahil veya ücretsiz</div></div>
-                <div class="w-option" onclick="wSelect(this)" data-val="any"><div class="wi">💳</div><div class="wt">Fark etmez</div><div class="wd">Ücretli de olabilir</div></div>
+        <div class="w-option" onclick="wSelect(this)" data-val="sabit">
+          <div class="wi">
+            📌
+          </div>
+          <div class="wt">
+            Sabit fiyat
+          </div>
+          <div class="wd">
+            Fiyat artmasın
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-step" id="ws-result">
+      <h4>✅ Sana en uygun paketler:</h4>
+      <div id="wResults"></div>
+      <button class="w-restart" onclick="wRestart()">
+        🔄 Tekrar Dene
+      </button>
+      <button class="w-restart" id="wApplyBtn" onclick="wApplyToTable()" style="margin-top:8px;background:var(--blue);color:white;border-color:var(--blue);">
+        🔍 Bu Kriterlere Göre Tabloda Filtrele
+      </button>
+    </div>
+    <div class="w-footer" id="wFooter">
+      <button class="w-btn-prev" id="wPrev" onclick="wPrev()" style="visibility:hidden">
+        ◄ Geri
+      </button><span class="w-step-label" id="wLabel">
+      Adım 1 / 3</span>
+      <button class="w-btn-next" id="wNext" onclick="wNext()">
+        Devam →
+      </button>
+    </div>
+  </div>
+  <div class="bildir-bar"><span class="bildir-bar-text">
+    📋 Tabloda hatalı veya güncelliğini yitirmiş bir bilgi mi gördünüz?</span>
+    <button class="bildir-bar-btn" onclick="hataBildir('')">
+      ⚠️ Hata Bildir
+    </button>
+  </div>
+  <div class="controls">
+    <div class="sort-buttons">
+      <button class="sort-btn" onclick="sortTable('price-asc',event)" data-sort="price-asc">
+        💰 En Ucuz
+      </button>
+      <button class="sort-btn" onclick="sortTable('price-desc',event)" data-sort="price-desc">
+        💰 En Pahalı
+      </button>
+      <div class="dropdown">
+        <button class="sort-btn" onclick="toggleDropdown(event)">
+          📊 Fiyat Aralığı ▼
+        </button>
+        <div class="dropdown-content" id="fiyatDropdown"><a href="#" onclick="filterByPriceRange(200,400);event.preventDefault();">
+          200–400₺</a><a href="#" onclick="filterByPriceRange(400,600);event.preventDefault();">
+          400–600₺</a><a href="#" onclick="filterByPriceRange(600,800);event.preventDefault();">
+          600–800₺</a><a href="#" onclick="filterByPriceRange(800,Infinity);event.preventDefault();">
+          800₺+</a>
+        </div>
+      </div>
+      <button class="sort-btn" onclick="resetTable()">
+        🔄 Sıfırla
+      </button>
+    </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
+    </div>
+  </div>
+  <div class="active-filter-bar" id="activeFilterBar" style="display:none"><span class="active-filter-chip" id="activeFilterChip" style="display:none"></span>
+  </div>
+  <div class="date-legend"><strong>
+    🕒 Son Güncelleme:</strong><span><span class="date-badge date-green">
+    Son 30 gün</span>
+    — Güncel</span><span><span class="date-badge date-yellow">
+    30–60 gün</span>
+    — Kontrol edilmeli</span><span><span class="date-badge date-red">
+    60 gün+</span>
+    — Eski bilgi</span>
+  </div>
+  <div class="table-container">
+    <table id="priceTable">
+      <thead>
+        <tr>
+          <th>
+            Firma
+          </th>
+          <th>
+            İlk Dönem Ücreti
+            <div class="th-legend"><span class="legend-item"><span class="legend-dot vdsl"></span>
+              VDSL</span><span class="legend-item"><span class="legend-dot fiber"></span>
+              Fiber</span><span class="legend-item"><span class="legend-dot single"></span>
+              Aynı Fiyat</span>
             </div>
-        </div>
-        <div class="w-step" id="ws3">
-            <h4>🎯 Önceliğiniz ne?</h4>
-            <div class="w-options">
-                <div class="w-option selected" onclick="wSelect(this)" data-val="fiyat"><div class="wi">💰</div><div class="wt">En ucuz fiyat</div><div class="wd">İlk dönem fiyatı düşük olsun</div></div>
-                <div class="w-option" onclick="wSelect(this)" data-val="sabit"><div class="wi">📌</div><div class="wt">Sabit fiyat</div><div class="wd">Fiyat artmasın</div></div>
-            </div>
-        </div>
-        <div class="w-step" id="ws-result">
-            <h4>✅ Sana en uygun paketler:</h4>
-            <div id="wResults"></div>
-            <button class="w-restart" onclick="wRestart()">🔄 Tekrar Dene</button>
-        </div>
-        <div class="w-footer" id="wFooter">
-            <button class="w-btn-prev" id="wPrev" onclick="wPrev()" style="visibility:hidden">◀ Geri</button>
-            <span class="w-step-label" id="wLabel">Adım 1 / 3</span>
-            <button class="w-btn-next" id="wNext" onclick="wNext()">Devam →</button>
-        </div>
+          </th>
+          <th>
+            Sonraki Dönem
+          </th>
+          <th>
+            Modem Kira
+          </th>
+          <th>
+            Son Güncelleme
+          </th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div id="noResults" class="no-results" style="display:none;">
+      🔍 Aradığınız kriterlere uygun firma bulunamadı.
     </div>
-
-    <div class="bildir-bar">
-        <span class="bildir-bar-text">📋 Tabloda hatalı veya güncelliğini yitirmiş bir bilgi mi gördünüz?</span>
-        <button class="bildir-bar-btn" onclick="hataBildir('')">⚠️ Hata Bildir</button>
+  </div>
+  <div class="card-grid" id="cardGrid">
+  </div>
+  <div class="pagination">
+    <button class="page-btn" onclick="changePage(-1)" id="prevBtn">
+      ◄ Önceki
+    </button><span class="page-info">
+    Sayfa<span id="currentPage">
+    1</span>
+    /<span id="totalPages">
+    1</span></span>
+    <button class="page-btn" onclick="changePage(1)" id="nextBtn">
+      Sonraki ►
+    </button>
+    <div class="rows-per-page"><label for="rowsSelect">
+      Sayfa başına:</label>
+      <select id="rowsSelect" onchange="changeRowsPerPage(this.value)">
+        <option value="10">10</option>
+        <option value="20" selected>
+          20
+        </option>
+        <option value="50">50</option>
+      </select>
     </div>
-
-    <div class="controls">
-        <div class="sort-buttons">
-            <button class="sort-btn" onclick="sortTable('price-asc',event)">💰 En Ucuz</button>
-            <button class="sort-btn" onclick="sortTable('price-desc',event)">💰 En Pahalı</button>
-            <div class="dropdown">
-                <button class="sort-btn" onclick="toggleDropdown(event)">📊 Fiyat Aralığı ▼</button>
-                <div class="dropdown-content" id="fiyatDropdown">
-                    <a href="#" onclick="filterByPriceRange(200,400);return false;">200–400₺</a>
-                    <a href="#" onclick="filterByPriceRange(400,600);return false;">400–600₺</a>
-                    <a href="#" onclick="filterByPriceRange(600,800);return false;">600–800₺</a>
-                    <a href="#" onclick="filterByPriceRange(800,Infinity);return false;">800₺+</a>
-                </div>
-            </div>
-            <button class="sort-btn" onclick="resetTable()">🔄 Sıfırla</button>
-        </div>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
-        </div>
+  </div>
+  <div class="disclaimer-section">
+    <h4>⚖️ Sorumluluk Reddi Beyanı</h4>
+    <p>Bu web sitesinde sunulan tüm içerik, yalnızca bilgilendirme amaçlı olup ticari bir nitelik taşımamaktadır.</p>
+    <p>Sitede yer alan fiyat, tarife ve diğer bilgiler, ilgili internet servis sağlayıcılarının kamuya açık resmi web siteleri esas alınarak derlenmiştir.</p>
+    <p>Bu sitedeki bilgilere dayanılarak gerçekleştirilen işlemlerden doğabilecek zararlardan site sahibi sorumlu tutulamaz.</p>
+  </div>
+  <div class="footer">
+    <div class="footer-top">
+      💼 <strong>Hazırlayan:</strong>
+      deckardvibes · <a href="https://forum.donanimhaber.com/profil/3279461" target="_blank">DH Forum</a>
+      · <a href="https://github.com/deckardvibes" target="_blank">GitHub</a>
     </div>
-
-    <div class="date-legend">
-        <strong>🕒 Son Güncelleme:</strong>
-        <span><span class="date-badge date-green">Son 30 gün</span> — Güncel</span>
-        <span><span class="date-badge date-yellow">30–60 gün</span> — Kontrol edilmeli</span>
-        <span><span class="date-badge date-red">60 gün+</span> — Eski bilgi</span>
-    </div>
-
-    <div class="table-container">
-        <table id="priceTable">
-            <thead><tr>
-                <th>Firma</th>
-                <th>İlk Dönem Ücreti
-                    <div class="th-legend">
-                        <span class="legend-item"><span class="legend-dot vdsl"></span> VDSL</span>
-                        <span class="legend-item"><span class="legend-dot fiber"></span> Fiber</span>
-                        <span class="legend-item"><span class="legend-dot single"></span> Aynı Fiyat</span>
-                    </div>
-                </th>
-                <th>Sonraki Dönem</th>
-                <th>Modem Kira</th>
-                <th>Son Güncelleme</th>
-            </tr></thead>
-            <tbody id="tableBody"></tbody>
-        </table>
-        <div id="noResults" class="no-results" style="display:none;">🔍 Aradığınız kriterlere uygun firma bulunamadı.</div>
-    </div>
-
-    <div class="card-grid" id="cardGrid"></div>
-
-    <div class="pagination">
-        <button class="page-btn" onclick="changePage(-1)" id="prevBtn">◀ Önceki</button>
-        <span class="page-info">Sayfa <span id="currentPage">1</span> / <span id="totalPages">1</span></span>
-        <button class="page-btn" onclick="changePage(1)" id="nextBtn">Sonraki ▶</button>
-    </div>
-
-    <div class="disclaimer-section">
-        <h4>⚖️ Sorumluluk Reddi Beyanı</h4>
-        <p>Bu web sitesinde sunulan tüm içerik, yalnızca bilgilendirme amaçlı olup ticari bir nitelik taşımamaktadır.</p>
-        <p>Sitede yer alan fiyat, tarife ve diğer bilgiler, ilgili internet servis sağlayıcılarının kamuya açık resmi web siteleri esas alınarak derlenmiştir. Söz konusu bilgilerin doğruluğu, güncelliği ve eksiksizliği konusunda herhangi bir garanti verilmemektedir.</p>
-        <p>Bu sitedeki bilgilere dayanılarak gerçekleştirilen abonelik işlemleri veya diğer eylemlerden doğabilecek zararlardan site sahibi sorumlu tutulamaz. Kullanıcıların herhangi bir hizmet satın almadan önce ilgili firmanın resmi web sitesini ziyaret ederek güncel koşulları bizzat teyit etmesi tavsiye olunur.</p>
-        <p>Bu sitede üçüncü taraf web sitelerine yönlendiren bağlantılar yer almaktadır. Söz konusu sitelerin içeriği veya gizlilik politikalarından site sahibi sorumlu değildir.</p>
-    </div>
-
-    <div class="footer">
-        <div style="margin-bottom:6px">💼 <strong>Hazırlayan:</strong> deckardvibes &nbsp;·&nbsp; <a href="https://forum.donanimhaber.com/profil/3279461" target="_blank">DH Forum</a> &nbsp;·&nbsp; <a href="https://github.com/deckardvibes" target="_blank">GitHub</a></div>
-        <div style="font-size:11px;opacity:0.5;margin-top:6px">2026</div>
-    </div>
-
+    <div class="footer-year">2026</div>
+  </div>
 </div>
+<script>const el = id => document.getElementById(id);
 
-<script>
-// ═══ VERİ ═══
 const firmsData = [
     {name:"10LİNE",link:"https://10line.com.tr/tarifeler/",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
-    {name:"4GNET",link:"https://4gnet.com.tr/bireysel_tarifeler/",priceText:"649,99₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"ALANYANET",link:"https://www.alanyanet.com.tr/VdslTarifeler.html",priceText:"VDSL 570,00₺ / FİBER 620,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"4GNET",link:"https://4gnet.com.tr/bireysel_tarifeler",priceText:"649,99₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"ALANYANET",link:"https://www.alanyanet.com.tr/VdslTarifeler.html",linkFiber:"https://www.alanyanet.com.tr/FiberTarife.html",priceText:"VDSL 570,00₺ / FİBER 620,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"AKDENİZNET",link:"https://www.akdeniznet.com.tr/akdeniznet-fiber-tarifeler/",priceText:"800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"ATLANTİSNET",link:"https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"AY TELEKOM",link:"https://aytelekom.com.tr/tarife/vdsl",priceText:"VDSL 589,00₺ / FİBER 599,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
-    {name:"BCNNET",link:"https://www.bcnnet.com.tr/tarifeler",priceText:"VDSL 625,00₺ / FİBER 675,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"AY TELEKOM",link:"https://aytelekom.com.tr/tarife/vdsl",linkFiber:"https://aytelekom.com.tr/tarife/fiber",priceText:"VDSL 589,00₺ / FİBER 599,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
+    {name:"BCNNET",link:"https://www.bcnnet.com.tr/tarifeler",priceText:"VDSL 625,00₺ / FİBER 675,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"BELENATLANTİS",link:"https://belenatlantis.com.tr/kampanyalar.php",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"BEST TELEKOM",link:"https://besttelekom.com.tr/",priceText:"İlk 3 ay 499,00₺",type:"single",nextPeriod:"699,00₺",modem:"paid",modemCost:"80,00₺",date:"22 Şub 2026"},
     {name:"BİZİMİNTERNET",link:"https://merkez.biziminternet.com.tr/tarifelerimiz",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
@@ -662,35 +1818,35 @@ const firmsData = [
     {name:"BİRNET",link:"https://www.birnet.net.tr/fiber-vdsl-tarifeler/",priceText:"699,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"BURSA İNTERNET",link:"https://www.bursafiberinternet.com/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"CANNET",link:"https://www.binet.com.tr/Tarifeler/index/sinirsiz-internet-ozgur-iletisim",priceText:"4 ay sabit 499,00₺",type:"single",nextPeriod:"699,00₺",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
-    {name:"CERENNET",link:"https://www.cerennet.com.tr/",priceText:"VDSL 650,00₺ / FİBER 700,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"ÇABUKNET",link:"https://www.cabuknet.com.tr/tarifeler/",priceText:"790,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"CERENNET",link:"https://www.cerennet.com.tr/paketlerimiz/cerennet-tt-vdsl",linkFiber:"https://www.cerennet.com.tr/paketlerimiz/tt-fiber",priceText:"VDSL 650,00₺ / FİBER 700,00₺",type:"single",nextPeriod:"Taahhütlü",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"ÇABUKNET",link:"https://www.cabuknet.com.tr/tarifeler/",priceText:"790,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"27 Şub 2026"},
     {name:"DAHAONLİNE",link:"https://www.dahaonline.com.tr/paketlerimiz/",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"DİJİTAL NET",link:"https://dijitalnet.com.tr/#tarifeler",priceText:"649,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"DİDİMNET",link:"https://www.didimnet.com.tr/kablolu-tarifeler.html",priceText:"450,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
-    {name:"EFSANENET",link:"https://www.efsanenet.com.tr/vdsl-internet/",priceText:"VDSL 480,00₺ / FİBER 530,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
-    {name:"ELMA TELEKOM",link:"https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/",priceText:"VDSL 400,00₺ / FİBER 450,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"EFSANENET",link:"https://www.efsanenet.com.tr/vdsl-internet/",linkFiber:"https://www.efsanenet.com.tr/fiber-tarifeler/",priceText:"VDSL 480,00₺ / FİBER 530,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"ELMA TELEKOM",link:"https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/",priceText:"VDSL 400,00₺ / FİBER 450,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"EPLANET",link:"https://www.eplanet.com.tr/kampanyalar.html",priceText:"569,99₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"119,90₺",date:"22 Şub 2026"},
     {name:"EURONET",link:"https://www.euronet.com.tr/internet-paketleri/vdsl",priceText:"629,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"EXPRESNET",link:"https://expresnet.com.tr/fiber-internet",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"EXTRANET",link:"https://www.extranet.com.tr/kampanya/yeni-musteri-kampanyalari",priceText:"629,00₺",type:"single",nextPeriod:"31.12.2026'ya kadar",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
     {name:"EYLÜLNET",link:"https://www.eylulnet.com.tr/tarifeler.html",priceText:"620,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
-    {name:"FARKNET",link:"https://farknet.com.tr/internetpaketleri/",priceText:"VDSL 579,00₺ / FİBER 599,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"FARKNET",link:"https://farknet.com.tr/internetpaketleri/",priceText:"VDSL 579,00₺ / FİBER 599,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"FACE TELEKOM",link:"https://facetelekom.com.tr/tarifeler/",priceText:"569,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"FİBA TELEKOM",link:"https://fibatelekom.com.tr/tr/packages",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"FİZYNET",link:"https://www.fizynet.com.tr/fiber-tarifeler",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"FİXNET",link:"https://www.fixnet.com.tr/eviniz#paketler",priceText:"VDSL 450,00₺ / FİBER 500,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FİXNET",link:"https://www.fixnet.com.tr/eviniz#paketler",priceText:"VDSL 450,00₺ / FİBER 500,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"FİBERWİ",link:"https://fiberwi.com.tr/bireysel-tarifeler/",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"FİNET",link:"https://www.finet.com.tr/tarifeler",priceText:"630,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"FİBİMNET",link:"https://www.fibim.com.tr/tarife-incele/2026-10020-on-odemeli-fiber-internet-kampanyasi-165",priceText:"790,00₺",type:"single",nextPeriod:"1 Haziran 2026'ya kadar",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"FİLİKANET",link:"https://www.filika.net.tr/kablolu-internet",priceText:"689,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
-    {name:"FIRATNET",link:"https://firatnet.com/pricing/xdsl-fiber",priceText:"VDSL 580,00₺ / FİBER 660,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"FIRATNET",link:"https://firatnet.com/pricing/xdsl-fiber",priceText:"VDSL 580,00₺ / FİBER 660,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"FLİXNET",link:"https://flix.net.tr/tarifeler",priceText:"520,00₺",type:"single",nextPeriod:"Temmuz 2026'ya kadar",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"FREEFİBER",link:"https://www.freefiber.com.tr/bireysel-tarifelerimiz",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"FULLNET",link:"https://fullnet.com.tr/adsl-vdsl-internet-paketleri/",priceText:"795,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"GAP TELEKOM",link:"https://www.cdntelekom.com/tarifeler/6",priceText:"800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"GESNET",link:"https://gesnet.com.tr/tarife-detay?id=13",priceText:"500,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"GENERALNET",link:"https://general.net.tr/",priceText:"499,90₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
-    {name:"GİGASPEED",link:"https://gigaspeed.com.tr/paketler",priceText:"İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺",type:"dual",nextPeriod:"VDSL 479,90₺ / FİBER 499,90₺",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
+    {name:"GİGASPEED",link:"https://gigaspeed.com.tr/paketler",priceText:"İlk 3 Ay: VDSL 429,90₺ / FİBER 449,90₺",type:"single",nextPeriod:"VDSL 479,90₺ / FİBER 499,90₺",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
     {name:"GİBİRNET",link:"https://gibir.net.tr/",priceText:"İlk 3 Ay: 480,00₺",type:"single",nextPeriod:"580,00₺",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"GLOBALNET",link:"https://www.globalnetinternet.com/fiber-tarifeler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"GÖLHİSARNET",link:"https://golhisarnet.net.tr/tarifeler",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
@@ -698,32 +1854,32 @@ const firmsData = [
     {name:"HATFİBER",link:"https://hatfiber.com.tr/vdsl-tarifeler/",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"HAZARNET",link:"https://www.hazarnet.com/#tarife",priceText:"720,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"HİZONLİNE",link:"https://www.hizonline.com/kampanyalar.php",priceText:"749,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"HİPERONLİNE",link:"https://hiperonline.com.tr/",priceText:"VDSL 625,00₺ / FİBER 700,00₺",type:"dual",nextPeriod:"1 Temmuz 2026'ya kadar",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"HİPERONLİNE",link:"https://hiperonline.com.tr/",priceText:"VDSL 625,00₺ / FİBER 700,00₺",type:"single",nextPeriod:"1 Temmuz 2026'ya kadar",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"İCENET TELEKOM",link:"https://www.icenet.net.tr/tr",priceText:"859,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
     {name:"İNTERNET KUTUSU",link:"https://internetkutusu.com.tr/tarifeler",priceText:"549,90₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"İNCİNET",link:"https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL",priceText:"VDSL 499,90₺ / FİBER 599,90₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"İNCİNET",link:"https://www.incinet.com.tr/tr/tarifelerimiz?tarife=VDSL",linkFiber:"https://www.incinet.com.tr/tr/tarifelerimiz?tarife=FIBER",priceText:"VDSL 499,90₺ / FİBER 599,90₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"İREMNET",link:"https://iremnet.com.tr/index.php/fiber-internet/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"JETNET",link:"https://www.jetnettelekom.com.tr/tarife/vdsl",priceText:"580,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"KAREL İLETİŞİM",link:"https://kareliletisim.com.tr/kampanyalar/",priceText:"VDSL 569,00₺ / FİBER 569,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"KAREL İLETİŞİM",link:"https://kareliletisim.com.tr/kampanyalar/",priceText:"VDSL 569,00₺ / FİBER 569,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"KABLOSUZONLİNE",link:"https://www.kablosuzonline.com.tr/wisp/bireysel-tarife.php#fiber-internet",priceText:"429,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"KARUNNET",link:"https://karunnet.com.tr/",priceText:"VDSL 580,00₺ / FİBER 610,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"KARUNNET",link:"https://karunnet.com.tr/",priceText:"VDSL 580,00₺ / FİBER 610,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"KAYINET",link:"https://kayinet.com.tr/",priceText:"675,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"80,00₺",date:"22 Şub 2026"},
     {name:"KIRNET BİLİŞİM",link:"https://kirnetbilisim.com.tr/package-fiber/",priceText:"560,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"KOCAELİ İNTERNET",link:"https://kocaeliinternet.com.tr/tarife/vdsl",priceText:"VDSL 650,00₺ / FİBER 575,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"KOCAELİ İNTERNET",link:"https://kocaeliinternet.com.tr/tarife/vdsl",priceText:"VDSL 650,00₺ / FİBER 575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"KÖYCEĞİZNET",link:"https://koycegiznet.com.tr/tarifelerimiz/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"LİNYİTNET",link:"https://www.linyitnet.com.tr/vdsl-ve-fiber-tarifeler/",priceText:"İlk 3 ay 399,00₺",type:"single",nextPeriod:"699,00₺",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"MAVİNET",link:"https://mavinetbilisim.com.tr/tarifelerimiz/",priceText:"VDSL 570,00₺ / FİBER 630,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"MAVİNET",link:"https://mavinetbilisim.com.tr/tarifelerimiz/",priceText:"VDSL 570,00₺ / FİBER 630,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"MAVİFİBER",link:"https://mavifiber.com.tr",priceText:"450,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"MERKÜRNET",link:"https://www.merkurnet.com.tr/merkure-ilk-adim/",priceText:"VDSL 569,90₺ / FİBER 649,90₺",type:"dual",nextPeriod:"689,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
+    {name:"MERKÜRNET",link:"https://www.merkurnet.com.tr/merkure-ilk-adim/",priceText:"VDSL 569,90₺ / FİBER 649,90₺",type:"single",nextPeriod:"689,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"MERTSKY TELEKOM",link:"https://mertsky.com.tr/100-megabit/",priceText:"400,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"MERNET",link:"https://mernet.com.tr/sayfa-tarifelerimiz",priceText:"652,00₺",type:"single",nextPeriod:"Taahhütlü",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"MİGROSNET",link:"https://www.migrosnet.com.tr/",priceText:"İlk 3 Ay: VDSL 349,00₺ / FİBER 419,00₺",type:"dual",nextPeriod:"VDSL 649,00₺ / FİBER 699,00₺",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"MİGROSNET",link:"https://migrosinternet.alfailetisim.com.tr/kampanyalar",priceText:"İlk 3 Ay: VDSL 369,00₺ / FİBER 419,00₺",type:"single",nextPeriod:"VDSL 649,00₺ / FİBER 699,00₺",modem:"free",modemCost:"",date:"27 Şub 2026"},
     {name:"MİLLENİCOM",link:"https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet",priceText:"İlk 4 Ay: 399,90₺",type:"single",nextPeriod:"690,00₺",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"MOBİLFREE",link:"https://mobilfree.com.tr/tarifeler?commitment=taahhutsuz",priceText:"599,00₺",type:"single",nextPeriod:"1 Ocak 2027'ye kadar",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
-    {name:"MOBİSMART",link:"https://neonet.net.tr/vdsl-tarifeler/",priceText:"VDSL 680,00₺ /FİBER 800,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"MOBİSMART",link:"https://neonet.net.tr/vdsl-tarifeler/",priceText:"VDSL 680,00₺ /FİBER 800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"MODEXI",link:"https://modexi.com.tr/100-mbps-fiber-internet/",priceText:"579,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"NAZNET",link:"https://www.naznet.com.tr/web/tarifeler/",priceText:"720,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"22 Şub 2026"},
-    {name:"NEONET",link:"https://neonet.net.tr/vdsl-tarifeler/",priceText:"VDSL 599,00₺ / FİBER 675,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NEONET",link:"https://neonet.net.tr/vdsl-tarifeler/",linkFiber:"https://neonet.net.tr/fiber-tarifeler/",priceText:"VDSL 599,00₺ / FİBER 675,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"NETBONE",link:"https://www.netbone.com.tr/",priceText:"579,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"NETGİGABİT",link:"https://www.netgigabit.com.tr/vdsltarifeler.html",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"NETGSM",link:"https://www.netgsm.com.tr/internet/",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
@@ -733,14 +1889,14 @@ const firmsData = [
     {name:"NETPLUS",link:"https://netplus.net.tr/tarifeler/",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"NETSPEED",link:"https://www.netspeed.com.tr/kampanyalar",priceText:"İlk 4 Ay: 399,90₺",type:"single",nextPeriod:"649,90₺",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"NETWİFİ",link:"https://netwifi.com.tr/fiber-tarifeler",priceText:"500,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"NETPRİME",link:"https://netprime.com.tr/vdsl-tarifeler/",priceText:"VDSL 680,00₺ / FİBER 800,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"NİDA TELEKOM",link:"https://www.nidatelekom.com.tr/xdsl_internet_paketleri",priceText:"VDSL 599,00₺ / FİBER 629,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
+    {name:"NETPRİME",link:"https://netprime.com.tr/vdsl-tarifeler/",linkFiber:"https://netprime.com.tr/fiber-tarifeler/",priceText:"VDSL 680,00₺ / FİBER 800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"NİDA TELEKOM",link:"https://www.nidatelekom.com.tr/xdsl_internet_paketleri",priceText:"VDSL 599,00₺ / FİBER 629,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"NİTROİNTERNET",link:"https://nitrointernet.com.tr/",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"NOKTAWİFİ",link:"https://noktawifi.com.tr/vdsl-tarifeler/",priceText:"VDSL 700,00₺ / FİBER 725,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"NOKTAWİFİ",link:"https://noktawifi.com.tr/vdsl-tarifeler/",linkFiber:"https://noktawifi.com.tr/fiber-tarifeler/",priceText:"VDSL 700,00₺ / FİBER 725,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"NOKTAONLİNE",link:"https://noktaonline.com.tr/kampanyalar",priceText:"390,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"OSNET",link:"https://www.osnet.com.tr/vdsl-tarifeler/",priceText:"VDSL 750,00₺ / FİBER 650,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"OSNET",link:"https://www.osnet.com.tr/vdsl-tarifeler/",linkFiber:"https://www.osnet.com.tr/fiber-tarifeler/",priceText:"VDSL 750,00₺ / FİBER 650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"OSAWI TELEKOM",link:"https://osawi.com.tr/packages",priceText:"675,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"OTELEKOM",link:"https://www.otelekom.com.tr/kampanyalar/",priceText:"VDSL 600,00₺ / FİBER 675,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"OTELEKOM",link:"https://www.otelekom.com.tr/kampanyalar/",priceText:"VDSL 600,00₺ / FİBER 675,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"ORİS TELEKOM",link:"https://www.oristelekom.com/kampanya-paketler/oris-faturali-taahhutsuz-on-odemeli-ev-interneti",priceText:"İlk 3 ay 299,90₺",type:"single",nextPeriod:"649,90₺",modem:"paid",modemCost:"50,00₺",date:"22 Şub 2026"},
     {name:"PANANET",link:"https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"PASİFİK TELEKOM",link:"https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/",priceText:"İlk 3 Ay: 480,00₺",type:"single",nextPeriod:"560,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
@@ -749,31 +1905,31 @@ const firmsData = [
     {name:"RAMTEK",link:"https://www.ramtek.net.tr/ramtek-vae-hizmeti",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"REKORNET",link:"https://rekornet.com.tr/",priceText:"570,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"SADENET",link:"https://sadenet.com.tr/Kampanyalar/yok-artik-fiber-kampanyasi-100mbps-taahhutsuz",priceText:"İlk 4 Ay: 319,00₺",type:"single",nextPeriod:"610,00₺",modem:"paid",modemCost:"150,00₺",date:"22 Şub 2026"},
-    {name:"SAKNET",link:"https://www.saknet.com.tr/#tarifeler",priceText:"VDSL 599,90₺ / FİBER 659,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SAKNET",link:"https://www.saknet.com.tr/#tarifeler",priceText:"VDSL 599,90₺ / FİBER 659,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"SARNET TELEKOM",link:"https://www.sarnettelekom.com.tr/vdsl-tarifeler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"SARIKAYANET",link:"https://www.sarikayanet.com.tr/tarifeler",priceText:"VDSL 650,00₺ / FİBER 750,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SARIKAYANET",link:"https://www.sarikayanet.com.tr/tarifeler",priceText:"VDSL 650,00₺ / FİBER 750,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"SİBANET",link:"https://sibanet.com.tr/bireysel-tarifeler/",priceText:"1050,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"SONET",link:"https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html",priceText:"VDSL 609,90₺ / FİBER 619,90₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"69,90₺",date:"22 Şub 2026"},
-    {name:"SPEEDNET",link:"https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler",priceText:"VDSL 900,00₺ / FİBER 800,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"SONET",link:"https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html",priceText:"VDSL 609,90₺ / FİBER 619,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"69,90₺",date:"22 Şub 2026"},
+    {name:"SPEEDNET",link:"https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler",priceText:"VDSL 900,00₺ / FİBER 800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"SURNET",link:"https://www.surnet.com.tr/tarifeler-c-14",priceText:"750,00₺",type:"single",nextPeriod:"Taahhütlü",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"SUKNET",link:"https://suknet.com.tr/",priceText:"VDSL 660,00₺ / FİBER 680,00₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
-    {name:"ŞOKNET",link:"https://www.soknetinternet.com.tr/kampanyalar",priceText:"İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺",type:"dual",nextPeriod:"VDSL 619,00₺ / FİBER 689,00₺",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"SUKNET",link:"https://suknet.com.tr/",priceText:"VDSL 660,00₺ / FİBER 680,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
+    {name:"ŞOKNET",link:"https://www.soknetinternet.com.tr/kampanyalar",priceText:"İlk 4 Ay: VDSL 379,00₺ / FİBER 449,00₺",type:"single",nextPeriod:"VDSL 619,00₺ / FİBER 689,00₺",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"TBTNET",link:"https://tbtnet.net/bireysel-internet",priceText:"639,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
-    {name:"TEPENET",link:"https://tepenet.com.tr/tr/paketler/roket-vdsl/",priceText:"VDSL 635,00₺ / FİBER 690,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TEPENET",link:"https://tepenet.com.tr/tr/paketler/?service=3",linkFiber:"https://tepenet.com.tr/tr/paketler/?service=4",priceText:"VDSL 635,00₺ / FİBER 690,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"TEKNET",link:"https://tek.net.tr/paketler",priceText:"569,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"TEKNOSANET",link:"https://www.teknosanet.com/",priceText:"İlk 3 Ay: 449,00₺",type:"single",nextPeriod:"689,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"TEKNOBİL TELEKOM",link:"https://www.teknobiltelekom.com.tr/tarifeler.php",priceText:"550,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"TELKOMNET",link:"https://www.telkomnet.com.tr/tarifeler",priceText:"VDSL 580,00₺ / FİBER 620,00₺",type:"dual",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
+    {name:"TELKOMNET",link:"https://www.telkomnet.com.tr/tarifeler",priceText:"VDSL 580,00₺ / FİBER 620,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
     {name:"TELKOTURK",link:"https://www.telkoturk.net/efsane-fiberly-100",priceText:"İlk 3 ay 345,00₺",type:"single",nextPeriod:"689,00₺",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
-    {name:"TİKLANET",link:"https://tiklanet.com.tr/tarifeler/",priceText:"VDSL 520,00₺ / FİBER 560,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TİKLANET",link:"https://tiklanet.com.tr/tarifeler/",priceText:"VDSL 520,00₺ / FİBER 560,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"TRFASTNET",link:"https://trfastnet.com.tr/internet-tarifeleri-uygun-fiyatli-ve-hizli-paketler-tr-fastnet__trashed/meganet-100-mbps-paket/",priceText:"600,00₺",type:"single",nextPeriod:"31.12.2026'ya kadar",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"TRNET",link:"https://tr-net.com.tr/tarifeler/",priceText:"775,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"TURBONET",link:"https://turbo.net.tr/paket/bireysel.html",priceText:"649,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"TURKCELL SUPERONLİNE",link:"https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar",priceText:"VDSL/FİBER 750,00₺",type:"single",nextPeriod:"1 Haziran 2026'ya kadar",modem:"paid",modemCost:"80,00₺",date:"22 Şub 2026"},
-    {name:"TURKHOST",link:"https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri",priceText:"İlk Ay: VDSL 359,00₺ / Fiber 550,00₺",type:"dual",nextPeriod:"VDSL 409,00₺ / Fiber 650,00₺",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
+    {name:"TURKCELL SUPERONLİNE",link:"https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar",linkFiber:"https://www.superonline.net/ev-interneti/fiber-internet/taahhutsuz-fiberde-super-teklif/100-mbps-ye-kadar",priceText:"VDSL 750,00₺ / FİBER 750,00₺",type:"single",nextPeriod:"1 Haziran 2026'ya kadar",modem:"paid",modemCost:"80,00₺",date:"22 Şub 2026"},
+    {name:"TURKHOST",link:"https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri",priceText:"İlk Ay: VDSL 359,00₺ / Fiber 550,00₺",type:"single",nextPeriod:"VDSL 409,00₺ / Fiber 650,00₺",modem:"paid",modemCost:"65,00₺",date:"22 Şub 2026"},
     {name:"TURKNET",link:"https://www.turk.net/",priceText:"699,90₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"22 Şub 2026"},
-    {name:"TURUNCUNET",link:"https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet",priceText:"VDSL 549,90₺ / FİBER 589,90₺",type:"dual",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
-    {name:"TÜRKİYEMNET",link:"https://www.turkiyemnet.com.tr/#tarifeler",priceText:"VDSL 589,00₺ / FİBER 639,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"TURUNCUNET",link:"https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet",priceText:"VDSL 549,90₺ / FİBER 589,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"22 Şub 2026"},
+    {name:"TÜRKİYEMNET",link:"https://www.turkiyemnet.com.tr/#tarifeler",priceText:"VDSL 589,00₺ / FİBER 639,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"TÜRK TELEKOM",link:"https://bireysel.turktelekom.com.tr/evde-internet/yeni-musteri-kampanyalari/tum-yeni-musteri-kampanyalari?taahhut=12&hiz=100&siralama=fiyatArtan",priceText:"Taahhütlü",type:"single",nextPeriod:"Taahhütlü",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"ULUNET",link:"https://www.ulu.net.tr/paketler/VDSL",priceText:"570,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"},
     {name:"ULUHAN NET",link:"https://www.uluhan.net.tr/fiber-tarifeler",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
@@ -784,253 +1940,392 @@ const firmsData = [
     {name:"WAAYNET",link:"https://waaynet.com.tr/tarifelerimiz.php",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"22 Şub 2026"},
     {name:"WENETWİFİ",link:"http://www.wenetwifi.com/tr/PaketAyrinti/hiperfiber-internet-7",priceText:"799,99₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
     {name:"WİFİ TELEKOM",link:"https://wifi.net.tr/wifi-vdsl-fiber-100mb/",priceText:"749,90₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
-    {name:"WORLDNET",link:"https://worldnet.com.tr/tarifelerimiz/",priceText:"VDSL 714,00₺ / FİBER 814,00₺",type:"dual",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"22 Şub 2026"},
+    {name:"WORLDNET",link:"https://worldnet.com.tr/tarifelerimiz/",priceText:"VDSL 749,00₺ / FİBER 814,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"27 Şub 2026"},
     {name:"YENİNET",link:"https://www.yeninet.com.tr/tarifelerimiz/",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"22 Şub 2026"}
 ];
 
-// ═══ SAYFALAMA ═══
-const rowsPerPage = 20;
-let currentPage = 1;
-let filteredData = [...firmsData];
+let rowsPerPage = 20, currentPage = 1, filteredData = [...firmsData];
 
-// ═══ BADGE RENDER ═══
-function priceBadge(priceText, type) {
-    if (type !== 'dual') return `<div class="price-badges"><span class="price-badge single">${priceText}</span></div>`;
-    const vm = priceText.match(/VDSL\s+([\d.,]+)₺/);
-    const fm = priceText.match(/F[İI]BER\s+([\d.,]+)₺/i);
-    let h = '<div class="price-badges">';
-    if (vm) h += `<span class="price-badge vdsl">${vm[1]}₺</span>`;
-    if (fm) h += `<span class="price-badge fiber">${fm[1]}₺</span>`;
-    if (!vm && !fm) h += `<span class="price-badge single">${priceText}</span>`;
-    return h + '</div>';
+// <select> listesini firmsData'dan otomatik oluştur - tek kaynak
+el('firmaGizli').innerHTML = '<option value="">-- Firma seçin --</option>' +
+  firmsData.map(f => `<option value="${f.name}">${f.name}</option>`).join('');
+let activeSearch = '', activePriceMin = null, activePriceMax = null, currentSort = null;
+
+// ── URL param okuma ──
+function initFromURL() {
+  const p = new URLSearchParams(location.search);
+  if (p.get('q'))   { activeSearch = p.get('q'); el('searchInput').value = activeSearch; }
+  if (p.get('sort')) currentSort = p.get('sort');
+  if (p.get('min'))  { activePriceMin = +p.get('min'); activePriceMax = p.get('max') === 'inf' ? Infinity : +(p.get('max') || Infinity); }
+  if (currentSort) {
+    document.querySelectorAll('.sort-btn').forEach(b => {
+      if (b.dataset && b.dataset.sort === currentSort) b.classList.add('active');
+    });
+  }
 }
 
-function nextPeriodBadge(np, type) {
-    if (/sabit/i.test(np)) return `<span class="badge price-same">✓ Sabit</span>`;
-    if (/\d{1,2}[.\-]\d{1,2}[.\-]\d{4}|kadar|taahhüt/i.test(np)) return `<span class="badge price-info">📅 ${np}</span>`;
-    if (type === 'dual') {
-        const vm = np.match(/VDSL\s+([\d.,]+)₺/);
-        const fm = np.match(/F[İI]BER\s+([\d.,]+)₺/i);
-        if (vm || fm) {
-            let h = '<div class="price-badges">';
-            if (vm) h += `<span class="badge price-increase-vdsl">↑ ${vm[1]}₺</span>`;
-            if (fm) h += `<span class="badge price-increase-fiber">↑ ${fm[1]}₺</span>`;
-            return h + '</div>';
-        }
+// ── URL param yazma ──
+function pushURL() {
+  try {
+    const p = new URLSearchParams();
+    if (activeSearch)    p.set('q', activeSearch);
+    if (currentSort)     p.set('sort', currentSort);
+    if (activePriceMin !== null) {
+      p.set('min', activePriceMin);
+      p.set('max', activePriceMax === Infinity ? 'inf' : activePriceMax);
     }
-    return `<span class="badge price-increase">↑ ${np}</span>`;
+    const qs = p.toString();
+    history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+  } catch (e) { /* file:// veya iframe gibi kısıtlı ortamlarda sessizce geç */ }
 }
 
-function modemBadge(modem, cost) {
-    if (modem === 'free') return `<span class="badge modem-free">✓ Dahil</span>`;
-    if (modem === 'paid') return `<span class="badge modem-paid">${cost}</span>`;
-    return `<span class="badge modem-unknown">—</span>`;
+// ── Klavye: Escape tuşu ──
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  el('bildirModal').classList.remove('active');
+  el('fiyatDropdown').classList.remove('open');
+});
+
+
+function sanitize(s) {
+  return String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'&quot;');
 }
 
 function extractPrice(p) {
-    const m = p.match(/(\d+)[,\.](\d+)/g);
-    return m ? Math.min(...m.map(x => parseFloat(x.replace(',','.')))) : 999999;
+  const m = p.match(/(\d+)[,.](\d+)/g);
+  return m ? Math.min(...m.map(x => parseFloat(x.replace(',','.')))) : 999999;
 }
 
-// ═══ RENDER ═══
+function modemBadge(m, c) {
+  if (m === 'free') return `<span class="badge modem-free">✓ Dahil</span>`;
+  if (m === 'paid') return `<span class="badge modem-paid">${c}</span>`;
+  return `<span class="badge modem-unknown">—</span>`;
+}
+
+function dateClass(d) {
+  const mm = {'Oca':0,'Şub':1,'Mar':2,'Nis':3,'May':4,'Haz':5,'Tem':6,'Ağu':7,'Eyl':8,'Eki':9,'Kas':10,'Ara':11};
+  const p = d.trim().split(' ');
+  if (p.length < 3) return 'date-green';
+  const day = parseInt(p[0]), mon = mm[p[1]], yr = parseInt(p[2]);
+  if (isNaN(day) || mon === undefined || isNaN(yr)) return 'date-green';
+  const diff = Math.floor((new Date() - new Date(yr, mon, day)) / 86400000);
+  if (diff <= 30) return 'date-green';
+  if (diff <= 60) return 'date-yellow';
+  return 'date-red';
+}
+
+function expandRows(data) {
+  const rows = [];
+  data.forEach(f => {
+    if (f.type === 'dual') {
+      const vP = f.priceText.match(/VDSL\s+([\d.,]+)₺/),
+            fP = f.priceText.match(/F[İI]BER\s+([\d.,]+)₺/i),
+            vN = f.nextPeriod.match(/VDSL\s+([\d.,]+)₺/),
+            fN = f.nextPeriod.match(/F[İI]BER\s+([\d.,]+)₺/i),
+            hB = !!(vP && fP);
+      if (vP) rows.push({...f, _subtype:'vdsl', _price:vP[1]+'₺', _next:vN?vN[1]+'₺':f.nextPeriod, _hasBoth:hB});
+      if (fP) rows.push({...f, _subtype:'fiber', _price:fP[1]+'₺', _next:fN?fN[1]+'₺':f.nextPeriod, _hasBoth:hB});
+      if (!vP && !fP) rows.push({...f, _subtype:null, _hasBoth:false});
+    } else {
+      rows.push({...f, _subtype:null, _hasBoth:false});
+    }
+  });
+  return rows;
+}
+
+function renderRowPrice(r) {
+  if (!r._subtype) {
+    const vm = r.priceText.match(/VDSL\s+([\d.,]+)₺/), fm = r.priceText.match(/F[İI]BER\s+([\d.,]+)₺/i);
+    if (vm || fm) {
+      let h = '';
+      if (vm) h += `<span class="price-badge vdsl">${vm[1]}₺</span>`;
+      if (fm) h += ` <span class="price-badge fiber">${fm[1]}₺</span>`;
+      return h;
+    }
+    return `<span class="price-badge single">${sanitize(r.priceText)}</span>`;
+  }
+  return `<span class="price-badge ${r._subtype}">${sanitize(r._price)}</span>`;
+}
+
+function renderRowNext(r) {
+  const np = r._subtype ? r._next : r.nextPeriod;
+  if (/^sabit$/i.test(np)) return `<span class="badge price-same">✓ Sabit</span>`;
+  if (/\d+\s*ay\s*sabit/i.test(np)) return `<span class="badge price-same">✓ ${sanitize(np)}</span>`;
+  if (/^taahhütlü$/i.test(np)) return `<span class="badge price-commitment">📋 Taahhütlü</span>`;
+  if (/\d{1,2}[.\-]\d{1,2}[.\-]\d{4}|kadar/i.test(np)) return `<span class="badge price-info">📅 ${sanitize(np)}</span>`;
+  const vm = np.match(/VDSL\s+([\d.,]+)₺/), fm = np.match(/F[İI]BER\s+([\d.,]+)₺/i);
+  if (vm || fm) {
+    let h = '';
+    if (vm) h += `<span class="badge price-increase-vdsl">↑ ${vm[1]}₺</span>`;
+    if (fm) h += ` <span class="badge price-increase-fiber">↑ ${fm[1]}₺</span>`;
+    return h;
+  }
+  return `<span class="badge price-increase">↑ ${sanitize(np)}</span>`;
+}
+
 function renderTable() {
-    const start = (currentPage - 1) * rowsPerPage;
-    const page  = filteredData.slice(start, start + rowsPerPage);
+  const start = (currentPage - 1) * rowsPerPage;
+  const page = filteredData.slice(start, start + rowsPerPage);
+  const rows = expandRows(page);
 
-    document.getElementById('tableBody').innerHTML = page.map(f => `
-        <tr>
-            <td class="firma-name">${f.name}<a href="${f.link}" target="_blank" class="link-badge">↗ Tarifeler</a></td>
-            <td>${priceBadge(f.priceText, f.type)}</td>
-            <td>${nextPeriodBadge(f.nextPeriod, f.type)}</td>
-            <td>${modemBadge(f.modem, f.modemCost)}</td>
-            <td><span class="date-badge date-green">${f.date}</span></td>
-        </tr>`).join('');
+  el('tableBody').innerHTML = rows.map((row, i) => {
+    const isFirst = i === 0 || rows[i-1].name !== row.name;
+    const aLink = (row._subtype === 'fiber' && row.linkFiber) ? row.linkFiber : row.link;
+    const rs = row._hasBoth ? 'rowspan="2"' : '';
 
-    document.getElementById('cardGrid').innerHTML = page.map(f => `
-        <div class="firma-card">
-            <div class="card-header"><span class="card-firma">${f.name}</span><a href="${f.link}" target="_blank" class="link-badge">↗</a></div>
-            <div class="card-row"><span class="card-row-label">İlk Dönem</span><span class="card-row-value">${priceBadge(f.priceText, f.type)}</span></div>
-            <div class="card-row"><span class="card-row-label">Sonraki</span><span class="card-row-value">${nextPeriodBadge(f.nextPeriod, f.type)}</span></div>
-            <div class="card-row"><span class="card-row-label">Modem</span><span class="card-row-value">${modemBadge(f.modem, f.modemCost)}</span></div>
-            <div class="card-footer"><span class="date-badge date-green">${f.date}</span></div>
-        </div>`).join('');
+    const nameCell = isFirst
+      ? `<td class="firma-name" ${rs}>${sanitize(row.name)}${
+          row.linkFiber
+            ? `<a href="${sanitize(row.link)}" target="_blank" class="link-badge link-badge-vdsl-name">↗ VDSL</a><a href="${sanitize(row.linkFiber)}" target="_blank" class="link-badge link-badge-fiber-name">↗ Fiber</a>`
+            : `<a href="${sanitize(row.link)}" target="_blank" class="link-badge">↗ Tarifeler</a>`
+        }</td>`
+      : '';
 
-    const total = Math.ceil(filteredData.length / rowsPerPage) || 1;
-    document.getElementById('currentPage').textContent  = currentPage;
-    document.getElementById('totalPages').textContent   = total;
-    document.getElementById('prevBtn').disabled         = currentPage === 1;
-    document.getElementById('nextBtn').disabled         = currentPage >= total;
-    document.getElementById('totalProviders').textContent = filteredData.length;
+    const priceLabel = row._subtype && !row.linkFiber
+      ? `<a href="${sanitize(aLink)}" target="_blank" class="link-badge link-badge-sub">↗ ${row._subtype === 'vdsl' ? 'VDSL' : 'Fiber'}</a>`
+      : '';
+
+    const modemCell = isFirst ? `<td ${rs}>${modemBadge(row.modem, row.modemCost)}</td>` : '';
+    const dateCell  = isFirst ? `<td ${rs}><span class="date-badge ${dateClass(row.date)}">${sanitize(row.date)}</span></td>` : '';
+
+    return `<tr class="${row.type === 'dual' ? (row._subtype === 'vdsl' ? 'row-vdsl' : 'row-fiber') : ''}">
+      ${nameCell}
+      <td>${renderRowPrice(row)}${priceLabel}</td>
+      <td>${renderRowNext(row)}</td>
+      ${modemCell}
+      ${dateCell}
+    </tr>`;
+  }).join('');
+
+  el('cardGrid').innerHTML = page.map(f => {
+    const ex = expandRows([f]);
+    const pr = ex.map(r =>
+      `<div class="card-row"><span class="card-row-label">${r._subtype ? (r._subtype === 'vdsl' ? 'VDSL' : 'Fiber') : 'İlk Dönem'}</span><span class="card-row-value">${renderRowPrice(r)}</span></div>
+       <div class="card-row"><span class="card-row-label">Sonraki</span><span class="card-row-value">${renderRowNext(r)}</span></div>`
+    ).join('');
+    const cl = f.linkFiber
+      ? `<a href="${sanitize(f.link)}" target="_blank" class="link-badge link-badge-vdsl-name">↗ VDSL</a><a href="${sanitize(f.linkFiber)}" target="_blank" class="link-badge link-badge-fiber-name">↗ Fiber</a>`
+      : `<a href="${sanitize(f.link)}" target="_blank" class="link-badge">↗ Tarifeler</a>`;
+    return `<div class="firma-card">
+      <div class="card-header"><span class="card-firma">${sanitize(f.name)}</span><div style="display:flex;gap:4px;flex-wrap:wrap">${cl}</div></div>
+      ${pr}
+      <div class="card-row"><span class="card-row-label">Modem</span><span class="card-row-value">${modemBadge(f.modem, f.modemCost)}</span></div>
+      <div class="card-footer"><span class="date-badge ${dateClass(f.date)}">${sanitize(f.date)}</span></div>
+    </div>`;
+  }).join('');
+
+  const total = Math.ceil(filteredData.length / rowsPerPage) || 1;
+  el('currentPage').textContent  = currentPage;
+  el('totalPages').textContent   = total;
+  el('prevBtn').disabled         = currentPage === 1;
+  el('nextBtn').disabled         = currentPage >= total;
+  el('totalProviders').textContent = filteredData.length;
 }
 
-function changePage(dir) {
-    const total = Math.ceil(filteredData.length / rowsPerPage);
-    const np = currentPage + dir;
-    if (np >= 1 && np <= total) { currentPage = np; renderTable(); window.scrollTo({top:0,behavior:'smooth'}); }
+function changeRowsPerPage(v) { rowsPerPage = parseInt(v); currentPage = 1; renderTable(); }
+
+function changePage(d) {
+  const t = Math.ceil(filteredData.length / rowsPerPage), np = currentPage + d;
+  if (np >= 1 && np <= t) { currentPage = np; renderTable(); window.scrollTo({top:0,behavior:'smooth'}); }
 }
 
-// ═══ ARAMA & SIRALAMA ═══
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    filteredData = firmsData.filter(f => f.name.toLowerCase().includes(this.value.toLowerCase()));
-    document.getElementById('noResults').style.display = filteredData.length ? 'none' : 'block';
-    currentPage = 1; renderTable();
-});
-
-function clearActive() { document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active')); }
-
-function sortTable(type, e) {
-    clearActive(); if (e?.target) e.target.classList.add('active');
-    filteredData.sort((a,b) => type === 'price-asc'
-        ? extractPrice(a.priceText) - extractPrice(b.priceText)
-        : extractPrice(b.priceText) - extractPrice(a.priceText));
-    currentPage = 1; renderTable();
+function applyFilters() {
+  filteredData = firmsData.filter(f => {
+    const nm = !activeSearch || f.name.toLowerCase().includes(activeSearch.toLowerCase());
+    const pr = extractPrice(f.priceText);
+    const pm = activePriceMin === null || (pr >= activePriceMin && pr < activePriceMax);
+    return nm && pm;
+  });
+  if (currentSort === 'price-asc')  filteredData.sort((a,b) => extractPrice(a.priceText) - extractPrice(b.priceText));
+  if (currentSort === 'price-desc') filteredData.sort((a,b) => extractPrice(b.priceText) - extractPrice(a.priceText));
+  el('noResults').style.display = filteredData.length ? 'none' : 'block';
+  renderActiveFilterChip();
+  currentPage = 1;
+  pushURL();
+  renderTable();
 }
 
-function filterByPriceRange(min, max) {
-    clearActive();
-    filteredData = firmsData.filter(f => { const p = extractPrice(f.priceText); return p >= min && p < max; });
-    document.getElementById('noResults').style.display = filteredData.length ? 'none' : 'block';
-    currentPage = 1; renderTable();
+function renderActiveFilterChip() {
+  const chip = el('activeFilterChip'), bar = el('activeFilterBar');
+  if (!chip || !bar) return;
+  const active = activePriceMin !== null;
+  bar.style.display = active ? 'block' : 'none';
+  chip.style.display = active ? 'inline-flex' : 'none';
+  if (active) {
+    const ml = activePriceMax === Infinity ? '∞' : activePriceMax + '₺';
+    chip.innerHTML = `Aktif filtre: ${activePriceMin}–${ml} <span onclick="resetPriceFilter()" style="cursor:pointer;margin-left:6px;font-size:14px;line-height:1">✕</span>`;
+  }
 }
+
+el('searchInput').addEventListener('keyup', function() { activeSearch = this.value; applyFilters(); });
+
+const clearActive = () => document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+function sortTable(t, e) { clearActive(); e?.target?.classList.add('active'); currentSort = t; applyFilters(); }
+const filterByPriceRange = (mn, mx) => { activePriceMin = mn; activePriceMax = mx; applyFilters(); };
+const resetPriceFilter = () => { activePriceMin = null; activePriceMax = null; applyFilters(); };
 
 function resetTable() {
-    filteredData = [...firmsData];
-    document.getElementById('searchInput').value = '';
-    document.getElementById('noResults').style.display = 'none';
-    clearActive(); currentPage = 1; renderTable();
+  activeSearch = ''; activePriceMin = null; activePriceMax = null; currentSort = null;
+  filteredData = [...firmsData];
+  el('searchInput').value = '';
+  el('noResults').style.display = 'none';
+  el('activeFilterChip').style.display = 'none';
+  clearActive(); currentPage = 1;
+  pushURL();
+  renderTable();
 }
 
-// ═══ DROPDOWN ═══
-function toggleDropdown(e) { e.stopPropagation(); document.getElementById('fiyatDropdown').classList.toggle('open'); }
-document.addEventListener('click', () => document.getElementById('fiyatDropdown').classList.remove('open'));
+const toggleDropdown = e => { e.stopPropagation(); el('fiyatDropdown').classList.toggle('open'); };
+document.addEventListener('click', () => el('fiyatDropdown').classList.remove('open'));
 
-// ═══ MODAL ═══
-function hataBildir(firma) {
-    document.getElementById('firmaGizli').value = firma;
-    document.getElementById('bildirFormContent').style.display = 'block';
-    document.getElementById('bildirSuccess').style.display = 'none';
-    document.getElementById('bildirForm').reset();
-    document.getElementById('bildirModal').classList.add('active');
+function hataBildir(f) {
+  el('firmaGizli').value = f;
+  el('bildirFormContent').style.display = 'block';
+  el('bildirSuccess').style.display = 'none';
+  el('bildirForm').reset();
+  el('bildirModal').classList.add('active');
 }
-function modalKapat() { document.getElementById('bildirModal').classList.remove('active'); }
-document.getElementById('bildirModal').addEventListener('click', e => { if (e.target === e.currentTarget) modalKapat(); });
+const modalKapat = () => el('bildirModal').classList.remove('active');
+el('bildirModal').addEventListener('click', e => { if (e.target === e.currentTarget) modalKapat(); });
 
 async function formGonder(e) {
-    e.preventDefault();
-    const firma = document.getElementById('firmaGizli').value;
-    if (!firma) { document.getElementById('firmaGizli').style.borderColor='#ef4444'; document.getElementById('firmaGizli').focus(); return; }
-    document.getElementById('firmaGizli').style.borderColor='';
-    let valid = true;
-    ['hatali_fiyat','dogru_fiyat','kaynak'].forEach(name => {
-        const el = document.querySelector(`[name="${name}"]`);
-        if (!el.value.trim()) { el.style.borderColor='#ef4444'; if(valid) el.focus(); valid=false; }
-        else el.style.borderColor='';
+  e.preventDefault();
+  const f = el('firmaGizli').value;
+  if (!f) { el('firmaGizli').style.borderColor = '#ef4444'; el('firmaGizli').focus(); return; }
+  el('firmaGizli').style.borderColor = '';
+  let valid = true;
+  ['hatali_fiyat','dogru_fiyat','kaynak'].forEach(n => {
+    const inp = document.querySelector(`[name="${n}"]`);
+    if (!inp.value.trim()) { inp.style.borderColor = '#ef4444'; if (valid) inp.focus(); valid = false; }
+    else inp.style.borderColor = '';
+  });
+  if (!valid) return;
+  const btn = el('gonderBtn');
+  btn.disabled = true; btn.textContent = 'Gönderiliyor...';
+  try {
+    const r = await fetch('https://formspree.io/f/xeelpkor', {
+      method: 'POST', body: new FormData(el('bildirForm')),
+      headers: {'Accept': 'application/json'}
     });
-    if (!valid) return;
-    const btn = document.getElementById('gonderBtn');
-    btn.disabled = true; btn.textContent = 'Gönderiliyor...';
-    try {
-        const res = await fetch('https://formspree.io/f/xeelpkor', {
-            method:'POST', body:new FormData(document.getElementById('bildirForm')), headers:{'Accept':'application/json'}
-        });
-        if (res.ok) { document.getElementById('bildirFormContent').style.display='none'; document.getElementById('bildirSuccess').style.display='block'; }
-        else { alert('Gönderim başarısız.'); btn.disabled=false; btn.textContent='📨 Gönder'; }
-    } catch { alert('Bağlantı hatası.'); btn.disabled=false; btn.textContent='📨 Gönder'; }
+    if (r.ok) {
+      el('bildirFormContent').style.display = 'none';
+      el('bildirSuccess').style.display = 'block';
+    } else { alert('Gönderim başarısız.'); btn.disabled = false; btn.textContent = '📨 Gönder'; }
+  } catch { alert('Bağlantı hatası.'); btn.disabled = false; btn.textContent = '📨 Gönder'; }
 }
 
-// ═══ TEMA ═══
 function toggleTheme() {
-    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const t = dark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', t);
-    document.getElementById('themeBtn').textContent = dark ? '🌙 Koyu Mod' : '☀️ Açık Mod';
-    localStorage.setItem('theme', t);
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const t = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  el('themeBtn').textContent = dark ? '🌙 Koyu Mod' : '☀️ Açık Mod';
+  localStorage.setItem('theme', t);
 }
-(function() {
-    if (localStorage.getItem('theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme','dark');
-        const b = document.getElementById('themeBtn');
-        if (b) b.textContent = '☀️ Açık Mod';
-    }
-})();
+if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    const b = el('themeBtn');
+    if (b) b.textContent = '☀️ Açık Mod';
+  }
 
-// ═══ WIZARD ═══
+// — Wizard —
 let wStep = 1;
 const wTotal = 3;
 
 function toggleWizard() {
-    const w = document.getElementById('wizardWrap');
-    w.classList.toggle('open');
-    if (w.classList.contains('open')) w.scrollIntoView({behavior:'smooth',block:'nearest'});
+  const w = el('wizardWrap');
+  w.classList.toggle('open');
+  if (w.classList.contains('open')) w.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
-function wNext() { wStep < wTotal ? wGoto(wStep+1) : wShowResults(); }
-function wPrev() { if (wStep > 1) wGoto(wStep-1); }
+function wNext() { wStep < wTotal ? wGoto(wStep + 1) : wShowResults(); }
+function wPrev() { if (wStep > 1) wGoto(wStep - 1); }
 
-function wGoto(step) {
-    document.getElementById(`ws${wStep}`).classList.remove('active');
-    document.getElementById(`wd${wStep}`).classList.remove('active');
-    step > wStep
-        ? document.getElementById(`wd${wStep}`).classList.add('done')
-        : document.getElementById(`wd${step}`).classList.remove('done');
-    wStep = step;
-    document.getElementById(`ws${wStep}`).classList.add('active');
-    document.getElementById(`wd${wStep}`).classList.remove('done');
-    document.getElementById(`wd${wStep}`).classList.add('active');
-    document.getElementById('wPrev').style.visibility = wStep > 1 ? 'visible' : 'hidden';
-    document.getElementById('wNext').textContent = wStep === wTotal ? 'Sonuçları Gör →' : 'Devam →';
-    document.getElementById('wLabel').textContent = `Adım ${wStep} / ${wTotal}`;
+function wGoto(s) {
+  document.getElementById(`ws${wStep}`).classList.remove('active');
+  document.getElementById(`wd${wStep}`).classList.remove('active');
+  s > wStep
+    ? document.getElementById(`wd${wStep}`).classList.add('done')
+    : document.getElementById(`wd${s}`).classList.remove('done');
+  wStep = s;
+  document.getElementById(`ws${wStep}`).classList.add('active');
+  document.getElementById(`wd${wStep}`).classList.remove('done');
+  document.getElementById(`wd${wStep}`).classList.add('active');
+  el('wPrev').style.visibility = wStep > 1 ? 'visible' : 'hidden';
+  el('wNext').textContent = wStep === wTotal ? 'Sonuçları Gör →' : 'Devam →';
+  el('wLabel').textContent = `Adım ${wStep} / ${wTotal}`;
 }
 
 function wSelect(el) {
-    el.closest('.w-options').querySelectorAll('.w-option').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
+  el.closest('.w-options').querySelectorAll('.w-option').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function getWizardResults(budget, mp, on) {
+  let r = firmsData.filter(f => {
+    if (extractPrice(f.priceText) > budget) return false;
+    if (mp === 'free' && f.modem !== 'free') return false;
+    return true;
+  });
+  if (on === 'sabit') r = r.filter(f => /sabit/i.test(f.nextPeriod));
+  return r.sort((a,b) => extractPrice(a.priceText) - extractPrice(b.priceText));
+}
+
+function getWizardParams() {
+  return {
+    budget: parseInt(el('budgetRange').value),
+    mp: document.querySelector('#ws2 .w-option.selected')?.dataset.val || 'any',
+    on: document.querySelector('#ws3 .w-option.selected')?.dataset.val || 'fiyat'
+  };
+}
+
+function wApplyToTable() {
+  const { budget, mp, on } = getWizardParams();
+  filteredData = getWizardResults(budget, mp, on);
+  activeSearch = ''; activePriceMin = null; activePriceMax = null; currentSort = null;
+  el('searchInput').value = '';
+  clearActive();
+  const chip = el('activeFilterChip'), bar = el('activeFilterBar');
+  chip.style.display = 'inline-flex'; bar.style.display = 'block';
+  chip.innerHTML = `Wizard filtresi: bütçe ≤${budget}₺ <span onclick="resetTable()" style="cursor:pointer;margin-left:6px;font-size:14px;line-height:1">✕</span>`;
+  el('noResults').style.display = filteredData.length ? 'none' : 'block';
+  currentPage = 1; renderTable();
+  document.querySelector('.controls').scrollIntoView({behavior:'smooth', block:'start'});
+  toggleWizard();
 }
 
 function wShowResults() {
-    const budget    = parseInt(document.getElementById('budgetRange').value);
-    const modemPref = document.querySelector('#ws2 .w-option.selected')?.dataset.val || 'any';
-    const oncelik   = document.querySelector('#ws3 .w-option.selected')?.dataset.val || 'fiyat';
-
-    let results = firmsData.filter(f => {
-        if (extractPrice(f.priceText) > budget) return false;
-        if (modemPref === 'free' && f.modem !== 'free') return false;
-        return true;
-    });
-    if (oncelik === 'sabit') results = results.filter(f => /sabit/i.test(f.nextPeriod));
-    results = results.sort((a,b) => extractPrice(a.priceText)-extractPrice(b.priceText)).slice(0,3);
-
-    const medals = ['🥇','🥈','🥉'], ranks = ['En İyi Seçim','2. Seçenek','3. Seçenek'];
-    document.getElementById('wResults').innerHTML = results.length
-        ? results.map((f,i) => `<div class="w-result-card">
-            <div class="w-rank">${medals[i]} ${ranks[i]}</div>
-            <div class="w-firma">${f.name}</div>
-            <div class="w-badges">${priceBadge(f.priceText,f.type)} ${modemBadge(f.modem,f.modemCost)}</div>
-            <a href="${f.link}" target="_blank" class="w-link">↗ Tarifeye Git</a>
-          </div>`).join('')
-        : '<div class="w-no-result">😔 Kriterlerinize uygun firma bulunamadı. Bütçeyi artırmayı veya modem tercihini değiştirmeyi deneyin.</div>';
-
-    document.getElementById(`ws${wStep}`).classList.remove('active');
-    document.getElementById(`wd${wStep}`).classList.add('done');
-    document.getElementById('ws-result').classList.add('active');
-    document.getElementById('wFooter').style.display = 'none';
+  const { budget, mp, on } = getWizardParams();
+  let r = getWizardResults(budget, mp, on).slice(0, 3);
+  const medals = ['🥇','🥈','🥉'], ranks = ['En İyi Seçim','2. Seçenek','3. Seçenek'];
+  el('wResults').innerHTML = r.length
+    ? r.map((f,i) => `<div class="w-result-card">
+        <div class="w-rank">${medals[i]} ${ranks[i]}</div>
+        <div class="w-firma">${f.name}</div>
+        <div class="w-badges">${renderRowPrice({...f, _subtype:null})} ${modemBadge(f.modem, f.modemCost)}</div>
+        <a href="${sanitize(f.link)}" target="_blank" class="w-link">↗ Tarifeye Git</a>
+      </div>`).join('')
+    : '<div class="w-no-result">😔 Kriterlerinize uygun firma bulunamadı.</div>';
+  document.getElementById(`ws${wStep}`).classList.remove('active');
+  document.getElementById(`wd${wStep}`).classList.add('done');
+  el('ws-result').classList.add('active');
+  el('wFooter').style.display = 'none';
 }
 
 function wRestart() {
-    wStep = 1;
-    document.getElementById('ws-result').classList.remove('active');
-    document.getElementById('ws1').classList.add('active');
-    document.getElementById('wFooter').style.display = 'flex';
-    document.querySelectorAll('.w-dot').forEach((d,i) => { d.classList.remove('active','done'); if(i===0) d.classList.add('active'); });
-    document.getElementById('wPrev').style.visibility = 'hidden';
-    document.getElementById('wNext').textContent = 'Devam →';
-    document.getElementById('wLabel').textContent = 'Adım 1 / 3';
-    document.getElementById('budgetRange').value = 600;
-    document.getElementById('budgetDisplay').textContent = '600₺';
+  wStep = 1;
+  el('ws-result').classList.remove('active');
+  el('ws1').classList.add('active');
+  el('wFooter').style.display = 'flex';
+  document.querySelectorAll('.w-dot').forEach((d,i) => { d.classList.remove('active','done'); if (i===0) d.classList.add('active'); });
+  el('wPrev').style.visibility = 'hidden';
+  el('wNext').textContent = 'Devam →';
+  el('wLabel').textContent = 'Adım 1 / 3';
+  el('budgetRange').value = 600;
+  el('budgetDisplay').textContent = '600₺';
 }
 
-// ═══ BAŞLAT ═══
-document.getElementById('totalProviders').textContent = firmsData.length;
-renderTable();
+el('totalProviders').textContent = firmsData.length;
+initFromURL();
+applyFilters();
 </script>
 </body>
 </html>
