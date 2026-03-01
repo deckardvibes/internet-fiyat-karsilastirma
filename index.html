@@ -93,7 +93,7 @@
 body {
   font-family:'Outfit',-apple-system,sans-serif;
   background:var(--bg);
-  color:var(--text);
+  color:var(--btn-text);
   transition:background 0.3s,color 0.3s;
   min-height:100vh;
 }
@@ -105,7 +105,7 @@ button,input,select,textarea {
 .container {
   max-width:1380px;
   margin:28px auto;
-  background:var(--card-bg);
+  background:var(--btn-bg);
   border-radius:20px;
   box-shadow:0 8px 32px var(--shadow);
   overflow:hidden;
@@ -340,7 +340,7 @@ h1 {
 .wizard-wrap {
   display:none;
   margin:16px 28px;
-  background:var(--card-bg);
+  background:var(--btn-bg);
   border-radius:16px;
   box-shadow:0 8px 32px var(--shadow-md);
   overflow:hidden;
@@ -424,7 +424,7 @@ h1 {
 .w-step h4 {
   font-size:14px;
   font-weight:700;
-  color:var(--text);
+  color:var(--btn-text);
   margin-bottom:16px;
 }
 
@@ -442,7 +442,7 @@ h1 {
   cursor:pointer;
   text-align:center;
   transition:all 0.2s;
-  background:var(--card-bg);
+  background:var(--btn-bg);
 }
 
 .w-option:hover,.w-option.selected {
@@ -458,7 +458,7 @@ h1 {
 .w-option .wt {
   font-size:13px;
   font-weight:700;
-  color:var(--text);
+  color:var(--btn-text);
 }
 
 .w-option .wd {
@@ -529,7 +529,7 @@ input[type="range"] {
 .w-step-label {
   font-size:12px;
   color:var(--text-secondary);
-  font-weight:500;
+  font-weight:600;
 }
 
 .w-result-card {
@@ -537,7 +537,7 @@ input[type="range"] {
   border-radius:12px;
   padding:16px;
   margin-bottom:10px;
-  background:var(--card-bg);
+  background:var(--btn-bg);
 }
 
 .w-result-card:first-child {
@@ -561,7 +561,7 @@ input[type="range"] {
 .w-firma {
   font-size:15px;
   font-weight:800;
-  color:var(--text);
+  color:var(--btn-text);
   margin-bottom:8px;
 }
 
@@ -622,12 +622,12 @@ input[type="range"] {
 .bildir-bar-text {
   font-size:13px;
   color:var(--text-secondary);
-  font-weight:500;
+  font-weight:600;
 }
 
 .bildir-bar-btn {
   padding:8px 18px;
-  background:var(--card-bg);
+  background:var(--btn-bg);
   border:1.5px solid var(--border);
   color:var(--text-secondary);
   border-radius:8px;
@@ -643,6 +643,74 @@ input[type="range"] {
   background:var(--red-lt);
   border-color:var(--red);
   color:var(--red);
+}
+
+/* Paylaş barı */
+.share-bar {
+  margin:16px 28px 16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.share-label {
+  font-size:12px;
+  font-weight:700;
+  color:var(--text-secondary);
+  white-space:nowrap;
+}
+
+.share-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:8px 12px;
+  border-radius:100px;
+  border:none;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  transition:opacity 0.15s, transform 0.1s;
+  font-family:'Outfit',sans-serif;
+  white-space:nowrap;
+}
+
+.share-btn:hover {
+  opacity:0.88;
+  transform:translateY(-1px);
+}
+
+.share-btn:active {
+  transform:translateY(0);
+}
+
+.share-btn.whatsapp {
+  background:#25D366;
+  color:#fff;
+}
+
+.share-btn.telegram {
+  background:#229ED9;
+  color:#fff;
+}
+
+.share-btn.twitter {
+  background:#000;
+  color:#fff;
+}
+
+.share-btn.copy-link {
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  border:1.5px solid var(--input-border);
+}
+
+@media(max-width:600px) {
+  .share-bar { margin:16px 14px 12px; gap:6px; }
+  .share-btn { font-size:11px; padding:7px 10px; gap:4px; }
+  .share-btn svg { width:14px; height:14px; }
 }
 
 .controls {
@@ -674,6 +742,9 @@ input[type="range"] {
   font-size:13px;
   font-weight:600;
   transition:all 0.15s;
+  height:38px;
+  display:inline-flex;
+  align-items:center;
 }
 
 .sort-btn:hover {
@@ -688,41 +759,101 @@ input[type="range"] {
   border-color:var(--blue);
 }
 
-.dropdown {
-  position:relative;
-  display:inline-block;
+.price-slider-wrap {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 4px;
+  height:38px;
 }
 
-.dropdown-content {
-  display:none;
-  position:absolute;
-  background:var(--card-bg);
-  min-width:150px;
-  box-shadow:0 8px 24px var(--dropdown-shadow);
-  z-index:1000;
-  border-radius:12px;
-  border:1px solid var(--border);
-  margin-top:4px;
-  overflow:hidden;
-}
-
-.dropdown-content.open {
-  display:block;
-}
-
-.dropdown-content a {
-  color:var(--btn-text);
-  padding:11px 16px;
-  text-decoration:none;
-  display:block;
+.price-slider-vals {
+  display:flex;
+  align-items:center;
+  gap:6px;
   font-size:13px;
-  font-weight:600;
-  transition:background 0.12s;
+  font-weight:800;
+  color:var(--blue);
+  white-space:nowrap;
+  min-width:130px;
 }
 
-.dropdown-content a:hover {
-  background:var(--btn-hover);
-  color:var(--blue);
+.price-slider-sep {
+  font-size:12px;
+  color:var(--text-secondary);
+  font-weight:600;
+}
+
+.dual-slider {
+  position:relative;
+  width:180px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+}
+
+.dual-slider-track {
+  position:absolute;
+  left:0;
+  right:0;
+  height:5px;
+  background:var(--border);
+  border-radius:100px;
+  pointer-events:none;
+}
+
+.dual-slider-fill {
+  position:absolute;
+  height:5px;
+  background:var(--blue);
+  border-radius:100px;
+  pointer-events:none;
+}
+
+.dual-slider input[type="range"] {
+  position:absolute;
+  width:100%;
+  height:5px;
+  background:transparent;
+  -webkit-appearance:none;
+  appearance:none;
+  pointer-events:none;
+  outline:none;
+  margin:0;
+}
+
+.dual-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:var(--blue);
+  border:3px solid var(--card-bg);
+  box-shadow:0 1px 6px rgba(37,99,235,0.4);
+  cursor:pointer;
+  pointer-events:all;
+  transition:transform 0.1s;
+}
+
+.dual-slider input[type="range"]::-webkit-slider-thumb:hover {
+  transform:scale(1.15);
+}
+
+.dual-slider input[type="range"]::-moz-range-thumb {
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:var(--blue);
+  border:3px solid var(--card-bg);
+  box-shadow:0 1px 6px rgba(37,99,235,0.4);
+  cursor:pointer;
+  pointer-events:all;
+}
+
+@media(max-width:768px) {
+  .dual-slider { width:120px; }
+  .price-slider-vals { min-width:110px; font-size:12px; }
 }
 
 .search-box {
@@ -736,10 +867,15 @@ input[type="range"] {
   border:1.5px solid var(--input-border);
   border-radius:100px;
   font-size:13px;
-  font-weight:500;
-  background:var(--card-bg);
-  color:var(--text);
+  font-weight:600;
+  background:var(--btn-bg);
+  color:var(--btn-text);
   transition:border-color 0.15s;
+  font-family:'Outfit',sans-serif;
+  line-height:1.5;
+  height:38px;
+  -webkit-appearance:none;
+  appearance:none;
 }
 
 .search-box input:focus {
@@ -760,7 +896,7 @@ input[type="range"] {
 }
 
 .date-legend strong {
-  color:var(--text);
+  color:var(--btn-text);
   margin-right:4px;
   font-weight:700;
 }
@@ -771,7 +907,7 @@ input[type="range"] {
   gap:6px;
   font-size:12px;
   font-weight:600;
-  color:var(--text);
+  color:var(--btn-text);
 }
 
 .date-badge::before {
@@ -903,9 +1039,234 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
   border-color:#3b82f6;
 }
 
+
+/* ── Favori ── */
+.fav-btn {
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  line-height:1;
+  padding:4px 6px;
+  border-radius:6px;
+  transition:transform 0.15s,filter 0.15s;
+  display:flex;
+  align-items:center;
+}
+.fav-btn:hover { transform:scale(1.25); }
+.fav-btn.active { filter:drop-shadow(0 0 4px rgba(250,204,21,0.9)); }
+.fav-btn:not(.active) { filter:grayscale(1) opacity(0.3); }
+
+.fav-tab-count {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--blue);
+  color:white;
+  border-radius:100px;
+  font-size:10px;
+  font-weight:800;
+  padding:1px 6px;
+  min-width:18px;
+  margin-left:4px;
+}
+
+.fav-panel {
+  padding:20px 28px;
+}
+
+.fav-empty {
+  text-align:center;
+  padding:48px 24px;
+  color:var(--text-secondary);
+}
+
+.fav-empty .fav-empty-icon { font-size:2.5em; margin-bottom:12px; }
+.fav-empty p { font-size:13px; line-height:1.7; }
+
+.fav-item {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:13px 16px;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  margin-bottom:10px;
+  background:var(--btn-bg);
+  gap:12px;
+  transition:background 0.15s;
+}
+
+.fav-item:hover { background:var(--row-hover); }
+.fav-item-info { flex:1; min-width:0; }
+.fav-item-name { font-weight:800; font-size:14px; color:var(--btn-text); margin-bottom:3px; }
+.fav-item-detail { font-size:12px; color:var(--text-secondary); }
+
+.fav-item-actions {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-shrink:0;
+}
+
+.fav-link {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:5px 12px;
+  background:var(--blue-lt);
+  color:var(--blue);
+  border:1.5px solid var(--blue);
+  border-radius:8px;
+  font-size:11px;
+  font-weight:700;
+  text-decoration:none;
+  transition:all 0.15s;
+}
+.fav-link:hover { background:var(--blue); color:white; }
+
+.fav-remove {
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:var(--text-secondary);
+  font-size:16px;
+  padding:4px 6px;
+  border-radius:6px;
+  transition:color 0.15s;
+  font-family:'Outfit',sans-serif;
+}
+.fav-remove:hover { color:var(--red); }
+
+.fav-clear {
+  display:block;
+  width:100%;
+  padding:11px;
+  background:var(--red-lt);
+  border:1.5px solid var(--red);
+  color:var(--red);
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  font-family:'Outfit',sans-serif;
+  margin-top:14px;
+  transition:all 0.15s;
+}
+.fav-clear:hover { background:var(--red); color:white; }
+
+/* Favori sekmesi için sort-btn benzeri tab butonu */
+.modem-toggle-group {
+  display:inline-flex;
+  background:var(--controls-bg);
+  border:1.5px solid var(--border);
+  border-radius:100px;
+  padding:3px;
+  gap:3px;
+  height:38px;
+  align-items:center;
+}
+
+.modem-toggle-btn {
+  padding:4px 13px;
+  border:none;
+  border-radius:100px;
+  background:transparent;
+  color:var(--text-secondary);
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  font-family:'Outfit',sans-serif;
+  transition:all 0.15s;
+  white-space:nowrap;
+  height:30px;
+  display:inline-flex;
+  align-items:center;
+}
+
+.modem-toggle-btn:hover { color:var(--btn-text); }
+
+.modem-toggle-btn.active {
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  box-shadow:0 1px 4px var(--shadow);
+  border-radius:100px;
+}
+
+.modem-toggle-btn.active.t-free { color:var(--green); }
+.modem-toggle-btn.active.t-paid { color:#c2410c; }
+
+.fav-sort-btn {
+  padding:9px 18px;
+  border:1.5px solid var(--input-border);
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  border-radius:100px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+  transition:all 0.15s;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  height:38px;
+}
+.fav-sort-btn:hover,.fav-sort-btn.active {
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+.copy-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 10px;
+  background:transparent;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  color:var(--text-secondary);
+  font-size:11px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all 0.15s;
+  font-family:'Outfit',sans-serif;
+}
+.copy-btn:hover {
+  background:var(--blue-lt);
+  border-color:var(--blue);
+  color:var(--blue);
+}
+.copy-btn.copied {
+  background:var(--green-lt);
+  border-color:var(--green);
+  color:var(--green);
+}
+.toast {
+  position:fixed;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%) translateY(16px);
+  background:var(--text);
+  color:var(--card-bg);
+  padding:10px 20px;
+  border-radius:100px;
+  font-size:13px;
+  font-weight:600;
+  opacity:0;
+  pointer-events:none;
+  transition:all 0.22s ease;
+  white-space:nowrap;
+  z-index:9999;
+  box-shadow:0 8px 24px var(--shadow-md);
+}
+.toast.show {
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
 .firma-name {
   font-weight:700;
-  color:var(--text);
+  color:var(--btn-text);
   font-size:14px;
 }
 
@@ -1102,7 +1463,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
   padding:48px;
   color:var(--text-secondary);
   font-size:15px;
-  font-weight:500;
+  font-weight:600;
 }
 
 .pagination {
@@ -1237,7 +1598,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
 }
 
 .firma-card {
-  background:var(--card-bg);
+  background:var(--btn-bg);
   border-radius:14px;
   box-shadow:0 2px 12px var(--shadow);
   padding:16px;
@@ -1257,7 +1618,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
 .card-firma {
   font-weight:800;
   font-size:14px;
-  color:var(--text);
+  color:var(--btn-text);
 }
 
 .card-row {
@@ -1284,35 +1645,110 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
   padding-top:10px;
   border-top:1px solid var(--border-light);
   display:flex;
-  justify-content:flex-end;
+  justify-content:space-between;
+  align-items:center;
 }
 
 @media(max-width:768px) {
 
-.table-container {
-  display:none;
-}
+.table-container { display:none; }
+.card-grid { display:grid; }
+.action-buttons { grid-template-columns:1fr; }
 
-.card-grid {
-  display:grid;
-}
-
+/* Controls: dikey yığın */
 .controls {
+  padding:12px 14px;
   flex-direction:column;
-}
-
-.search-box {
-  width:100%;
+  align-items:stretch;
+  gap:8px;
 }
 
 .sort-buttons {
   width:100%;
+  flex-direction:column;
+  gap:8px;
+  align-items:stretch;
+}
+
+/* Satır 1: En Ucuz / En Pahalı yan yana */
+.sort-pair {
+  display:flex !important;
+  gap:8px;
+  width:100%;
+}
+.sort-pair .sort-btn {
+  flex:1;
+  justify-content:center;
+}
+.sort-buttons > .sort-btn {
+  flex:1;
   justify-content:center;
 }
 
-.action-buttons {
-  grid-template-columns:1fr;
+/* Slider satırı kart görünümü */
+.price-slider-wrap {
+  width:100%;
+  height:auto;
+  padding:10px 14px;
+  background:var(--btn-bg);
+  border:1.5px solid var(--input-border);
+  border-radius:12px;
+  flex-direction:row;
 }
+
+.dual-slider { flex:1; width:auto; }
+.price-slider-vals { min-width:unset; font-size:12px; }
+
+/* Modem satırı kart görünümü */
+.modem-wrap-mobile {
+  width:100%;
+  background:var(--btn-bg);
+  border:1.5px solid var(--input-border);
+  border-radius:12px;
+  padding:6px 12px;
+  justify-content:space-between;
+}
+
+.modem-toggle-group {
+  flex:1;
+  height:32px;
+  border:none;
+  background:transparent;
+  padding:0;
+  gap:2px;
+}
+
+.modem-toggle-btn {
+  flex:1;
+  justify-content:center;
+  height:28px;
+  font-size:11px;
+  padding:4px 4px;
+}
+
+/* Favori + Sıfırla + Arama satırı */
+.fav-reset-search-row {
+  display:flex !important;
+  gap:8px;
+  width:100%;
+}
+
+.fav-reset-search-row .fav-sort-btn {
+  flex:1;
+  justify-content:center;
+  font-size:12px;
+  padding:9px 8px;
+}
+
+.fav-reset-search-row .search-box {
+  flex:1.5;
+  width:auto !important;
+}
+
+.fav-reset-search-row .search-box input {
+  font-size:12px;
+}
+
 }
 
 .modal-overlay {
@@ -1331,7 +1767,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
 }
 
 .modal-box {
-  background:var(--card-bg);
+  background:var(--btn-bg);
   border-radius:18px;
   padding:28px;
   width:100%;
@@ -1357,7 +1793,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
 .modal-header h3 {
   font-size:16px;
   font-weight:800;
-  color:var(--text);
+  color:var(--btn-text);
 }
 
 .modal-close {
@@ -1387,7 +1823,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
   display:block;
   font-size:12px;
   font-weight:700;
-  color:var(--text);
+  color:var(--btn-text);
   margin-bottom:6px;
   text-transform:uppercase;
   letter-spacing:0.5px;
@@ -1399,8 +1835,8 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
   border:1.5px solid var(--input-border);
   border-radius:10px;
   font-size:14px;
-  color:var(--text);
-  background:var(--card-bg);
+  color:var(--btn-text);
+  background:var(--btn-bg);
   transition:border-color 0.15s;
 }
 
@@ -1474,7 +1910,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
 .success-msg h4 {
   font-size:16px;
   font-weight:800;
-  color:var(--text);
+  color:var(--btn-text);
   margin-bottom:6px;
 }
 
@@ -1542,6 +1978,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
     </div>
   </div>
 </div>
+<div class="toast" id="toast"></div>
 <div class="container">
   <header>
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
@@ -1583,6 +2020,25 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
       🎯 Benim İçin En İyi Paketi Seç
     </button><a href="https://www.issaraclari.com/altyapi-sorgulama" target="_blank" class="wizard-trigger altyapi">
     🔍 Altıyapı Sorgulama</a>
+  </div>
+
+  <div class="share-bar">
+    <span class="share-label">🔗 Paylaş:</span>
+    <a class="share-btn whatsapp" href="https://wa.me/?text=Türkiye'deki%20100%20Mbps%20internet%20tarifelerini%20karşılaştır%20👇%0Ahttps://deckardvibes.github.io/internet-fiyat-karsilastirma" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a class="share-btn telegram" href="https://t.me/share/url?url=https://deckardvibes.github.io/internet-fiyat-karsilastirma&text=Türkiye'deki%20100%20Mbps%20internet%20tarifelerini%20karşılaştır!" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      Telegram
+    </a>
+    <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=Türkiye'deki%20100%20Mbps%20internet%20tarifelerini%20karşılaştır!&url=https://deckardvibes.github.io/internet-fiyat-karsilastirma" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.849L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X (Twitter)
+    </a>
+    <button class="share-btn copy-link" onclick="copyPageLink()" id="copyLinkBtn">
+      📋 Linki Kopyala
+    </button>
   </div>
   <div class="wizard-wrap" id="wizardWrap">
     <div class="wizard-head">
@@ -1693,33 +2149,53 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
   </div>
   <div class="controls">
     <div class="sort-buttons">
-      <button class="sort-btn" onclick="sortTable('price-asc',event)" data-sort="price-asc">
-        💰 En Ucuz
-      </button>
-      <button class="sort-btn" onclick="sortTable('price-desc',event)" data-sort="price-desc">
-        💰 En Pahalı
-      </button>
-      <div class="dropdown">
-        <button class="sort-btn" onclick="toggleDropdown(event)">
-          📊 Fiyat Aralığı ▼
-        </button>
-        <div class="dropdown-content" id="fiyatDropdown"><a href="#" onclick="filterByPriceRange(200,400);event.preventDefault();">
-          200–400₺</a><a href="#" onclick="filterByPriceRange(400,600);event.preventDefault();">
-          400–600₺</a><a href="#" onclick="filterByPriceRange(600,800);event.preventDefault();">
-          600–800₺</a><a href="#" onclick="filterByPriceRange(800,Infinity);event.preventDefault();">
-          800₺+</a>
+
+      <!-- Sıralama butonları: masaüstünde inline, mobilde yan yana -->
+      <div class="sort-pair" style="display:contents">
+        <button class="sort-btn" onclick="sortTable('price-asc',event)" data-sort="price-asc">💰 En Ucuz</button>
+        <button class="sort-btn" onclick="sortTable('price-desc',event)" data-sort="price-desc">💰 En Pahalı</button>
+      </div>
+
+      <!-- Fiyat aralığı slider -->
+      <div class="price-slider-wrap">
+        <div class="dual-slider" id="dualSlider">
+          <div class="dual-slider-track"></div>
+          <div class="dual-slider-fill" id="sliderFill"></div>
+          <input type="range" id="priceMin" min="200" max="1100" step="50" value="200">
+          <input type="range" id="priceMax" min="200" max="1100" step="50" value="1100">
+        </div>
+        <div class="price-slider-vals">
+          <span id="sliderMinVal">200₺</span>
+          <span class="price-slider-sep">—</span>
+          <span id="sliderMaxVal">1.100₺+</span>
         </div>
       </div>
-      <button class="sort-btn" onclick="resetTable()">
-        🔄 Sıfırla
-      </button>
-    </div>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
+
+      <!-- Modem filtresi -->
+      <div class="modem-wrap-mobile" style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:11px;font-weight:700;color:var(--text-secondary);white-space:nowrap">📡 Modem:</span>
+        <div class="modem-toggle-group">
+          <button class="modem-toggle-btn active" onclick="setModemFilter('all',this)">Tümü</button>
+          <button class="modem-toggle-btn" onclick="setModemFilter('free',this)">✓ Dahil</button>
+          <button class="modem-toggle-btn" onclick="setModemFilter('paid',this)">💸 Ücretli</button>
+          <button class="modem-toggle-btn" onclick="setModemFilter('unknown',this)">— ?</button>
+        </div>
+      </div>
+
+      <!-- Favoriler + Sıfırla + Arama -->
+      <div class="fav-reset-search-row" style="display:flex;gap:8px;align-items:center;flex-wrap:nowrap">
+        <button class="fav-sort-btn" id="favTabBtn" onclick="toggleFavTab()">
+          ⭐ Favorilerim<span class="fav-tab-count" id="favCount" style="display:none">0</span>
+        </button>
+        <button class="fav-sort-btn" onclick="resetTable()">🔄 Sıfırla</button>
+        <div class="search-box" style="width:160px">
+          <input type="text" id="searchInput" placeholder="🔍 Firma ara...">
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="active-filter-bar" id="activeFilterBar" style="display:none"><span class="active-filter-chip" id="activeFilterChip" style="display:none"></span>
-  </div>
+
   <div class="date-legend"><strong>
     🕒 Son Güncelleme:</strong><span><span class="date-badge date-green">
     Son 30 gün</span>
@@ -1729,10 +2205,12 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
     60 gün+</span>
     — Eski bilgi</span>
   </div>
-  <div class="table-container">
+  <div class="fav-panel" id="favPanel" style="display:none"></div>
+  <div class="table-container" id="tableContainer">
     <table id="priceTable">
       <thead>
         <tr>
+          <th style="width:36px"></th>
           <th>
             Firma
           </th>
@@ -1753,6 +2231,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
           <th>
             Son Güncelleme
           </th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>
@@ -1786,10 +2265,10 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
     </div>
   </div>
   <div class="disclaimer-section">
-    <h4>⚖️ Sorumluluk Reddi Beyanı</h4>
-    <p>Bu web sitesinde sunulan tüm içerik, yalnızca bilgilendirme amaçlı olup ticari bir nitelik taşımamaktadır.</p>
-    <p>Sitede yer alan fiyat, tarife ve diğer bilgiler, ilgili internet servis sağlayıcılarının kamuya açık resmi web siteleri esas alınarak derlenmiştir.</p>
-    <p>Bu sitedeki bilgilere dayanılarak gerçekleştirilen işlemlerden doğabilecek zararlardan site sahibi sorumlu tutulamaz.</p>
+    <h4>⚖️ Yasal Uyarı</h4>
+    <p>Bu site, Türkiye'deki internet servis sağlayıcılarının 100 Mbps tarife fiyatlarını karşılaştırmak amacıyla bağımsız olarak hazırlanmış bir bilgi platformudur. Herhangi bir ISS ile ticari, sponsorluk veya ortaklık ilişkisi bulunmamaktadır.</p>
+    <p>Sitede yer alan fiyat, modem ücreti, taahhüt koşulu ve diğer tarife bilgileri; ilgili firmaların kamuya açık resmi web sitelerinden manuel olarak derlenmektedir. Bu bilgiler düzenli aralıklarla güncellenmekle birlikte, ISS'lerin tarife değişikliklerini anlık olarak yansıtmak mümkün olmayabilir. Tabloda gösterilen fiyatlar, kampanya dönemine, bölgeye veya altyapı türüne göre farklılık gösterebilir.</p>
+    <p>Herhangi bir tarifeye abone olmadan önce ilgili firmanın resmi web sitesini ziyaret ederek güncel fiyatı ve sözleşme koşullarını doğrulamanızı tavsiye ederiz. Bu sitedeki bilgilere dayanılarak yapılan abonelik kararlarından doğabilecek maddi veya hukuki sonuçlardan site sahibi sorumlu tutulamaz.</p>
   </div>
   <div class="footer">
     <div class="footer-top">
@@ -1949,14 +2428,48 @@ let rowsPerPage = 20, currentPage = 1, filteredData = [...firmsData];
 // <select> listesini firmsData'dan otomatik oluştur - tek kaynak
 el('firmaGizli').innerHTML = '<option value="">-- Firma seçin --</option>' +
   firmsData.map(f => `<option value="${f.name}">${f.name}</option>`).join('');
-let activeSearch = '', activePriceMin = null, activePriceMax = null, currentSort = null;
+let activeSearch = '', activePriceMin = null, activePriceMax = null, currentSort = null, activeModem = 'all';
+
+// ── Dual range slider ──
+const SMIN = 200, SMAX = 1100;
+function initSlider() {
+  const minS = el('priceMin'), maxS = el('priceMax');
+  const fill = el('sliderFill');
+  const minV = el('sliderMinVal'), maxV = el('sliderMaxVal');
+
+  function updateSlider() {
+    let lo = parseInt(minS.value), hi = parseInt(maxS.value);
+    if (lo > hi - 50) {
+      if (event && event.target === minS) lo = hi - 50;
+      else hi = lo + 50;
+      minS.value = lo; maxS.value = hi;
+    }
+    const pct = v => (v - SMIN) / (SMAX - SMIN) * 100;
+    fill.style.left  = pct(lo) + '%';
+    fill.style.width = (pct(hi) - pct(lo)) + '%';
+    minV.textContent = lo + '₺';
+    maxV.textContent = hi >= SMAX ? hi + '₺+' : hi + '₺';
+    activePriceMin = lo;
+    activePriceMax = hi >= SMAX ? Infinity : hi;
+    applyFilters();
+  }
+
+  minS.addEventListener('input', updateSlider);
+  maxS.addEventListener('input', updateSlider);
+  updateSlider();
+}
 
 // ── URL param okuma ──
 function initFromURL() {
   const p = new URLSearchParams(location.search);
   if (p.get('q'))   { activeSearch = p.get('q'); el('searchInput').value = activeSearch; }
   if (p.get('sort')) currentSort = p.get('sort');
-  if (p.get('min'))  { activePriceMin = +p.get('min'); activePriceMax = p.get('max') === 'inf' ? Infinity : +(p.get('max') || Infinity); }
+  if (p.get('min')) {
+    const lo = +p.get('min');
+    const hi = p.get('max') === 'inf' ? SMAX : +(p.get('max') || SMAX);
+    el('priceMin').value = lo;
+    el('priceMax').value = hi;
+  }
   if (currentSort) {
     document.querySelectorAll('.sort-btn').forEach(b => {
       if (b.dataset && b.dataset.sort === currentSort) b.classList.add('active');
@@ -1983,9 +2496,127 @@ function pushURL() {
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
   el('bildirModal').classList.remove('active');
-  el('fiyatDropdown').classList.remove('open');
 });
 
+
+
+// ── Favoriler ──
+const FAV_KEY = 'issaraclari_favs';
+function getFavs() { try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; } }
+function saveFavs(f) { try { localStorage.setItem(FAV_KEY, JSON.stringify(f)); } catch {} }
+function isFav(name) { return getFavs().includes(name); }
+
+function toggleFav(name) {
+  let favs = getFavs();
+  const idx = favs.indexOf(name);
+  if (idx === -1) { favs.push(name); showToast('⭐ Favorilere eklendi'); }
+  else { favs.splice(idx, 1); showToast('🗑️ Favorilerden çıkarıldı'); }
+  saveFavs(favs);
+  updateFavCount();
+  // sadece yıldızı güncelle, tüm tabloyu yeniden çizme
+  document.querySelectorAll('[data-fav-name]').forEach(btn => {
+    if (btn.dataset.favName === name) btn.classList.toggle('active', getFavs().includes(name));
+  });
+  if (el('favPanel').style.display !== 'none') renderFavPanel();
+}
+
+function removeFav(name) {
+  saveFavs(getFavs().filter(n => n !== name));
+  showToast('🗑️ Favorilerden çıkarıldı');
+  updateFavCount();
+  renderFavPanel();
+}
+
+function clearFavs() {
+  saveFavs([]);
+  showToast('🗑️ Tüm favoriler temizlendi');
+  updateFavCount();
+  renderFavPanel();
+  // tüm yıldızları sönük yap
+  document.querySelectorAll('[data-fav-name]').forEach(btn => btn.classList.remove('active'));
+}
+
+function updateFavCount() {
+  const n = getFavs().length;
+  const c = el('favCount');
+  c.textContent = n;
+  c.style.display = n ? 'inline-flex' : 'none';
+}
+
+let favTabOpen = false;
+function toggleFavTab() {
+  favTabOpen = !favTabOpen;
+  el('favPanel').style.display = favTabOpen ? 'block' : 'none';
+  el('tableContainer').style.display = favTabOpen ? 'none' : '';
+  el('cardGrid').style.display = favTabOpen ? 'none' : '';
+  el('favTabBtn').classList.toggle('active', favTabOpen);
+  if (favTabOpen) renderFavPanel();
+}
+
+function renderFavPanel() {
+  const favs = getFavs();
+  const favFirms = firmsData.filter(f => favs.includes(f.name));
+  const panel = el('favPanel');
+
+  if (favFirms.length === 0) {
+    panel.innerHTML = '<div class="fav-empty"><div class="fav-empty-icon">⭐</div><p>Henüz favori eklemedin.<br>Tablodaki yıldıza tıkla.</p></div>';
+    return;
+  }
+
+  panel.innerHTML = favFirms.map(f => {
+    const modem = f.modem === 'free' ? 'Dahil' : f.modem === 'paid' ? f.modemCost : '?';
+    const next = f.nextPeriod === 'Sabit' ? '✓ Sabit' : '↑ ' + f.nextPeriod;
+    return '<div class="fav-item">'
+      + '<div class="fav-item-info">'
+      + '<div class="fav-item-name">' + sanitize(f.name) + '</div>'
+      + '<div class="fav-item-detail">' + sanitize(f.priceText) + ' · ' + next + ' · Modem: ' + modem + '</div>'
+      + '</div>'
+      + '<div class="fav-item-actions">'
+      + '<a href="' + sanitize(f.link) + '" target="_blank" class="fav-link">↗ Tarifeye Git</a>'
+      + '<button class="fav-remove" onclick="removeFav(\'' + sanitize(f.name) + '\')" title="Kaldır">✕</button>'
+      + '</div></div>';
+  }).join('') + (favFirms.length > 1 ? '<button class="fav-clear" onclick="clearFavs()">🗑️ Tümünü Temizle</button>' : '');
+}
+
+function copyFirm(name, price, next, modemVal, modemCost) {
+  const modem = modemVal === 'free' ? 'Dahil' : modemVal === 'paid' ? modemCost : 'Bilinmiyor';
+  const text = `${name} — ${price} (${next}) | Modem: ${modem}`;
+  const btn = event.currentTarget;
+
+  function onSuccess() {
+    btn.classList.add('copied');
+    btn.textContent = '✓ Kopyalandı';
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '⎘ Kopyala'; }, 2000);
+    showToast('✓ Kopyalandı');
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(onSuccess).catch(() => fallbackCopy(text, onSuccess));
+  } else {
+    fallbackCopy(text, onSuccess);
+  }
+}
+
+
+function showToast(msg) {
+  const t = el('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function fallbackCopy(text, onSuccess) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;font-size:16px';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  ta.setSelectionRange(0, ta.value.length);
+  try { document.execCommand('copy'); onSuccess(); } catch(e) {}
+  document.body.removeChild(ta);
+}
 
 function sanitize(s) {
   return String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'&quot;');
@@ -2073,6 +2704,10 @@ function renderTable() {
     const aLink = (row._subtype === 'fiber' && row.linkFiber) ? row.linkFiber : row.link;
     const rs = row._hasBoth ? 'rowspan="2"' : '';
 
+    const favActive = isFav(row.name);
+    const favCell = isFirst
+      ? `<td ${rs} style="text-align:center;padding:0 8px"><button class="fav-btn ${favActive ? 'active' : ''}" data-fav-name="${sanitize(row.name)}" onclick="toggleFav('${sanitize(row.name)}')" title="${favActive ? 'Favoriden çıkar' : 'Favoriye ekle'}">⭐</button></td>`
+      : '';
     const nameCell = isFirst
       ? `<td class="firma-name" ${rs}>${sanitize(row.name)}${
           row.linkFiber
@@ -2087,13 +2722,18 @@ function renderTable() {
 
     const modemCell = isFirst ? `<td ${rs}>${modemBadge(row.modem, row.modemCost)}</td>` : '';
     const dateCell  = isFirst ? `<td ${rs}><span class="date-badge ${dateClass(row.date)}">${sanitize(row.date)}</span></td>` : '';
+    const copyCell  = isFirst
+      ? `<td ${rs} style="text-align:right"><button class="copy-btn" onclick="copyFirm('${sanitize(row.name)}','${sanitize(row.priceText)}','${sanitize(row.nextPeriod)}','${row.modem}','${sanitize(row.modemCost)}')">⎘ Kopyala</button></td>`
+      : '';
 
     return `<tr class="${row.type === 'dual' ? (row._subtype === 'vdsl' ? 'row-vdsl' : 'row-fiber') : ''}">
+      ${favCell}
       ${nameCell}
       <td>${renderRowPrice(row)}${priceLabel}</td>
       <td>${renderRowNext(row)}</td>
       ${modemCell}
       ${dateCell}
+      ${copyCell}
     </tr>`;
   }).join('');
 
@@ -2107,10 +2747,13 @@ function renderTable() {
       ? `<a href="${sanitize(f.link)}" target="_blank" class="link-badge link-badge-vdsl-name">↗ VDSL</a><a href="${sanitize(f.linkFiber)}" target="_blank" class="link-badge link-badge-fiber-name">↗ Fiber</a>`
       : `<a href="${sanitize(f.link)}" target="_blank" class="link-badge">↗ Tarifeler</a>`;
     return `<div class="firma-card">
-      <div class="card-header"><span class="card-firma">${sanitize(f.name)}</span><div style="display:flex;gap:4px;flex-wrap:wrap">${cl}</div></div>
+      <div class="card-header"><span class="card-firma">${sanitize(f.name)}</span><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${cl}<button class="fav-btn ${isFav(f.name) ? 'active' : ''}" data-fav-name="${sanitize(f.name)}" onclick="toggleFav('${sanitize(f.name)}')" title="Favori">⭐</button></div></div>
       ${pr}
       <div class="card-row"><span class="card-row-label">Modem</span><span class="card-row-value">${modemBadge(f.modem, f.modemCost)}</span></div>
-      <div class="card-footer"><span class="date-badge ${dateClass(f.date)}">${sanitize(f.date)}</span></div>
+      <div class="card-footer">
+        <span class="date-badge ${dateClass(f.date)}">${sanitize(f.date)}</span>
+        <button class="copy-btn" onclick="copyFirm('${sanitize(f.name)}','${sanitize(f.priceText)}','${sanitize(f.nextPeriod)}','${f.modem}','${sanitize(f.modemCost)}')">⎘ Kopyala</button>
+      </div>
     </div>`;
   }).join('');
 
@@ -2133,8 +2776,9 @@ function applyFilters() {
   filteredData = firmsData.filter(f => {
     const nm = !activeSearch || f.name.toLowerCase().includes(activeSearch.toLowerCase());
     const pr = extractPrice(f.priceText);
-    const pm = activePriceMin === null || (pr >= activePriceMin && pr < activePriceMax);
-    return nm && pm;
+    const pm = (pr >= activePriceMin && (activePriceMax === Infinity || pr < activePriceMax));
+    const mm = activeModem === 'all' || f.modem === activeModem;
+    return nm && pm && mm;
   });
   if (currentSort === 'price-asc')  filteredData.sort((a,b) => extractPrice(a.priceText) - extractPrice(b.priceText));
   if (currentSort === 'price-desc') filteredData.sort((a,b) => extractPrice(b.priceText) - extractPrice(a.priceText));
@@ -2145,38 +2789,61 @@ function applyFilters() {
   renderTable();
 }
 
-function renderActiveFilterChip() {
-  const chip = el('activeFilterChip'), bar = el('activeFilterBar');
-  if (!chip || !bar) return;
-  const active = activePriceMin !== null;
-  bar.style.display = active ? 'block' : 'none';
-  chip.style.display = active ? 'inline-flex' : 'none';
-  if (active) {
-    const ml = activePriceMax === Infinity ? '∞' : activePriceMax + '₺';
-    chip.innerHTML = `Aktif filtre: ${activePriceMin}–${ml} <span onclick="resetPriceFilter()" style="cursor:pointer;margin-left:6px;font-size:14px;line-height:1">✕</span>`;
-  }
-}
+function renderActiveFilterChip() {} // slider tarafından yönetiliyor
 
 el('searchInput').addEventListener('keyup', function() { activeSearch = this.value; applyFilters(); });
 
-const clearActive = () => document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-function sortTable(t, e) { clearActive(); e?.target?.classList.add('active'); currentSort = t; applyFilters(); }
-const filterByPriceRange = (mn, mx) => { activePriceMin = mn; activePriceMax = mx; applyFilters(); };
-const resetPriceFilter = () => { activePriceMin = null; activePriceMax = null; applyFilters(); };
-
-function resetTable() {
-  activeSearch = ''; activePriceMin = null; activePriceMax = null; currentSort = null;
-  filteredData = [...firmsData];
-  el('searchInput').value = '';
-  el('noResults').style.display = 'none';
-  el('activeFilterChip').style.display = 'none';
-  clearActive(); currentPage = 1;
-  pushURL();
-  renderTable();
+function setModemFilter(val, btn) {
+  activeModem = val;
+  document.querySelectorAll('.modem-toggle-btn').forEach(b => b.classList.remove('active','t-free','t-paid'));
+  btn.classList.add('active');
+  if (val === 'free') btn.classList.add('t-free');
+  if (val === 'paid') btn.classList.add('t-paid');
+  applyFilters();
 }
 
-const toggleDropdown = e => { e.stopPropagation(); el('fiyatDropdown').classList.toggle('open'); };
-document.addEventListener('click', () => el('fiyatDropdown').classList.remove('open'));
+const clearActive = () => document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+function sortTable(t, e) { clearActive(); e?.target?.classList.add('active'); currentSort = t; applyFilters(); }
+
+const resetPriceFilter = () => { activePriceMin = null; activePriceMax = null; applyFilters(); };
+
+function copyPageLink() {
+  const url = 'https://deckardvibes.github.io/internet-fiyat-karsilastirma';
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById('copyLinkBtn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✅ Kopyalandı!';
+    btn.style.background = 'var(--green)';
+    btn.style.color = 'white';
+    btn.style.borderColor = 'var(--green)';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
+  });
+}
+
+function resetTable() {
+  activeSearch = ''; currentSort = null; activeModem = 'all';
+  document.querySelectorAll('.modem-toggle-btn').forEach((b,i) => { b.classList.toggle('active', i===0); b.classList.remove('t-free','t-paid'); });
+  el('searchInput').value = '';
+  el('noResults').style.display = 'none';
+  clearActive();
+  // Slider'ı uç değerlere sıfırla
+  el('priceMin').value = SMIN;
+  el('priceMax').value = SMAX;
+  activePriceMin = SMIN; activePriceMax = Infinity;
+  const fill = el('sliderFill');
+  fill.style.left = '0%'; fill.style.width = '100%';
+  el('sliderMinVal').textContent = SMIN + '₺';
+  el('sliderMaxVal').textContent = SMAX + '₺+';
+  currentPage = 1; pushURL(); renderTable();
+}
+
+
+
 
 function hataBildir(f) {
   el('firmaGizli').value = f;
@@ -2280,12 +2947,9 @@ function getWizardParams() {
 function wApplyToTable() {
   const { budget, mp, on } = getWizardParams();
   filteredData = getWizardResults(budget, mp, on);
-  activeSearch = ''; activePriceMin = null; activePriceMax = null; currentSort = null;
+  activeSearch = ''; currentSort = null;
   el('searchInput').value = '';
   clearActive();
-  const chip = el('activeFilterChip'), bar = el('activeFilterBar');
-  chip.style.display = 'inline-flex'; bar.style.display = 'block';
-  chip.innerHTML = `Wizard filtresi: bütçe ≤${budget}₺ <span onclick="resetTable()" style="cursor:pointer;margin-left:6px;font-size:14px;line-height:1">✕</span>`;
   el('noResults').style.display = filteredData.length ? 'none' : 'block';
   currentPage = 1; renderTable();
   document.querySelector('.controls').scrollIntoView({behavior:'smooth', block:'start'});
@@ -2324,8 +2988,9 @@ function wRestart() {
 }
 
 el('totalProviders').textContent = firmsData.length;
+updateFavCount();
 initFromURL();
-applyFilters();
+initSlider();
 </script>
 </body>
 </html>
