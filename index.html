@@ -947,7 +947,7 @@ th {
   padding:12px 16px;
   text-align:left;
   font-weight:700;
-  font-size:11px;
+  font-size:9.8px;
   text-transform:uppercase;
   letter-spacing:0.8px;
   border-bottom:2px solid var(--border);
@@ -2150,13 +2150,11 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
   <div class="controls">
     <div class="sort-buttons">
 
-      <!-- Sıralama butonları: masaüstünde inline, mobilde yan yana -->
       <div class="sort-pair" style="display:contents">
         <button class="sort-btn" onclick="sortTable('price-asc',event)" data-sort="price-asc">💰 En Ucuz</button>
         <button class="sort-btn" onclick="sortTable('price-desc',event)" data-sort="price-desc">💰 En Pahalı</button>
       </div>
 
-      <!-- Fiyat aralığı slider -->
       <div class="price-slider-wrap">
         <div class="dual-slider" id="dualSlider">
           <div class="dual-slider-track"></div>
@@ -2171,7 +2169,6 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
         </div>
       </div>
 
-      <!-- Modem filtresi -->
       <div class="modem-wrap-mobile" style="display:flex;align-items:center;gap:8px;">
         <span style="font-size:11px;font-weight:700;color:var(--text-secondary);white-space:nowrap">📡 Modem:</span>
         <div class="modem-toggle-group">
@@ -2182,7 +2179,6 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
         </div>
       </div>
 
-      <!-- Favoriler + Sıfırla + Arama -->
       <div class="fav-reset-search-row" style="display:flex;gap:8px;align-items:center;flex-wrap:nowrap">
         <button class="fav-sort-btn" id="favTabBtn" onclick="toggleFavTab()">
           ⭐ Favorilerim<span class="fav-tab-count" id="favCount" style="display:none">0</span>
@@ -2225,6 +2221,7 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
           <th>
             Sonraki Dönem
           </th>
+          <th>1 Yıllık Maliyet</th>
           <th>
             Modem Kira
           </th>
@@ -2282,8 +2279,8 @@ tbody tr.row-vdsl td,tbody tr.row-fiber td {
 <script>const el = id => document.getElementById(id);
 
 const firmsData = [
-    {name:"10LİNE",link:"https://10line.com.tr/tarifeler.html",priceText:"575,00₺",type:"single",nextPeriod:" İlk 4 Ay Sabit Fiyat Avantajı",modem:"paid",modemCost:"75,00₺",date:"2 Tem 2026"},
-    {name:"4GNET",link:"https://4gnet.com.tr/bireysel_tarifeler",priceText:"649,99₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
+    {name:"10LİNE",link:"https://10line.com.tr/tarifeler.html",priceText:"700,00₺",type:"single",nextPeriod:" Sabit",modem:"paid",modemCost:"75,00₺",date:"15 Tem 2026"},
+    {name:"4GNET",link:"https://4gnet.com.tr/bireysel_tarifeler",priceText:"849,99₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"15 Tem 2026"},
     {name:"ALANYANET",link:"https://www.alanyanet.com.tr/VdslTarifeler.html",linkFiber:"https://www.alanyanet.com.tr/FiberTarife.html",priceText:"VDSL 830,00₺ / FİBER 830,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"ATLANTİSNET",link:"https://atlantisnet.com.tr/tarifeler/fiber-100-mbps/",priceText:"800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"AY TELEKOM",link:"https://aytelekom.com.tr/tarife/vdsl",priceText:"VDSL 789,00₺ / FİBER 819,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"2 Tem 2026"},
@@ -2296,10 +2293,11 @@ const firmsData = [
     {name:"CERENNET",link:"https://www.cerennet.com.tr/paketlerimiz/cerennet-tt-vdsl",linkFiber:"https://www.cerennet.com.tr/paketlerimiz/tt-fiber",priceText:" İlk 3 ay 399,00₺",type:"single",nextPeriod:"899,00₺ (Kalan 9 Ay Taahhütlü)",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"ÇABUKNET",link:"https://www.cabuknet.com.tr/tarifeler/",priceText:"VDSL 750,00₺ / FİBER 790,00₺",type:"single",nextPeriod:"12 Ay Sabit Fiyat",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"DAHAONLİNE",link:"https://www.dahaonline.com.tr/paketlerimiz/",priceText:"575,00₺",type:"single",nextPeriod:"12 Ay Taahhütlü",modem:"paid",modemCost:"75,00₺",date:"2 Tem 2026"},
+    {name:"DESTANNET",link:"https://destannet.com.tr/Hiper-Paket-100-Mpbs-10-Taahhut-YOK-Kota-YOK-Tarife-650-TL_39292_tg",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"15 Tem 2026"},
     {name:"DİJİTAL NET",link:"https://dijitalnet.com.tr/#tarifeler",priceText:"649,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"DİDİMNET",link:"https://www.didimnet.com.tr/kablolu-tarifeler.html",priceText:"450,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"EFSANENET",link:"https://www.efsanenet.com.tr/vdsl-internet/",linkFiber:"https://www.efsanenet.com.tr/fiber-tarifeler/",priceText:"VDSL 480,00₺ / FİBER 530,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
-    {name:"ELMA TELEKOM",link:"https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/",priceText:"550,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"	2 Tem 2026"},
+    {name:"ELMA TELEKOM",link:"https://www.elmatelekom.com.tr/bireysel-tarifelerimiz/",priceText:"550,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"EPLANET",link:"https://www.eplanet.com.tr/kampanyalar.html",priceText:"569,99₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"119,90₺",date:"2 Tem 2026"},
     {name:"EURONET",link:"https://www.euronet.com.tr/internet-paketleri/vdsl",priceText:"629,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"EXPRESNET",link:"https://expresnet.com.tr/fiber-internet",priceText:"940,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
@@ -2321,7 +2319,7 @@ const firmsData = [
     {name:"GESNET",link:"https://gesnet.com.tr/tarife-detay?id=13",priceText:"500,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"GENERALNET",link:"https://general.net.tr/",priceText:"499,90₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"GİGASPEED",link:"https://gigaspeed.com.tr/paketler",priceText:"İlk 3 Ay: VDSL 599,90₺ / FİBER 644,90₺",type:"single",nextPeriod:"VDSL 679,90₺ / FİBER 724,90₺",modem:"paid",modemCost:"65,00₺",date:"2 Tem 2026"},
-    {name:"GİBİRNET",link:"https://gibir.net.tr/",priceText:"İlk 3 Ay: 580,00₺",type:"single",nextPeriod:"780,00₺",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},	
+    {name:"GİBİRNET",link:"https://gibir.net.tr/",priceText:"İlk 3 Ay: 580,00₺",type:"single",nextPeriod:"780,00₺",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},    
     {name:"GLOBALNET",link:"https://www.globalnetinternet.com/fiber-tarifeler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"GÖLHİSARNET",link:"https://golhisarnet.net.tr/tarifeler",priceText:"650,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"GÜLDÜRENNET",link:"https://guldurennet.com.tr/tarifeler.php",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"2 Tem 2026"},
@@ -2345,14 +2343,15 @@ const firmsData = [
     {name:"MAVİNET",link:"https://mavinetbilisim.com.tr/tarifelerimiz/",priceText:"VDSL 750,00₺ / FİBER 850,00₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"MAVİFİBER",link:"https://mavifiber.com.tr/vdsl-tarifeler/",linkFiber:"https://mavifiber.com.tr/fiber-tarifeler/",priceText:"450,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"MERKÜRNET",link:"https://www.merkurnet.com.tr/merkure-ilk-adim/",priceText:"VDSL 569,90₺ / FİBER 649,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"2 Tem 2026"},
+    {name:"MERTSKY TELEKOM",link:"https://mertsky.com.tr/35-megabit/",priceText:"550,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"15 Tem 2026"},
     {name:"MERNET",link:"https://mernet.com.tr/sayfa-tarifelerimiz",priceText:"1000,00₺",type:"single",nextPeriod:"Taahhütlü",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"MİGROSNET",link:"https://migrosinternet.alfailetisim.com.tr/kampanyalar",priceText:"949,90₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
     {name:"MİLLENİCOM",link:"https://www.milleni.com.tr/eviniz-icin/kampanyalar/internet",priceText:"699,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
     {name:"MOBİLFREE",link:"https://mobilfree.com.tr/tarifeler?commitment=taahhutsuz",priceText:"599,00₺",type:"single",nextPeriod:"1 Ocak 2027'ye kadar",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
     {name:"MOBİSMART",link:"https://mobismart.com.tr/vdsl-tarifeler/",linkFiber:"https://mobismart.com.tr/fiber-tarifeler/",priceText:"İlk 4 ay VDSL 299,00₺ /FİBER 449,00₺",type:"single",nextPeriod:"VDSL 619,00₺ / FİBER 689,00₺",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
-   {name:"MODEXI",link:"https://modexi.com.tr/internet-paketleri/",priceText:"749,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
-{name:"NAZNET",link:"https://www.naznet.com.tr/web/tarifeler/",priceText:"720,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"2 Tem 2026"},
-   {name:"NEONET",link:"https://neonet.net.tr/vdsl-tarifeler/",linkFiber:"https://neonet.net.tr/fiber-tarifeler/",priceText:"VDSL 900,00₺ / FİBER 975,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
+    {name:"MODEXI",link:"https://modexi.com.tr/internet-paketleri/",priceText:"749,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
+    {name:"NAZNET",link:"https://www.naznet.com.tr/web/tarifeler/",priceText:"720,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"100,00₺",date:"2 Tem 2026"},
+    {name:"NEONET",link:"https://neonet.net.tr/vdsl-tarifeler/",linkFiber:"https://neonet.net.tr/fiber-tarifeler/",priceText:"VDSL 900,00₺ / FİBER 975,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"NETBONE",link:"https://www.netbone.com.tr/",priceText:"579,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
     {name:"NETGİGABİT",link:"https://www.netgigabit.com.tr/vdsltarifeler.html",priceText:"900,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"NETGSM",link:"https://www.netgsm.com.tr/internet/",priceText:"849,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"2 Tem 2026"},
@@ -2373,15 +2372,15 @@ const firmsData = [
     {name:"ORİS TELEKOM",link:"https://www.oristelekom.com/tarifeler",priceText:"749,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"50,00₺",date:"2 Tem 2026"},
     {name:"PANANET",link:"https://www.pananet.com.tr/tarifeler_internet_paketleri_vae_dsl_fiber.html",priceText:"575,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"2 Tem 2026"},
     {name:"PASİFİK TELEKOM",link:"https://www.pasifiktelekom.com.tr/fiber-fiyat-modem-dahil-passfsk-net-telekom/",priceText:"749,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"75,00₺",date:"2 Tem 2026"},
-	{name:"PLAYNET",link:"https://playnet.com.tr/tarifeler",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
+    {name:"PLAYNET",link:"https://playnet.com.tr/tarifeler",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
     {name:"PLUSNET",link:"https://plusnet.com.tr/tarife",priceText:"550,00₺",type:"single",nextPeriod:"6 ay sabit",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
     {name:"POWERNET",link:"https://powernet.com.tr/paketler/fiber-internet-tarifeleri",priceText:"600,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"50,00₺",date:"2 Tem 2026"},
     {name:"RAMTEK",link:"https://www.ramtek.net.tr/ramtek-vae-hizmeti",priceText:"599,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"REKORNET",link:"https://rekornet.com.tr/",priceText:"570,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
     {name:"SADENET",link:"https://sadenet.com.tr/kampanyalar/100",priceText:"İlk 4 Ay: 599,00₺",type:"single",nextPeriod:"610,00₺",modem:"paid",modemCost:"150,00₺",date:"2 Tem 2026"},
     {name:"SAKNET",link:"https://www.saknet.com.tr/#tarifeler",priceText:"VDSL 559,90₺ / FİBER 659,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
-{name:"SARNET TELEKOM",link:"https://www.sarnettelekom.com.tr/vdsl-tarifeler/",linkFiber:"https://www.sarnettelekom.com.tr/fiber-tarifeler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},   
- {name:"SARIKAYANET",link:"https://www.sarikayanet.com.tr/tarifeler",priceText:"VDSL 650,00₺ / FİBER 750,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
+    {name:"SARNET TELEKOM",link:"https://www.sarnettelekom.com.tr/vdsl-tarifeler/",linkFiber:"https://www.sarnettelekom.com.tr/fiber-tarifeler/",priceText:"700,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},    
+    {name:"SARIKAYANET",link:"https://www.sarikayanet.com.tr/tarifeler",priceText:"VDSL 650,00₺ / FİBER 750,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"SİBANET",link:"https://sibanet.com.tr/tarifelerimiz",priceText:"1500,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"SONET",link:"https://www.sonet.com.tr/bireysel/kampanyalar-2025-fiber-vdsl-internet-kampanyasi.html",priceText:"VDSL 609,90₺ / FİBER 619,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"69,90₺",date:"2 Tem 2026"},
     {name:"SPEEDNET",link:"https://www.speednet.com.tr/tr/urunler/vdsl-tarifeler",priceText:"VDSL 990,00₺ / FİBER 800,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
@@ -2397,11 +2396,12 @@ const firmsData = [
     {name:"TELKOTURK",link:"https://www.telkoturk.net/efsane-fiberly-100",priceText:"İlk 3 ay 389,00₺",type:"single",nextPeriod:"789,00₺",modem:"paid",modemCost:"75,00₺",date:"2 Tem 2026"},
     {name:"TİKLANET",link:"https://tiklanet.com.tr/tarifeler/",priceText:"VDSL 699,00₺ / FİBER 769,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"TRFASTNET",link:"https://trfastnet.com.tr/internet-tarifeleri-uygun-fiyatli-ve-hizli-paketler-tr-fastnet__trashed/meganet-100-mbps-paket/",priceText:"600,00₺",type:"single",nextPeriod:"31.12.2026'ya kadar",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
+    {name:"TRENDNET",link:"https://trendnettelekom.com.tr/bireysel-tarifelerimiz/",priceText:"699,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"15 Tem 2026"},
     {name:"TRNET",link:"https://tr-net.com.tr/tarifeler/",priceText:"775,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"TURBONET",link:"https://turbo.net.tr/paket/bireysel.html",priceText:"649,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"TURKCELL SUPERONLİNE",link:"https://www.superonline.net/ev-interneti/adsl-vdsl-internet/taahhutsuz-yalin-vdsl-hiz-keyfi/100-mbps-ye-kadar",linkFiber:"https://www.superonline.net/ev-interneti/fiber-internet/taahhutsuz-fiberde-super-teklif/100-mbps-ye-kadar",priceText:"VDSL 950,00₺ / FİBER 950,00₺",type:"single",nextPeriod:"1 Ağustos 2026'ya kadar",modem:"paid",modemCost:"80,00₺",date:"2 Tem 2026"},
     {name:"TURKNET",link:"https://www.turk.net/",priceText:"949,90₺",type:"single",nextPeriod:"Sabit",modem:"free",modemCost:"",date:"2 Tem 2026"},
-	{name:"TURKHOST",link:"https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri",linkFiber:"https://www.turkhost.net.tr/limitsiz-fiber-ftth-internet-paketleri",priceText:"İlk Ay: VDSL 359,00₺ / Fiber 550,00₺",type:"single",nextPeriod:"VDSL 409,00₺ / Fiber 650,00₺",modem:"paid",modemCost:"65,00₺",date:"2 Tem 2026"},
+    {name:"TURKHOST",link:"https://www.turkhost.net.tr/limitsiz-adsl-vdsl-internet-paketleri",linkFiber:"https://www.turkhost.net.tr/limitsiz-fiber-ftth-internet-paketleri",priceText:"İlk Ay: VDSL 359,00₺ / Fiber 550,00₺",type:"single",nextPeriod:"VDSL 409,00₺ / Fiber 650,00₺",modem:"paid",modemCost:"65,00₺",date:"2 Tem 2026"},
     {name:"TURUNCUNET",link:"https://turuncunet.com.tr/Paketler/Eviniz-icin-Internet",priceText:"VDSL 749,90₺ / FİBER 859,90₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"60,00₺",date:"2 Tem 2026"},
     {name:"TÜRKİYEMNET",link:"https://www.turkiyemnet.com.tr/#tarifeler",priceText:"VDSL 649,00₺ / FİBER 749,00₺",type:"single",nextPeriod:"Sabit",modem:"unknown",modemCost:"",date:"2 Tem 2026"},
     {name:"ULUNET",link:"https://www.ulu.net.tr/paketler/VDSL",priceText:"750,00₺",type:"single",nextPeriod:"Sabit",modem:"paid",modemCost:"70,00₺",date:"2 Tem 2026"},
@@ -2419,12 +2419,10 @@ const firmsData = [
 
 let rowsPerPage = 20, currentPage = 1, filteredData = [...firmsData];
 
-// <select> listesini firmsData'dan otomatik oluştur - tek kaynak
 el('firmaGizli').innerHTML = '<option value="">-- Firma seçin --</option>' +
   firmsData.map(f => `<option value="${f.name}">${f.name}</option>`).join('');
 let activeSearch = '', activePriceMin = null, activePriceMax = null, currentSort = null, activeModem = 'all';
 
-// ── Dual range slider ──
 const SMIN = 200, SMAX = 1500;
 function initSlider() {
   const minS = el('priceMin'), maxS = el('priceMax');
@@ -2453,7 +2451,6 @@ function initSlider() {
   updateSlider();
 }
 
-// ── URL param okuma ──
 function initFromURL() {
   const p = new URLSearchParams(location.search);
   if (p.get('q'))   { activeSearch = p.get('q'); el('searchInput').value = activeSearch; }
@@ -2471,7 +2468,6 @@ function initFromURL() {
   }
 }
 
-// ── URL param yazma ──
 function pushURL() {
   try {
     const p = new URLSearchParams();
@@ -2483,18 +2479,14 @@ function pushURL() {
     }
     const qs = p.toString();
     history.replaceState(null, '', qs ? '?' + qs : location.pathname);
-  } catch (e) { /* file:// veya iframe gibi kısıtlı ortamlarda sessizce geç */ }
+  } catch (e) {}
 }
 
-// ── Klavye: Escape tuşu ──
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
   el('bildirModal').classList.remove('active');
 });
 
-
-
-// ── Favoriler ──
 const FAV_KEY = 'issaraclari_favs';
 function getFavs() { try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; } }
 function saveFavs(f) { try { localStorage.setItem(FAV_KEY, JSON.stringify(f)); } catch {} }
@@ -2507,7 +2499,6 @@ function toggleFav(name) {
   else { favs.splice(idx, 1); showToast('🗑️ Favorilerden çıkarıldı'); }
   saveFavs(favs);
   updateFavCount();
-  // sadece yıldızı güncelle, tüm tabloyu yeniden çizme
   document.querySelectorAll('[data-fav-name]').forEach(btn => {
     if (btn.dataset.favName === name) btn.classList.toggle('active', getFavs().includes(name));
   });
@@ -2526,7 +2517,6 @@ function clearFavs() {
   showToast('🗑️ Tüm favoriler temizlendi');
   updateFavCount();
   renderFavPanel();
-  // tüm yıldızları sönük yap
   document.querySelectorAll('[data-fav-name]').forEach(btn => btn.classList.remove('active'));
 }
 
@@ -2590,7 +2580,6 @@ function copyFirm(name, price, next, modemVal, modemCost) {
     fallbackCopy(text, onSuccess);
   }
 }
-
 
 function showToast(msg) {
   const t = el('toast');
@@ -2688,6 +2677,56 @@ function renderRowNext(r) {
   return `<span class="badge price-increase">↑ ${sanitize(np)}</span>`;
 }
 
+// 1 YILLIK MALİYET HESAPLAMA FONKSİYONU
+function renderAnnualCost(row) {
+  const getNum = (str) => {
+    if (!str) return 0;
+    const m = String(str).match(/(\d+)(?:[,.](\d+))?/);
+    if (m) return parseFloat(m[1] + '.' + (m[2] || '0'));
+    return 0;
+  };
+
+  let p1Str = row._subtype ? row._price : row.priceText;
+  let p2Str = row._subtype ? row._next : row.nextPeriod;
+  let p1 = getNum(p1Str);
+  let p2 = getNum(p2Str);
+
+  if (p2 === 0 || /sabit|kadar/i.test(row.nextPeriod)) p2 = p1;
+
+  let firstMonths = 12;
+  const mMatch = String(row.priceText).match(/[iİI]lk\s+(\d+)\s+ay/i);
+  const mMatch2 = String(row.nextPeriod).match(/(\d+)\s+ay\s+sabit/i);
+  
+  if (mMatch) {
+    firstMonths = parseInt(mMatch[1]);
+  } else if (mMatch2) {
+    firstMonths = parseInt(mMatch2[1]);
+  }
+  if (firstMonths > 12) firstMonths = 12;
+
+  let baseCost = (p1 * firstMonths) + (p2 * (12 - firstMonths));
+  
+  let formatMoney = (val) => val.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '₺';
+
+  if (row._subtype === 'fiber') {
+    if (row.modem === 'paid') {
+      let m = getNum(row.modemCost);
+      return `<strong>${formatMoney(baseCost + (m*12))}</strong><div style="font-size:10.5px; color:var(--text-secondary); margin-top:2px;">(Modem dahil)</div>`;
+    }
+    return `<strong>${formatMoney(baseCost)}</strong>`;
+  } else if (row._subtype === 'vdsl') {
+    return `<strong>${formatMoney(baseCost)}</strong>`;
+  } else {
+    // Aynı fiyat kullanan (single) firmalar
+    if (row.modem === 'paid') {
+      let m = getNum(row.modemCost);
+      // Sadece "Modem Kirasıyla:" yazacak şekilde güncellendi:
+      return `<strong>${formatMoney(baseCost)}</strong><div style="font-size:10.5px; color:var(--blue); margin-top:3px; font-weight:700;">Modem Kirasıyla: ${formatMoney(baseCost + (m*12))}</div>`;
+    }
+    return `<strong>${formatMoney(baseCost)}</strong>`;
+  }
+}
+
 function renderTable() {
   const start = (currentPage - 1) * rowsPerPage;
   const page = filteredData.slice(start, start + rowsPerPage);
@@ -2725,6 +2764,7 @@ function renderTable() {
       ${nameCell}
       <td>${renderRowPrice(row)}${priceLabel}</td>
       <td>${renderRowNext(row)}</td>
+      <td>${renderAnnualCost(row)}</td>
       ${modemCell}
       ${dateCell}
       ${copyCell}
@@ -2735,7 +2775,8 @@ function renderTable() {
     const ex = expandRows([f]);
     const pr = ex.map(r =>
       `<div class="card-row"><span class="card-row-label">${r._subtype ? (r._subtype === 'vdsl' ? 'VDSL' : 'Fiber') : 'İlk Dönem'}</span><span class="card-row-value">${renderRowPrice(r)}</span></div>
-       <div class="card-row"><span class="card-row-label">Sonraki</span><span class="card-row-value">${renderRowNext(r)}</span></div>`
+       <div class="card-row"><span class="card-row-label">Sonraki</span><span class="card-row-value">${renderRowNext(r)}</span></div>
+       <div class="card-row" style="background:var(--row-hover); padding:6px 8px; border-radius:8px; margin-top:4px;"><span class="card-row-label" style="color:var(--text); font-size:11px;">1 Yıllık Maliyet</span><span class="card-row-value" style="font-size:13px; color:var(--blue);">${renderAnnualCost(r)}</span></div>`
     ).join('');
     const cl = f.linkFiber
       ? `<a href="${sanitize(f.link)}" target="_blank" class="link-badge link-badge-vdsl-name">↗ VDSL</a><a href="${sanitize(f.linkFiber)}" target="_blank" class="link-badge link-badge-fiber-name">↗ Fiber</a>`
@@ -2743,7 +2784,7 @@ function renderTable() {
     return `<div class="firma-card">
       <div class="card-header"><span class="card-firma">${sanitize(f.name)}</span><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${cl}<button class="fav-btn ${isFav(f.name) ? 'active' : ''}" data-fav-name="${sanitize(f.name)}" onclick="toggleFav('${sanitize(f.name)}')" title="Favori">⭐</button></div></div>
       ${pr}
-      <div class="card-row"><span class="card-row-label">Modem</span><span class="card-row-value">${modemBadge(f.modem, f.modemCost)}</span></div>
+      <div class="card-row" style="margin-top:8px;"><span class="card-row-label">Modem</span><span class="card-row-value">${modemBadge(f.modem, f.modemCost)}</span></div>
       <div class="card-footer">
         <span class="date-badge ${dateClass(f.date)}">${sanitize(f.date)}</span>
         <button class="copy-btn" onclick="copyFirm('${sanitize(f.name)}','${sanitize(f.priceText)}','${sanitize(f.nextPeriod)}','${f.modem}','${sanitize(f.modemCost)}')">⎘ Kopyala</button>
@@ -2836,9 +2877,6 @@ function resetTable() {
   currentPage = 1; pushURL(); renderTable();
 }
 
-
-
-
 function hataBildir(f) {
   el('firmaGizli').value = f;
   el('bildirFormContent').style.display = 'block';
@@ -2872,7 +2910,7 @@ async function formGonder(e) {
       el('bildirFormContent').style.display = 'none';
       el('bildirSuccess').style.display = 'block';
     } else { alert('Gönderim başarısız.'); btn.disabled = false; btn.textContent = '📨 Gönder'; }
-  } catch { alert('Bağlantı hatası.'); btn.disabled = false; btn.textContent = '📨 Gönder'; }
+	} catch { alert('Bağlantı hatası.'); btn.disabled = false; btn.textContent = '📨 Gönder'; }
 }
 
 function toggleTheme() {
